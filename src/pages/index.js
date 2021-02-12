@@ -48,7 +48,7 @@ const IndexPage = () => {
       </Message>
       <Links>
         <Link href="https://github.com/rocketll">GitHub↗</Link>
-        <Link href="mailto:luc4sl33@gmail.com">Mail↗</Link>
+        <Link href="mailto:me@luc.li">Mail↗</Link>
       </Links>
     </Container>
   )
