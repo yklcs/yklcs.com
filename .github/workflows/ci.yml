@@ -1,0 +1,50 @@
+name: CI
+
+# Controls when the action will run.
+on:
+  push:
+    branches: [main, devel]
+  pull_request:
+    branches: [main, devel]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: npm build
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: luc.li-artifact
+          path: build/
+          if-no-files-found: error
+
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    if: github.ref == "refs/heads/main"
+
+    steps:
+      - name: Configure AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: Sync to S3
+        run: aws s3 sync build/ s3://luc.li
