@@ -1,7 +1,10 @@
+const siteUrl = new URL("https://luc.li")
+
+siteUrl.toString
 module.exports = {
   siteMetadata: {
     title: "luc.li",
-    siteUrl: "https://luc.li",
+    siteUrl: siteUrl.href,
     description: "Website of Lucas Yunkyu Lee"
   },
   plugins: [
@@ -33,5 +36,13 @@ module.exports = {
       },
       __key: "pages",
     },
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+          bucketName: "luc.li",
+          protocol: siteUrl.protocol.slice(0, -1),
+          hostname: siteUrl.hostname
+      },
+  },
   ],
 };
