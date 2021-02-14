@@ -13,7 +13,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby-plugin-s3 deploy"
+    "deploy": "gatsby-plugin-s3 deploy",
+    "deploy:ci": "gatsby-plugin-s3 deploy --yes"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
