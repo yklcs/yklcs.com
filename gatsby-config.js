@@ -41,7 +41,9 @@ module.exports = {
       options: {
           bucketName: "luc.li",
           protocol: siteUrl.protocol.slice(0, -1),
-          hostname: siteUrl.hostname
+          hostname: siteUrl.hostname,
+          enableS3StaticWebsiteHosting: false,
+          acl: "private"
       },
   },
   ],
