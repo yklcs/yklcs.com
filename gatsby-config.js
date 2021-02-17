@@ -36,15 +36,5 @@ module.exports = {
       },
       __key: "pages",
     },
-    {
-      resolve: `gatsby-plugin-s3`,
-      options: {
-          bucketName: "luc.li",
-          protocol: siteUrl.protocol.slice(0, -1),
-          hostname: siteUrl.hostname,
-          enableS3StaticWebsiteHosting: false,
-          acl: "private"
-      },
-  },
   ],
 };
