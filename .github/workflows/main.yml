@@ -34,6 +34,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     needs: [build]
     steps:
       - name: Configure AWS
@@ -53,4 +54,4 @@ jobs:
         run: aws s3 sync public s3://luc.li
 
       - name: Invalidate Cloudfront Cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DIST_ID }} --paths "*"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DIST_ID }} --paths "/*"
