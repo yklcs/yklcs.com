@@ -1,4 +1,4 @@
-import * as React from "react"
+import React from "react"
 import styled from "styled-components"
 
 const Container = styled.main`
@@ -8,7 +8,8 @@ const Container = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, 
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 `
 
 const Message = styled.p`
@@ -32,19 +33,14 @@ const Link = styled.a`
   }
 `
 
-const Mono = styled.span`
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
-`
-
-const IndexPage = () => {
-  return (
+const IndexPage = () => (
     <Container>
       <Message>
-        Hi, I'm Lucas Yunkyu Lee (aka <Mono>rocketll</Mono>).
+        Lucas Yunkyu Lee is studying and researching computer science at POSTECH, Korea.
       </Message>
       <Message>
-        This website is busy under construction.
-        Check back soon!
+        He is interested in computational physics and web development,
+          with proficiency in Python, JavaScript, Go, and more.
       </Message>
       <Links>
         <Link href="https://github.com/rocketll">GitHub↗</Link>
@@ -52,6 +48,5 @@ const IndexPage = () => {
       </Links>
     </Container>
   )
-}
 
 export default IndexPage
