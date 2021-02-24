@@ -2,12 +2,12 @@ import React from "react"
 import styled from "styled-components"
 
 const Container = styled.main`
-  color: #222;
   display: flex;
-  padding: 2em;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-start;
+  justify-content: flex-start;
+  padding: 2em;
+  color: #222222;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 `
@@ -18,14 +18,14 @@ const Message = styled.p`
 `
 
 const Links = styled.div`
-  margin: 3em 0 0 0;
   display: flex;
   flex-direction: row;
+  margin: 3em 0 0 0;
 `
 
 const Link = styled.a`
-  color: inherit;
   margin: 0 1em 0 0;
+  color: inherit;
   text-decoration: none;
 
   &:hover {
