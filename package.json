@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write .",
-    "lint:css": "stylelint **/*.jsx"
+    "lint:css": "stylelint '**/*.jsx'"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
