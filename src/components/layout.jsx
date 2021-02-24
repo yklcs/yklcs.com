@@ -8,10 +8,6 @@ const Wrapper = styled.div`
   margin: auto;
 `
 
-const Layout = ({ children }) => (
-  <Wrapper>
-    {children}
-  </Wrapper>
-)
+const Layout = ({ children }) => <Wrapper>{children}</Wrapper>
 
 export default Layout

@@ -8,7 +8,7 @@ const Container = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 `
 
@@ -34,19 +34,20 @@ const Link = styled.a`
 `
 
 const IndexPage = () => (
-    <Container>
-      <Message>
-        Lucas Yunkyu Lee is studying and researching computer science at POSTECH, Korea.
-      </Message>
-      <Message>
-        He is interested in computational physics and web development,
-          with proficiency in Python, JavaScript, Go, and more.
-      </Message>
-      <Links>
-        <Link href="https://github.com/rocketll">GitHub↗</Link>
-        <Link href="mailto:me@luc.li">Mail↗</Link>
-      </Links>
-    </Container>
-  )
+  <Container>
+    <Message>
+      Lucas Yunkyu Lee is studying and researching computer science at POSTECH,
+      Korea.
+    </Message>
+    <Message>
+      He is interested in computational physics and web development, with
+      proficiency in Python, JavaScript, Go, and more.
+    </Message>
+    <Links>
+      <Link href="https://github.com/rocketll">GitHub↗</Link>
+      <Link href="mailto:me@luc.li">Mail↗</Link>
+    </Links>
+  </Container>
+)
 
 export default IndexPage

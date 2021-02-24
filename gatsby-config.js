@@ -5,7 +5,7 @@ module.exports = {
   siteMetadata: {
     title: "luc.li",
     siteUrl: siteUrl.href,
-    description: "Website of Lucas Yunkyu Lee"
+    description: "Website of Lucas Yunkyu Lee",
   },
   plugins: [
     "gatsby-plugin-styled-components",
@@ -37,4 +37,4 @@ module.exports = {
       __key: "pages",
     },
   ],
-};
+}
