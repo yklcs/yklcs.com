@@ -1,0 +1,15 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components",
+    "stylelint-config-rational-order",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "color-hex-case": "lower",
+    "color-hex-length": "long",
+    "string-quotes": "double",
+    "indentation": 2
+  }
+}

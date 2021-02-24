@@ -12,13 +12,16 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "format": "prettier --write .",
+    "lint:css": "stylelint '**/*.jsx'",
+    "lint:js": "eslint '**/*.{js,jsx}'"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
     "babel-plugin-styled-components": "^1.12.0",
-    "gatsby": "^2.32.3",
+    "gatsby": "^2.32.4",
     "gatsby-image": "^2.11.0",
     "gatsby-plugin-manifest": "^2.12.0",
     "gatsby-plugin-mdx": "^1.10.0",
@@ -32,5 +35,34 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/eslint-parser": "^7.13.4",
+    "babel-preset-gatsby": "^0.12.1",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "stylelint": "^13.11.0",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^4.1.0",
+    "stylelint-processor-styled-components": "^1.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.jsx": "stylelint",
+    "*.{js,jsx,css,md,json}": "prettier --write"
   }
 }
