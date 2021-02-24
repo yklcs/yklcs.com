@@ -14,7 +14,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write .",
-    "lint:css": "stylelint '**/*.jsx'"
+    "lint:css": "stylelint '**/*.jsx'",
+    "lint:js": "eslint '**/*.{js,jsx}'"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -36,6 +37,12 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/eslint-parser": "^7.13.4",
+    "babel-preset-gatsby": "^0.12.1",
+    "eslint": "^7.20.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "prettier": "^2.2.1",
     "stylelint": "^13.11.0",
     "stylelint-config-rational-order": "^0.1.2",
