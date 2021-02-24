@@ -1,6 +1,5 @@
 const siteUrl = new URL("https://luc.li")
 
-siteUrl.toString
 module.exports = {
   siteMetadata: {
     title: "luc.li",
