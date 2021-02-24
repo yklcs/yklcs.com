@@ -7,3 +7,11 @@ Website of Lucas Yunkyu Lee. Powered by [Gatsby](http://gatsbyjs.com). Hosted on
 ## Tooling
 
 - Formatted with prettier
+- Linted with eslint and stylelint
+
+## Todo
+
+- [ ] Update homepage
+- [ ] Implement blog
+- [ ] Get 100 \* 4 on Google Lighthouse
+- [ ] SEO
