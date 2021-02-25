@@ -13,3 +13,19 @@
   src: url("AppleGaramond-400-italic.woff2") format("woff2"),
     url("AppleGaramond-400-italic.woff") format("woff");
 }
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  font-style: normal;
+  src: url("Inter-400-normal.woff2") format("woff2"),
+    url("Inter-400-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  font-style: italic;
+  src: url("Inter-400-italic.woff2") format("woff2"),
+    url("Inter-400-italic.woff") format("woff");
+}
