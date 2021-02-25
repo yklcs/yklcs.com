@@ -28,6 +28,7 @@ const Landing = styled.div`
 `
 
 const CV = styled.div`
+  box-sizing: border-box;
   max-width: 60em;
   height: 100vh;
   margin: auto;
