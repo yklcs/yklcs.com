@@ -1,57 +1,43 @@
 import React from "react"
-import styled, { createGlobalStyle } from "styled-components"
-import { useSpring, animated } from "react-spring"
+import styled from "styled-components"
+import { useSpring } from "react-spring"
+import { navigate } from "@reach/router"
 
-const GlobalStyle = createGlobalStyle`
-  html, body {
-    overflow: hidden;
-  }
-`
-
-const Container = styled(animated.main)`
-  height: 100vh;
-  padding: 0rem 1rem;
-  overflow: scroll;
-  scroll-snap-type: y mandatory;
+const Container = styled.main`
+  max-width: 50em;
+  margin: auto;
+  padding: 0rem 2rem;
 `
 
 const Landing = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   box-sizing: border-box;
-  max-width: 60em;
+  height: var(--100vh);
   height: 100vh;
   margin: auto;
   padding: 2rem 0;
-  scroll-snap-align: start;
 `
 
 const CV = styled.div`
   box-sizing: border-box;
-  max-width: 60em;
+  height: var(--100vh);
   height: 100vh;
   margin: auto;
   padding: 2rem 0;
-  scroll-snap-align: start;
 `
 
 const Message = styled.p`
   display: inline;
   margin: 0;
-  color: #333333;
-  font-size: 2.3em;
+  font-size: 2em;
   font-family: "Apple Garamond", serif;
-  line-height: 1.5;
+  line-height: 1.25;
 `
 
 const Italic = styled.span`
   font-style: italic;
-`
-
-const Sub = styled.span`
-  position: relative;
-  color: #aaaaaa;
 `
 
 const Emph = styled.span`
@@ -73,64 +59,65 @@ const Emph = styled.span`
 const Links = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin: 0;
+  margin: 2rem 0 0 0;
 `
 
 const Link = styled.a`
-  margin: 0 1em 0 0;
-  color: inherit;
+  margin: 0 1rem 0 0;
+  padding: 0.6rem 0.7rem;
+  color: #888888;
+  font-size: 1.2em;
+  letter-spacing: -0.2px;
   text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`
-
-const TextButton = styled.button`
-  display: inline-block;
-  color: inherit;
-  font-size: inherit;
-  background: inherit;
+  background: none;
   border: none;
+  border-radius: 0.6rem;
+  outline: inherit;
   cursor: pointer;
 
   &:hover {
-    text-decoration: underline;
+    background: #eeeeee;
+  }
+
+  &:first-child {
+    margin: 0 1rem 0 -0.6rem;
   }
 `
 
-const ScrollButton = ({ children, set }) => {
-  return (
-    <TextButton
-      onClick={() => {
-        set({ scroll: window.innerHeight, from: { scroll: 0 } })
-      }}
-    >
-      {children}
-    </TextButton>
-  )
-}
-
 const IndexPage = () => {
-  const [props, set] = useSpring(() => ({ scroll: 0 }))
+  const [, set] = useSpring(() => ({ y: 0 }))
 
   return (
-    <Container scrollTop={props.scroll}>
-      <GlobalStyle />
+    <Container>
       <Landing>
         <Message>
-          <Italic>Lucas Yunkyu Lee</Italic> is studying and researching at{" "}
-          <Emph>POSTECH</Emph>, Korea.{" "}
-          <Sub>
-            He is interested in computational physics and web development, with
-            proficiency in Python, JavaScript, Go, and more.
-          </Sub>
+          Hey — I'm{" "}
+          <Italic>
+            <Emph>Lucas </Emph>
+            <Emph>Yunkyu </Emph>
+            <Emph>Lee</Emph>
+          </Italic>
+          , currently studying and researching at POSTECH, Korea. I'm interested
+          in computational physics and web development, with proficiency in
+          Python, JavaScript, Go, and more.
         </Message>
         <Links>
-          <ScrollButton set={set}>CV↓</ScrollButton>
-          <Link href="https://github.com/rocketll">GitHub→</Link>
-          <Link href="mailto:me@luc.li">Mail→</Link>
+          <Link
+            as="button"
+            onClick={() => {
+              set({
+                y: window.innerHeight,
+                from: { y: window.scrollY },
+                reset: true,
+                onChange: ({ y }) => window.scroll(0, y),
+                // onRest: () => navigate("#cv")
+              })
+            }}
+          >
+            CV
+          </Link>
+          <Link href="https://github.com/rocketll">GitHub</Link>
+          <Link href="mailto:me@luc.li">Mail</Link>
         </Links>
       </Landing>
       <CV id={"cv"}>
