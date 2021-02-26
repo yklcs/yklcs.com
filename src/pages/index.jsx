@@ -13,16 +13,8 @@ const Landing = styled(animated.div)`
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  height: var(--100vh);
   height: 100vh;
-  margin: auto;
-  padding: 2rem 0;
-`
-
-const CV = styled.div`
-  box-sizing: border-box;
   height: var(--100vh);
-  height: 100vh;
   margin: auto;
   padding: 2rem 0;
 `
