@@ -63,8 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm run preload-fonts"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {

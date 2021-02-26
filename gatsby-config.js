@@ -36,5 +36,6 @@ module.exports = {
       __key: "pages",
     },
     "gatsby-plugin-preact",
+    "gatsby-plugin-preload-fonts",
   ],
 }
