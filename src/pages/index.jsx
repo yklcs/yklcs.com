@@ -1,7 +1,6 @@
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
-import { useSpring } from "react-spring"
-import { navigate } from "@reach/router"
+import { useSpring, animated } from "react-spring"
 
 const Container = styled.main`
   max-width: 50em;
@@ -9,7 +8,7 @@ const Container = styled.main`
   padding: 0rem 2rem;
 `
 
-const Landing = styled.div`
+const Landing = styled(animated.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -85,11 +84,18 @@ const Link = styled.a`
 `
 
 const IndexPage = () => {
-  const [, set] = useSpring(() => ({ y: 0 }))
+  const [props, set] = useSpring(() => ({ opacity: 0, y: 100 }))
+
+  useEffect(() => {
+    set({
+      opacity: 1,
+      y: 0,
+    })
+  }, [set])
 
   return (
     <Container>
-      <Landing>
+      <Landing style={props}>
         <Message>
           Hey — I'm{" "}
           <Italic>
@@ -102,30 +108,10 @@ const IndexPage = () => {
           Python, JavaScript, Go, and more.
         </Message>
         <Links>
-          <Link
-            as="button"
-            onClick={() => {
-              set({
-                y: window.innerHeight,
-                from: { y: window.scrollY },
-                reset: true,
-                onChange: ({ y }) => window.scroll(0, y),
-                onRest: () => navigate("#cv"),
-              })
-            }}
-          >
-            CV
-          </Link>
           <Link href="https://github.com/rocketll">GitHub</Link>
           <Link href="mailto:me@luc.li">Mail</Link>
         </Links>
       </Landing>
-      <CV id={"cv"}>
-        Under construction...{" "}
-        <span role="img" aria-label="construction sign">
-          🚧
-        </span>
-      </CV>
     </Container>
   )
 }
