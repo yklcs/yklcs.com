@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
 import { useSpring, animated } from "react-spring"
+import { Helmet } from "react-helmet"
 
 const Container = styled.main`
   max-width: 50em;
@@ -56,7 +57,7 @@ const Links = styled.div`
 const Link = styled.a`
   margin: 0 1rem 0 0;
   padding: 0.6rem 0.7rem;
-  color: #777777;
+  color: #757575;
   font-size: 1.2em;
   letter-spacing: -0.2px;
   text-decoration: none;
@@ -87,6 +88,14 @@ const IndexPage = () => {
 
   return (
     <Container>
+      <Helmet
+        htmlAttributes={{
+          lang: "en",
+        }}
+        title="luc.li - Lucas Yunkyu Lee"
+        link={[{ rel: "canonical", href: "https://luc.li" }]}
+        meta={[{ name: "description", content: "Lucas Yunkyu Lee" }]}
+      />
       <Landing style={props}>
         <Message>
           Hey — I'm{" "}
