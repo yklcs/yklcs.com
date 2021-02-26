@@ -65,7 +65,7 @@ const Links = styled.div`
 const Link = styled.a`
   margin: 0 1rem 0 0;
   padding: 0.6rem 0.7rem;
-  color: #888888;
+  color: #777777;
   font-size: 1.2em;
   letter-spacing: -0.2px;
   text-decoration: none;
@@ -110,7 +110,7 @@ const IndexPage = () => {
                 from: { y: window.scrollY },
                 reset: true,
                 onChange: ({ y }) => window.scroll(0, y),
-                // onRest: () => navigate("#cv")
+                onRest: () => navigate("#cv"),
               })
             }}
           >
