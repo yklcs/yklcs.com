@@ -1,0 +1,14 @@
+{
+  "timestamp": 1614337086459,
+  "hash": "53260b0eb5ca3cf626e0786300172b67",
+  "assets": {
+    "/dev-404-page/": {
+      "/static/NeueMontreal-400-normal-6f99025b0927a98ae6baf23dec9f086d.woff2": true
+    },
+    "/": {
+      "/static/NeueMontreal-400-normal-6f99025b0927a98ae6baf23dec9f086d.woff2": true,
+      "/static/AppleGaramond-400-normal-718d0fd59f32d4ade99315ab9b015f96.woff2": true,
+      "/static/AppleGaramond-400-italic-4674af17df743bf5ec48e5982367383c.woff2": true
+    }
+  }
+}
