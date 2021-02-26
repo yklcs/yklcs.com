@@ -91,8 +91,10 @@ const IndexPage = () => {
         <Message>
           Hey — I'm{" "}
           <Italic>
-            <Emph>Lucas </Emph>
-            <Emph>Yunkyu </Emph>
+            <Emph>Lucas</Emph>
+            <Emph> </Emph>
+            <Emph>Yunkyu</Emph>
+            <Emph> </Emph>
             <Emph>Lee</Emph>
           </Italic>
           , currently studying and researching at POSTECH, Korea. I'm interested
