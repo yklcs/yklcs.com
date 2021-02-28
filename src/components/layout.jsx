@@ -15,6 +15,12 @@ const Layout = ({ children }) => {
       "--100vh",
       `${window.innerHeight}px`
     )
+    // https://github.com/gatsbyjs/gatsby/issues/29051 workaround
+    document
+      .querySelector("body > gatsby-portal")
+      .shadowRoot.querySelector(
+        "[data-gatsby-loading-indicator='root']"
+      ).style.display = "none"
   }, [])
 
   return (
