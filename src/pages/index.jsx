@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet"
 
 import Footer from "../components/footer"
 
-const Container = styled.main`
+const Container = styled(animated.main)`
   max-width: 50em;
   margin: auto;
   padding: 0rem 2rem;
@@ -20,7 +20,7 @@ const Landing = styled.div`
   padding: 2rem 0;
 `
 
-const Message = styled(animated.p)`
+const Message = styled.p`
   display: inline;
   margin: 0;
   font-size: 2.1em;
@@ -48,7 +48,7 @@ const Emph = styled.span`
   }
 `
 
-const Links = styled(animated.div)`
+const Links = styled.div`
   display: flex;
   flex-direction: row;
   margin: 2rem 0 0 0;
@@ -120,7 +120,6 @@ const BioItemTile = styled.a`
 
   &:hover {
     background: #eeeeee;
-    transform: scale(1.05);
   }
 `
 
@@ -184,7 +183,7 @@ const IndexPage = () => {
   }, [set])
 
   return (
-    <Container>
+    <Container style={props}>
       <Helmet
         htmlAttributes={{
           lang: "en",
@@ -194,7 +193,7 @@ const IndexPage = () => {
         meta={[{ name: "description", content: "Lucas Yunkyu Lee" }]}
       />
       <Landing>
-        <Message style={props}>
+        <Message>
           Hey — I'm{" "}
           <Italic>
             <Emph>Lucas</Emph>
@@ -207,7 +206,7 @@ const IndexPage = () => {
           in computational physics and web development, with proficiency in
           Python, JavaScript, Go, and more.
         </Message>
-        <Links style={props}>
+        <Links>
           <Link href="https://github.com/rocketll">GitHub</Link>
           <Link href="mailto:me@luc.li">Mail</Link>
         </Links>
