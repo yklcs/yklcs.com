@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet"
 import Footer from "../components/footer"
 
 const Container = styled(animated.main)`
-  max-width: 50em;
+  max-width: 60em;
   margin: auto;
   padding: 0rem 2rem;
 `
@@ -69,7 +69,7 @@ const Link = styled.a`
   transition: background 0.3s, transform 0.3s;
 
   &:hover {
-    background: #eeeeee;
+    background: #f0f0f0;
   }
 
   &:first-child {
@@ -119,7 +119,7 @@ const BioItemTile = styled.a`
   }
 
   &:hover {
-    background: #eeeeee;
+    background: #f0f0f0;
   }
 `
 
