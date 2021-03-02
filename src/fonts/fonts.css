@@ -51,3 +51,21 @@
   src: url("NeueMontreal-400-italic.woff2") format("woff2"),
     url("NeueMontreal-400-italic.woff") format("woff");
 }
+
+@font-face {
+  font-family: "Neue Montreal";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("NeueMontreal-700-normal.woff2") format("woff2"),
+    url("NeueMontreal-700-normal.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Neue Montreal";
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("NeueMontreal-700-italic.woff2") format("woff2"),
+    url("NeueMontreal-700-italic.woff") format("woff");
+}
