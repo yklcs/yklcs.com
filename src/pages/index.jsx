@@ -3,14 +3,6 @@ import styled from "styled-components"
 import { useSpring, animated } from "react-spring"
 import { Helmet } from "react-helmet"
 
-import Footer from "../components/footer"
-
-const Container = styled(animated.main)`
-  max-width: 60em;
-  margin: auto;
-  padding: 0rem 2rem;
-`
-
 const Landing = styled.div`
   display: flex;
   flex-direction: column;
@@ -183,7 +175,7 @@ const IndexPage = () => {
   }, [set])
 
   return (
-    <Container style={props}>
+    <animated.div style={props}>
       <Helmet
         htmlAttributes={{
           lang: "en",
@@ -253,8 +245,7 @@ const IndexPage = () => {
           imgKey="ns"
         />
       </Bio>
-      <Footer />
-    </Container>
+    </animated.div>
   )
 }
 
