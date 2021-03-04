@@ -160,7 +160,7 @@ const BioItem = ({ title, type, description, imgKey, link }) => (
   <BioItemTile href={link}>
     <BioItemHeader>
       <BioItemIcon
-        src={require(`../images/icons/icon-${imgKey}.svg`)}
+        src={require(`../images/icons/icon-${imgKey}.svg`).default}
         alt={imgKey}
         width="512px"
       />
