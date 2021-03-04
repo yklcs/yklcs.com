@@ -60,6 +60,7 @@ const Content = styled.div`
 `
 
 const linkStyle = css`
+  display: inline-flex;
   box-sizing: border-box;
   margin: -0.1rem -0.5rem;
   padding: 0.1rem 0.5rem;
@@ -93,7 +94,6 @@ const ContentItemDiv = styled.div`
 `
 
 const ContentItemTitle = styled.h3`
-  display: inline-flex;
   margin: 0;
   font-weight: 400;
   font-size: inherit;
@@ -142,6 +142,15 @@ const Resume = () => {
         link={[{ rel: "canonical", href: "https://luc.li" }]}
         meta={[{ name: "description", content: "Lucas Yunkyu Lee" }]}
       />
+      <InternalLink
+        to="/"
+        css={`
+          color: #a0a0a0;
+          text-decoration: none;
+        `}
+      >
+        ← home
+      </InternalLink>
       <Row>
         <Title main>
           <Emph>Lucas Yunkyu Lee</Emph>
