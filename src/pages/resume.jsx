@@ -116,9 +116,9 @@ const imageStyle = {
 }
 
 const imageWrapperStyle = {
-  margin: "1rem 0",
+  margin: "0 0 1rem 0",
   width: "100%",
-  boxShadow: "0 0.4rem 1rem 0.4rem #00000033",
+  boxShadow: "0 0.5rem 1.1rem 0.4rem #00000020",
   ...imageStyle,
 }
 
@@ -264,6 +264,23 @@ const Resume = () => {
               calculations and visualizations through Python, MATLAB,
               Mathematica, Julia, and more.
             </p>
+          </ContentItem>
+          <ContentItem title="KdV Equation PINN" large>
+            <ContentItemText>2019</ContentItemText>
+            <p>
+              Solved the KdV differential equation with physics-informed neural
+              networks togther with a partner. Succeeded in superior performance
+              compared to traditional numerical methods (Crank-Nicolson).
+              Implemented in Python using DeepXDE and Tensorflow, with
+              processing and utilities from MATLAB.
+            </p>
+            <StaticImage
+              src="../images/kdvpinn.png"
+              alt="hashmm.com screenshot"
+              layout="fullWidth"
+              style={imageWrapperStyle}
+              imgStyle={imageStyle}
+            />
           </ContentItem>
         </Content>
       </Row>
