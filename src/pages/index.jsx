@@ -1,15 +1,8 @@
 import React, { useEffect } from "react"
-import styled from "styled-components"
+import { Link } from "gatsby"
+import styled, { css } from "styled-components"
 import { useSpring, animated } from "react-spring"
 import { Helmet } from "react-helmet"
-
-import Footer from "../components/footer"
-
-const Container = styled(animated.main)`
-  max-width: 50em;
-  margin: auto;
-  padding: 0rem 2rem;
-`
 
 const Landing = styled.div`
   display: flex;
@@ -54,7 +47,7 @@ const Links = styled.div`
   margin: 2rem 0 0 0;
 `
 
-const Link = styled.a`
+const linkStyle = css`
   margin: 0 1rem 0 0;
   padding: 0.6rem 0.7rem;
   color: #a0a0a0;
@@ -69,12 +62,20 @@ const Link = styled.a`
   transition: background 0.3s, transform 0.3s;
 
   &:hover {
-    background: #eeeeee;
+    background: #f0f0f0;
   }
 
   &:first-child {
     margin: 0 1rem 0 -0.7rem;
   }
+`
+
+const ALink = styled.a`
+  ${linkStyle}
+`
+
+const InternalLink = styled(Link)`
+  ${linkStyle}
 `
 
 const Bio = styled.div`
@@ -119,7 +120,7 @@ const BioItemTile = styled.a`
   }
 
   &:hover {
-    background: #eeeeee;
+    background: #f0f0f0;
   }
 `
 
@@ -159,7 +160,7 @@ const BioItem = ({ title, type, description, imgKey, link }) => (
   <BioItemTile href={link}>
     <BioItemHeader>
       <BioItemIcon
-        src={require(`../images/icon-${imgKey}.svg`)}
+        src={require(`../images/icons/icon-${imgKey}.svg`).default}
         alt={imgKey}
         width="512px"
       />
@@ -183,7 +184,7 @@ const IndexPage = () => {
   }, [set])
 
   return (
-    <Container style={props}>
+    <animated.div style={props}>
       <Helmet
         htmlAttributes={{
           lang: "en",
@@ -207,8 +208,9 @@ const IndexPage = () => {
           Python, JavaScript, Go, and more.
         </Message>
         <Links>
-          <Link href="https://github.com/rocketll">GitHub</Link>
-          <Link href="mailto:me@luc.li">Mail</Link>
+          <InternalLink to="/resume">Resume</InternalLink>
+          <ALink href="mailto:me@luc.li">Mail</ALink>
+          <ALink href="https://github.com/rocketll">GitHub</ALink>
         </Links>
       </Landing>
       <Bio>
@@ -253,8 +255,7 @@ const IndexPage = () => {
           imgKey="ns"
         />
       </Bio>
-      <Footer />
-    </Container>
+    </animated.div>
   )
 }
 
