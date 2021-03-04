@@ -122,10 +122,11 @@ const imageWrapperStyle = {
 }
 
 const Resume = () => {
-  const mediaQueryList = window.matchMedia("screen and (min-width: 40rem)")
-  const [bp, setBp] = useState(mediaQueryList.matches)
+  const [bp, setBp] = useState(true)
 
   useEffect(() => {
+    const mediaQueryList = window.matchMedia("screen and (min-width: 44rem)")
+    setBp(mediaQueryList.matches)
     mediaQueryList.addEventListener("change", (event) => {
       setBp(event.matches)
     })
