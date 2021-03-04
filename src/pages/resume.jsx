@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 import { Helmet } from "react-helmet"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Container = styled.div`
   margin: 10rem 0 0 0;
@@ -59,6 +60,11 @@ const ContentItemDiv = styled.div`
 
 const ContentItemText = styled.span`
   word-wrap: break-word;
+`
+
+const ImageContainer = styled.div`
+  margin: 1rem 0;
+  box-shadow: 0 5px 16px 5px #00000033;
 `
 
 const ContentItem = ({ children, title, text }) => (
@@ -121,9 +127,16 @@ const Resume = () => (
     <Row>
       <Title>Experience</Title>
       <Content>
-        <ContentItem>
-          <i>hashmm.com</i>
+        <ContentItem title="hashmm.com">
           <i>— Project Manager, Lead Developer</i>
+          <ImageContainer>
+            <StaticImage
+              src="../images/hashmm-screenshot.png"
+              alt="hashmm.com screenshot"
+              layout="fullWidth"
+            />
+          </ImageContainer>
+
           <span>Hana Academy Seoul student webzine.</span>
         </ContentItem>
       </Content>
