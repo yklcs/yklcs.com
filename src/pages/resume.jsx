@@ -31,7 +31,11 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 4em 0;
+  margin: 4rem 0;
+
+  &:first-of-type {
+    margin: 2rem 0 4rem 0;
+  }
 `
 
 const TitleDiv = styled.div`
