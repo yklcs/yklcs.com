@@ -119,7 +119,7 @@ const BioItemTile = styled.a`
   }
 
   &:hover {
-    background: #f0f0f0;
+    background: ${(props) => (props.animated ? "#f0f0f0" : "inherit")};
   }
 `
 
@@ -156,7 +156,7 @@ const BioItemHeaderBar = styled.div`
 `
 
 const BioItem = ({ title, type, description, imgKey, link }) => (
-  <BioItemTile href={link}>
+  <BioItemTile href={link} animated={link}>
     <BioItemHeader>
       <BioItemIcon
         src={require(`../images/icons/icon-${imgKey}.svg`).default}
@@ -239,7 +239,6 @@ const IndexPage = () => {
           type="Research"
           description="Solved the KdV differential equation with physics-informed neural networks."
           imgKey="kdv"
-          link="https://hashmm.com"
         />
         <BioItem
           title="luc.li"
