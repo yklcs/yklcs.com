@@ -11,8 +11,8 @@ const FooterContainer = styled.footer`
 `
 
 const linkStyle = css`
-  margin: 0 -0.4rem;
-  padding: 0.3rem 0.4rem;
+  margin: 0 -0.4em;
+  padding: 0.3em 0.4em;
   color: #a0a0a0;
   font-size: 1em;
   text-decoration: none;

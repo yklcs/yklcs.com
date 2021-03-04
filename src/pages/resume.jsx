@@ -62,12 +62,13 @@ const Content = styled.div`
 const linkStyle = css`
   display: inline-flex;
   box-sizing: border-box;
-  margin: -0.1rem -0.5rem;
-  padding: 0.1rem 0.5rem;
+  margin: -0.1em -0.4em;
+  padding: 0.1em 0.4em;
   color: inherit;
   text-decoration: underline;
   text-decoration-color: #6196f2;
   border-radius: 0.6rem;
+  transition: background 0.3s;
 
   &:hover {
     background: #f0f0f0;

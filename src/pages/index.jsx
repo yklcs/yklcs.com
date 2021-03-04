@@ -48,8 +48,8 @@ const Links = styled.div`
 `
 
 const linkStyle = css`
-  margin: 0 1rem 0 0;
-  padding: 0.6rem 0.7rem;
+  margin: 0 1em 0 0;
+  padding: 0.6em 0.7em;
   color: #a0a0a0;
   font-size: 1.1em;
   text-decoration: none;
