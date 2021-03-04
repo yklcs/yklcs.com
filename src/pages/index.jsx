@@ -48,18 +48,17 @@ const Links = styled.div`
 `
 
 const linkStyle = css`
-  margin: 0 1rem 0 0;
-  padding: 0.6rem 0.7rem;
+  margin: 0 1em 0 0;
+  padding: 0.6em 0.7em;
   color: #a0a0a0;
-  font-size: 1.2em;
-  letter-spacing: -0.2px;
+  font-size: 1.1em;
   text-decoration: none;
   background: none;
   border: none;
   border-radius: 0.6rem;
   outline: inherit;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s;
 
   &:hover {
     background: #f0f0f0;
@@ -97,7 +96,7 @@ const BioItemTile = styled.a`
   color: inherit;
   text-decoration: none;
   border-radius: 1rem;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s;
 
   &:nth-child(2n) {
     margin: 0 -1.5rem 0 1rem;

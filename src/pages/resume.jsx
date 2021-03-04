@@ -60,13 +60,15 @@ const Content = styled.div`
 `
 
 const linkStyle = css`
+  display: inline-flex;
   box-sizing: border-box;
-  margin: -0.1rem -0.5rem;
-  padding: 0.1rem 0.5rem;
+  margin: -0.1em -0.4em;
+  padding: 0.1em 0.4em;
   color: inherit;
   text-decoration: underline;
   text-decoration-color: #6196f2;
   border-radius: 0.6rem;
+  transition: background 0.3s;
 
   &:hover {
     background: #f0f0f0;
@@ -93,7 +95,6 @@ const ContentItemDiv = styled.div`
 `
 
 const ContentItemTitle = styled.h3`
-  display: inline-flex;
   margin: 0;
   font-weight: 400;
   font-size: inherit;
@@ -115,9 +116,9 @@ const imageStyle = {
 }
 
 const imageWrapperStyle = {
-  margin: "1rem 0",
+  margin: "0 0 1rem 0",
   width: "100%",
-  boxShadow: "0 0.4rem 1rem 0.4rem #00000033",
+  boxShadow: "0 0.5rem 1.1rem 0.4rem #00000020",
   ...imageStyle,
 }
 
@@ -134,6 +135,23 @@ const Resume = () => {
 
   return (
     <Container>
+      <Helmet
+        htmlAttributes={{
+          lang: "en",
+        }}
+        title="luc.li - Lucas Yunkyu Lee"
+        link={[{ rel: "canonical", href: "https://luc.li" }]}
+        meta={[{ name: "description", content: "Lucas Yunkyu Lee" }]}
+      />
+      <InternalLink
+        to="/"
+        css={`
+          color: #a0a0a0;
+          text-decoration: none;
+        `}
+      >
+        ← home
+      </InternalLink>
       <Row>
         <Title main>
           <Emph>Lucas Yunkyu Lee</Emph>
@@ -246,6 +264,23 @@ const Resume = () => {
               calculations and visualizations through Python, MATLAB,
               Mathematica, Julia, and more.
             </p>
+          </ContentItem>
+          <ContentItem title="KdV Equation PINN" large>
+            <ContentItemText>2019</ContentItemText>
+            <p>
+              Solved the KdV differential equation with physics-informed neural
+              networks togther with a partner. Succeeded in superior performance
+              compared to traditional numerical methods (Crank-Nicolson).
+              Implemented in Python using DeepXDE and Tensorflow, with
+              processing and utilities from MATLAB.
+            </p>
+            <StaticImage
+              src="../images/kdvpinn.png"
+              alt="hashmm.com screenshot"
+              layout="fullWidth"
+              style={imageWrapperStyle}
+              imgStyle={imageStyle}
+            />
           </ContentItem>
         </Content>
       </Row>

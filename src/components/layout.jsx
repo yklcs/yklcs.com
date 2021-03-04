@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   font-family: "Neue Montreal", sans-serif;
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, location }) => {
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--100vh",
@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
     <Wrapper>
       <GlobalStyle />
       {children}
-      <Footer />
+      <Footer location={location} />
     </Wrapper>
   )
 }
