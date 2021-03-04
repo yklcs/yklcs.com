@@ -52,14 +52,13 @@ const linkStyle = css`
   padding: 0.6rem 0.7rem;
   color: #a0a0a0;
   font-size: 1.1em;
-  letter-spacing: -0.2px;
   text-decoration: none;
   background: none;
   border: none;
   border-radius: 0.6rem;
   outline: inherit;
   cursor: pointer;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s;
 
   &:hover {
     background: #f0f0f0;
@@ -97,7 +96,7 @@ const BioItemTile = styled.a`
   color: inherit;
   text-decoration: none;
   border-radius: 1rem;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s;
 
   &:nth-child(2n) {
     margin: 0 -1.5rem 0 1rem;
