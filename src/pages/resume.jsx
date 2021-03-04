@@ -134,6 +134,14 @@ const Resume = () => {
 
   return (
     <Container>
+      <Helmet
+        htmlAttributes={{
+          lang: "en",
+        }}
+        title="luc.li - Lucas Yunkyu Lee"
+        link={[{ rel: "canonical", href: "https://luc.li" }]}
+        meta={[{ name: "description", content: "Lucas Yunkyu Lee" }]}
+      />
       <Row>
         <Title main>
           <Emph>Lucas Yunkyu Lee</Emph>
