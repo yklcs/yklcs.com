@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
-import styled from "styled-components"
+import { Link } from "gatsby"
+import styled, { css } from "styled-components"
 import { useSpring, animated } from "react-spring"
 import { Helmet } from "react-helmet"
 
@@ -46,7 +47,7 @@ const Links = styled.div`
   margin: 2rem 0 0 0;
 `
 
-const Link = styled.a`
+const linkStyle = css`
   margin: 0 1rem 0 0;
   padding: 0.6rem 0.7rem;
   color: #a0a0a0;
@@ -67,6 +68,14 @@ const Link = styled.a`
   &:first-child {
     margin: 0 1rem 0 -0.7rem;
   }
+`
+
+const ALink = styled.a`
+  ${linkStyle}
+`
+
+const InternalLink = styled(Link)`
+  ${linkStyle}
 `
 
 const Bio = styled.div`
@@ -199,8 +208,9 @@ const IndexPage = () => {
           Python, JavaScript, Go, and more.
         </Message>
         <Links>
-          <Link href="https://github.com/rocketll">GitHub</Link>
-          <Link href="mailto:me@luc.li">Mail</Link>
+          <InternalLink to="/resume">Resume</InternalLink>
+          <ALink href="mailto:me@luc.li">Mail</ALink>
+          <ALink href="https://github.com/rocketll">GitHub</ALink>
         </Links>
       </Landing>
       <Bio>
