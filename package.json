@@ -14,8 +14,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write .",
-    "lint:css": "stylelint '**/*.{js,jsx}' --fix",
-    "lint:js": "eslint '**/*.{js,jsx}'",
+    "lint:css": "stylelint '**/*.{js,jsx,css}' --fix",
+    "lint:js": "eslint '**/*.{js,jsx}' --fix",
     "preload-fonts": "gatsby-preload-fonts"
   },
   "dependencies": {
