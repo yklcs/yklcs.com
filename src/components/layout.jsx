@@ -9,7 +9,8 @@ const Wrapper = styled.div`
   max-width: 60em;
   margin: auto;
   padding: 0rem 2rem;
-  font-family: "Neue Montreal", sans-serif;
+  font-family: "Inter", sans-serif;
+  letter-spacing: -0.05em;
 `
 
 const Layout = ({ children, location }) => {
