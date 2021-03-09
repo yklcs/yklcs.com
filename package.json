@@ -15,8 +15,7 @@
     "clean": "gatsby clean",
     "format": "prettier --write .",
     "lint:css": "stylelint '**/*.{js,jsx,css}' --fix",
-    "lint:js": "eslint '**/*.{js,jsx}' --fix",
-    "preload-fonts": "gatsby-preload-fonts"
+    "lint:js": "eslint '**/*.{js,jsx}' --fix"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
@@ -29,7 +28,6 @@
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-mdx": "^2.0.0",
     "gatsby-plugin-preact": "^5.0.0",
-    "gatsby-plugin-preload-fonts": "^2.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sharp": "^3.0.0",
     "gatsby-plugin-sitemap": "^3.0.0",
