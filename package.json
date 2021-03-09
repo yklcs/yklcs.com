@@ -14,8 +14,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write .",
-    "lint:css": "stylelint '**/*.jsx'",
-    "lint:js": "eslint '**/*.{js,jsx}'",
+    "lint:css": "stylelint '**/*.{js,jsx,css}' --fix",
+    "lint:js": "eslint '**/*.{js,jsx}' --fix",
     "preload-fonts": "gatsby-preload-fonts"
   },
   "dependencies": {
@@ -24,6 +24,7 @@
     "babel-plugin-styled-components": "^1.12.0",
     "gatsby": "^3.0.1",
     "gatsby-image": "^3.0.0",
+    "gatsby-plugin-google-gtag": "^3.0.0",
     "gatsby-plugin-image": "^1.0.0",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-mdx": "^2.0.0",
@@ -61,8 +62,7 @@
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-order": "^4.1.0",
-    "stylelint-processor-styled-components": "^1.10.0"
+    "stylelint-order": "^4.1.0"
   },
   "husky": {
     "hooks": {
@@ -71,7 +71,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
-    "*.jsx": "stylelint",
+    "*.{jsx,css}": "stylelint --fix",
     "*.{js,jsx,css,md,json}": "prettier --write"
   }
 }

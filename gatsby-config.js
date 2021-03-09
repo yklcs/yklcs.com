@@ -38,5 +38,19 @@ module.exports = {
     },
     "gatsby-plugin-preact",
     "gatsby-plugin-preload-fonts",
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-SKY9NLT5FT"],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
+      },
+    },
   ],
 }
