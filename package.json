@@ -14,7 +14,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write .",
-    "lint:css": "stylelint '**/*.jsx'",
+    "lint:css": "stylelint '**/*.{js,jsx}' --fix",
     "lint:js": "eslint '**/*.{js,jsx}'",
     "preload-fonts": "gatsby-preload-fonts"
   },
@@ -62,8 +62,7 @@
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-order": "^4.1.0",
-    "stylelint-processor-styled-components": "^1.10.0"
+    "stylelint-order": "^4.1.0"
   },
   "husky": {
     "hooks": {
@@ -72,7 +71,7 @@
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
-    "*.jsx": "stylelint",
+    "*.{jsx,css}": "stylelint --fix",
     "*.{js,jsx,css,md,json}": "prettier --write"
   }
 }
