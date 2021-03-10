@@ -19,6 +19,7 @@ const Message = styled.p`
   font-size: 2.1em;
   font-family: "Apple Garamond", serif;
   line-height: 1.25;
+  letter-spacing: 0;
 `
 
 const Italic = styled.span`
