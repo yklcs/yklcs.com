@@ -2,9 +2,11 @@ const siteUrl = new URL("https://luc.li")
 
 module.exports = {
   siteMetadata: {
-    title: "luc.li",
+    title: "Lucas Yunkyu Lee - luc.li",
+    titleTemplate: "%s – luc.li",
     siteUrl: siteUrl.href,
     description: "Website of Lucas Yunkyu Lee",
+    image: "./src/images/cover.png",
   },
   plugins: [
     "gatsby-plugin-styled-components",
