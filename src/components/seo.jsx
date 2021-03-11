@@ -27,5 +27,11 @@ const SEO = ({ title, description, image }) => {
     defaultImage,
   } = site.siteMetadata
 
-  return <Helmet title={defaultTitle}></Helmet>
+  return (
+    <Helmet title={defaultTitle}>
+      <meta name="description" content={defaultDescription} />
+    </Helmet>
+  )
 }
+
+export default SEO
