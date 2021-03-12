@@ -243,7 +243,7 @@ const Resume = () => {
               loop
               muted
               playsInline
-              poster={require("../images/sir-screenshot.png")}
+              poster={require("../images/sir-screenshot.png").default}
             >
               <source
                 src={require("../images/sir-movie.mp4").default}
