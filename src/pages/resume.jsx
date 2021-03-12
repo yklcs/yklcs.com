@@ -6,127 +6,6 @@ import Sticky from "react-stickynode"
 
 import SEO from "../components/seo"
 
-const Container = styled.div`
-  margin: 10rem 0 0 0;
-  font-size: 1em;
-  line-height: 1.5;
-`
-
-const Emph = styled.span`
-  position: relative;
-
-  &:after {
-    position: absolute;
-    top: 0.4em;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 0.4em;
-    background: #eeff00;
-    content: "";
-  }
-`
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 4rem 0;
-
-  &:first-of-type {
-    margin: 2rem 0 4rem 0;
-  }
-`
-
-const TitleDiv = styled.div`
-  flex-basis: 13.333333rem;
-  flex-grow: 1;
-  margin: 0 0 0.5rem 0;
-`
-
-const TitleText = styled.h2`
-  margin: 0;
-  font-weight: 700;
-  font-size: inherit;
-`
-
-const Title = ({ children, main }) => (
-  <TitleDiv>
-    <TitleText as={main ? "h1" : "h2"}>{children}</TitleText>
-  </TitleDiv>
-)
-
-const Content = styled.div`
-  display: flex;
-  flex-basis: 26.666666rem;
-  flex-direction: column;
-  flex-grow: 2;
-`
-
-const linkStyle = css`
-  display: inline-flex;
-  box-sizing: border-box;
-  margin: -0.1em -0.4em;
-  padding: 0.1em 0.4em;
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: #6196f2;
-  border-radius: 0.6rem;
-  transition: background 0.3s;
-
-  &:hover {
-    background: #f0f0f0;
-  }
-`
-
-const ALink = styled.a`
-  ${linkStyle}
-`
-
-const InternalLink = styled(Link)`
-  ${linkStyle}
-`
-
-const ContentItemDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: ${(props) => (props.large ? "2" : "0.5")}rem 0;
-
-  &:first-child {
-    margin: 0 0 ${(props) => (props.large ? "2" : "0.5")}rem 0;
-  }
-`
-
-const ContentItemTitle = styled.h3`
-  margin: 0;
-  font-weight: 400;
-  font-size: inherit;
-  font-style: italic;
-`
-
-const ContentItemText = styled.p`
-  margin: 0;
-`
-const ContentItem = ({ children, title, text, large }) => (
-  <ContentItemDiv large={large}>
-    {title && <ContentItemTitle>{title}</ContentItemTitle>}
-    {text ? <ContentItemText>{children}</ContentItemText> : children}
-  </ContentItemDiv>
-)
-
-const imageStyle = {
-  borderRadius: "0.7rem",
-}
-
-const imageWrapperStyle = {
-  margin: "0 0 1rem 0",
-  width: "100%",
-  boxShadow: "0 0.5rem 1.1rem 0.4rem #00000020",
-  ...imageStyle,
-}
-
 const Resume = () => {
   const [bp, setBp] = useState(true)
 
@@ -284,6 +163,127 @@ const Resume = () => {
       </Row>
     </Container>
   )
+}
+
+const Container = styled.div`
+  margin: 10rem 0 0 0;
+  font-size: 1em;
+  line-height: 1.5;
+`
+
+const Emph = styled.span`
+  position: relative;
+
+  &:after {
+    position: absolute;
+    top: 0.4em;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 0.4em;
+    background: #eeff00;
+    content: "";
+  }
+`
+
+const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 4rem 0;
+
+  &:first-of-type {
+    margin: 2rem 0 4rem 0;
+  }
+`
+
+const TitleDiv = styled.div`
+  flex-basis: 13.333333rem;
+  flex-grow: 1;
+  margin: 0 0 0.5rem 0;
+`
+
+const TitleText = styled.h2`
+  margin: 0;
+  font-weight: 700;
+  font-size: inherit;
+`
+
+const Title = ({ children, main }) => (
+  <TitleDiv>
+    <TitleText as={main ? "h1" : "h2"}>{children}</TitleText>
+  </TitleDiv>
+)
+
+const Content = styled.div`
+  display: flex;
+  flex-basis: 26.666666rem;
+  flex-direction: column;
+  flex-grow: 2;
+`
+
+const linkStyle = css`
+  display: inline-flex;
+  box-sizing: border-box;
+  margin: -0.1em -0.4em;
+  padding: 0.1em 0.4em;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: #6196f2;
+  border-radius: 0.6rem;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+`
+
+const ALink = styled.a`
+  ${linkStyle}
+`
+
+const InternalLink = styled(Link)`
+  ${linkStyle}
+`
+
+const ContentItemDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: ${(props) => (props.large ? "2" : "0.5")}rem 0;
+
+  &:first-child {
+    margin: 0 0 ${(props) => (props.large ? "2" : "0.5")}rem 0;
+  }
+`
+
+const ContentItemTitle = styled.h3`
+  margin: 0;
+  font-weight: 400;
+  font-size: inherit;
+  font-style: italic;
+`
+
+const ContentItemText = styled.p`
+  margin: 0;
+`
+const ContentItem = ({ children, title, text, large }) => (
+  <ContentItemDiv large={large}>
+    {title && <ContentItemTitle>{title}</ContentItemTitle>}
+    {text ? <ContentItemText>{children}</ContentItemText> : children}
+  </ContentItemDiv>
+)
+
+const imageStyle = {
+  borderRadius: "0.7rem",
+}
+
+const imageWrapperStyle = {
+  margin: "0 0 1rem 0",
+  width: "100%",
+  boxShadow: "0 0.5rem 1.1rem 0.4rem #00000020",
+  ...imageStyle,
 }
 
 export default Resume

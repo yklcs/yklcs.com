@@ -5,6 +5,84 @@ import { useSpring, animated } from "react-spring"
 
 import SEO from "../components/seo"
 
+const IndexPage = () => {
+  const [props, set] = useSpring(() => ({ opacity: 0, y: 100 }))
+
+  useEffect(() => {
+    set({
+      opacity: 1,
+      y: 0,
+    })
+  }, [set])
+
+  return (
+    <animated.div style={props}>
+      <SEO />
+      <Landing>
+        <Message>
+          Hey — I'm{" "}
+          <Italic>
+            <Emph>Lucas</Emph>
+            <Emph> </Emph>
+            <Emph>Yunkyu</Emph>
+            <Emph> </Emph>
+            <Emph>Lee</Emph>
+          </Italic>
+          , currently studying and researching at POSTECH, Korea. I'm interested
+          in computational physics and web development, with proficiency in
+          Python, JavaScript, Go, and more.
+        </Message>
+        <Links>
+          <InternalLink to="/resume">Resume</InternalLink>
+          <ALink href="mailto:me@luc.li">Mail</ALink>
+          <ALink href="https://github.com/rocketll">GitHub</ALink>
+        </Links>
+      </Landing>
+      <Bio>
+        <BioItem
+          title="POSTECH"
+          type="Education"
+          description="Undergraduate program, attending 2021–"
+          imgKey="postech"
+          link="https://postech.ac.kr"
+        />
+        <BioItem
+          title="Hana Academy Seoul"
+          type="Education"
+          description="Attended 2018–2020."
+          imgKey="hana"
+          link="https://hana.hs.kr"
+        />
+        <BioItem
+          title="hmm"
+          type="Development"
+          description="HAS student webzine. Full stack development, deployed on AWS."
+          imgKey="hashmm"
+          link="https://hashmm.com"
+        />
+        <BioItem
+          title="KdV Equation PINN"
+          type="Research"
+          description="Solved the KdV differential equation with physics-informed neural networks."
+          imgKey="kdv"
+        />
+        <BioItem
+          title="luc.li"
+          type="Development"
+          description="Frontend development with React + Gatsby. Hosted on AWS using CloudFront + S3 + Lambda@Edge."
+          imgKey="lucli"
+        />
+        <BioItem
+          title="Navier-Stokes FDM"
+          type="Research"
+          description="Implemented a FDM solver in Julia for the Navier-Stokes equations."
+          imgKey="ns"
+        />
+      </Bio>
+    </animated.div>
+  )
+}
+
 const Landing = styled.div`
   display: flex;
   flex-direction: column;
@@ -173,83 +251,5 @@ const BioItem = ({ title, type, description, imgKey, link }) => (
     <BioItemDescription>{description}</BioItemDescription>
   </BioItemTile>
 )
-
-const IndexPage = () => {
-  const [props, set] = useSpring(() => ({ opacity: 0, y: 100 }))
-
-  useEffect(() => {
-    set({
-      opacity: 1,
-      y: 0,
-    })
-  }, [set])
-
-  return (
-    <animated.div style={props}>
-      <SEO />
-      <Landing>
-        <Message>
-          Hey — I'm{" "}
-          <Italic>
-            <Emph>Lucas</Emph>
-            <Emph> </Emph>
-            <Emph>Yunkyu</Emph>
-            <Emph> </Emph>
-            <Emph>Lee</Emph>
-          </Italic>
-          , currently studying and researching at POSTECH, Korea. I'm interested
-          in computational physics and web development, with proficiency in
-          Python, JavaScript, Go, and more.
-        </Message>
-        <Links>
-          <InternalLink to="/resume">Resume</InternalLink>
-          <ALink href="mailto:me@luc.li">Mail</ALink>
-          <ALink href="https://github.com/rocketll">GitHub</ALink>
-        </Links>
-      </Landing>
-      <Bio>
-        <BioItem
-          title="POSTECH"
-          type="Education"
-          description="Undergraduate program, attending 2021–"
-          imgKey="postech"
-          link="https://postech.ac.kr"
-        />
-        <BioItem
-          title="Hana Academy Seoul"
-          type="Education"
-          description="Attended 2018–2020."
-          imgKey="hana"
-          link="https://hana.hs.kr"
-        />
-        <BioItem
-          title="hmm"
-          type="Development"
-          description="HAS student webzine. Full stack development, deployed on AWS."
-          imgKey="hashmm"
-          link="https://hashmm.com"
-        />
-        <BioItem
-          title="KdV Equation PINN"
-          type="Research"
-          description="Solved the KdV differential equation with physics-informed neural networks."
-          imgKey="kdv"
-        />
-        <BioItem
-          title="luc.li"
-          type="Development"
-          description="Frontend development with React + Gatsby. Hosted on AWS using CloudFront + S3 + Lambda@Edge."
-          imgKey="lucli"
-        />
-        <BioItem
-          title="Navier-Stokes FDM"
-          type="Research"
-          description="Implemented a FDM solver in Julia for the Navier-Stokes equations."
-          imgKey="ns"
-        />
-      </Bio>
-    </animated.div>
-  )
-}
 
 export default IndexPage
