@@ -4,6 +4,8 @@ import styled, { css } from "styled-components"
 import { useSpring, animated } from "react-spring"
 import { Helmet } from "react-helmet"
 
+import SEO from "../components/seo"
+
 const Landing = styled.div`
   display: flex;
   flex-direction: column;
@@ -185,14 +187,7 @@ const IndexPage = () => {
 
   return (
     <animated.div style={props}>
-      <Helmet
-        htmlAttributes={{
-          lang: "en",
-        }}
-        title="luc.li - Lucas Yunkyu Lee"
-        link={[{ rel: "canonical", href: "https://luc.li" }]}
-        meta={[{ name: "description", content: "Lucas Yunkyu Lee" }]}
-      />
+      <SEO />
       <Landing>
         <Message>
           Hey — I'm{" "}

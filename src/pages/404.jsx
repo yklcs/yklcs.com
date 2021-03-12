@@ -2,6 +2,8 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
+import SEO from "../components/seo"
+
 const ErrorContainer = styled.div`
   margin: 10rem 0;
 `
@@ -40,6 +42,7 @@ const HomeLink = styled(Link)`
 const ErrorPage = () => {
   return (
     <ErrorContainer>
+      <SEO title="HTTP 404" description="HTTP 404 not found" />
       <ErrorTitle>HTTP 404.</ErrorTitle>
       <ErrorText>The page you tried to access doesn't exist.</ErrorText>
       <HomeLink to="/">Return home</HomeLink>

@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet"
 import { StaticImage } from "gatsby-plugin-image"
 import Sticky from "react-stickynode"
 
+import SEO from "../components/seo"
+
 const Container = styled.div`
   margin: 10rem 0 0 0;
   font-size: 1em;
@@ -139,14 +141,7 @@ const Resume = () => {
 
   return (
     <Container>
-      <Helmet
-        htmlAttributes={{
-          lang: "en",
-        }}
-        title="luc.li - Lucas Yunkyu Lee"
-        link={[{ rel: "canonical", href: "https://luc.li" }]}
-        meta={[{ name: "description", content: "Lucas Yunkyu Lee" }]}
-      />
+      <SEO title="Resume" description="Resume of Lucas Yunkyu Lee" />
       <InternalLink
         to="/"
         css={`
