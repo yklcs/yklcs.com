@@ -4,6 +4,17 @@ import styled from "styled-components"
 
 import SEO from "../components/seo"
 
+const ErrorPage = () => {
+  return (
+    <ErrorContainer>
+      <SEO title="HTTP 404" description="HTTP 404 not found" />
+      <ErrorTitle>HTTP 404.</ErrorTitle>
+      <ErrorText>The page you tried to access doesn't exist.</ErrorText>
+      <HomeLink to="/">Return home</HomeLink>
+    </ErrorContainer>
+  )
+}
+
 const ErrorContainer = styled.div`
   margin: 10rem 0;
 `
@@ -38,16 +49,5 @@ const HomeLink = styled(Link)`
     background: #f0f0f0;
   }
 `
-
-const ErrorPage = () => {
-  return (
-    <ErrorContainer>
-      <SEO title="HTTP 404" description="HTTP 404 not found" />
-      <ErrorTitle>HTTP 404.</ErrorTitle>
-      <ErrorText>The page you tried to access doesn't exist.</ErrorText>
-      <HomeLink to="/">Return home</HomeLink>
-    </ErrorContainer>
-  )
-}
 
 export default ErrorPage

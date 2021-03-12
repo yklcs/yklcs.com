@@ -2,6 +2,14 @@ import React from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 
+const Footer = ({ location }) => (
+  <FooterContainer>
+    <HeaderText>— Lucas Yunkyu Lee 2021</HeaderText>
+    {location.pathname !== "/" && <InternalLink to="/">Home</InternalLink>}
+    <ALink href="https://github.com/rocketll/luc.li">Site Source</ALink>
+  </FooterContainer>
+)
+
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
@@ -39,13 +47,5 @@ const InternalLink = styled(Link)`
 const HeaderText = styled.p`
   margin: 0 0 0.3rem 0;
 `
-
-const Footer = ({ location }) => (
-  <FooterContainer>
-    <HeaderText>— Lucas Yunkyu Lee 2021</HeaderText>
-    {location.pathname !== "/" && <InternalLink to="/">Home</InternalLink>}
-    <ALink href="https://github.com/rocketll/luc.li">Site Source</ALink>
-  </FooterContainer>
-)
 
 export default Footer
