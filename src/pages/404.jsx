@@ -1,54 +1,53 @@
-import * as React from "react"
+import React from "react"
 import { Link } from "gatsby"
+import styled from "styled-components"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+import SEO from "../components/seo"
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+const ErrorContainer = styled.div`
+  margin: 10rem 0;
+`
 
-// markup
-const NotFoundPage = () => {
+const ErrorTitle = styled.h1`
+  margin: 10rem 0 1rem 0;
+  font-size: 3em;
+`
+
+const ErrorText = styled.p`
+  margin: 0 0 3rem 0;
+  color: #a0a0a0;
+  font-size: 1.1em;
+`
+
+const HomeLink = styled(Link)`
+  margin: 0 -0.6em;
+  padding: 0.6em 0.7em;
+  color: inherit;
+  font-size: 1.1em;
+  text-decoration: underline;
+  text-decoration-color: #6196f2;
+  text-decoration-thickness: 1px;
+  background: none;
+  border: none;
+  border-radius: 0.6rem;
+  outline: inherit;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+`
+
+const ErrorPage = () => {
   return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <ErrorContainer>
+      <SEO title="HTTP 404" description="HTTP 404 not found" />
+      <ErrorTitle>HTTP 404.</ErrorTitle>
+      <ErrorText>The page you tried to access doesn't exist.</ErrorText>
+      <HomeLink to="/">Return home</HomeLink>
+    </ErrorContainer>
   )
 }
 
-export default NotFoundPage
+export default ErrorPage
