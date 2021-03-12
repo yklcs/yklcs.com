@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
-import { Helmet } from "react-helmet"
 import { StaticImage } from "gatsby-plugin-image"
 import Sticky from "react-stickynode"
 

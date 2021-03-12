@@ -2,7 +2,6 @@ import React, { useEffect } from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 import { useSpring, animated } from "react-spring"
-import { Helmet } from "react-helmet"
 
 import SEO from "../components/seo"
 
