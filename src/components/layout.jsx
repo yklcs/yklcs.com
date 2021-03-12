@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import styled from "styled-components"
 
-import GlobalStyle from "./globalstyles"
+import GlobalStyle from "./global-styles"
 import Footer from "./footer"
 import "/src/fonts/fonts.css"
 
