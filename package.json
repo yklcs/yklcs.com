@@ -27,6 +27,7 @@
     "gatsby-plugin-image": "^1.0.0",
     "gatsby-plugin-manifest": "^3.0.0",
     "gatsby-plugin-mdx": "^2.0.0",
+    "gatsby-plugin-page-creator": "^3.0.0",
     "gatsby-plugin-preact": "^5.0.0",
     "gatsby-plugin-react-helmet": "^4.0.0",
     "gatsby-plugin-sharp": "^3.0.0",
@@ -70,6 +71,6 @@
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix",
     "*.{jsx,css}": "stylelint --fix",
-    "*.{js,jsx,css,md,json}": "prettier --write"
+    "*.{js,jsx,css,md,mdx,json}": "prettier --write"
   }
 }

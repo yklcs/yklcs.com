@@ -53,5 +53,19 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "blog",
+        path: "./content/blog/",
+      },
+      __key: "blog",
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: "./content/blog/",
+      },
+    },
   ],
 }
