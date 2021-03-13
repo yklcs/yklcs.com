@@ -38,11 +38,14 @@
     "postcss": "^8.2.7",
     "preact": "^10.5.12",
     "preact-render-to-string": "^5.1.12",
+    "prism-react-renderer": "^1.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-spring": "^9.0.0-rc.3",
     "react-stickynode": "^3.0.4",
+    "rehype-katex": "^4.0.0",
+    "remark-math": "^3.0.1",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
