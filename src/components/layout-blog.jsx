@@ -14,8 +14,6 @@ const Layout = ({ children, pageContext: { frontmatter } }) => (
         <strong>luc.li</strong>
       </InternalLink>
       <div>
-        <InternalLink to="/">Home</InternalLink>
-        <Spacer />
         <InternalLink to="/blog">Blog</InternalLink>
       </div>
     </Nav>
@@ -25,7 +23,7 @@ const Layout = ({ children, pageContext: { frontmatter } }) => (
         <strong>By {frontmatter.author}</strong>
         <div style={{ color: "#a0a0a0" }}>
           <time dateTime={frontmatter.date}>
-            {dateformat(new Date(frontmatter.date), "mmm dS, yyyy")}
+            {dateformat(new Date(frontmatter.date), "yyyy/mm/dd")}
           </time>
           <Spacer long />
           {frontmatter.tags[0]}
@@ -99,10 +97,22 @@ const Paragraph = styled.p`
   -webkit-font-smoothing: auto;
 `
 
+const Pre = styled.pre`
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+`
+
+const InlineCode = styled.code`
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+  background: #eeeeee;
+`
+
 const components = {
   h1: Title,
-  pre: (props) => <div {...props} />,
+  pre: Pre,
   code: Code,
+  inlineCode: InlineCode,
   p: Paragraph,
 }
 

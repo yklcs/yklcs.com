@@ -1,12 +1,18 @@
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
 import styled from "styled-components"
+import githubTheme from "prism-react-renderer/themes/vsDark"
 
 const Code = ({ children, className }) => {
   const language = className.replace(/language-/, "") || ""
 
   return (
-    <Highlight {...defaultProps} code={children} language={language}>
+    <Highlight
+      {...defaultProps}
+      code={children}
+      language={language}
+      theme={githubTheme}
+    >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>
           {tokens.slice(0, -1).map((line, i) => (
@@ -26,9 +32,11 @@ const Code = ({ children, className }) => {
 }
 
 const Pre = styled.pre`
-  margin: 1em 0;
-  padding: 0.5em;
-  overflow: scroll;
+  margin: 1rem -0.5rem;
+  padding: 0.5rem;
+  overflow-x: auto;
+  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
   text-align: left;
 `
 
@@ -38,7 +46,7 @@ const Line = styled.div`
 
 const LineNo = styled.span`
   display: table-cell;
-  padding-right: 1em;
+  padding-right: 1rem;
   text-align: right;
   opacity: 0.5;
   user-select: none;
