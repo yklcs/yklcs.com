@@ -44,7 +44,7 @@ const InternalLink = styled(Link)`
 const BlogWrapper = styled.div`
   position: relative;
   max-width: 40rem;
-  margin: 3rem auto;
+  margin: 0 auto 10rem auto;
 `
 
 const Nav = styled.nav`
@@ -77,8 +77,6 @@ const Metadata = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  /* flex-direction: row;
-  justify-content: space-between; */
   margin: 2rem 0;
   line-height: 1.5;
 `
@@ -114,6 +112,7 @@ const components = {
   code: Code,
   inlineCode: InlineCode,
   p: Paragraph,
+  Link,
 }
 
 export default Layout
