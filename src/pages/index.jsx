@@ -23,6 +23,7 @@ const IndexPage = () => {
           Python, JavaScript, Go, and more.
         </Message>
         <Links>
+          <InternalLink to="/blog">Blog</InternalLink>
           <InternalLink to="/resume">Resume</InternalLink>
           <ALink href="mailto:me@luc.li">Mail</ALink>
           <ALink href="https://github.com/rocketll">GitHub</ALink>
