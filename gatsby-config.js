@@ -7,6 +7,10 @@ module.exports = {
     siteUrl: siteUrl.href,
     description: "Website of Lucas Yunkyu Lee",
     image: "/images/cover.png",
+    firstName: "Lucas Yunkyu",
+    lastName: "Lee",
+    username: "rocketll",
+    gender: "male",
   },
   plugins: [
     "gatsby-plugin-styled-components",
@@ -20,7 +24,16 @@ module.exports = {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-mdx",
+    {
+      resolve: "gatsby-plugin-mdx",
+      options: {
+        defaultLayouts: {
+          default: require.resolve("./src/components/layout-blog.jsx"),
+        },
+        remarkPlugins: [require("remark-math")],
+        rehypePlugins: [require("rehype-katex")],
+      },
+    },
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
@@ -51,6 +64,20 @@ module.exports = {
           head: false,
           respectDNT: true,
         },
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "blog",
+        path: "./content/blog/",
+      },
+      __key: "blog",
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: "./content/blog/",
       },
     },
   ],
