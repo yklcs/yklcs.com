@@ -1,22 +1,12 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Link } from "gatsby"
-import styled, { css } from "styled-components"
-import { useSpring, animated } from "react-spring"
+import styled, { css, keyframes } from "styled-components"
 
 import SEO from "../components/seo"
 
 const IndexPage = () => {
-  const [props, set] = useSpring(() => ({ opacity: 0, y: 100 }))
-
-  useEffect(() => {
-    set({
-      opacity: 1,
-      y: 0,
-    })
-  }, [set])
-
   return (
-    <animated.div style={props}>
+    <Container>
       <SEO />
       <Landing>
         <Message>
@@ -79,9 +69,23 @@ const IndexPage = () => {
           imgKey="ns"
         />
       </Bio>
-    </animated.div>
+    </Container>
   )
 }
+
+const load = keyframes`
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`
+
+const Container = styled.div`
+  animation: ${load} 0.3s ease-out;
+`
 
 const Landing = styled.div`
   display: flex;
