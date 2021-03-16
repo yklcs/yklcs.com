@@ -7,6 +7,10 @@ module.exports = {
     siteUrl: siteUrl.href,
     description: "Website of Lucas Yunkyu Lee",
     image: "/images/cover.png",
+    firstName: "Lucas Yunkyu",
+    lastName: "Lee",
+    username: "rocketll",
+    gender: "male",
   },
   plugins: [
     "gatsby-plugin-styled-components",

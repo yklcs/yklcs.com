@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
+import SEO from "../components/seo"
+
 const Blog = () => {
   const data = useStaticQuery(graphql`
     query Blog {
@@ -36,6 +38,7 @@ const Blog = () => {
 
   return (
     <>
+      <SEO title="Blog" description="Lucas's Blog" />
       <Title>Blog</Title>
       <PostsContainer>{posts}</PostsContainer>
     </>

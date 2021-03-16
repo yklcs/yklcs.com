@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet"
 
 import stripTrailingSlash from "../utils/strip-trailing-slash"
 
-const SEO = ({ title, description, image }) => {
+const SEO = ({ title, description, image, article: isArticle, date, tags }) => {
   const { pathname } = useLocation()
   const { site } = useStaticQuery(
     graphql`
@@ -17,6 +17,9 @@ const SEO = ({ title, description, image }) => {
             defaultDescription: description
             siteUrl
             defaultImage: image
+            firstName
+            lastName
+            username
           }
         }
       }
@@ -29,6 +32,10 @@ const SEO = ({ title, description, image }) => {
     defaultDescription,
     siteUrl,
     defaultImage,
+    firstName,
+    lastName,
+    username,
+    gender,
   } = site.siteMetadata
 
   const metadata = {
@@ -38,6 +45,9 @@ const SEO = ({ title, description, image }) => {
     image: `${stripTrailingSlash(siteUrl)}${image || defaultImage}`,
     url: stripTrailingSlash(`${siteUrl}${pathname}`),
   }
+
+  const isProfile = pathname === "/"
+  const type = isArticle ? "article" : isProfile ? "profile" : "website"
 
   return (
     <Helmet
@@ -52,7 +62,18 @@ const SEO = ({ title, description, image }) => {
       <meta name="image" content={metadata.image} />
       <link rel="canonical" href={metadata.url} />
 
-      <meta property="og:type" content="website" />
+      <meta property="og:type" content={type} />
+      {isArticle && <meta property="article:published_time" content={date} />}
+      {isArticle &&
+        tags.map((tag) => <meta property="article:tag" content={tag} />)}
+      {isArticle && (
+        <meta property="article:author" content={stripTrailingSlash(siteUrl)} />
+      )}
+      {isProfile && <meta property="profile:first_name" content={firstName} />}
+      {isProfile && <meta property="profile:last_name" content={lastName} />}
+      {isProfile && <meta property="profile:username" content={username} />}
+      {isProfile && <meta property="profile:gender" content={gender} />}
+      <meta property="og:site_name" content={defaultTitle} />
       <meta property="og:url" content={metadata.url} />
       <meta property="og:title" content={metadata.title} />
       <meta property="og:description" content={metadata.description} />

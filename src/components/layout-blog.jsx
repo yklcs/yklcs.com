@@ -5,10 +5,17 @@ import { MDXProvider } from "@mdx-js/react"
 import Code from "./code"
 import dateformat from "dateformat"
 
+import SEO from "./seo"
 import "katex/dist/katex.min.css"
 
 const Layout = ({ children, pageContext: { frontmatter } }) => (
   <>
+    <SEO
+      title={frontmatter.title}
+      article
+      date={frontmatter.date}
+      tags={frontmatter.tags}
+    />
     <Nav>
       <InternalLink to="/">
         <strong>luc.li</strong>
