@@ -36,7 +36,7 @@
     "gatsby-plugin-sitemap": "^3.0.0",
     "gatsby-plugin-styled-components": "^4.0.0",
     "gatsby-source-filesystem": "^3.0.0",
-    "gatsby-transformer-sharp": "^3.0.0",
+    "gatsby-transformer-sharp": "^3.1.0",
     "postcss": "^8.2.7",
     "preact": "^10.5.13",
     "preact-render-to-string": "^5.1.12",
