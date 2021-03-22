@@ -27,7 +27,7 @@
     "gatsby-image": "^3.0.0",
     "gatsby-plugin-google-gtag": "^3.0.0",
     "gatsby-plugin-image": "^1.0.0",
-    "gatsby-plugin-manifest": "^3.0.0",
+    "gatsby-plugin-manifest": "^3.1.0",
     "gatsby-plugin-mdx": "^2.0.0",
     "gatsby-plugin-page-creator": "^3.1.0",
     "gatsby-plugin-preact": "^5.0.0",
