@@ -15,4 +15,4 @@ updates:
       - "RocketLL"
     labels:
       - "dependency 📥"
-      
+    open-pull-requests-limit: 10
