@@ -4,6 +4,7 @@
   "private": true,
   "description": "luc.li",
   "author": "Lucas Lee",
+  "type": "module",
   "keywords": [
     "gatsby"
   ],
