@@ -15,8 +15,7 @@
     "clean": "gatsby clean",
     "format": "prettier --write .",
     "lint:css": "stylelint '**/*.{js,jsx,css}' --fix",
-    "lint:js": "eslint '**/*.{js,jsx}' --fix",
-    "deploy": "./deploy.sh"
+    "lint:js": "eslint '**/*.{js,jsx}' --fix"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
