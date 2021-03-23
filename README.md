@@ -28,4 +28,3 @@ Website of Lucas Yunkyu Lee. Powered by [Gatsby](http://gatsbyjs.com), hand-craf
 
 - Developed on macOS (M1 with Rosetta 2 x64)
 - Uses calendar versioning as it is more suitable than semantic versioning for a blog
-- Uses a shell script for deployment - only non Windows compatible part of project
