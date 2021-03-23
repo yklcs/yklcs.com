@@ -1,6 +1,6 @@
 # [luc.li](https://luc.li)
 
-[![CI Status](https://github.com/rocketll/luc.li/workflows/Main%20CI/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/main.yml) [![CI Status](https://github.com/rocketll/luc.li/workflows/Development%20CI/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/devel.yml)
+[![CI Status](https://github.com/rocketll/luc.li/workflows/Build%20CI/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/build.yml) [![CI Status](https://github.com/rocketll/luc.li/workflows/AWS%20CD/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/deploy.yml)
 
 Website of Lucas Yunkyu Lee. Powered by [Gatsby](http://gatsbyjs.com), hand-crafted with ❤️.
 
