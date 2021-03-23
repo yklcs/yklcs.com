@@ -51,7 +51,7 @@ jobs:
               },
               owner: context.repo.owner,
               repo: context.repo.repo,
-              environment: "production",
+              environment: "Production",
               description: "Triggered deployment to AWS",
               ref: "heads/main",
               environment_url: "https://luc.li"
@@ -97,8 +97,9 @@ jobs:
               deployment_id: process.env.DEPLOYMENT_ID,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              environment: "production",
+              environment: "Production",
               description: `AWS Deployment result: ${process.env.JOB_STATUS}`,
               state: process.env.JOB_STATUS === "success" ? "success" : "failure",
-              auto_inactive: true
+              auto_inactive: true,
+              environment_url: "https://luc.li"
             })
