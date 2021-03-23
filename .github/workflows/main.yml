@@ -31,30 +31,15 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == "refs/heads/main"
+    if: github.ref == 'refs/heads/main'
     needs: [build]
     steps:
       - uses: actions/checkout@v2
 
-      - name: Start Deployment
-        uses: actions/github-script@v3
-        id: start-deployment
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const response = await github.request("POST /repos/{owner}/{repo}/deployments", {
-              mediaType: {
-                previews: ["ant-man"],
-              },
-              owner: context.github.repository_owner,
-              repo: context.github.repository.split("/")[1],
-              environment: "production",
-              description: "Triggered deployment to AWS",
-              ref: "heads/main",
-              environment_url: "https://luc.li"
-            })
-
-            return response.id
+          node-version: "14"
 
       - name: Configure AWS
         uses: aws-actions/configure-aws-credentials@v1
@@ -69,34 +54,7 @@ jobs:
           name: luc.li-artifact
           path: public
 
-      - name: Deploy to AWS S3
-        run: |
-          aws s3 cp public s3://luc.li --cache-control "no-cache" --recursive --exclude "*" --include "*.html" --include "page-data/**/*.json" --include "sw.js"
-          aws s3 cp public s3://luc.li --cache-control "public, max-age=31536000, immutable" --recursive --exclude "*" --include "static/**" --include "*.js" --include "*.css" --exclude "sw.js"
-          aws s3 sync public s3://luc.li --delete
-
-      - name: Invalidate AWS CloudFront Cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DIST_ID }} --paths "/**/*.html" "/page-data/**/*.json" "/sw.js"
-
-      - name: Update Deployment Status
-        if: always()
-        uses: actions/github-script@v3
-        id: update-deployment
+      - name: Deploy to AWS
         env:
-          DEPLOYMENT_ID: ${{ steps.start-deployment.outputs.result }}
-          JOB_STATUS: ${{ job.status }}
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            await github.request("POST /repos/{owner}/{repo}/deployments/{deployment_id}/statuses", {
-              mediaType: {
-                previews: ["ant-man", "flash"],
-              },
-              deployment_id: process.env.DEPLOYMENT_ID,
-              owner: context.github.repository_owner,
-              repo: context.github.repository.split("/")[1],
-              environment: "production",
-              description: `AWS Deployment result: ${process.env.JOB_STATUS}`,
-              state: process.env.JOB_STATUS === "success" ? "success" : "failure",
-              auto_inactive: true
-            })
+          AWS_CF_DIST_ID: ${{ secrets.AWS_CF_DIST_ID }}
+        run: npm run deploy
