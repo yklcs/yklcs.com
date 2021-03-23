@@ -1,20 +1,24 @@
-name: Main CI
+name: Deploy to AWS
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+  workflow_run:
+    workflows: [ "Run Tests" ]
+    branches: [ main ]
+    types: 
+      - completed
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v2
 
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: '14'
 
       - name: Install
         run: npm ci
@@ -31,8 +35,8 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    needs: [build]
+    if: github.event.workflow_run.conclusion == 'success'
+    needs: [ build ]
     steps:
       - uses: actions/checkout@v2
 
@@ -54,6 +58,7 @@ jobs:
               environment_url: "https://luc.li"
             })
             return response.id
+            
       - name: Configure AWS
         uses: aws-actions/configure-aws-credentials@v1
         with:
