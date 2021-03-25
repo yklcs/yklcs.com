@@ -1,8 +1,17 @@
+<div align="center">
+
 # [luc.li](https://luc.li)
 
-[![CI Status](https://github.com/rocketll/luc.li/workflows/Build%20CI/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/build.yml) [![CI Status](https://github.com/rocketll/luc.li/workflows/AWS%20CD/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/deploy.yml)
+![luc.li screenshot](src/images/luc.li-screenshot.png)
 
 Website of Lucas Yunkyu Lee. Powered by [Gatsby](http://gatsbyjs.com), hand-crafted with ❤️.
+
+[![CI Status](https://github.com/rocketll/luc.li/workflows/Build%20CI/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/build.yml)
+[![CI Status](https://github.com/rocketll/luc.li/workflows/AWS%20CD/badge.svg)](https://github.com/RocketLL/luc.li/actions/workflows/deploy.yml)
+
+</div>
+
+---
 
 ## Technology Stack
 
