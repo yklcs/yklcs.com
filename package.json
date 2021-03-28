@@ -38,7 +38,7 @@
     "gatsby-transformer-sharp": "^3.1.0",
     "postcss": "^8.2.7",
     "preact": "^10.5.13",
-    "preact-render-to-string": "^5.1.12",
+    "preact-render-to-string": "^5.1.17",
     "prism-react-renderer": "^1.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
