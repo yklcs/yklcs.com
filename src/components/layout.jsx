@@ -1,9 +1,10 @@
 import React, { useEffect } from "react"
-import styled from "styled-components"
+import styled, { ThemeProvider } from "styled-components"
 
 import GlobalStyle from "./global-styles"
 import Footer from "./footer"
 import "/src/fonts/fonts.css"
+import theme from "../theme"
 
 const Layout = ({ children, location }) => {
   useEffect(() => {
@@ -14,11 +15,13 @@ const Layout = ({ children, location }) => {
   }, [])
 
   return (
-    <Wrapper>
-      <GlobalStyle />
-      {children}
-      <Footer location={location} />
-    </Wrapper>
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <GlobalStyle />
+        {children}
+        <Footer location={location} />
+      </Wrapper>
+    </ThemeProvider>
   )
 }
 

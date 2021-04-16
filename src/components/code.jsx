@@ -1,9 +1,9 @@
 import React from "react"
 import Highlight, { defaultProps } from "prism-react-renderer"
-import styled from "styled-components"
-import githubTheme from "prism-react-renderer/themes/vsDark"
+import styled, { useTheme } from "styled-components"
 
 const Code = ({ children, className }) => {
+  const theme = useTheme()
   const language = className.replace(/language-/, "") || ""
 
   return (
@@ -11,7 +11,7 @@ const Code = ({ children, className }) => {
       {...defaultProps}
       code={children}
       language={language}
-      theme={githubTheme}
+      theme={theme.syntax}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <Pre className={className} style={style}>

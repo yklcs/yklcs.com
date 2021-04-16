@@ -65,7 +65,7 @@ const PostsContainer = styled.div`
 
 const PostDate = styled.time`
   margin: 0.1rem 0;
-  color: #aaaaaa;
+  color: ${({ theme }) => theme.foreground.sub};
   font-variant-numeric: tabular-nums;
 `
 
@@ -74,7 +74,7 @@ const Tag = styled.span`
   padding: 0.3rem;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eeeeee;
+  border: 1px solid ${({ theme }) => theme.background.sub};
   border-radius: 0.5rem;
 `
 
@@ -98,7 +98,7 @@ const PostTitle = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    color: #aaaaaa;
+    color: ${({ theme }) => theme.foreground.sub};
   }
 `
 

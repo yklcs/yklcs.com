@@ -15,13 +15,13 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: flex-end;
   margin: 5rem 0;
-  color: #a0a0a0;
+  color: ${({ theme }) => theme.foreground.sub};
 `
 
 const linkStyle = css`
   margin: 0 -0.4em;
   padding: 0.3em 0.4em;
-  color: #a0a0a0;
+  color: ${({ theme }) => theme.foreground.sub};
   font-size: 1em;
   text-decoration: none;
   background: none;
@@ -32,7 +32,7 @@ const linkStyle = css`
   transition: background 0.3s;
 
   &:hover {
-    background: #f0f0f0;
+    background: ${({ theme }) => theme.background.sub};
   }
 `
 
