@@ -121,7 +121,7 @@ const Emph = styled.span`
     z-index: -1;
     width: 100%;
     height: 0.4em;
-    background: #eeff00;
+    background: ${({ theme }) => theme.background.highlight};
     content: "";
   }
 `
@@ -135,7 +135,7 @@ const Links = styled.div`
 const linkStyle = css`
   margin: 0 1em 0 0;
   padding: 0.6em 0.7em;
-  color: #a0a0a0;
+  color: ${({ theme }) => theme.foreground.sub};
   font-size: 1.1em;
   text-decoration: none;
   background: none;
@@ -146,7 +146,7 @@ const linkStyle = css`
   transition: background 0.3s;
 
   &:hover {
-    background: #f0f0f0;
+    background: ${({ theme }) => theme.background.sub};
   }
 
   &:first-child {
@@ -204,7 +204,8 @@ const BioItemTile = styled.a`
   }
 
   &:hover {
-    background: ${(props) => (props.animated ? "#f0f0f0" : "inherit")};
+    background: ${({ animated, theme }) =>
+      animated ? theme.background.sub : "inherit"};
   }
 `
 
@@ -224,12 +225,12 @@ const BioItemTitle = styled.span`
 `
 
 const BioItemType = styled.span`
-  color: #a0a0a0;
+  color: ${({ theme }) => theme.foreground.sub};
   font-size: 1em;
 `
 
 const BioItemDescription = styled.p`
-  color: #a0a0a0;
+  color: ${({ theme }) => theme.foreground.sub};
   line-height: 1.5;
 `
 

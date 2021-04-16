@@ -26,16 +26,16 @@ const Layout = ({ children, pageContext: { frontmatter } }) => (
     </Nav>
     <Header>
       <Title>{frontmatter.title}</Title>
-      <Metadata>
+      <Meta>
         <strong>By {frontmatter.author}</strong>
-        <div style={{ color: "#a0a0a0" }}>
+        <MetaData>
           <time dateTime={frontmatter.date}>
             {dateformat(new Date(frontmatter.date), "yyyy/mm/dd")}
           </time>
           <Spacer long />
           {frontmatter.tags[0]}
-        </div>
-      </Metadata>
+        </MetaData>
+      </Meta>
     </Header>
     <MDXProvider components={components}>
       <BlogWrapper>{children}</BlogWrapper>
@@ -80,12 +80,16 @@ const Spacer = styled.span`
   }
 `
 
-const Metadata = styled.div`
+const Meta = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   margin: 2rem 0;
   line-height: 1.5;
+`
+
+const MetaData = styled.div`
+  color: ${({ theme }) => theme.foreground.sub};
 `
 
 const Title = styled.h1`
@@ -110,7 +114,7 @@ const Pre = styled.pre`
 const InlineCode = styled.code`
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
-  background: #eeeeee;
+  background: ${({ theme }) => theme.background.sub};
 `
 
 const components = {

@@ -20,15 +20,7 @@ const Resume = () => {
   return (
     <Container>
       <SEO title="Resume" description="Resume of Lucas Yunkyu Lee" />
-      <InternalLink
-        to="/"
-        css={`
-          color: #a0a0a0;
-          text-decoration: none;
-        `}
-      >
-        ← home
-      </InternalLink>
+      <HomeLink to="/">← home</HomeLink>
       <Row>
         <Title main>
           <Emph>Lucas Yunkyu Lee</Emph>
@@ -182,7 +174,7 @@ const Emph = styled.span`
     z-index: -1;
     width: 100%;
     height: 0.4em;
-    background: #eeff00;
+    background: ${({ theme }) => theme.background.highlight};
     content: "";
   }
 `
@@ -230,12 +222,12 @@ const linkStyle = css`
   padding: 0.1em 0.4em;
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: #6196f2;
+  text-decoration-color: ${({ theme }) => theme.foreground.link};
   border-radius: 0.6rem;
   transition: background 0.3s;
 
   &:hover {
-    background: #f0f0f0;
+    background: ${({ theme }) => theme.background.sub};
   }
 `
 
@@ -245,6 +237,11 @@ const ALink = styled.a`
 
 const InternalLink = styled(Link)`
   ${linkStyle}
+`
+
+const HomeLink = styled(InternalLink)`
+  color: ${({ theme }) => theme.foreground.sub};
+  text-decoration: none;
 `
 
 const ContentItemDiv = styled.div`
