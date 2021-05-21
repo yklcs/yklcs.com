@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { FunctionComponent } from "react"
+import { Link, PageProps } from "gatsby"
 import styled, { css } from "styled-components"
 
-const Footer = ({ location }) => (
+const Footer: FunctionComponent<PageProps> = ({ location }) => (
   <FooterContainer>
     <HeaderText>— Lucas Yunkyu Lee 2021</HeaderText>
     {location.pathname !== "/" && <InternalLink to="/">Home</InternalLink>}
