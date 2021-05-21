@@ -14,7 +14,7 @@ interface SEOProps {
   tags?: string[]
 }
 
-interface siteQueryData {
+interface SEOQueryData {
   site: {
     siteMetadata: {
       defaultTitle: string
@@ -39,9 +39,9 @@ const SEO: FunctionComponent<SEOProps> = ({
   tags,
 }) => {
   const { pathname } = useLocation()
-  const { site }: siteQueryData = useStaticQuery(
+  const data: SEOQueryData = useStaticQuery(
     graphql`
-      query SEO {
+      query SEOQuery {
         site {
           siteMetadata {
             defaultTitle: title
@@ -68,7 +68,7 @@ const SEO: FunctionComponent<SEOProps> = ({
     lastName,
     username,
     gender,
-  } = site.siteMetadata
+  } = data.site.siteMetadata
 
   const metadata = {
     lang: "en",

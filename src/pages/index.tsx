@@ -251,7 +251,7 @@ interface BioItemProps {
   link?: string
 }
 
-interface iconQueryData {
+interface BioItemQueryData {
   allFile: {
     nodes: {
       name: string
@@ -261,8 +261,8 @@ interface iconQueryData {
 }
 
 const BioItem = ({ title, type, description, imgKey, link }: BioItemProps) => {
-  const icons: iconQueryData = useStaticQuery(graphql`
-    query MyQuery {
+  const data: BioItemQueryData = useStaticQuery(graphql`
+    query BioItemQuery {
       allFile {
         nodes {
           name
@@ -277,9 +277,8 @@ const BioItem = ({ title, type, description, imgKey, link }: BioItemProps) => {
       <BioItemHeader>
         <BioItemIcon
           src={
-            icons.allFile.nodes.filter(
-              icon => icon.name === `icon-${imgKey}`
-            )[0].publicURL
+            data.allFile.nodes.filter(icon => icon.name === `icon-${imgKey}`)[0]
+              .publicURL
           }
           alt={imgKey}
           width="512px"

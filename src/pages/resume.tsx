@@ -19,7 +19,7 @@ const Resume: FunctionComponent = () => {
   const [bp, setBp] = useState(true)
 
   const data: ResumeQueryData = useStaticQuery(graphql`
-    query Resume {
+    query ResumeQuery {
       allFile(filter: { name: { in: ["sir-movie", "sir-screenshot"] } }) {
         nodes {
           name

@@ -20,7 +20,7 @@ interface BlogQueryData {
 
 const Blog: FunctionComponent = () => {
   const data: BlogQueryData = useStaticQuery(graphql`
-    query Blog {
+    query BlogQuery {
       allMdx {
         nodes {
           frontmatter {
