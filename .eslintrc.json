@@ -12,5 +12,27 @@
     "node": true
   },
   "plugins": ["jsx-a11y"],
-  "extends": ["react-app", "plugin:jsx-a11y/recommended", "prettier"]
+  "extends": ["react-app", "plugin:jsx-a11y/recommended", "prettier"],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "project": ["./tsconfig.json"]
+      },
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "react-app",
+        "plugin:jsx-a11y/recommended",
+        "prettier"
+      ],
+      "plugins": ["jsx-a11y", "@typescript-eslint"]
+    }
+  ]
 }
