@@ -1,13 +1,33 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
+import React, { FunctionComponent, ReactNode, useEffect, useState } from "react"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import styled, { css } from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 import Sticky from "react-stickynode"
 
 import SEO from "../components/seo"
 
-const Resume = () => {
+interface ResumeQueryData {
+  allFile: {
+    nodes: {
+      name: string
+      publicURL: string
+    }[]
+  }
+}
+
+const Resume: FunctionComponent = () => {
   const [bp, setBp] = useState(true)
+
+  const data: ResumeQueryData = useStaticQuery(graphql`
+    query Resume {
+      allFile(filter: { name: { in: ["sir-movie", "sir-screenshot"] } }) {
+        nodes {
+          name
+          publicURL
+        }
+      }
+    }
+  `)
 
   useEffect(() => {
     const mediaQueryList = window.matchMedia("screen and (min-width: 44rem)")
@@ -109,15 +129,22 @@ const Resume = () => {
               interactively. Frontend developed in React using Ant Design.
             </p>
             <video
-              style={{ width: "100%", ...imageWrapperStyle }}
+              style={imageWrapperStyle}
               autoPlay
               loop
               muted
               playsInline
-              poster={require("../images/sir-screenshot.png").default}
+              poster={
+                data.allFile.nodes.find(
+                  (node) => node.name === "sir-screenshot"
+                )?.publicURL
+              }
             >
               <source
-                src={require("../images/sir-movie.mp4").default}
+                src={
+                  data.allFile.nodes.find((node) => node.name === "sir-movie")
+                    ?.publicURL
+                }
                 type="video/mp4"
               />
             </video>
@@ -202,7 +229,12 @@ const TitleText = styled.h2`
   font-size: inherit;
 `
 
-const Title = ({ children, main }) => (
+interface TitleProps {
+  children: ReactNode
+  main?: boolean
+}
+
+const Title: FunctionComponent<TitleProps> = ({ children, main }) => (
   <TitleDiv>
     <TitleText as={main ? "h1" : "h2"}>{children}</TitleText>
   </TitleDiv>
@@ -244,14 +276,14 @@ const HomeLink = styled(InternalLink)`
   text-decoration: none;
 `
 
-const ContentItemDiv = styled.div`
+const ContentItemDiv = styled.div<{ large?: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: ${(props) => (props.large ? "2" : "0.5")}rem 0;
+  margin: ${({ large }) => (large ? "2" : "0.5")}rem 0;
 
   &:first-child {
-    margin: 0 0 ${(props) => (props.large ? "2" : "0.5")}rem 0;
+    margin: 0 0 ${({ large }) => (large ? "2" : "0.5")}rem 0;
   }
 `
 
@@ -265,7 +297,20 @@ const ContentItemTitle = styled.h3`
 const ContentItemText = styled.p`
   margin: 0;
 `
-const ContentItem = ({ children, title, text, large }) => (
+
+interface ContentItemProps {
+  children: ReactNode
+  title?: ReactNode
+  text?: boolean
+  large?: boolean
+}
+
+const ContentItem: FunctionComponent<ContentItemProps> = ({
+  children,
+  title,
+  text,
+  large,
+}) => (
   <ContentItemDiv large={large}>
     {title && <ContentItemTitle>{title}</ContentItemTitle>}
     {text ? <ContentItemText>{children}</ContentItemText> : children}
