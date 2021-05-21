@@ -1,14 +1,23 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import { Link, PageProps } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import Code from "./code"
-import dateformat from "dateformat"
+import { format } from "date-fns"
 
 import SEO from "./seo"
 import "katex/dist/katex.min.css"
 
-const Layout = ({ children, pageContext: { frontmatter } }) => (
+interface BlogFrontmatter {
+  title: string
+  date: string
+  tags: string[]
+  author: string
+}
+
+const Layout: FunctionComponent<
+  PageProps<null, { frontmatter: BlogFrontmatter }, null>
+> = ({ children, pageContext: { frontmatter } }) => (
   <>
     <SEO
       title={frontmatter.title}
@@ -30,7 +39,7 @@ const Layout = ({ children, pageContext: { frontmatter } }) => (
         <strong>By {frontmatter.author}</strong>
         <MetaData>
           <time dateTime={frontmatter.date}>
-            {dateformat(new Date(frontmatter.date), "yyyy/mm/dd")}
+            {format(new Date(frontmatter.date), "yyyy/mm/dd")}
           </time>
           <Spacer long />
           {frontmatter.tags[0]}
@@ -72,11 +81,11 @@ const Header = styled.div`
   }
 `
 
-const Spacer = styled.span`
+const Spacer = styled.span<{ long: boolean }>`
   margin: 0 0.5em;
 
   &::after {
-    content: ${(props) => (props.long ? `"—"` : `"·"`)};
+    content: ${({ long }) => (long ? `"—"` : `"·"`)};
   }
 `
 
