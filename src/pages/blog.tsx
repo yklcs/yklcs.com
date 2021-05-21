@@ -1,38 +1,49 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 
-const Blog = () => {
-  const data = useStaticQuery(graphql`
-    query Blog {
+interface BlogQueryData {
+  allMdx: {
+    nodes: {
+      frontmatter: {
+        title: string
+        tags: string[]
+        date: string
+      }
+      slug: string
+      timeToRead: number
+    }[]
+  }
+}
+
+const Blog: FunctionComponent = () => {
+  const data: BlogQueryData = useStaticQuery(graphql`
+    query BlogQuery {
       allMdx {
-        edges {
-          node {
-            id
-            frontmatter {
-              title
-              tags
-              date(formatString: "YYYY/MM/DD")
-            }
-            slug
-            timeToRead
+        nodes {
+          frontmatter {
+            title
+            tags
+            date(formatString: "YYYY/MM/DD")
           }
+          slug
+          timeToRead
         }
       }
     }
   `)
 
-  const posts = data.allMdx.edges
-    .filter((edge) => !!edge.node.frontmatter.date)
-    .map((edge) => (
+  const posts = data.allMdx.nodes
+    .filter(node => !!node.frontmatter.date)
+    .map(node => (
       <PostLink
-        title={edge.node.frontmatter.title}
-        tags={edge.node.frontmatter.tags}
-        date={edge.node.frontmatter.date}
-        slug={edge.node.slug}
-        timeToRead={edge.node.timeToRead}
+        title={node.frontmatter.title}
+        tags={node.frontmatter.tags}
+        date={node.frontmatter.date}
+        slug={node.slug}
+        timeToRead={node.timeToRead}
       />
     ))
 
@@ -45,13 +56,27 @@ const Blog = () => {
   )
 }
 
-const PostLink = ({ title, tags, date, slug, timeToRead }) => (
+interface PostLinkProps {
+  title: string
+  tags: string[]
+  date: string
+  slug: string
+  timeToRead: number
+}
+
+const PostLink: FunctionComponent<PostLinkProps> = ({
+  title,
+  tags,
+  date,
+  slug,
+  timeToRead,
+}) => (
   <PostLinkContainer>
     <PostDate>{date}</PostDate>
     <PostTitle to={`/${slug}`}>{title}</PostTitle>
     <p>
       In{" "}
-      {tags.map((tag) => (
+      {tags.map(tag => (
         <Tag to={tag}>{tag}</Tag>
       ))}{" "}
       — {timeToRead} min. read
@@ -69,7 +94,7 @@ const PostDate = styled.time`
   font-variant-numeric: tabular-nums;
 `
 
-const Tag = styled.span`
+const Tag = styled.span<{ to: string }>`
   margin: 2rem 0.2rem;
   padding: 0.3rem;
   color: inherit;

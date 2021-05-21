@@ -1,16 +1,21 @@
-import React from "react"
-import Highlight, { defaultProps } from "prism-react-renderer"
+import React, { FunctionComponent, ReactChild } from "react"
+import Highlight, { defaultProps, Language } from "prism-react-renderer"
 import styled, { useTheme } from "styled-components"
 
-const Code = ({ children, className }) => {
+interface CodeProps {
+  children: ReactChild
+  className: string
+}
+
+const Code: FunctionComponent<CodeProps> = ({ children, className }) => {
   const theme = useTheme()
   const language = className.replace(/language-/, "") || ""
 
   return (
     <Highlight
       {...defaultProps}
-      code={children}
-      language={language}
+      code={children.toString()}
+      language={language as Language}
       theme={theme.syntax}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (

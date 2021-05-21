@@ -1,15 +1,47 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 import { Helmet } from "react-helmet"
 
 import stripTrailingSlash from "../utils/strip-trailing-slash"
 
-const SEO = ({ title, description, image, article: isArticle, date, tags }) => {
+interface SEOProps {
+  title?: string
+  description?: string
+  image?: string
+  article?: boolean
+  date?: string
+  tags?: string[]
+}
+
+interface SEOQueryData {
+  site: {
+    siteMetadata: {
+      defaultTitle: string
+      titleTemplate: string
+      defaultDescription: string
+      siteUrl: string
+      defaultImage: string
+      firstName: string
+      lastName: string
+      username: string
+      gender: string
+    }
+  }
+}
+
+const SEO: FunctionComponent<SEOProps> = ({
+  title,
+  description,
+  image,
+  article: isArticle,
+  date,
+  tags,
+}) => {
   const { pathname } = useLocation()
-  const { site } = useStaticQuery(
+  const data: SEOQueryData = useStaticQuery(
     graphql`
-      query SEO {
+      query SEOQuery {
         site {
           siteMetadata {
             defaultTitle: title
@@ -36,7 +68,7 @@ const SEO = ({ title, description, image, article: isArticle, date, tags }) => {
     lastName,
     username,
     gender,
-  } = site.siteMetadata
+  } = data.site.siteMetadata
 
   const metadata = {
     lang: "en",
@@ -65,7 +97,8 @@ const SEO = ({ title, description, image, article: isArticle, date, tags }) => {
       <meta property="og:type" content={type} />
       {isArticle && <meta property="article:published_time" content={date} />}
       {isArticle &&
-        tags.map((tag) => <meta property="article:tag" content={tag} />)}
+        tags &&
+        tags.map(tag => <meta property="article:tag" content={tag} />)}
       {isArticle && (
         <meta property="article:author" content={stripTrailingSlash(siteUrl)} />
       )}

@@ -28,7 +28,7 @@ module.exports = {
       resolve: "gatsby-plugin-mdx",
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/components/layout-blog.jsx"),
+          default: require.resolve("./src/components/layout-blog.tsx"),
         },
         remarkPlugins: [require("remark-math")],
         rehypePlugins: [require("rehype-katex")],
@@ -79,6 +79,14 @@ module.exports = {
       options: {
         path: "./content/blog/",
       },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "icons",
+        path: "./src/images/icons/",
+      },
+      __key: "icons",
     },
   ],
 }

@@ -17,7 +17,7 @@ Website of Lucas Yunkyu Lee. Powered by [Gatsby](http://gatsbyjs.com), hand-craf
 
 ### Frontend
 
-- React with Gatsby SSG
+- React with Gatsby SSG in TypeScript
 - CSS-in-JS via styled-components
 
 ### Backend
@@ -32,8 +32,9 @@ Website of Lucas Yunkyu Lee. Powered by [Gatsby](http://gatsbyjs.com), hand-craf
 - Formatted and linted automatically via lint-staged
 - Formatted with prettier
 - Linted with eslint and stylelint
+- Type checked with tsc
 
 ## Notes
 
-- Developed on macOS (M1 with Rosetta 2 x64)
+- Developed on macOS (M1 arm64)
 - Uses calendar versioning as it is more suitable than semantic versioning for a blog

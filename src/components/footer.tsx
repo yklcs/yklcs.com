@@ -1,8 +1,13 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
+import { WindowLocation } from "@reach/router"
 
-const Footer = ({ location }) => (
+interface FooterProps {
+  location: WindowLocation
+}
+
+const Footer: FunctionComponent<FooterProps> = ({ location }) => (
   <FooterContainer>
     <HeaderText>— Lucas Yunkyu Lee 2021</HeaderText>
     {location.pathname !== "/" && <InternalLink to="/">Home</InternalLink>}
