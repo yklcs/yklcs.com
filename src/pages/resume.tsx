@@ -32,7 +32,7 @@ const Resume: FunctionComponent = () => {
   useEffect(() => {
     const mediaQueryList = window.matchMedia("screen and (min-width: 44rem)")
     setBp(mediaQueryList.matches)
-    mediaQueryList.addEventListener("change", (event) => {
+    mediaQueryList.addEventListener("change", event => {
       setBp(event.matches)
     })
   }, [])
@@ -135,14 +135,13 @@ const Resume: FunctionComponent = () => {
               muted
               playsInline
               poster={
-                data.allFile.nodes.find(
-                  (node) => node.name === "sir-screenshot"
-                )?.publicURL
+                data.allFile.nodes.find(node => node.name === "sir-screenshot")
+                  ?.publicURL
               }
             >
               <source
                 src={
-                  data.allFile.nodes.find((node) => node.name === "sir-movie")
+                  data.allFile.nodes.find(node => node.name === "sir-movie")
                     ?.publicURL
                 }
                 type="video/mp4"

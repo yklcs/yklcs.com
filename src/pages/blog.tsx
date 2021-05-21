@@ -36,8 +36,8 @@ const Blog: FunctionComponent = () => {
   `)
 
   const posts = data.allMdx.nodes
-    .filter((node) => !!node.frontmatter.date)
-    .map((node) => (
+    .filter(node => !!node.frontmatter.date)
+    .map(node => (
       <PostLink
         title={node.frontmatter.title}
         tags={node.frontmatter.tags}
@@ -76,7 +76,7 @@ const PostLink: FunctionComponent<PostLinkProps> = ({
     <PostTitle to={`/${slug}`}>{title}</PostTitle>
     <p>
       In{" "}
-      {tags.map((tag) => (
+      {tags.map(tag => (
         <Tag to={tag}>{tag}</Tag>
       ))}{" "}
       — {timeToRead} min. read

@@ -98,7 +98,7 @@ const SEO: FunctionComponent<SEOProps> = ({
       {isArticle && <meta property="article:published_time" content={date} />}
       {isArticle &&
         tags &&
-        tags.map((tag) => <meta property="article:tag" content={tag} />)}
+        tags.map(tag => <meta property="article:tag" content={tag} />)}
       {isArticle && (
         <meta property="article:author" content={stripTrailingSlash(siteUrl)} />
       )}

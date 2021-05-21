@@ -278,7 +278,7 @@ const BioItem = ({ title, type, description, imgKey, link }: BioItemProps) => {
         <BioItemIcon
           src={
             icons.allFile.nodes.filter(
-              (icon) => icon.name === `icon-${imgKey}`
+              icon => icon.name === `icon-${imgKey}`
             )[0].publicURL
           }
           alt={imgKey}
