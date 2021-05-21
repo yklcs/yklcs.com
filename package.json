@@ -16,7 +16,8 @@
     "format": "prettier --write .",
     "lint:css": "stylelint '**/*.{jsx,tsx,css}' --fix",
     "lint:js": "eslint '**/*.{js,jsx,ts,tsx}' --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",
