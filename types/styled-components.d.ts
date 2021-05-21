@@ -1,4 +1,5 @@
 import "styled-components"
+import { PrismTheme } from "prism-react-renderer"
 
 declare module "styled-components" {
   export interface DefaultTheme {
@@ -14,18 +15,6 @@ declare module "styled-components" {
       sub: string
       link: string
     }
-    syntax: {
-      plain: {
-        color: string
-        backgroundColor: string
-      }
-      styles: {
-        types: string[]
-        style: {
-          color?: string
-          fontWeight?: string
-        }
-      }[]
-    }
+    syntax: PrismTheme
   }
 }
