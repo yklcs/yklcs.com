@@ -1,12 +1,13 @@
-import React, { useEffect } from "react"
+import React, { FunctionComponent, useEffect } from "react"
 import styled, { ThemeProvider } from "styled-components"
 
 import GlobalStyle from "./global-styles"
 import Footer from "./footer"
 import "/src/fonts/fonts.css"
 import theme from "../theme"
+import { PageProps } from "gatsby"
 
-const Layout = ({ children, location }) => {
+const Layout: FunctionComponent<PageProps> = ({ children, location }) => {
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--100vh",
