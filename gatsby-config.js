@@ -80,5 +80,13 @@ module.exports = {
         path: "./content/blog/",
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "icons",
+        path: "./src/images/icons/",
+      },
+      __key: "icons",
+    },
   ],
 }
