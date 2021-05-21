@@ -1,10 +1,10 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 
 import SEO from "../components/seo"
 
-const ErrorPage = () => {
+const ErrorPage: FunctionComponent = () => {
   return (
     <ErrorContainer>
       <SEO title="HTTP 404" description="HTTP 404 not found" />
