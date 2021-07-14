@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - v**
+      - "v*"
 
 jobs:
   install:
@@ -16,17 +16,28 @@ jobs:
         with:
           node-version: "14"
 
-      - name: Install
-        run: npm ci
-
       - name: Cache node_modules
         uses: actions/cache@v2
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install if uncached
+        if: ${{ !steps.cache.outputs.cache-hit }}
+        run: npm ci
+
+      - name: Re-cache node_modules if uncached
+        uses: actions/cache@v2
+        if: ${{ !steps.cache.outputs.cache-hit }}
+        id: recache
         with:
           path: node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
 
   build:
     runs-on: ubuntu-latest
+    needs: [install]
     steps:
       - uses: actions/checkout@v2
 
