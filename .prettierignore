@@ -3,5 +3,4 @@ node_modules/
 public
 package.json
 package-lock.json
-.github/
 font-preload-cache.json
