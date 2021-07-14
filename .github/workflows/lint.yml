@@ -39,7 +39,7 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles("package-lock.json") }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
       
       - name: Install
         if: ${{ !steps.cache.outputs.cache-hit }}
@@ -63,7 +63,7 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles("package-lock.json") }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
       
       - name: Install
         if: ${{ !steps.cache.outputs.cache-hit }}
@@ -87,7 +87,7 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles("package-lock.json") }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
       
       - name: Install
         if: ${{ !steps.cache.outputs.cache-hit }}
@@ -111,7 +111,7 @@ jobs:
         id: cache
         with:
           path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles("package-lock.json") }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
       
       - name: Install
         if: ${{ !steps.cache.outputs.cache-hit }}
