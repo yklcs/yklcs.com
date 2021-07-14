@@ -1,9 +1,9 @@
 {
   "name": "luc.li",
-  "version": "1.0.0",
+  "version": "v210714",
   "private": true,
   "description": "luc.li",
-  "author": "Lucas Lee",
+  "author": "Lucas Lee <me@luc.li>",
   "keywords": [
     "gatsby"
   ],
