@@ -106,7 +106,7 @@ jobs:
       - name: Cache build artifacts
         uses: actions/cache@v2
         with:
-          path: public
+          path: public/**/*
           key: public-${{ github.sha }}
 
       - name: Release
@@ -115,4 +115,4 @@ jobs:
         with:
           files: public/
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.USER_GITHUB_PAT }}
