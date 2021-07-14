@@ -3,6 +3,7 @@ name: AWS CD
 on:
   workflow_dispatch:
   release:
+    types: [released]
 
 jobs:
   build:
