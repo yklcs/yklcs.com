@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect } from "react"
 import styled, { ThemeProvider } from "styled-components"
+import "modern-normalize/modern-normalize.css"
 
 import GlobalStyle from "./global-styles"
 import Footer from "./footer"
