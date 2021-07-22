@@ -30,8 +30,9 @@ const Layout: FunctionComponent<PageProps> = ({ children, location }) => {
 const Wrapper = styled.div`
   max-width: 60em;
   margin: auto;
-  padding: 0rem 2rem;
+  padding: 0rem 1rem;
   font-family: "Inter", sans-serif;
+  line-height: 1.5;
   letter-spacing: -0.05em;
 `
 
