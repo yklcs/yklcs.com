@@ -1,4 +1,4 @@
-import React, { Children, isValidElement, useState, ReactChildren } from "react"
+import React, { useState } from "react"
 import { graphql, useStaticQuery, Node, Link } from "gatsby"
 import styled, { css, DefaultTheme } from "styled-components"
 
