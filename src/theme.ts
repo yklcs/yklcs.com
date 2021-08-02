@@ -2,15 +2,16 @@ import { DefaultTheme } from "styled-components"
 
 const theme: DefaultTheme = {
   background: {
-    default: "#ffffffff",
+    default: "#182494",
     selection: "#00000022",
     highlight: "#eeff00ff",
     sub: "#eeeeeeff",
   },
   foreground: {
-    default: "#333333ff",
-    sub: "#a0a0a0ff",
+    default: "#ffffff",
+    sub: "#ffffff66",
     link: "#6196f2ff",
+    highlight: "#ffffff",
   },
   syntax: {
     plain: {
