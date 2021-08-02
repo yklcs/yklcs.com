@@ -8,24 +8,15 @@ import "/src/fonts/fonts.css"
 import theme from "../theme"
 import { PageProps } from "gatsby"
 
-const Layout: FunctionComponent<PageProps> = ({ children, location }) => {
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--100vh",
-      `${window.innerHeight}px`
-    )
-  }, [])
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Wrapper>
-        <GlobalStyle />
-        {children}
-        <Footer location={location} />
-      </Wrapper>
-    </ThemeProvider>
-  )
-}
+const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
+  <ThemeProvider theme={theme}>
+    <Wrapper>
+      <GlobalStyle />
+      {children}
+      <Footer location={location} />
+    </Wrapper>
+  </ThemeProvider>
+)
 
 const Wrapper = styled.div`
   max-width: 80em;
