@@ -1,5 +1,5 @@
 import React, { Children, isValidElement, useState, ReactChildren } from "react"
-import { graphql, useStaticQuery, Node } from "gatsby"
+import { graphql, useStaticQuery, Node, Link } from "gatsby"
 import styled, { css, DefaultTheme } from "styled-components"
 
 import SEO from "../components/seo"
@@ -50,8 +50,8 @@ const IndexPage = (): JSX.Element => {
           <span>developing</span>
           <span>designing</span>
           <Links>
-            <span>mail↗</span>
-            <span>resume↗</span>
+            <ExternalLink href="mailto:me@luc.li">mail↗</ExternalLink>
+            <InternalLink to="/resume">resume↗</InternalLink>
           </Links>
         </Col>
         <Col>
@@ -59,8 +59,10 @@ const IndexPage = (): JSX.Element => {
           <span>cool software at PoApper</span>
           <span>to inspire</span>
           <Links>
-            <span>github↗</span>
-            <span>blog↗</span>
+            <ExternalLink href="https://github.com/rocketll">
+              github↗
+            </ExternalLink>
+            <InternalLink to="/blog">blog↗</InternalLink>
           </Links>
         </Col>
       </Bio>
@@ -115,6 +117,19 @@ const Name = styled.h1`
 //     }>(child) ? (show === child.props.type || show === "All") : null)}
 //   </CardsContainer>
 // )
+
+const linkStyle = css`
+  color: inherit;
+  text-decoration: none;
+`
+
+const InternalLink = styled(Link)`
+  ${linkStyle}
+`
+
+const ExternalLink = styled.a`
+  ${linkStyle}
+`
 
 const Cards = styled.div`
   display: grid;
