@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from "react"
+import React, { FunctionComponent } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import "modern-normalize/modern-normalize.css"
 
