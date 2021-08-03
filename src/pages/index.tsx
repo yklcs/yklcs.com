@@ -255,7 +255,7 @@ const CardSubtitle = styled.span`
 `
 
 const Container = styled.div`
-  margin: 10rem 0 0 0;
+  margin: 6rem 0 0 0;
   line-height: 2;
   white-space: nowrap;
 
@@ -267,6 +267,7 @@ const Container = styled.div`
 const Links = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-items: start;
   margin: 3rem 0;
   opacity: 0.8;
 `
@@ -342,6 +343,10 @@ const SortButton = styled.button`
   border: none;
   outline: none;
   appearance: none;
+
+  &:hover {
+    color: inherit;
+  }
 `
 
 export default IndexPage
