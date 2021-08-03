@@ -43,7 +43,10 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <Name>Lucas Lee</Name>
+        <div>
+          <Name>Lucas Lee</Name>
+          <Name>이윤규</Name>
+        </div>
         <div />
         <Col>
           <span>studying</span>
