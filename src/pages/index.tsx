@@ -47,29 +47,27 @@ const IndexPage = (): JSX.Element => {
           <Name>Lucas Lee</Name>
           <Name>이윤규</Name>
         </div>
-        <div />
-        <Col>
-          <span>studying</span>
-          <span>developing</span>
-          <span>designing</span>
-          <Links>
-            <ExternalLink href="mailto:me@luc.li">mail↗</ExternalLink>
-            <InternalLink to="/resume">resume↗</InternalLink>
-          </Links>
+        <Description>
+          Korean student, developer, designer studying CS at POSTECH.
+          <br />
+          <br />
+          Recieved the Presidential Science Scholarship with a focus on SciML
+          research. Currently working at PoApper performing fullstack web
+          development, DevOps, and UI/UX design.
+        </Description>
+        <Col style={{ marginBottom: "-1.5em" }}>
+          <Sorter show={show} setShow={setShow} />
         </Col>
-        <Col>
-          <span>CS at POSTECH, Korea</span>
-          <span>cool software at PoApper</span>
-          <span>to inspire</span>
-          <Links>
-            <ExternalLink href="https://github.com/rocketll">
-              github↗
-            </ExternalLink>
-            <InternalLink to="/blog">blog↗</InternalLink>
-          </Links>
+        <Col style={{ alignItems: "start" }}>
+          <ExternalLink href="mailto:me@luc.li">me@luc.li</ExternalLink>
+          <ExternalLink href="https://github.com/rocketll">
+            github.com/rocketll
+          </ExternalLink>
+          <br style={{ margin: "1.5em 0 0 0" }} />
+          <InternalLink to="/resume">Resume</InternalLink>
+          <InternalLink to="/blog">Blog</InternalLink>
         </Col>
       </Bio>
-      <Sorter show={show} setShow={setShow} />
       <Cards>
         <Card
           title="KdV"
@@ -121,9 +119,16 @@ const Name = styled.h1`
 //   </CardsContainer>
 // )
 
+const Description = styled.div`
+  @media screen and (max-width: 40rem) {
+    grid-column: span 2;
+  }
+`
+
 const linkStyle = css`
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
 `
 
 const InternalLink = styled(Link)`
@@ -140,7 +145,7 @@ const Cards = styled.div`
   grid-auto-flow: row dense;
   grid-template-columns: repeat(4, 1fr);
   gap: 4rem 2rem;
-  margin: 1rem 0 0 0;
+  margin: 3rem 0 0 0;
 
   @media screen and (max-width: 40rem) {
     grid-template-columns: repeat(2, 1fr);
@@ -256,20 +261,11 @@ const CardSubtitle = styled.span`
 
 const Container = styled.div`
   margin: 6rem 0 0 0;
-  line-height: 2;
-  white-space: nowrap;
+  line-height: 1.5;
 
   @media screen and (max-width: 40rem) {
     margin: 5rem 0 0 0;
   }
-`
-
-const Links = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: start;
-  margin: 3rem 0;
-  opacity: 0.8;
 `
 
 const Bio = styled.div`
@@ -302,16 +298,16 @@ const Sorter = ({
         All
       </SortButton>
       <SortButton
-        active={show === "Case Study"}
-        onClick={() => setShow("Case Study")}
-      >
-        Case Study
-      </SortButton>
-      <SortButton
         active={show === "Research"}
         onClick={() => setShow("Research")}
       >
         Research
+      </SortButton>
+      <SortButton
+        active={show === "Case Study"}
+        onClick={() => setShow("Case Study")}
+      >
+        Case Study
       </SortButton>
       <SortButton
         active={show === "Project"}
@@ -319,14 +315,17 @@ const Sorter = ({
       >
         Project
       </SortButton>
+      <span>↓</span>
     </SorterContainer>
   )
 }
 
 const SorterContainer = styled.div`
   display: flex;
-  gap: 1rem;
-  margin: 4rem 0 0 0;
+  flex-direction: column;
+  align-items: start;
+  justify-content: end;
+  height: 100%;
 `
 
 interface SortButtonProps {
@@ -337,8 +336,9 @@ interface SortButtonProps {
 const SortButton = styled.button`
   padding: 0;
   color: ${({ theme, active = false }: SortButtonProps) =>
-    active ? "inherit" : theme.foreground.sub};
+    active ? "inherit" : theme.foreground.highlightSub};
   font-size: 1em;
+  line-height: inherit;
   background: none;
   border: none;
   outline: none;

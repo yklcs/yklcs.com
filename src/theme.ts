@@ -11,7 +11,8 @@ const theme: DefaultTheme = {
     default: "#000000",
     sub: "#00000066",
     link: "#6196f2ff",
-    highlight: "#182494",
+    highlight: "#1d42d5",
+    highlightSub: "#1d42d566",
   },
   syntax: {
     plain: {
