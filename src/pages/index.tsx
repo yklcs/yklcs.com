@@ -136,7 +136,7 @@ const Bio = styled.div`
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 3rem 1rem;
   }
 `
 
