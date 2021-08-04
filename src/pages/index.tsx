@@ -124,7 +124,7 @@ const Container = styled.div`
   line-height: 1.5;
 
   @media screen and (max-width: 40rem) {
-    margin: 5rem 0 0 0;
+    margin: 4.5rem 0 0 0;
   }
 `
 
@@ -146,7 +146,7 @@ const Cards = styled.div`
   grid-auto-flow: row dense;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem 1.5rem;
-  margin: 3rem 0 0 0;
+  margin: 4.5rem 0 0 0;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: repeat(2, 1fr);
