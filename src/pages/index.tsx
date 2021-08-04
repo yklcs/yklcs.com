@@ -144,11 +144,12 @@ const Cards = styled.div`
   grid-auto-rows: 1fr;
   grid-auto-flow: row dense;
   grid-template-columns: repeat(4, 1fr);
-  gap: 4rem 2rem;
+  gap: 3rem 1.5rem;
   margin: 3rem 0 0 0;
 
-  @media screen and (max-width: 40rem) {
+  @media screen and (max-width: 50rem) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
   }
 `
 
@@ -271,11 +272,12 @@ const Container = styled.div`
 const Bio = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
   color: ${({ theme }) => theme.foreground.highlight};
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 `
 
