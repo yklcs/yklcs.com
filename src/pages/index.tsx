@@ -111,14 +111,6 @@ const Name = styled.h1`
   font-size: 1em;
 `
 
-// const Cards = ({ children, show }: { children: JSX.Element[], show: ShowType }): JSX.Element => (
-//   <CardsContainer>
-//     {Children.toArray(children).filter(child => isValidElement<{
-//       type: ShowType
-//     }>(child) ? (show === child.props.type || show === "All") : null)}
-//   </CardsContainer>
-// )
-
 const Description = styled.div`
   @media screen and (max-width: 40rem) {
     grid-column: span 2;
