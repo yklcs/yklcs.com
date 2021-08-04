@@ -324,7 +324,7 @@ const SorterContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: end;
+  justify-content: flex-end;
   height: 100%;
 `
 
