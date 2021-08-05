@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react"
-import styled, { css, DefaultTheme, ThemeProvider } from "styled-components"
+import styled, { css, ThemeProvider } from "styled-components"
 import "modern-normalize/modern-normalize.css"
 
 import GlobalStyle from "./global-styles"
