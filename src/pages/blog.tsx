@@ -48,13 +48,25 @@ const Blog: FunctionComponent = () => {
     ))
 
   return (
-    <>
+    <Layout>
       <SEO title="Blog" description="Lucas's Blog" />
       <Title>Blog</Title>
-      <PostsContainer>{posts}</PostsContainer>
-    </>
+      <Posts>{posts}</Posts>
+    </Layout>
   )
 }
+
+const Layout = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin: 6rem 0 0 0;
+
+  @media screen and (max-width: 50rem) {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 1rem;
+  }
+`
 
 interface PostLinkProps {
   title: string
@@ -72,8 +84,8 @@ const PostLink: FunctionComponent<PostLinkProps> = ({
   timeToRead,
 }) => (
   <PostLinkContainer>
-    <PostDate>{date}</PostDate>
     <PostTitle to={`/${slug}`}>{title}</PostTitle>
+    <PostDate>{date}</PostDate>
     <p>
       In{" "}
       {tags.map(tag => (
@@ -84,8 +96,8 @@ const PostLink: FunctionComponent<PostLinkProps> = ({
   </PostLinkContainer>
 )
 
-const PostsContainer = styled.div`
-  margin: 5rem 0;
+const Posts = styled.div`
+  grid-column: span 3;
 `
 
 const PostDate = styled.time`
@@ -104,8 +116,7 @@ const Tag = styled.span<{ to: string }>`
 `
 
 const Title = styled.h1`
-  margin: 10rem 0 1rem 0;
-  font-size: 3em;
+  font-size: 2em;
 `
 
 const PostLinkContainer = styled.div`
@@ -118,8 +129,8 @@ const PostTitle = styled(Link)`
   display: block;
   margin: 0;
   color: inherit;
-  font-weight: 700;
-  font-size: 1.5em;
+  font-weight: 400;
+  font-size: 1.2em;
   text-decoration: none;
 
   &:hover {
