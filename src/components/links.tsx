@@ -3,7 +3,8 @@ import { Link } from "gatsby"
 
 const linkStyle = css`
   color: inherit;
-  text-decoration: underline;
+  text-decoration: ${({ underline = true }: { underline?: boolean }) =>
+    underline ? "underline" : "none"};
   text-decoration-thickness: 1px;
 `
 
