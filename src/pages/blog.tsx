@@ -21,12 +21,12 @@ interface BlogQueryData {
 const Blog: FunctionComponent = () => {
   const data: BlogQueryData = useStaticQuery(graphql`
     query BlogQuery {
-      allMdx {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           frontmatter {
             title
             tags
-            date(formatString: "YYYY/MM/DD")
+            date(formatString: "LL")
           }
           slug
           timeToRead
@@ -43,14 +43,13 @@ const Blog: FunctionComponent = () => {
         tags={node.frontmatter.tags}
         date={node.frontmatter.date}
         slug={node.slug}
-        timeToRead={node.timeToRead}
       />
     ))
 
   return (
     <Layout>
-      <SEO title="Blog" description="Lucas's Blog" />
       <Title>Blog</Title>
+      <SEO title="Blog" description="Lucas's Blog" />
       <Posts>{posts}</Posts>
     </Layout>
   )
@@ -73,54 +72,46 @@ interface PostLinkProps {
   tags: string[]
   date: string
   slug: string
-  timeToRead: number
 }
 
-const PostLink: FunctionComponent<PostLinkProps> = ({
-  title,
-  tags,
-  date,
-  slug,
-  timeToRead,
-}) => (
+const PostLink = ({ title, tags, date, slug }: PostLinkProps): JSX.Element => (
   <PostLinkContainer>
+    <PostTag>{tags[0]}</PostTag>
     <PostTitle to={`/${slug}`}>{title}</PostTitle>
     <PostDate>{date}</PostDate>
-    <p>
-      In{" "}
-      {tags.map(tag => (
-        <Tag to={tag}>{tag}</Tag>
-      ))}{" "}
-      — {timeToRead} min. read
-    </p>
   </PostLinkContainer>
 )
 
 const Posts = styled.div`
-  grid-column: span 3;
+  grid-column: span 2;
 `
 
 const PostDate = styled.time`
   margin: 0.1rem 0;
   color: ${({ theme }) => theme.neutral.l65};
   font-variant-numeric: tabular-nums;
+  font-size: 0.9em;
 `
 
-const Tag = styled.span<{ to: string }>`
-  margin: 2rem 0.2rem;
-  padding: 0.3rem;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid ${({ theme }) => theme.neutral.l65};
-  border-radius: 0.5rem;
+const PostTag = styled.span`
+  color: ${({ theme }) => theme.neutral.l65};
+  font-weight: 700;
+  font-size: 0.75em;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 `
 
 const Title = styled.h1`
+  grid-column: span 2;
+  margin: 0;
   font-size: 2em;
 `
 
 const PostLinkContainer = styled.div`
-  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0 2rem 0;
   color: inherit;
   text-decoration: none;
 `
@@ -129,7 +120,7 @@ const PostTitle = styled(Link)`
   display: block;
   margin: 0;
   color: inherit;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 1.2em;
   text-decoration: none;
 
