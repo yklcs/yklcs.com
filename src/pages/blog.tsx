@@ -102,7 +102,7 @@ const Posts = styled.div`
 
 const PostDate = styled.time`
   margin: 0.1rem 0;
-  color: ${({ theme }) => theme.foreground.sub};
+  color: ${({ theme }) => theme.neutral.l65};
   font-variant-numeric: tabular-nums;
 `
 
@@ -111,7 +111,7 @@ const Tag = styled.span<{ to: string }>`
   padding: 0.3rem;
   color: inherit;
   text-decoration: none;
-  border: 1px solid ${({ theme }) => theme.background.sub};
+  border: 1px solid ${({ theme }) => theme.neutral.l65};
   border-radius: 0.5rem;
 `
 
@@ -134,7 +134,7 @@ const PostTitle = styled(Link)`
   text-decoration: none;
 
   &:hover {
-    color: ${({ theme }) => theme.foreground.sub};
+    color: ${({ theme }) => theme.neutral.l15};
   }
 `
 

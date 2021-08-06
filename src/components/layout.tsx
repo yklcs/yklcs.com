@@ -42,7 +42,7 @@ const Breadcrumbs = ({ location }: { location: WindowLocation }) => (
   <BreadcrumbsContainer>
     <InternalLink
       css={css`
-        color: ${({ theme }) => theme.foreground.highlight};
+        color: ${({ theme }) => theme.brand.l50};
       `}
       underline={false}
       to="/"

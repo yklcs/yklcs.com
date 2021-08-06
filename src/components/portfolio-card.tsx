@@ -81,7 +81,7 @@ const CardLink = styled.a`
   flex-direction: column;
   flex-grow: 0;
   height: 100%;
-  color: ${({ theme }) => theme.foreground.default};
+  color: ${({ theme }) => theme.neutral.l15};
   text-decoration: none;
 `
 
@@ -108,7 +108,7 @@ const CardTitle = styled.span`
 `
 
 const CardSubtitle = styled.span`
-  color: ${({ theme }) => theme.foreground.sub};
+  color: ${({ theme }) => theme.neutral.l65};
 `
 
 export default Card

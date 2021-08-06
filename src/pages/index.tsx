@@ -132,7 +132,7 @@ const Bio = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
-  color: ${({ theme }) => theme.foreground.highlight};
+  color: ${({ theme }) => theme.brand.l50};
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
@@ -211,7 +211,7 @@ interface SortButtonProps {
 const SortButton = styled.button`
   padding: 0;
   color: ${({ theme, active = false }: SortButtonProps) =>
-    active ? "inherit" : theme.foreground.highlightSub};
+    active ? "inherit" : theme.brand.l80};
   font-size: 1em;
   line-height: inherit;
   background: none;

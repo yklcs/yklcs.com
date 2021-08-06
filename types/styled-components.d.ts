@@ -4,11 +4,14 @@ import {} from "styled-components/cssprop"
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    background: {
-      [key: string]: string
+    neutral: {
+      l100: string
+      l65: string
+      l15: string
     }
-    foreground: {
-      [key: string]: string
+    brand: {
+      l80: string
+      l50: string
     }
     syntax: PrismTheme
   }

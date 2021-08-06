@@ -191,18 +191,6 @@ const Container = styled.div`
 
 const Emph = styled.span`
   position: relative;
-
-  &:after {
-    position: absolute;
-    top: 0.4em;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 0.4em;
-    background: ${({ theme }) => theme.background.highlight};
-    content: "";
-  }
 `
 
 const Row = styled.div`
@@ -253,12 +241,12 @@ const linkStyle = css`
   padding: 0.1em 0.4em;
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: ${({ theme }) => theme.foreground.link};
+  text-decoration-color: ${({ theme }) => theme.brand.l50};
   border-radius: 0.6rem;
   transition: background 0.3s;
 
   &:hover {
-    background: ${({ theme }) => theme.background.sub};
+    background: ${({ theme }) => theme.brand.l80};
   }
 `
 
@@ -271,7 +259,7 @@ const InternalLink = styled(Link)`
 `
 
 const HomeLink = styled(InternalLink)`
-  color: ${({ theme }) => theme.foreground.sub};
+  color: ${({ theme }) => theme.neutral.l65};
   text-decoration: none;
 `
 

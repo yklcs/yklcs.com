@@ -98,7 +98,7 @@ const Meta = styled.div`
 `
 
 const MetaData = styled.div`
-  color: ${({ theme }) => theme.foreground.sub};
+  color: ${({ theme }) => theme.neutral.l65};
 `
 
 const Title = styled.h1`
@@ -123,7 +123,7 @@ const Pre = styled.pre`
 const InlineCode = styled.code`
   font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
     monospace;
-  background: ${({ theme }) => theme.background.sub};
+  background: ${({ theme }) => theme.neutral.l100};
 `
 
 const components = {

@@ -4,17 +4,17 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
     font-size: clamp(14px, 3vw, 16px);
-    background: ${({ theme }) => theme.background.default};
+    background: ${({ theme }) => theme.neutral.l100};
   }
 
   body {
     margin: 0;
-    color: ${({ theme }) => theme.foreground.default};
-    -webkit-font-smoothing: antialiased;
+    color: ${({ theme }) => theme.neutral.l15};
+    /* -webkit-font-smoothing: antialiased; */
     scroll-behavior: smooth;
 
     *::selection {
-      background: ${({ theme }) => theme.background.selection};
+      background: ${({ theme }) => theme.brand.l80};
     }
   }
 `
