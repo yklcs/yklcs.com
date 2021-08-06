@@ -4,7 +4,7 @@ import { WindowLocation } from "@reach/router"
 
 import { InternalLink } from "./links"
 
-const Header = ({ location }: { location: WindowLocation }) => (
+const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
   <HeaderContainer>
     <Breadcrumbs location={location} />
   </HeaderContainer>
