@@ -10,7 +10,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     color: ${({ theme }) => theme.neutral.l15};
-    /* -webkit-font-smoothing: antialiased; */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
 
     *::selection {
