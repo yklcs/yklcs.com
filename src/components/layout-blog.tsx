@@ -112,7 +112,6 @@ const Title = styled.h1`
 const Paragraph = styled.p`
   line-height: 1.5;
   letter-spacing: -0.2px;
-  -webkit-font-smoothing: auto;
 `
 
 const Pre = styled.pre`
