@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     font-size: clamp(14px, 3vw, 16px);
     background: ${({ theme }) => theme.neutral.l100};
+    scroll-behavior: smooth;
   }
 
   body {
@@ -12,7 +13,6 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.neutral.l15};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
 
     *::selection {
       background: ${({ theme }) => theme.brand.l80};
