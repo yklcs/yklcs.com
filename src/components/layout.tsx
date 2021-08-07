@@ -16,7 +16,7 @@ const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
       <GlobalStyle />
       <Header location={location} />
       {children}
-      <Footer location={location} />
+      <Footer />
     </Wrapper>
   </ThemeProvider>
 )

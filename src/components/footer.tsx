@@ -1,56 +1,73 @@
-import React, { FunctionComponent } from "react"
-import { Link } from "gatsby"
-import styled, { css } from "styled-components"
-import { WindowLocation } from "@reach/router"
+import React from "react"
+import styled from "styled-components"
+import { ExternalLink, InternalLink } from "./links"
 
-interface FooterProps {
-  location: WindowLocation
-}
-
-const Footer: FunctionComponent<FooterProps> = ({ location }) => (
+const Footer = (): JSX.Element => (
   <FooterContainer>
-    <HeaderText>— Lucas Yunkyu Lee 2021</HeaderText>
-    {location.pathname !== "/" && <InternalLink to="/">Home</InternalLink>}
-    <ALink href="https://github.com/rocketll/luc.li">Site Source</ALink>
+    <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton>
+    <Name>Lucas Lee</Name>
+    <div></div>
+    <Links>
+      <InternalLink to="/blog" underline={false}>
+        Blog
+      </InternalLink>
+      <InternalLink to="/resume" underline={false}>
+        Resume
+      </InternalLink>
+    </Links>
+    <Links>
+      <ExternalLink href="mailto:me@luc.li" underline={false}>
+        me@luc.li
+      </ExternalLink>
+      <ExternalLink href="https://github.com/rocketll" underline={false}>
+        github.com/rocketll
+      </ExternalLink>
+    </Links>
   </FooterContainer>
 )
 
-const FooterContainer = styled.footer`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin: 5rem 0;
-  color: ${({ theme }) => theme.neutral.l65};
-`
-
-const linkStyle = css`
-  margin: 0 -0.4em;
-  padding: 0.3em 0.4em;
-  color: ${({ theme }) => theme.neutral.l65};
+const ScrollUpButton = styled.button`
+  grid-column: 1/-1;
+  justify-self: center;
+  padding: 0.75rem;
+  color: inherit;
   font-size: 1em;
-  text-decoration: none;
+  line-height: inherit;
   background: none;
   border: none;
-  border-radius: 0.6rem;
-  outline: inherit;
-  cursor: pointer;
-  transition: background 0.3s;
+  outline: none;
+  appearance: none;
 
   &:hover {
-    background: ${({ theme }) => theme.neutral.l15};
+    color: ${({ theme }) => theme.neutral.l15};
   }
 `
 
-const ALink = styled.a`
-  ${linkStyle}
+const Name = styled.span`
+  font-weight: 700;
 `
 
-const InternalLink = styled(Link)`
-  ${linkStyle}
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 50rem) {
+    grid-column: span 2;
+  }
 `
 
-const HeaderText = styled.p`
-  margin: 0 0 0.3rem 0;
+const FooterContainer = styled.footer`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin: 6rem 0 0 0;
+  padding: 1.5rem 0 3rem 0;
+  color: ${({ theme }) => theme.neutral.l65};
+
+  @media screen and (max-width: 50rem) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1rem;
+  }
 `
 
 export default Footer
