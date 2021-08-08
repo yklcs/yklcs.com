@@ -86,6 +86,7 @@ const Name = styled.span`
 const Links = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 
   @media screen and (max-width: 50rem) {
     grid-column: span 2;
