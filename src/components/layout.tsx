@@ -24,10 +24,14 @@ const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
 const Wrapper = styled.div`
   max-width: 80em;
   margin: auto;
-  padding: 0rem 1rem;
+  padding: 0 1.5rem;
   font-family: "Inter", sans-serif;
   line-height: 1.5;
   letter-spacing: -0.05em;
+
+  @media screen and (max-width: 50rem) {
+    padding: 0 1rem;
+  }
 `
 
 export default Layout
