@@ -94,7 +94,6 @@ const PostGroupName = styled.div`
 `
 
 const Layout = styled.div`
-  min-height: 25rem;
   margin: 6rem 0 0 0;
 
   @media screen and (max-width: 40rem) {
