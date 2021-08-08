@@ -7,9 +7,14 @@ const Footer = (): JSX.Element => (
     <FooterHeader>
       <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton>
     </FooterHeader>
-    <Name>Lucas Lee</Name>
-    <div></div>
+    <Copyright>
+      <Name>Lucas Lee</Name>
+      <span>© 2021</span>
+    </Copyright>
     <Links>
+      <InternalLink to="/" underline={false}>
+        Home
+      </InternalLink>
       <InternalLink to="/blog" underline={false}>
         Blog
       </InternalLink>
@@ -25,8 +30,29 @@ const Footer = (): JSX.Element => (
         github.com/rocketll
       </ExternalLink>
     </Links>
+    <SiteInfo>
+      <InternalLink to="/colophon" underline={false}>
+        Colophon
+      </InternalLink>
+      {" · "}
+      <ExternalLink href="https://github.com/rocketll/luc.li" underline={false}>
+        Site source
+      </ExternalLink>
+    </SiteInfo>
   </FooterContainer>
 )
+
+const Copyright = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+`
+
+const SiteInfo = styled.div`
+  grid-column: 1/-1;
+  margin: 3rem 0 0 0;
+  color: ${({ theme }) => theme.neutral.l65};
+`
 
 const ScrollUpButton = styled.button`
   justify-self: center;
@@ -70,8 +96,8 @@ const FooterContainer = styled.footer`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
-  margin: 6rem 0 0 0;
-  padding: 1.5rem 0 3rem 0;
+  margin: 12rem 0 0 0;
+  padding: 1.5rem 0;
   color: inherit;
   line-height: 1.5rem;
 
