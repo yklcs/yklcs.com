@@ -91,14 +91,6 @@ const Content = styled.div`
   line-height: ${lineHeight}rem;
 `
 
-const Meta = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 3rem 0 0 0;
-  line-height: 1.5;
-`
-
 const MetaData = styled.div`
   color: ${({ theme }) => theme.neutral.l65};
 `
