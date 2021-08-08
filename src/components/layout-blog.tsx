@@ -87,6 +87,7 @@ const Spacer = styled.span<{ long: boolean }>`
 const lineHeight = 1.8
 
 const Content = styled.div`
+  position: relative;
   font-size: 1.25em;
   line-height: ${lineHeight}rem;
 `
@@ -146,6 +147,27 @@ const H4 = styled.h4`
   line-height: ${lineHeight * 2}rem;
 `
 
+const Sidenote = styled.aside`
+  position: absolute;
+  right: 0;
+  width: 50%;
+  margin: -${lineHeight}rem 0 0 0;
+  padding: 0 0 0 2rem;
+  color: ${({ theme }) => theme.neutral.l65};
+  font-size: 0.8em;
+  font-family: Inter, sans-serif;
+  line-height: ${lineHeight};
+  transform: translateX(100%);
+
+  @media screen and (max-width: 65rem) {
+    width: 33%;
+  }
+
+  @media screen and (max-width: 50rem) {
+    display: none;
+  }
+`
+
 const components = {
   h1: Title,
   h2: H2,
@@ -156,6 +178,7 @@ const components = {
   inlineCode: InlineCode,
   p: Paragraph,
   Link,
+  Sidenote,
 }
 
 export default Layout
