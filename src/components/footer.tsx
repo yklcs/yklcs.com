@@ -4,7 +4,9 @@ import { ExternalLink, InternalLink } from "./links"
 
 const Footer = (): JSX.Element => (
   <FooterContainer>
-    <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton>
+    <FooterHeader>
+      <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton>
+    </FooterHeader>
     <Name>Lucas Lee</Name>
     <div></div>
     <Links>
@@ -27,20 +29,28 @@ const Footer = (): JSX.Element => (
 )
 
 const ScrollUpButton = styled.button`
-  grid-column: 1/-1;
   justify-self: center;
+  margin: -1.75rem;
   padding: 0.75rem;
-  color: inherit;
+  color: ${({ theme }) => theme.neutral.l65};
   font-size: 1em;
   line-height: inherit;
-  background: none;
+  background: ${({ theme }) => theme.neutral.l100};
   border: none;
   outline: none;
+  transition: transform 0.5s;
   appearance: none;
 
   &:hover {
-    color: ${({ theme }) => theme.neutral.l15};
+    transform: translateY(-0.5rem);
   }
+`
+
+const FooterHeader = styled.div`
+  display: flex;
+  grid-column: 1/-1;
+  justify-content: center;
+  border-bottom: 1px solid #eeeeee;
 `
 
 const Name = styled.span`
@@ -62,7 +72,8 @@ const FooterContainer = styled.footer`
   gap: 1.5rem;
   margin: 6rem 0 0 0;
   padding: 1.5rem 0 3rem 0;
-  color: ${({ theme }) => theme.neutral.l65};
+  color: inherit;
+  line-height: 1.5rem;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
