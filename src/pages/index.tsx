@@ -214,6 +214,7 @@ const SortButton = styled.button`
     active ? "inherit" : theme.brand.l80};
   font-size: 1em;
   line-height: inherit;
+  letter-spacing: inherit;
   background: none;
   border: none;
   outline: none;

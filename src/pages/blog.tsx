@@ -221,6 +221,7 @@ const SorterButton = styled.button<{ active: boolean }>`
   color: ${({ theme, active = false }) => theme.neutral.l65};
   font-size: 1em;
   line-height: inherit;
+  letter-spacing: inherit;
   background: none;
   border: none;
   outline: none;
