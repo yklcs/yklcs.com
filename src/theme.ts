@@ -4,6 +4,7 @@ import { DefaultTheme } from "styled-components"
 const theme: DefaultTheme = {
   neutral: {
     l100: hsl(228, 0.07, 1),
+    l95: hsl(228, 0.07, 0.95),
     l65: hsl(228, 0.07, 0.65),
     l15: hsl(228, 0.07, 0.15),
   },

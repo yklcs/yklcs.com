@@ -6,6 +6,7 @@ declare module "styled-components" {
   export interface DefaultTheme {
     neutral: {
       l100: string
+      l95: string
       l65: string
       l15: string
     }
