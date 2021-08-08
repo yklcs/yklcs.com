@@ -80,5 +80,6 @@ module.exports = {
         path: "./content/",
       },
     },
+    "gatsby-plugin-remove-trailing-slashes",
   ],
 }
