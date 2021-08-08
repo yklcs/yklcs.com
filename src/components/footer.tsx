@@ -31,7 +31,7 @@ const Footer = (): JSX.Element => (
 const ScrollUpButton = styled.button`
   justify-self: center;
   margin: -1.75rem;
-  padding: 0.75rem;
+  padding: 0.75rem 0.3rem;
   color: ${({ theme }) => theme.neutral.l65};
   font-size: 1em;
   line-height: inherit;
@@ -50,7 +50,7 @@ const FooterHeader = styled.div`
   display: flex;
   grid-column: 1/-1;
   justify-content: center;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid ${({ theme }) => theme.neutral.l95};
 `
 
 const Name = styled.span`
