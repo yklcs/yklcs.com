@@ -147,9 +147,10 @@ const H4 = styled.h4`
   line-height: ${lineHeight * 2}rem;
 `
 
-const Sidenote = styled.aside`
+const Sidenote = styled.span`
   position: absolute;
   right: 0;
+  display: block;
   width: 50%;
   margin: -${lineHeight}rem 0 0 0;
   padding: 0 0 0 2rem;
