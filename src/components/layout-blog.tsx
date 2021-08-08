@@ -39,7 +39,7 @@ const Layout: FunctionComponent<
               {frontmatter.tags[0]}
             </MetaData>
           </Header>
-          {children}
+          <Content>{children}</Content>
         </BlogWrapper>
       </Thing>
     </MDXProvider>
@@ -51,7 +51,7 @@ const Thing = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
 
-  @media screen and (max-width: 50rem) {
+  @media screen and (max-width: 45rem) {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem 1rem;
   }
@@ -84,6 +84,13 @@ const Spacer = styled.span<{ long: boolean }>`
   }
 `
 
+const lineHeight = 1.8
+
+const Content = styled.div`
+  font-size: 1.25em;
+  line-height: ${lineHeight}rem;
+`
+
 const Meta = styled.div`
   display: flex;
   flex-direction: column;
@@ -105,9 +112,8 @@ const Title = styled.h1`
 `
 
 const Paragraph = styled.p`
-  font-size: 1.2em;
+  margin: 0 0 ${lineHeight}rem 0;
   font-family: "XCharter", serif;
-  line-height: 1.68rem;
   letter-spacing: 0;
   word-wrap: break-word;
   word-break: break-word;
@@ -125,8 +131,34 @@ const InlineCode = styled.code`
   background: ${({ theme }) => theme.neutral.l100};
 `
 
+const typeScale = 1.2
+
+const H2 = styled.h2`
+  margin: ${lineHeight * 2}rem 0 0 0;
+  font-weight: 700;
+  font-size: ${typeScale ** 2}em;
+  line-height: ${lineHeight * 3}rem;
+`
+
+const H3 = styled.h3`
+  margin: 0;
+  font-weight: 700;
+  font-size: ${typeScale}em;
+  line-height: ${lineHeight * 2}rem;
+`
+
+const H4 = styled.h4`
+  margin: 0;
+  font-weight: 700;
+  font-size: 1em;
+  line-height: ${lineHeight * 2}rem;
+`
+
 const components = {
   h1: Title,
+  h2: H2,
+  h3: H3,
+  h4: H4,
   pre: Pre,
   code: Code,
   inlineCode: InlineCode,
