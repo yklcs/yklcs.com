@@ -25,22 +25,22 @@ const Layout: FunctionComponent<
       date={frontmatter.date}
       tags={frontmatter.tags}
     />
-    <Header>
-      <Title>{frontmatter.title}</Title>
-      <Meta>
-        <strong>By {frontmatter.author}</strong>
-        <MetaData>
-          <time dateTime={frontmatter.date}>
-            {format(new Date(frontmatter.date), "yyyy/mm/dd")}
-          </time>
-          <Spacer long />
-          {frontmatter.tags[0]}
-        </MetaData>
-      </Meta>
-    </Header>
     <MDXProvider components={components}>
       <Thing>
-        <BlogWrapper>{children}</BlogWrapper>
+        <BlogWrapper>
+          <Header>
+            <Title>{frontmatter.title}</Title>
+            {/* <strong>{frontmatter.author}</strong> */}
+            <MetaData>
+              <time dateTime={frontmatter.date}>
+                {format(new Date(frontmatter.date), "y/MM/dd")}
+              </time>
+              <Spacer long />
+              {frontmatter.tags[0]}
+            </MetaData>
+          </Header>
+          {children}
+        </BlogWrapper>
       </Thing>
     </MDXProvider>
   </>
@@ -68,7 +68,7 @@ const BlogWrapper = styled.div`
 const Header = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 7rem 0;
+  margin: 5rem 0;
   line-height: 1;
 
   @media screen and (max-width: 60rem) {
@@ -87,8 +87,8 @@ const Spacer = styled.span<{ long: boolean }>`
 const Meta = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  margin: 2rem 0;
+  align-items: flex-start;
+  margin: 3rem 0 0 0;
   line-height: 1.5;
 `
 
@@ -97,11 +97,11 @@ const MetaData = styled.div`
 `
 
 const Title = styled.h1`
-  max-width: 10em;
-  margin: 0;
+  margin: 1.5rem 0;
   font-weight: 700;
-  font-size: 3.5rem;
-  letter-spacing: -0.06em;
+  font-size: 2.5em;
+  line-height: 3rem;
+  letter-spacing: -0.022em;
 `
 
 const Paragraph = styled.p`
