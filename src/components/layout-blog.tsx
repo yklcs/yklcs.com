@@ -25,14 +25,6 @@ const Layout: FunctionComponent<
       date={frontmatter.date}
       tags={frontmatter.tags}
     />
-    <Nav>
-      <InternalLink to="/">
-        <strong>luc.li</strong>
-      </InternalLink>
-      <div>
-        <InternalLink to="/blog">Blog</InternalLink>
-      </div>
-    </Nav>
     <Header>
       <Title>{frontmatter.title}</Title>
       <Meta>
@@ -47,27 +39,30 @@ const Layout: FunctionComponent<
       </Meta>
     </Header>
     <MDXProvider components={components}>
-      <BlogWrapper>{children}</BlogWrapper>
+      <Thing>
+        <BlogWrapper>{children}</BlogWrapper>
+      </Thing>
     </MDXProvider>
   </>
 )
 
-const InternalLink = styled(Link)`
-  color: inherit;
-  text-decoration: none;
+const Thing = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
+
+  @media screen and (max-width: 50rem) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1rem;
+  }
 `
 
 const BlogWrapper = styled.div`
-  position: relative;
-  max-width: 40rem;
-  margin: 0 auto 10rem auto;
-`
+  grid-column: 2/4;
 
-const Nav = styled.nav`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 1em 0;
+  @media screen and (max-width: 65rem) {
+    grid-column: 1/4;
+  }
 `
 
 const Header = styled.div`
@@ -110,8 +105,13 @@ const Title = styled.h1`
 `
 
 const Paragraph = styled.p`
-  line-height: 1.5;
-  letter-spacing: -0.2px;
+  font-size: 1.2em;
+  font-family: "XCharter", serif;
+  line-height: 1.68rem;
+  letter-spacing: 0;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 `
 
 const Pre = styled.pre`
