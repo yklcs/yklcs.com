@@ -69,15 +69,15 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "blog",
-        path: "./content/blog/",
+        name: "content",
+        path: "./content/",
       },
-      __key: "blog",
+      __key: "content",
     },
     {
       resolve: "gatsby-plugin-page-creator",
       options: {
-        path: "./content/blog/",
+        path: "./content/",
       },
     },
   ],
