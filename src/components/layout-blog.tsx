@@ -100,6 +100,7 @@ const Title = styled.h1`
   margin: 1.5rem 0;
   font-weight: 700;
   font-size: 2.5em;
+  font-family: XCharter, serif;
   line-height: 3rem;
   letter-spacing: -0.022em;
 `
