@@ -13,6 +13,7 @@ interface BlogFrontmatter {
   date: string
   tags: string[]
   author: string
+  description: string
 }
 
 const Layout: FunctionComponent<
@@ -29,14 +30,22 @@ const Layout: FunctionComponent<
       <Thing>
         <BlogWrapper>
           <Header>
+            <Category>{frontmatter.tags[0]}</Category>
             <Title>{frontmatter.title}</Title>
-            {/* <strong>{frontmatter.author}</strong> */}
+            <Description>{frontmatter.description}</Description>
             <MetaData>
-              <time dateTime={frontmatter.date}>
-                {format(new Date(frontmatter.date), "y/MM/dd")}
-              </time>
-              <Spacer long />
-              {frontmatter.tags[0]}
+              <div>
+                <span>By {frontmatter.author} on </span>
+                <DateTime dateTime={frontmatter.date}>
+                  {format(new Date(frontmatter.date), "PP")}
+                </DateTime>
+              </div>
+              <Tags>
+                {frontmatter.tags.map((tag, i) => [
+                  i ? "·" : "",
+                  <span>{tag}</span>,
+                ])}
+              </Tags>
             </MetaData>
           </Header>
           <Content>{children}</Content>
@@ -45,6 +54,26 @@ const Layout: FunctionComponent<
     </MDXProvider>
   </>
 )
+
+const DateTime = styled.time`
+  font-variant-numeric: tabular-nums;
+`
+
+const Tags = styled.div`
+  display: grid;
+  grid-auto-columns: auto;
+  grid-auto-flow: column;
+  grid-template-rows: 1fr;
+  gap: 0.25rem;
+`
+
+const Category = styled.div`
+  color: ${({ theme }) => theme.neutral.l65};
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 0.1ch;
+  text-transform: uppercase;
+`
 
 const Thing = styled.div`
   display: grid;
@@ -76,14 +105,6 @@ const Header = styled.div`
   }
 `
 
-const Spacer = styled.span<{ long: boolean }>`
-  margin: 0 0.5em;
-
-  &::after {
-    content: ${({ long }) => (long ? `"—"` : `"·"`)};
-  }
-`
-
 const lineHeight = 1.8
 
 const Content = styled.div`
@@ -93,15 +114,20 @@ const Content = styled.div`
 `
 
 const MetaData = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: ${lineHeight}rem 0;
   color: ${({ theme }) => theme.neutral.l65};
+  line-height: ${lineHeight};
 `
 
 const Title = styled.h1`
-  margin: 1.5rem 0;
+  margin: ${lineHeight}rem 0 ${lineHeight / 2}rem 0;
   font-weight: 700;
   font-size: 2.5em;
   font-family: XCharter, serif;
-  line-height: 3rem;
+  line-height: ${lineHeight * 1.5}rem;
   letter-spacing: -0.022em;
 `
 
@@ -126,6 +152,12 @@ const InlineCode = styled.code`
 `
 
 const typeScale = 1.2
+
+const Description = styled.p`
+  margin: 0;
+  font-size: ${typeScale}em;
+  line-height: ${lineHeight}rem;
+`
 
 const H2 = styled.h2`
   margin: ${lineHeight * 2}rem 0 0 0;
