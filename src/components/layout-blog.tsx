@@ -94,18 +94,17 @@ const BlogWrapper = styled.div`
   }
 `
 
+const lineHeight = 1.8
+
 const Header = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 5rem 0;
-  line-height: 1;
+  margin: ${lineHeight * 3}rem 0 ${lineHeight * 1}rem;
 
   @media screen and (max-width: 60rem) {
     flex-wrap: wrap;
   }
 `
-
-const lineHeight = 1.8
 
 const Content = styled.div`
   position: relative;
@@ -164,6 +163,10 @@ const H2 = styled.h2`
   font-weight: 700;
   font-size: ${typeScale ** 2}em;
   line-height: ${lineHeight * 3}rem;
+
+  &:first-of-type {
+    margin: 0;
+  }
 `
 
 const H3 = styled.h3`
@@ -188,9 +191,10 @@ const Sidenote = styled.span`
   margin: -${lineHeight}rem 0 0 0;
   padding: 0 0 0 2rem;
   color: ${({ theme }) => theme.neutral.l65};
-  font-size: 0.8em;
+  font-size: 0.75em;
   font-family: Inter, sans-serif;
   line-height: ${lineHeight};
+  letter-spacing: -0.012em;
   transform: translateX(100%);
 
   @media screen and (max-width: 65rem) {
