@@ -40,8 +40,7 @@ const Resume: FunctionComponent = () => {
   return (
     <Container>
       <SEO title="Resume" description="Resume of Lucas Yunkyu Lee" />
-      <HomeLink to="/">← home</HomeLink>
-      <Row>
+      <Grid>
         <Title main>
           <Emph>Lucas Yunkyu Lee</Emph>
         </Title>
@@ -52,8 +51,7 @@ const Resume: FunctionComponent = () => {
             <ContentItemText>Seoul, Korea</ContentItemText>
           </ContentItem>
         </Content>
-      </Row>
-      <Row>
+
         <Title>Education</Title>
         <Content>
           <ContentItem>
@@ -61,8 +59,7 @@ const Resume: FunctionComponent = () => {
             <ContentItemText>Hana Academy Seoul, 2018–2020</ContentItemText>
           </ContentItem>
         </Content>
-      </Row>
-      <Row>
+
         <Title>Skills</Title>
         <Content>
           <ContentItem text title="Fully Proficient Languages">
@@ -90,8 +87,7 @@ const Resume: FunctionComponent = () => {
             Git, Github Actions
           </ContentItem>
         </Content>
-      </Row>
-      <Row>
+
         <Title>
           <Sticky top={100} enabled={bp}>
             Experience
@@ -178,7 +174,7 @@ const Resume: FunctionComponent = () => {
             />
           </ContentItem>
         </Content>
-      </Row>
+      </Grid>
     </Container>
   )
 }
@@ -193,21 +189,19 @@ const Emph = styled.span`
   position: relative;
 `
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 4rem 0;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem 1.5rem;
 
-  &:first-of-type {
-    margin: 2rem 0 4rem 0;
+  @media screen and (max-width: 45rem) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1rem;
   }
 `
 
 const TitleDiv = styled.div`
-  flex-basis: 13.333333rem;
-  flex-grow: 1;
-  margin: 0 0 0.5rem 0;
+  grid-column: span 2;
 `
 
 const TitleText = styled.h2`
@@ -229,9 +223,9 @@ const Title: FunctionComponent<TitleProps> = ({ children, main }) => (
 
 const Content = styled.div`
   display: flex;
-  flex-basis: 26.666666rem;
   flex-direction: column;
-  flex-grow: 2;
+  grid-column: span 2;
+  margin: 0 0 1.5rem 0;
 `
 
 const linkStyle = css`
@@ -256,11 +250,6 @@ const ALink = styled.a`
 
 const InternalLink = styled(Link)`
   ${linkStyle}
-`
-
-const HomeLink = styled(InternalLink)`
-  color: ${({ theme }) => theme.neutral.l65};
-  text-decoration: none;
 `
 
 const ContentItemDiv = styled.div<{ large?: boolean }>`
