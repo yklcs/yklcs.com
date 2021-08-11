@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { Link, PageProps } from "gatsby"
+import { graphql, Link, PageProps, useStaticQuery } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import Code from "./code"
 import { format } from "date-fns"
 
 import SEO from "./seo"
 import "katex/dist/katex.min.css"
+import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
+import { Node } from "gatsby"
 
 interface BlogFrontmatter {
   title: string
@@ -14,46 +16,32 @@ interface BlogFrontmatter {
   tags: string[]
   author: string
   description: string
+  large?: boolean
+  image?: string
 }
 
 const Layout: FunctionComponent<
   PageProps<null, { frontmatter: BlogFrontmatter }, null>
-> = ({ children, pageContext: { frontmatter } }) => (
-  <>
-    <SEO
-      title={frontmatter.title}
-      article
-      date={frontmatter.date}
-      tags={frontmatter.tags}
-    />
-    <MDXProvider components={components}>
-      <Thing>
-        <BlogWrapper>
-          <Header>
-            <Category>{frontmatter.tags[0]}</Category>
-            <Title>{frontmatter.title}</Title>
-            <Description>{frontmatter.description}</Description>
-            <MetaData>
-              <div>
-                <span>By {frontmatter.author} on </span>
-                <DateTime dateTime={frontmatter.date}>
-                  {format(new Date(frontmatter.date), "PP")}
-                </DateTime>
-              </div>
-              <Tags>
-                {frontmatter.tags.map((tag, i) => [
-                  i ? "·" : "",
-                  <span>{tag}</span>,
-                ])}
-              </Tags>
-            </MetaData>
-          </Header>
-          <Content>{children}</Content>
-        </BlogWrapper>
-      </Thing>
-    </MDXProvider>
-  </>
-)
+> = ({ children, pageContext: { frontmatter } }) => {
+  return (
+    <>
+      <SEO
+        title={frontmatter.title}
+        article
+        date={frontmatter.date}
+        tags={frontmatter.tags}
+      />
+      <MDXProvider components={components}>
+        <Thing>
+          <Header {...frontmatter} />
+          <BlogWrapper>
+            <Content>{children}</Content>
+          </BlogWrapper>
+        </Thing>
+      </MDXProvider>
+    </>
+  )
+}
 
 const DateTime = styled.time`
   font-variant-numeric: tabular-nums;
@@ -96,13 +84,117 @@ const BlogWrapper = styled.div`
 
 const lineHeight = 1.8
 
-const Header = styled.div`
+interface ImageQueryData {
+  allFile: {
+    nodes: (Node & {
+      name: string
+      childImageSharp: Node & {
+        gatsbyImageData: IGatsbyImageData
+      }
+    })[]
+  }
+}
+
+const Header = ({
+  tags,
+  title,
+  description,
+  author,
+  date,
+  large,
+  image: imageName,
+}: BlogFrontmatter) => {
+  const data: ImageQueryData = useStaticQuery(graphql`
+    query {
+      allFile(filter: { relativeDirectory: { eq: "posts" } }) {
+        nodes {
+          name
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED, height: 400)
+          }
+        }
+      }
+    }
+  `)
+
+  const images = Object.fromEntries(
+    data.allFile.nodes.map(node => [node.name, getImage(node)])
+  )
+
+  let image: IGatsbyImageData | null
+
+  if (!imageName) {
+    image = null
+  } else {
+    image = images[imageName] ?? null
+  }
+
+  return (
+    <HeaderContainer large={large ?? false}>
+      <HeaderData>
+        <div>
+          <Category>{tags[0]}</Category>
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+        </div>
+        <MetaData>
+          <div>
+            <span>By {author} on </span>
+            <DateTime dateTime={date}>{format(new Date(date), "PP")}</DateTime>
+          </div>
+          <Tags>
+            {tags.map((tag, i) => [i ? "·" : "", <span>{tag}</span>])}
+          </Tags>
+        </MetaData>
+      </HeaderData>
+      {image && (
+        <HeaderImage
+          imgStyle={{ objectFit: "cover" }}
+          alt={imageName ?? "Post"}
+          image={image}
+        />
+      )}
+    </HeaderContainer>
+  )
+}
+
+const HeaderImage = styled(GatsbyImage)`
+  justify-self: end;
+  margin: 0 0 ${lineHeight}rem 0;
+  box-shadow: 0 0 16px 7px #00000011;
+
+  @media screen and (max-width: 50rem) {
+    justify-self: start;
+    max-width: 85%;
+    object-position: left;
+  }
+`
+
+const HeaderData = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+
+  @media screen and (max-width: 50rem) {
+    order: 100;
+  }
+`
+
+const HeaderContainer = styled.div<{ large: boolean }>`
+  display: grid;
+  grid-column: ${({ large }) => (large ? "1/5" : "2/4")};
+  grid-template-rows: 1fr;
+  grid-template-columns: ${({ large }) => (large ? "1fr 1fr" : "1fr")};
+  gap: 1.5rem;
   margin: ${lineHeight * 3}rem 0 ${lineHeight * 1}rem;
 
-  @media screen and (max-width: 60rem) {
-    flex-wrap: wrap;
+  @media screen and (max-width: 65rem) {
+    grid-column: ${({ large }) => (large ? "1/5" : "1/4")};
+  }
+
+  @media screen and (max-width: 50rem) {
+    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
   }
 `
 
@@ -157,7 +249,6 @@ const Description = styled.p`
   font-size: ${typeScale}em;
   line-height: ${lineHeight}rem;
 `
-
 const H2 = styled.h2`
   margin: ${lineHeight * 2}rem 0 0 0;
   font-weight: 700;
@@ -207,8 +298,8 @@ const Sidenote = styled.span`
 `
 
 const components = {
-  h1: Title,
   h2: H2,
+  h1: Title,
   h3: H3,
   h4: H4,
   pre: Pre,
