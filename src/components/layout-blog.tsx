@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { graphql, Link, PageProps, useStaticQuery } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 import Code from "./code"
@@ -20,7 +20,7 @@ interface BlogFrontmatter {
   image?: string
 }
 
-const Layout: FunctionComponent<
+const BlogLayout: FunctionComponent<
   PageProps<null, { frontmatter: BlogFrontmatter }, null>
 > = ({ children, pageContext: { frontmatter } }) => {
   return (
@@ -32,12 +32,12 @@ const Layout: FunctionComponent<
         tags={frontmatter.tags}
       />
       <MDXProvider components={components}>
-        <Thing>
+        <Layout>
           <Header {...frontmatter} />
           <BlogWrapper>
             <Content>{children}</Content>
           </BlogWrapper>
-        </Thing>
+        </Layout>
       </MDXProvider>
     </>
   )
@@ -63,7 +63,7 @@ const Category = styled.div`
   text-transform: uppercase;
 `
 
-const Thing = styled.div`
+const Layout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
@@ -200,7 +200,7 @@ const HeaderContainer = styled.div<{ large: boolean }>`
 
 const Content = styled.div`
   position: relative;
-  font-size: 1.25em;
+  font-size: 1.2em;
   line-height: ${lineHeight}rem;
 `
 
@@ -249,11 +249,16 @@ const Description = styled.p`
   font-size: ${typeScale}em;
   line-height: ${lineHeight}rem;
 `
+
+const headerStyle = css`
+  font-weight: 700;
+`
+
 const H2 = styled.h2`
   margin: ${lineHeight * 2}rem 0 0 0;
-  font-weight: 700;
   font-size: ${typeScale ** 2}em;
   line-height: ${lineHeight * 3}rem;
+  ${headerStyle}
 
   &:first-of-type {
     margin: 0;
@@ -262,16 +267,16 @@ const H2 = styled.h2`
 
 const H3 = styled.h3`
   margin: 0;
-  font-weight: 700;
   font-size: ${typeScale}em;
   line-height: ${lineHeight * 2}rem;
+  ${headerStyle}
 `
 
 const H4 = styled.h4`
   margin: 0;
-  font-weight: 700;
   font-size: 1em;
   line-height: ${lineHeight * 2}rem;
+  ${headerStyle}
 `
 
 const Sidenote = styled.span`
@@ -310,4 +315,4 @@ const components = {
   Sidenote,
 }
 
-export default Layout
+export default BlogLayout
