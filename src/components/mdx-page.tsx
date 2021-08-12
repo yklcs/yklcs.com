@@ -128,7 +128,7 @@ type PageHeaderProps = PageFrontmatter & { type: "Page" }
 const Header = (props: BlogHeaderProps | PageHeaderProps): JSX.Element => {
   const data: ImageQueryData = useStaticQuery(graphql`
     query {
-      allFile(filter: { relativeDirectory: { eq: "posts" } }) {
+      allFile(filter: { relativeDirectory: { eq: "mdx" } }) {
         nodes {
           name
           childImageSharp {
@@ -159,7 +159,7 @@ const Header = (props: BlogHeaderProps | PageHeaderProps): JSX.Element => {
           <Title>{props.title}</Title>
           <Description>{props.description}</Description>
         </div>
-        {props.type === "Blog" && (
+        {props.type === "Blog" ? (
           <MetaData>
             <div>
               <span>By {props.author} on </span>
@@ -171,6 +171,12 @@ const Header = (props: BlogHeaderProps | PageHeaderProps): JSX.Element => {
               {props.tags.map((tag, i) => [i ? "·" : "", <span>{tag}</span>])}
             </Tags>
           </MetaData>
+        ) : (
+          props.large && (
+            <MetaData>
+              <span>By {props.author}</span>
+            </MetaData>
+          )
         )}
       </HeaderData>
       {image && (

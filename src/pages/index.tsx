@@ -72,7 +72,8 @@ const IndexPage = (): JSX.Element => {
       </Bio>
       <Cards>
         <Card
-          title="KdV"
+          title="KdV PINN"
+          link="/kdv-pinn"
           type="Research"
           image={images["kdv"]}
           width={1}

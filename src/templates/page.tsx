@@ -10,6 +10,7 @@ import { components } from "../components/mdx"
 interface PageFrontmatter {
   title: string
   description: string
+  author: string
   large?: boolean
   image?: string
 }
