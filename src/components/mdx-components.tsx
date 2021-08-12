@@ -2,6 +2,7 @@ import { MDXProviderComponentsProp } from "@mdx-js/react"
 import styled, { css } from "styled-components"
 import Code from "./code"
 import { ExternalLink, InternalLink } from "./links"
+import { StaticImage } from "gatsby-plugin-image"
 
 const lineHeight = 1.8
 const typeScale = 1.2
@@ -97,6 +98,12 @@ const Sidenote = styled.span`
   }
 `
 
-const components = { ...mdxComponents, Sidenote, ExternalLink, InternalLink }
+const components = {
+  ...mdxComponents,
+  Sidenote,
+  ExternalLink,
+  InternalLink,
+  StaticImage,
+}
 
 export { Title, lineHeight, components }

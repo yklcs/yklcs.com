@@ -5,7 +5,7 @@ import { MDXProvider } from "@mdx-js/react"
 import SEO from "../components/seo"
 import "katex/dist/katex.min.css"
 import { Content, Header, Layout, Wrapper } from "../components/mdx-page"
-import { components } from "../components/mdx"
+import { components } from "../components/mdx-components"
 
 interface PageFrontmatter {
   title: string
