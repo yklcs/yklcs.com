@@ -79,7 +79,7 @@ const HeaderContainer = styled.div<{ large: boolean }>`
   grid-template-rows: 1fr;
   grid-template-columns: ${({ large }) => (large ? "1fr 1fr" : "1fr")};
   gap: 1.5rem;
-  margin: ${lineHeight * 3}rem 0 ${lineHeight * 1}rem;
+  margin: ${lineHeight * 3}rem 0 ${lineHeight * 2}rem;
 
   @media screen and (max-width: 65rem) {
     grid-column: ${({ large }) => (large ? "1/5" : "1/4")};
