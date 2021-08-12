@@ -13,7 +13,9 @@ interface PostNode {
     tags: string[]
     date: string
   }
-  slug: string
+  fields: {
+    slug: string
+  }
   timeToRead: number
 }
 
@@ -37,7 +39,9 @@ const Blog: FunctionComponent = () => {
             tags
             date
           }
-          slug
+          fields {
+            slug
+          }
           timeToRead
         }
       }
@@ -82,7 +86,7 @@ const PostCollection = ({
           title={node.frontmatter.title}
           tags={node.frontmatter.tags}
           date={new Date(node.frontmatter.date)}
-          slug={node.slug}
+          slug={node.fields.slug}
         />
       ))}
     </PostGroup>
@@ -122,7 +126,7 @@ interface PostLinkProps {
 
 const PostLink = ({ title, tags, date, slug }: PostLinkProps): JSX.Element => (
   <PostLinkContainer>
-    <PostTitle to={`/${slug}`}>{title}</PostTitle>
+    <PostTitle to={slug}>{title}</PostTitle>
     <PostMeta>
       <PostDate>{format(date, "y/MM/dd")}</PostDate>—
       <PostTags>

@@ -28,7 +28,8 @@ module.exports = {
       resolve: "gatsby-plugin-mdx",
       options: {
         defaultLayouts: {
-          default: require.resolve("./src/components/layout-blog.tsx"),
+          default: require.resolve("./src/templates/page.tsx"),
+          blog: require.resolve("./src/templates/blog.tsx"),
         },
         remarkPlugins: [require("remark-math")],
         rehypePlugins: [require("rehype-katex")],
@@ -69,15 +70,32 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        name: "content",
-        path: "./content/",
+        name: "blog",
+        path: "./content/blog",
       },
-      __key: "content",
+      __key: "blog",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "page",
+        path: "./content/pages",
+      },
+      __key: "page",
     },
     {
       resolve: "gatsby-plugin-page-creator",
       options: {
-        path: "./content/",
+        path: "./content/pages",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: "./content",
+        ignore: {
+          patterns: ["!blog/**/*"],
+        },
       },
     },
     "gatsby-plugin-remove-trailing-slashes",
