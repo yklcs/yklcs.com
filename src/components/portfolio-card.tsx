@@ -3,6 +3,7 @@ import styled, { css } from "styled-components"
 
 import { IGatsbyImageData, GatsbyImage } from "gatsby-plugin-image"
 import { CardType } from "../pages/index"
+import Link from "./links"
 
 interface CardProps {
   title: string
@@ -37,7 +38,7 @@ const Card = ({
 
   return (
     <CardContainer active={active} width={width}>
-      {link ? <CardLink href={link}>{content}</CardLink> : content}
+      {link ? <CardLink to={link}>{content}</CardLink> : content}
     </CardContainer>
   )
 }
@@ -76,7 +77,7 @@ const CardImage = styled(GatsbyImage)`
   `}
 `
 
-const CardLink = styled.a`
+const CardLink = styled(Link)`
   display: flex;
   flex-direction: column;
   flex-grow: 0;
