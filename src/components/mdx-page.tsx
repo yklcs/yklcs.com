@@ -37,6 +37,8 @@ const Layout = styled.div`
 
 const Wrapper = styled.div`
   grid-column: 2/4;
+  font-family: XCharter, serif;
+  letter-spacing: -0.015rem;
 
   @media screen and (max-width: 65rem) {
     grid-column: 1/4;

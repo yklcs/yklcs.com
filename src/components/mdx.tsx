@@ -21,8 +21,6 @@ mdxComponents.h1 = Title
 
 mdxComponents.p = styled.p`
   margin: 0 0 ${lineHeight}rem 0;
-  font-family: "XCharter", serif;
-  letter-spacing: 0;
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
@@ -43,12 +41,14 @@ mdxComponents.inlineCode = styled.code`
 
 const headerStyle = css`
   font-weight: 700;
+  font-family: Inter, sans-serif;
 `
 
 mdxComponents.h2 = styled.h2`
   margin: ${lineHeight * 2}rem 0 0 0;
   font-size: ${typeScale ** 2}em;
   line-height: ${lineHeight * 3}rem;
+  letter-spacing: -0.03em;
   ${headerStyle}
 
   &:first-of-type {
@@ -60,6 +60,7 @@ mdxComponents.h3 = styled.h3`
   margin: 0;
   font-size: ${typeScale}em;
   line-height: ${lineHeight * 2}rem;
+  letter-spacing: -0.025em;
   ${headerStyle}
 `
 
@@ -67,6 +68,7 @@ mdxComponents.h4 = styled.h4`
   margin: 0;
   font-size: 1em;
   line-height: ${lineHeight * 2}rem;
+  letter-spacing: -0.02em;
   ${headerStyle}
 `
 
