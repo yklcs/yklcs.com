@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react"
-import styled from "styled-components"
-import { graphql, PageProps, useStaticQuery } from "gatsby"
+import { PageProps } from "gatsby"
 import { MDXProvider } from "@mdx-js/react"
 
 import SEO from "../components/seo"
