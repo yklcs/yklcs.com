@@ -15,6 +15,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
+    "gatsby-remark-images",
     "gatsby-plugin-sharp",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
@@ -33,6 +34,14 @@ module.exports = {
         },
         remarkPlugins: [require("remark-math")],
         rehypePlugins: [require("rehype-katex")],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 640,
+            },
+          },
+        ],
       },
     },
     "gatsby-transformer-sharp",
