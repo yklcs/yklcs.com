@@ -165,7 +165,7 @@ const HeaderImage = styled(GatsbyImage)`
 
   @media screen and (max-width: 50rem) {
     justify-self: start;
-    max-width: 85%;
+    max-width: 66%;
     object-position: left;
   }
 `
