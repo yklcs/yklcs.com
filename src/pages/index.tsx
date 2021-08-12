@@ -96,7 +96,6 @@ const IndexPage = (): JSX.Element => {
         />
         <Card
           title="SSP"
-          link="https://poscossp.com"
           type="Case Study"
           image={images["ssp"]}
           width={2}
