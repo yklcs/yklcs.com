@@ -53,7 +53,7 @@ const Content = styled.div`
 
 const HeaderImage = styled(GatsbyImage)`
   justify-self: end;
-  margin: 0 0 ${lineHeight}rem 0;
+  margin: ${lineHeight}rem 0;
   box-shadow: 0 0 16px 7px #00000011;
 
   @media screen and (max-width: 50rem) {
