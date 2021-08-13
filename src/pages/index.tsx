@@ -178,14 +178,14 @@ const Sorter = ({
       >
         Research
       </SortButton>
-      <SortButton active={show === "Design"} onClick={() => setShow("Design")}>
-        Design
-      </SortButton>
       <SortButton
         active={show === "Development"}
         onClick={() => setShow("Development")}
       >
         Development
+      </SortButton>
+      <SortButton active={show === "Design"} onClick={() => setShow("Design")}>
+        Design
       </SortButton>
       <span>↓</span>
     </SorterContainer>
