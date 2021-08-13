@@ -85,7 +85,7 @@ const IndexPage = (): JSX.Element => {
           type="Development"
           image={images["hashmm"]}
           width={2}
-          active={["Project", "All"].includes(show)}
+          active={["Development", "All"].includes(show)}
         />
         <Card
           title="Navier-Stokes"
@@ -99,7 +99,7 @@ const IndexPage = (): JSX.Element => {
           type="Design"
           image={images["ssp"]}
           width={2}
-          active={["Case Study", "All"].includes(show)}
+          active={["Design", "All"].includes(show)}
           background
         />
       </Cards>
