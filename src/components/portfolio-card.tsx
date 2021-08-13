@@ -71,7 +71,8 @@ const CardImage = styled(GatsbyImage)`
   ${({ background }: CardImageProps) =>
     background &&
     `
-    width: 50%;
+    width: 70%;
+    height: auto;
     margin: auto;
     box-shadow: 0 0 1rem 0.25rem #00000022;
   `}

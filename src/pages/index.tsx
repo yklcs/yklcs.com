@@ -80,12 +80,11 @@ const IndexPage = (): JSX.Element => {
           active={["Research", "All"].includes(show)}
         />
         <Card
-          title="hashmm"
-          link="https://hashmm.com"
-          type="Development"
-          image={images["hashmm"]}
+          title="luc.li"
+          type="Design"
+          image={images["luc.li"]}
           width={2}
-          active={["Development", "All"].includes(show)}
+          active={["Design", "All"].includes(show)}
         />
         <Card
           title="Navier-Stokes"
@@ -95,11 +94,12 @@ const IndexPage = (): JSX.Element => {
           active={["Research", "All"].includes(show)}
         />
         <Card
-          title="SSP"
-          type="Design"
-          image={images["ssp"]}
+          title="hashmm"
+          link="https://hashmm.com"
+          type="Development"
+          image={images["hashmm"]}
           width={2}
-          active={["Design", "All"].includes(show)}
+          active={["Development", "All"].includes(show)}
           background
         />
       </Cards>
