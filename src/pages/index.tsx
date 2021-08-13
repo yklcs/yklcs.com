@@ -18,7 +18,7 @@ interface IndexQueryData {
   }
 }
 
-export type CardType = "Case Study" | "Research" | "Project"
+export type CardType = "Design" | "Research" | "Development"
 export type ShowType = CardType | "All"
 
 const IndexPage = (): JSX.Element => {
@@ -82,7 +82,7 @@ const IndexPage = (): JSX.Element => {
         <Card
           title="hashmm"
           link="https://hashmm.com"
-          type="Project"
+          type="Development"
           image={images["hashmm"]}
           width={2}
           active={["Project", "All"].includes(show)}
@@ -96,7 +96,7 @@ const IndexPage = (): JSX.Element => {
         />
         <Card
           title="SSP"
-          type="Case Study"
+          type="Design"
           image={images["ssp"]}
           width={2}
           active={["Case Study", "All"].includes(show)}
@@ -178,17 +178,14 @@ const Sorter = ({
       >
         Research
       </SortButton>
-      <SortButton
-        active={show === "Case Study"}
-        onClick={() => setShow("Case Study")}
-      >
-        Case Study
+      <SortButton active={show === "Design"} onClick={() => setShow("Design")}>
+        Design
       </SortButton>
       <SortButton
-        active={show === "Project"}
-        onClick={() => setShow("Project")}
+        active={show === "Development"}
+        onClick={() => setShow("Development")}
       >
-        Project
+        Development
       </SortButton>
       <span>↓</span>
     </SorterContainer>
