@@ -19,9 +19,9 @@ interface IndexQueryData {
 }
 
 const cardTypes = ["Design", "Research", "Development"] as const
-export type CardType = typeof cardTypes[number]
+type CardType = typeof cardTypes[number]
 const showTypes = ["All", ...cardTypes] as const
-export type ShowType = typeof showTypes[number]
+type ShowType = typeof showTypes[number]
 
 const IndexPage = (): JSX.Element => {
   const [show, setShow] = useState<ShowType>("All")
@@ -55,23 +55,13 @@ const IndexPage = (): JSX.Element => {
           Currently working at PoApper performing fullstack web development,
           DevOps, and UI/UX design.
         </Description>
-        <Links
-          css={css`
-            grid-column: 1;
-          `}
-        >
+        <Links>
           <ExternalLink underline={false} href="mailto:me@luc.li">
             Mail
           </ExternalLink>
           <ExternalLink underline={false} href="https://github.com/rocketll">
             Github
           </ExternalLink>
-        </Links>
-        <Links
-          css={css`
-            grid-column: 2;
-          `}
-        >
           <InternalLink underline={false} to="/resume">
             Resume
           </InternalLink>
@@ -123,6 +113,7 @@ const Hello = styled.p`
   margin: 0;
   font-weight: 500;
   font-size: 1.4em;
+  line-height: 2.25rem;
   letter-spacing: -0.03em;
 
   @media screen and (max-width: 50rem) {
@@ -157,6 +148,7 @@ const Bio = styled.div`
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
     gap: 3rem 1rem;
+    font-size: 1em;
   }
 `
 
@@ -174,10 +166,17 @@ const Cards = styled.div`
 `
 
 const Links = styled.div`
-  display: flex;
-  flex: 1 0;
-  flex-direction: column;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-row: 3;
+  grid-column: span 2;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.5rem;
   align-items: flex-start;
+
+  @media screen and (max-width: 50rem) {
+    grid-template-columns: 1fr;
+  }
 `
 
 const SorterContainer = styled.div`
@@ -282,4 +281,5 @@ const Sorter = ({
   )
 }
 
+export { CardType, ShowType }
 export default IndexPage
