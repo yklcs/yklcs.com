@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { Dispatch, SetStateAction, useState } from "react"
 import { graphql, useStaticQuery, Node } from "gatsby"
-import styled, { DefaultTheme } from "styled-components"
+import styled, { css, DefaultTheme } from "styled-components"
 
 import SEO from "../components/seo"
 import { getImage, IGatsbyImageData } from "gatsby-plugin-image"
@@ -18,8 +18,10 @@ interface IndexQueryData {
   }
 }
 
-export type CardType = "Design" | "Research" | "Development"
-export type ShowType = CardType | "All"
+const cardTypes = ["Design", "Research", "Development"] as const
+export type CardType = typeof cardTypes[number]
+const showTypes = ["All", ...cardTypes] as const
+export type ShowType = typeof showTypes[number]
 
 const IndexPage = (): JSX.Element => {
   const [show, setShow] = useState<ShowType>("All")
@@ -45,31 +47,40 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <div>
-          <Name>Lucas Lee</Name>
-          <Name>이윤규</Name>
-        </div>
+        <Hello>
+          I'm Lucas Yunkyu Lee — A Korea based student, developer, and designer.
+        </Hello>
         <Description>
-          Korean student, developer, designer studying CS at POSTECH.
-          <br />
-          <br />
-          Recieved the Presidential Science Scholarship with a focus on SciML
-          research. Currently working at PoApper performing fullstack web
-          development, DevOps, and UI/UX design.
+          Studying at POSTECH with the Presidential Science Scholarship.
+          Currently working at PoApper performing fullstack web development,
+          DevOps, and UI/UX design.
         </Description>
-        <Col style={{ marginBottom: "-1.5em" }}>
-          <Sorter show={show} setShow={setShow} />
-        </Col>
-        <Col style={{ alignItems: "start" }}>
-          <ExternalLink href="mailto:me@luc.li">me@luc.li</ExternalLink>
-          <ExternalLink href="https://github.com/rocketll">
-            github.com/rocketll
+        <Links
+          css={css`
+            grid-column: 1;
+          `}
+        >
+          <ExternalLink underline={false} href="mailto:me@luc.li">
+            Mail
           </ExternalLink>
-          <br style={{ margin: "1.5em 0 0 0" }} />
-          <InternalLink to="/resume">Resume</InternalLink>
-          <InternalLink to="/blog">Blog</InternalLink>
-        </Col>
+          <ExternalLink underline={false} href="https://github.com/rocketll">
+            Github
+          </ExternalLink>
+        </Links>
+        <Links
+          css={css`
+            grid-column: 2;
+          `}
+        >
+          <InternalLink underline={false} to="/resume">
+            Resume
+          </InternalLink>
+          <InternalLink underline={false} to="/blog">
+            Blog
+          </InternalLink>
+        </Links>
       </Bio>
+      <Sorter show={show} setShow={setShow} />
       <Cards>
         <Card
           title="KdV PINN"
@@ -107,20 +118,32 @@ const IndexPage = (): JSX.Element => {
   )
 }
 
-const Name = styled.h1`
+const Hello = styled.p`
+  grid-column: span 3;
   margin: 0;
-  font-weight: 700;
-  font-size: 1em;
+  font-weight: 500;
+  font-size: 1.4em;
+  letter-spacing: -0.03em;
+
+  @media screen and (max-width: 50rem) {
+    grid-column: span 2;
+  }
 `
 
-const Description = styled.div`
+const Description = styled.p`
+  grid-column: span 2;
+  margin: 0;
+
   @media screen and (max-width: 40rem) {
     grid-column: span 2;
   }
 `
 
 const Container = styled.div`
-  margin: 6rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4.5rem 0 0 0;
   line-height: 1.5;
 
   @media screen and (max-width: 40rem) {
@@ -131,8 +154,10 @@ const Container = styled.div`
 const Bio = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1.5rem;
+  gap: 3rem 1.5rem;
+  margin: 3rem 0 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
+  font-size: 1.1em;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
@@ -146,7 +171,6 @@ const Cards = styled.div`
   grid-auto-flow: row dense;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem 1.5rem;
-  margin: 4.5rem 0 0 0;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: repeat(2, 1fr);
@@ -154,50 +178,18 @@ const Cards = styled.div`
   }
 `
 
-const Col = styled.div`
+const Links = styled.div`
   display: flex;
   flex: 1 0;
   flex-direction: column;
+  align-items: flex-start;
 `
-
-const Sorter = ({
-  show,
-  setShow,
-}: {
-  show: ShowType
-  setShow: React.Dispatch<React.SetStateAction<ShowType>>
-}) => {
-  return (
-    <SorterContainer>
-      <SortButton active={show === "All"} onClick={() => setShow("All")}>
-        All
-      </SortButton>
-      <SortButton
-        active={show === "Research"}
-        onClick={() => setShow("Research")}
-      >
-        Research
-      </SortButton>
-      <SortButton
-        active={show === "Development"}
-        onClick={() => setShow("Development")}
-      >
-        Development
-      </SortButton>
-      <SortButton active={show === "Design"} onClick={() => setShow("Design")}>
-        Design
-      </SortButton>
-      <span>↓</span>
-    </SorterContainer>
-  )
-}
 
 const SorterContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  height: 100%;
+  flex-direction: row;
+  padding: 0.5rem 0;
+  line-height: 2rem;
 `
 
 interface SortButtonProps {
@@ -208,7 +200,7 @@ interface SortButtonProps {
 const SortButton = styled.button`
   padding: 0;
   color: ${({ theme, active = false }: SortButtonProps) =>
-    active ? "inherit" : theme.brand.l80};
+    active ? "inherit" : theme.neutral.l65};
   font-size: 1em;
   line-height: inherit;
   letter-spacing: inherit;
@@ -221,5 +213,72 @@ const SortButton = styled.button`
     color: inherit;
   }
 `
+
+const Sorter = ({
+  show,
+  setShow,
+}: {
+  show: ShowType
+  setShow: Dispatch<SetStateAction<ShowType>>
+}) => {
+  const [open, setOpen] = useState(false)
+  const toggleOpen = () => setOpen(open ? false : true)
+
+  return (
+    <SorterContainer
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+    >
+      <span
+        role="button"
+        tabIndex={0}
+        onClick={toggleOpen}
+        onKeyPress={toggleOpen}
+        css={css`
+          flex-shrink: 0;
+        `}
+      >
+        Show {show}
+      </span>
+      {
+        <div
+          css={css`
+            display: flex;
+            margin: 0 0 0 0.5rem;
+            overflow: hidden;
+            transition: width 0.5s;
+          `}
+          style={{ width: open ? "100%" : 0 }}
+        >
+          {showTypes
+            .filter(type => type !== show)
+            .map(type => (
+              <SortButton
+                css={css`
+                  margin-right: 0.5rem;
+                `}
+                active={false}
+                onClick={() => {
+                  setShow(type)
+                  setOpen(false)
+                }}
+              >
+                {type}
+              </SortButton>
+            ))}
+        </div>
+      }
+      <span
+        style={{
+          transform: open ? "rotate(-90deg)" : "none",
+          transition: "transform 0.3s",
+        }}
+      >
+        ↓
+      </span>
+    </SorterContainer>
+  )
+}
 
 export default IndexPage
