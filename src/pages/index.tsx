@@ -47,15 +47,30 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <Hello>
-          I'm Lucas Yunkyu Lee — A Korea based student, developer, and designer.
+        <Name>Lucas Yunkyu Lee</Name>
+        <Hello
+          css={css`
+            grid-column: span 3;
+            color: ${({ theme }) => theme.neutral.l15};
+          `}
+        >
+          Korean student, developer, designer.{" "}
+          <span
+            css={css`
+              color: ${({ theme }) => theme.neutral.l65};
+            `}
+          >
+            Studying at POSTECH with a focus on SciML research. Developing for
+            PoApper performing fullstack web development, DevOps, and UI/UX
+            design.
+          </span>
         </Hello>
-        <Description>
-          Studying at POSTECH with the Presidential Science Scholarship.
-          Currently working at PoApper performing fullstack web development,
-          DevOps, and UI/UX design.
-        </Description>
-        <Links>
+        <Links
+          css={css`
+            display: flex;
+            gap: 1.5rem;
+          `}
+        >
           <ExternalLink underline={false} href="mailto:me@luc.li">
             Mail
           </ExternalLink>
@@ -69,6 +84,11 @@ const IndexPage = (): JSX.Element => {
             Blog
           </InternalLink>
         </Links>
+        {/* <Description>
+          Studying at POSTECH with the Presidential Science Scholarship.
+          Currently working at PoApper performing fullstack web development,
+          DevOps, and UI/UX design.
+        </Description> */}
       </Bio>
       <Sorter show={show} setShow={setShow} />
       <Cards>
@@ -108,12 +128,19 @@ const IndexPage = (): JSX.Element => {
   )
 }
 
+const Name = styled.h1`
+  grid-column: span 2;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.3em;
+`
+
 const Hello = styled.p`
   grid-column: span 3;
   margin: 0;
+  color: ${({ theme }) => theme.neutral.l15};
   font-weight: 500;
-  font-size: 1.4em;
-  line-height: 2.25rem;
+  font-size: 1.3em;
   letter-spacing: -0.03em;
 
   @media screen and (max-width: 50rem) {
@@ -140,7 +167,8 @@ const Container = styled.div`
 const Bio = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 3rem 1.5rem;
+  gap: 1.5rem;
+  width: 100%;
   margin: 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
   font-size: 1.1em;
@@ -148,7 +176,7 @@ const Bio = styled.div`
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
     gap: 3rem 1rem;
-    font-size: 1em;
+    font-size: 1.3em;
   }
 `
 
@@ -168,11 +196,11 @@ const Cards = styled.div`
 const Links = styled.div`
   display: grid;
   grid-auto-rows: 1fr;
-  grid-row: 3;
   grid-column: span 2;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0 1.5rem;
   align-items: flex-start;
+  margin: 3rem 0 0 0;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr;
