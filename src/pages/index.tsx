@@ -143,19 +143,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 4.5rem 0 0 0;
   line-height: 1.5;
-
-  @media screen and (max-width: 40rem) {
-    margin: 4.5rem 0 0 0;
-  }
 `
 
 const Bio = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 3rem 1.5rem;
-  margin: 3rem 0 6rem 0;
+  margin: 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
   font-size: 1.1em;
 
@@ -237,6 +232,9 @@ const Sorter = ({
         onKeyPress={toggleOpen}
         css={css`
           flex-shrink: 0;
+          &:focus {
+            outline: 0;
+          }
         `}
       >
         Show {show}
@@ -245,7 +243,7 @@ const Sorter = ({
         <div
           css={css`
             display: flex;
-            margin: 0 0 0 0.5rem;
+            margin: 0 0 0 0.75rem;
             overflow: hidden;
             transition: width 0.5s;
           `}
@@ -256,7 +254,7 @@ const Sorter = ({
             .map(type => (
               <SortButton
                 css={css`
-                  margin-right: 0.5rem;
+                  margin-right: 0.7rem;
                 `}
                 active={false}
                 onClick={() => {
@@ -270,9 +268,12 @@ const Sorter = ({
         </div>
       }
       <span
+        css={css`
+          margin: 0 0 0 -0.25rem;
+          transition: tranform 0.3s;
+        `}
         style={{
           transform: open ? "rotate(-90deg)" : "none",
-          transition: "transform 0.3s",
         }}
       >
         ↓
