@@ -55,66 +55,29 @@ const IndexPage = (): JSX.Element => {
           Lucas Yunkyu Lee
         </Name>
         <Wow>
-          <span>student</span>
-          <span
-            css={css`
-              grid-column: span 3;
-              @media screen and (max-width: 50rem) {
-                margin: 0 0 0 1rem;
-              }
-            `}
-          >
+          <WowTitle>student</WowTitle>
+          <WowDesc>
             at POSTECH, Korea, with a focus on scientific machine learning
             research
-          </span>
+          </WowDesc>
         </Wow>
         <Wow>
-          <span>developer</span>
-          <span
-            css={css`
-              grid-column: span 3;
-              @media screen and (max-width: 50rem) {
-                margin: 0 0 0 1rem;
-              }
-            `}
-          >
+          <WowTitle>developer</WowTitle>
+          <WowDesc>
             at PoApper performing fullstack webdev and cloud-native devops
-          </span>
+          </WowDesc>
         </Wow>
         <Wow>
-          <span>designer</span>
-          <span
-            css={css`
-              grid-column: span 3;
-              @media screen and (max-width: 50rem) {
-                margin: 0 0 0 1rem;
-              }
-            `}
-          >
-            creating ux, ui, and visuals to inspire
-          </span>
+          <WowTitle>designer</WowTitle>
+          <WowDesc>creating ux, ui, and visuals to inspire</WowDesc>
         </Wow>
         <Wow
           css={css`
-            margin: 3rem 0 0 0;
-            @media screen and (max-width: 50rem) {
-              margin: 2rem 0 0 0;
-            }
+            margin: 2rem 0 0 0;
           `}
         >
-          <span>links</span>
-          <Links
-            css={css`
-              display: flex;
-              grid-column: span 3;
-              gap: 1rem 1.5rem;
-              margin: 0;
-              color: ${({ theme }) => theme.brand.l50};
-              @media screen and (max-width: 50rem) {
-                margin: 0 0 0 1rem;
-              }
-            `}
-          >
+          <WowTitle>links</WowTitle>
+          <Links>
             <ExternalLink underline={false} href="mailto:me@luc.li">
               Mail↗
             </ExternalLink>
@@ -181,7 +144,23 @@ const Wow = styled.div`
   color: ${({ theme }) => theme.neutral.l15};
 
   @media screen and (max-width: 50rem) {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+  }
+`
+
+const WowTitle = styled.span`
+  grid-column: span 2;
+
+  @media screen and (max-width: 50rem) {
+    grid-column: span 1;
+  }
+`
+
+const WowDesc = styled.span`
+  grid-column: span 2;
+
+  @media screen and (max-width: 50rem) {
+    grid-column: span 1;
   }
 `
 
@@ -236,8 +215,7 @@ const Bio = styled.div`
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem 1rem;
-    font-size: 1.3em;
+    gap: 3rem 1rem;
   }
 `
 
@@ -255,16 +233,16 @@ const Cards = styled.div`
 `
 
 const Links = styled.div`
-  display: grid;
-  grid-auto-rows: 1fr;
+  display: flex;
+  flex-direction: row;
   grid-column: span 2;
-  grid-template-columns: 1fr;
   gap: 0 1.5rem;
   align-items: flex-start;
-  margin: 3rem 0 0 0;
+  color: ${({ theme }) => theme.brand.l50};
 
   @media screen and (max-width: 50rem) {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    grid-column: span 1;
   }
 `
 
