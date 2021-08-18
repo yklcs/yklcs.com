@@ -47,43 +47,88 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <Name>Lucas Yunkyu Lee</Name>
-        <Hello
+        <Name
           css={css`
-            grid-column: span 3;
-            color: ${({ theme }) => theme.neutral.l15};
+            grid-column: span 2;
           `}
         >
-          Korean student, developer, designer.{" "}
+          Lucas Yunkyu Lee
+        </Name>
+        <Wow>
+          <span>student</span>
           <span
             css={css`
-              color: ${({ theme }) => theme.neutral.l65};
+              grid-column: span 3;
+              @media screen and (max-width: 50rem) {
+                margin: 0 0 0 1rem;
+              }
             `}
           >
-            Studying at POSTECH with a focus on SciML research. Developing for
-            PoApper performing fullstack web development, DevOps, and UI/UX
-            design.
+            at POSTECH, Korea, with a focus on scientific machine learning
+            research
           </span>
-        </Hello>
-        <Links
+        </Wow>
+        <Wow>
+          <span>developer</span>
+          <span
+            css={css`
+              grid-column: span 3;
+              @media screen and (max-width: 50rem) {
+                margin: 0 0 0 1rem;
+              }
+            `}
+          >
+            at PoApper performing fullstack webdev and cloud-native devops
+          </span>
+        </Wow>
+        <Wow>
+          <span>designer</span>
+          <span
+            css={css`
+              grid-column: span 3;
+              @media screen and (max-width: 50rem) {
+                margin: 0 0 0 1rem;
+              }
+            `}
+          >
+            creating ux, ui, and visuals to inspire
+          </span>
+        </Wow>
+        <Wow
           css={css`
-            display: flex;
-            gap: 1.5rem;
+            margin: 3rem 0 0 0;
+            @media screen and (max-width: 50rem) {
+              margin: 2rem 0 0 0;
+            }
           `}
         >
-          <ExternalLink underline={false} href="mailto:me@luc.li">
-            Mail
-          </ExternalLink>
-          <ExternalLink underline={false} href="https://github.com/rocketll">
-            Github
-          </ExternalLink>
-          <InternalLink underline={false} to="/resume">
-            Resume
-          </InternalLink>
-          <InternalLink underline={false} to="/blog">
-            Blog
-          </InternalLink>
-        </Links>
+          <span>links</span>
+          <Links
+            css={css`
+              display: flex;
+              grid-column: span 3;
+              gap: 1rem 1.5rem;
+              margin: 0;
+              color: ${({ theme }) => theme.brand.l50};
+              @media screen and (max-width: 50rem) {
+                margin: 0 0 0 1rem;
+              }
+            `}
+          >
+            <ExternalLink underline={false} href="mailto:me@luc.li">
+              Mail↗
+            </ExternalLink>
+            <ExternalLink underline={false} href="https://github.com/rocketll">
+              Github↗
+            </ExternalLink>
+            <InternalLink underline={false} to="/resume">
+              Resume↗
+            </InternalLink>
+            <InternalLink underline={false} to="/blog">
+              Blog↗
+            </InternalLink>
+          </Links>
+        </Wow>
         {/* <Description>
           Studying at POSTECH with the Presidential Science Scholarship.
           Currently working at PoApper performing fullstack web development,
@@ -128,11 +173,27 @@ const IndexPage = (): JSX.Element => {
   )
 }
 
+const Wow = styled.div`
+  display: grid;
+  grid-column: span 4;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+  color: ${({ theme }) => theme.neutral.l15};
+
+  @media screen and (max-width: 50rem) {
+    grid-template-columns: 1fr;
+  }
+`
+
 const Name = styled.h1`
-  grid-column: span 2;
-  margin: 0;
-  font-weight: 500;
-  font-size: 1.3em;
+  grid-column: span 1;
+  margin: 0 0 3rem 0;
+  font-weight: 700;
+  font-size: 1em;
+
+  @media screen and (max-width: 50rem) {
+    margin: 0 0 2rem 0;
+  }
 `
 
 const Hello = styled.p`
@@ -167,15 +228,15 @@ const Container = styled.div`
 const Bio = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1.5rem;
+  gap: 0.75rem 1.5rem;
   width: 100%;
-  margin: 6rem 0;
+  margin: 3rem 0 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
   font-size: 1.1em;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
-    gap: 3rem 1rem;
+    gap: 2rem 1rem;
     font-size: 1.3em;
   }
 `
