@@ -55,20 +55,20 @@ const IndexPage = (): JSX.Element => {
           Lucas Yunkyu Lee
         </Name>
         <Wow>
-          <WowTitle>student</WowTitle>
+          <WowTitle>student </WowTitle>
           <WowDesc>
             at POSTECH, Korea, with a focus on scientific machine learning
             research
           </WowDesc>
         </Wow>
         <Wow>
-          <WowTitle>developer</WowTitle>
+          <WowTitle>developer </WowTitle>
           <WowDesc>
             at PoApper performing fullstack webdev and cloud-native devops
           </WowDesc>
         </Wow>
         <Wow>
-          <WowTitle>designer</WowTitle>
+          <WowTitle>designer </WowTitle>
           <WowDesc>creating ux, ui, and visuals to inspire</WowDesc>
         </Wow>
         <Wow
@@ -76,7 +76,7 @@ const IndexPage = (): JSX.Element => {
             margin: 2rem 0 0 0;
           `}
         >
-          <WowTitle>links</WowTitle>
+          <WowTitle>links </WowTitle>
           <Links>
             <ExternalLink underline={false} href="mailto:me@luc.li">
               Mail↗
@@ -144,6 +144,8 @@ const Wow = styled.div`
   color: ${({ theme }) => theme.neutral.l15};
 
   @media screen and (max-width: 50rem) {
+    display: flex;
+    flex-direction: column;
     grid-template-columns: 1fr 1fr;
   }
 `
@@ -158,6 +160,7 @@ const WowTitle = styled.span`
 
 const WowDesc = styled.span`
   grid-column: span 2;
+  color: ${({ theme }) => theme.neutral.l65};
 
   @media screen and (max-width: 50rem) {
     grid-column: span 1;
@@ -206,6 +209,7 @@ const Container = styled.div`
 
 const Bio = styled.div`
   display: grid;
+  grid-template-rows: auto 1fr 1fr 1fr auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0.75rem 1.5rem;
   width: 100%;
@@ -215,7 +219,7 @@ const Bio = styled.div`
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
-    gap: 3rem 1rem;
+    gap: 2rem 1rem;
   }
 `
 
