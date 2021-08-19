@@ -240,13 +240,15 @@ const Links = styled.div`
   display: flex;
   flex-direction: row;
   grid-column: span 2;
-  gap: 0 1.5rem;
   align-items: flex-start;
   color: ${({ theme }) => theme.brand.l50};
 
   @media screen and (max-width: 50rem) {
-    flex-direction: column;
     grid-column: span 1;
+  }
+
+  * {
+    margin: 0 1rem 0 0;
   }
 `
 
