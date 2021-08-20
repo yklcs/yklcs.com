@@ -4,7 +4,7 @@ import "modern-normalize/modern-normalize.css"
 
 import GlobalStyle from "./global-styles"
 import Footer from "./footer"
-import "/src/fonts/fonts.css"
+import "/src/fonts/public/fonts.css"
 import theme from "../theme"
 import { PageProps } from "gatsby"
 

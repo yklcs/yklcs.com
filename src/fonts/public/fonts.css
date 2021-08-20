@@ -1,3 +1,5 @@
+/* XCharter */
+
 @font-face {
   font-weight: 400;
   font-family: "XCharter";
@@ -27,5 +29,39 @@
   font-family: "XCharter";
   font-style: italic;
   src: url("XCharter-700-italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* Iosevka */
+
+@font-face {
+  font-weight: 400;
+  font-family: "Iosevka";
+  font-style: normal;
+  src: url("Iosevka-400-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Iosevka";
+  font-style: italic;
+  src: url("Iosevka-400-italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Iosevka";
+  font-style: normal;
+  src: url("Iosevka-400-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Iosevka";
+  font-style: italic;
+  src: url("Iosevka-400-italic.woff2") format("woff2");
   font-display: swap;
 }
