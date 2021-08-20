@@ -1,14 +1,18 @@
 import React, { FunctionComponent } from "react"
+import { PageProps } from "gatsby"
 import styled, { ThemeProvider } from "styled-components"
 import "modern-normalize/modern-normalize.css"
 
 import GlobalStyle from "./global-styles"
-import Footer from "./footer"
-import "/src/fonts/public/fonts.css"
-import theme from "../theme"
-import { PageProps } from "gatsby"
-
 import Header from "./header"
+import Footer from "./footer"
+import theme from "../theme"
+
+import "../fonts/public/fonts.css"
+
+if (process.env.DISABLE_PRIVATE_FONTS !== "1") {
+  require("../fonts/private/fonts.css")
+}
 
 const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
   <ThemeProvider theme={theme}>
