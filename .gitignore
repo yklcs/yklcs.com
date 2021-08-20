@@ -1,5 +1,7 @@
 node_modules/
 .cache/
-public
+/public
 .eslintcache
 .DS_Store
+/src/fonts/private/*
+!/src/fonts/private/fonts.css
