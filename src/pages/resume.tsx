@@ -40,8 +40,7 @@ const Resume: FunctionComponent = () => {
   return (
     <Container>
       <SEO title="Resume" description="Resume of Lucas Yunkyu Lee" />
-      <HomeLink to="/">← home</HomeLink>
-      <Row>
+      <Grid>
         <Title main>
           <Emph>Lucas Yunkyu Lee</Emph>
         </Title>
@@ -52,8 +51,7 @@ const Resume: FunctionComponent = () => {
             <ContentItemText>Seoul, Korea</ContentItemText>
           </ContentItem>
         </Content>
-      </Row>
-      <Row>
+
         <Title>Education</Title>
         <Content>
           <ContentItem>
@@ -61,8 +59,7 @@ const Resume: FunctionComponent = () => {
             <ContentItemText>Hana Academy Seoul, 2018–2020</ContentItemText>
           </ContentItem>
         </Content>
-      </Row>
-      <Row>
+
         <Title>Skills</Title>
         <Content>
           <ContentItem text title="Fully Proficient Languages">
@@ -90,8 +87,7 @@ const Resume: FunctionComponent = () => {
             Git, Github Actions
           </ContentItem>
         </Content>
-      </Row>
-      <Row>
+
         <Title>
           <Sticky top={100} enabled={bp}>
             Experience
@@ -178,7 +174,7 @@ const Resume: FunctionComponent = () => {
             />
           </ContentItem>
         </Content>
-      </Row>
+      </Grid>
     </Container>
   )
 }
@@ -191,35 +187,21 @@ const Container = styled.div`
 
 const Emph = styled.span`
   position: relative;
-
-  &:after {
-    position: absolute;
-    top: 0.4em;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    height: 0.4em;
-    background: ${({ theme }) => theme.background.highlight};
-    content: "";
-  }
 `
 
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin: 4rem 0;
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 3rem 1.5rem;
 
-  &:first-of-type {
-    margin: 2rem 0 4rem 0;
+  @media screen and (max-width: 45rem) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1rem;
   }
 `
 
 const TitleDiv = styled.div`
-  flex-basis: 13.333333rem;
-  flex-grow: 1;
-  margin: 0 0 0.5rem 0;
+  grid-column: span 2;
 `
 
 const TitleText = styled.h2`
@@ -241,9 +223,9 @@ const Title: FunctionComponent<TitleProps> = ({ children, main }) => (
 
 const Content = styled.div`
   display: flex;
-  flex-basis: 26.666666rem;
   flex-direction: column;
-  flex-grow: 2;
+  grid-column: span 2;
+  margin: 0 0 1.5rem 0;
 `
 
 const linkStyle = css`
@@ -253,12 +235,12 @@ const linkStyle = css`
   padding: 0.1em 0.4em;
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: ${({ theme }) => theme.foreground.link};
+  text-decoration-color: ${({ theme }) => theme.brand.l50};
   border-radius: 0.6rem;
   transition: background 0.3s;
 
   &:hover {
-    background: ${({ theme }) => theme.background.sub};
+    background: ${({ theme }) => theme.brand.l80};
   }
 `
 
@@ -268,11 +250,6 @@ const ALink = styled.a`
 
 const InternalLink = styled(Link)`
   ${linkStyle}
-`
-
-const HomeLink = styled(InternalLink)`
-  color: ${({ theme }) => theme.foreground.sub};
-  text-decoration: none;
 `
 
 const ContentItemDiv = styled.div<{ large?: boolean }>`

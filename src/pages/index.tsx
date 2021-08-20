@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { Dispatch, SetStateAction, useState } from "react"
 import { graphql, useStaticQuery, Node } from "gatsby"
-import styled, { DefaultTheme } from "styled-components"
+import styled, { css, DefaultTheme } from "styled-components"
 
 import SEO from "../components/seo"
 import { getImage, IGatsbyImageData } from "gatsby-plugin-image"
@@ -18,8 +18,10 @@ interface IndexQueryData {
   }
 }
 
-export type CardType = "Case Study" | "Research" | "Project"
-export type ShowType = CardType | "All"
+const cardTypes = ["Design", "Research", "Development"] as const
+type CardType = typeof cardTypes[number]
+const showTypes = ["All", ...cardTypes] as const
+type ShowType = typeof showTypes[number]
 
 const IndexPage = (): JSX.Element => {
   const [show, setShow] = useState<ShowType>("All")
@@ -45,46 +47,65 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <div>
-          <Name>Lucas Lee</Name>
-          <Name>이윤규</Name>
-        </div>
-        <Description>
-          Korean student, developer, designer studying CS at POSTECH.
-          <br />
-          <br />
-          Recieved the Presidential Science Scholarship with a focus on SciML
-          research. Currently working at PoApper performing fullstack web
-          development, DevOps, and UI/UX design.
-        </Description>
-        <Col style={{ marginBottom: "-1.5em" }}>
-          <Sorter show={show} setShow={setShow} />
-        </Col>
-        <Col style={{ alignItems: "start" }}>
-          <ExternalLink href="mailto:me@luc.li">me@luc.li</ExternalLink>
-          <ExternalLink href="https://github.com/rocketll">
-            github.com/rocketll
-          </ExternalLink>
-          <br style={{ margin: "1.5em 0 0 0" }} />
-          <InternalLink to="/resume">Resume</InternalLink>
-          <InternalLink to="/blog">Blog</InternalLink>
-        </Col>
+        <Name>Lucas Yunkyu Lee</Name>
+        <BioItem>
+          <BioItemTitle>student </BioItemTitle>
+          <BioItemDesc>
+            at POSTECH, Korea, with a focus on scientific machine learning
+            research
+          </BioItemDesc>
+        </BioItem>
+        <BioItem>
+          <BioItemTitle>developer </BioItemTitle>
+          <BioItemDesc>
+            at PoApper performing fullstack webdev and cloud-native devops
+          </BioItemDesc>
+        </BioItem>
+        <BioItem>
+          <BioItemTitle>designer </BioItemTitle>
+          <BioItemDesc>creating ux, ui, and visuals to inspire</BioItemDesc>
+        </BioItem>
+        <BioItem
+          css={css`
+            margin: 3rem 0 0 0;
+            @media screen and (max-width: 50rem) {
+              margin: 2rem 0 0 0;
+            }
+          `}
+        >
+          <BioItemTitle>links </BioItemTitle>
+          <Links>
+            <ExternalLink underline={false} href="mailto:me@luc.li">
+              Mail↗
+            </ExternalLink>
+            <ExternalLink underline={false} href="https://github.com/rocketll">
+              Github↗
+            </ExternalLink>
+            <InternalLink underline={false} to="/resume">
+              Resume↗
+            </InternalLink>
+            <InternalLink underline={false} to="/blog">
+              Blog↗
+            </InternalLink>
+          </Links>
+        </BioItem>
       </Bio>
+      <Sorter show={show} setShow={setShow} />
       <Cards>
         <Card
-          title="KdV"
+          title="KdV PINN"
+          link="/kdv-pinn"
           type="Research"
           image={images["kdv"]}
           width={1}
           active={["Research", "All"].includes(show)}
         />
         <Card
-          title="hashmm"
-          link="https://hashmm.com"
-          type="Project"
-          image={images["hashmm"]}
+          title="luc.li"
+          type="Design"
+          image={images["luc.li"]}
           width={2}
-          active={["Project", "All"].includes(show)}
+          active={["Design", "All"].includes(show)}
         />
         <Card
           title="Navier-Stokes"
@@ -94,12 +115,12 @@ const IndexPage = (): JSX.Element => {
           active={["Research", "All"].includes(show)}
         />
         <Card
-          title="SSP"
-          link="https://poscossp.com"
-          type="Case Study"
-          image={images["ssp"]}
+          title="hashmm"
+          link="https://hashmm.com"
+          type="Development"
+          image={images["hashmm"]}
           width={2}
-          active={["Case Study", "All"].includes(show)}
+          active={["Development", "All"].includes(show)}
           background
         />
       </Cards>
@@ -107,36 +128,68 @@ const IndexPage = (): JSX.Element => {
   )
 }
 
-const Name = styled.h1`
-  margin: 0;
-  font-weight: 700;
-  font-size: 1em;
+const BioItem = styled.div`
+  display: grid;
+  grid-column: span 4;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem 1.5rem;
+  color: ${({ theme }) => theme.neutral.l15};
+
+  @media screen and (max-width: 50rem) {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 1fr 1fr;
+  }
 `
 
-const Description = styled.div`
-  @media screen and (max-width: 40rem) {
-    grid-column: span 2;
+const BioItemTitle = styled.span`
+  grid-column: span 2;
+
+  @media screen and (max-width: 50rem) {
+    grid-column: span 1;
+  }
+`
+
+const BioItemDesc = styled.span`
+  grid-column: span 2;
+  color: ${({ theme }) => theme.neutral.l65};
+
+  @media screen and (max-width: 50rem) {
+    grid-column: span 1;
+  }
+`
+
+const Name = styled.h1`
+  grid-column: span 2;
+  margin: 0 0 3rem 0;
+  font-weight: 700;
+  font-size: 1em;
+
+  @media screen and (max-width: 50rem) {
+    margin: 0 0 2rem 0;
   }
 `
 
 const Container = styled.div`
-  margin: 6rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   line-height: 1.5;
-
-  @media screen and (max-width: 40rem) {
-    margin: 4.5rem 0 0 0;
-  }
 `
 
 const Bio = styled.div`
   display: grid;
+  grid-template-rows: auto 1fr 1fr 1fr auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1.5rem;
-  color: ${({ theme }) => theme.foreground.highlight};
+  gap: 1rem 1.5rem;
+  width: 100%;
+  margin: 3rem 0 6rem 0;
+  color: ${({ theme }) => theme.brand.l50};
+  font-size: 1.1em;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
-    gap: 3rem 1rem;
+    gap: 2rem 1rem;
   }
 `
 
@@ -146,7 +199,6 @@ const Cards = styled.div`
   grid-auto-flow: row dense;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem 1.5rem;
-  margin: 4.5rem 0 0 0;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: repeat(2, 1fr);
@@ -154,53 +206,27 @@ const Cards = styled.div`
   }
 `
 
-const Col = styled.div`
+const Links = styled.div`
   display: flex;
-  flex: 1 0;
-  flex-direction: column;
-`
+  flex-direction: row;
+  grid-column: span 2;
+  align-items: flex-start;
+  color: ${({ theme }) => theme.brand.l50};
 
-const Sorter = ({
-  show,
-  setShow,
-}: {
-  show: ShowType
-  setShow: React.Dispatch<React.SetStateAction<ShowType>>
-}) => {
-  return (
-    <SorterContainer>
-      <SortButton active={show === "All"} onClick={() => setShow("All")}>
-        All
-      </SortButton>
-      <SortButton
-        active={show === "Research"}
-        onClick={() => setShow("Research")}
-      >
-        Research
-      </SortButton>
-      <SortButton
-        active={show === "Case Study"}
-        onClick={() => setShow("Case Study")}
-      >
-        Case Study
-      </SortButton>
-      <SortButton
-        active={show === "Project"}
-        onClick={() => setShow("Project")}
-      >
-        Project
-      </SortButton>
-      <span>↓</span>
-    </SorterContainer>
-  )
-}
+  @media screen and (max-width: 50rem) {
+    grid-column: span 1;
+  }
+
+  * {
+    margin: 0 1rem 0 0;
+  }
+`
 
 const SorterContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: flex-end;
-  height: 100%;
+  flex-direction: row;
+  padding: 0.5rem 0;
+  line-height: 2rem;
 `
 
 interface SortButtonProps {
@@ -211,9 +237,10 @@ interface SortButtonProps {
 const SortButton = styled.button`
   padding: 0;
   color: ${({ theme, active = false }: SortButtonProps) =>
-    active ? "inherit" : theme.foreground.highlightSub};
+    active ? "inherit" : theme.neutral.l65};
   font-size: 1em;
   line-height: inherit;
+  letter-spacing: inherit;
   background: none;
   border: none;
   outline: none;
@@ -224,4 +251,78 @@ const SortButton = styled.button`
   }
 `
 
+const Sorter = ({
+  show,
+  setShow,
+}: {
+  show: ShowType
+  setShow: Dispatch<SetStateAction<ShowType>>
+}) => {
+  const [open, setOpen] = useState(false)
+  const toggleOpen = () => setOpen(open ? false : true)
+
+  return (
+    <SorterContainer
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+    >
+      <span
+        role="button"
+        tabIndex={0}
+        onClick={toggleOpen}
+        onKeyPress={toggleOpen}
+        css={css`
+          flex-shrink: 0;
+          &:focus {
+            outline: 0;
+          }
+        `}
+      >
+        Show {show}
+      </span>
+      {
+        <div
+          css={css`
+            display: flex;
+            margin: 0 0 0 0.75rem;
+            overflow: hidden;
+            transition: width 0.5s;
+          `}
+          style={{ width: open ? "100%" : 0 }}
+        >
+          {showTypes
+            .filter(type => type !== show)
+            .map(type => (
+              <SortButton
+                css={css`
+                  margin-right: 0.7rem;
+                `}
+                active={false}
+                onClick={() => {
+                  setShow(type)
+                  setOpen(false)
+                }}
+              >
+                {type}
+              </SortButton>
+            ))}
+        </div>
+      }
+      <span
+        css={css`
+          margin: 0 0 0 -0.25rem;
+          transition: tranform 0.3s;
+        `}
+        style={{
+          transform: open ? "rotate(-90deg)" : "none",
+        }}
+      >
+        ↓
+      </span>
+    </SorterContainer>
+  )
+}
+
+export { CardType, ShowType }
 export default IndexPage

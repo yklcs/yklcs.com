@@ -1,18 +1,16 @@
+import { hsl } from "polished"
 import { DefaultTheme } from "styled-components"
 
 const theme: DefaultTheme = {
-  background: {
-    default: "#ffffff",
-    selection: "#00000022",
-    highlight: "#182494",
-    sub: "#eeeeeeff",
+  neutral: {
+    l100: hsl(228, 0.07, 1),
+    l95: hsl(228, 0.07, 0.95),
+    l65: hsl(228, 0.07, 0.65),
+    l15: hsl(228, 0.07, 0.15),
   },
-  foreground: {
-    default: "#000000",
-    sub: "#00000066",
-    link: "#6196f2ff",
-    highlight: "#1d42d5",
-    highlightSub: "#1d42d566",
+  brand: {
+    l80: hsl(228, 0.76, 0.8),
+    l50: hsl(228, 0.76, 0.5),
   },
   syntax: {
     plain: {

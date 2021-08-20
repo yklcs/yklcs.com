@@ -35,6 +35,42 @@
 }
 
 @font-face {
+  font-weight: 500;
+  font-family: "Inter";
+  font-style: normal;
+  src: url("Inter-500-normal.woff2") format("woff2"),
+    url("Inter-500-normal.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "Inter";
+  font-style: italic;
+  src: url("Inter-500-italic.woff2") format("woff2"),
+    url("Inter-500-italic.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Inter";
+  font-style: normal;
+  src: url("Inter-700-normal.woff2") format("woff2"),
+    url("Inter-700-normal.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Inter";
+  font-style: normal;
+  src: url("Inter-700-normal.woff2") format("woff2"),
+    url("Inter-700-normal.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
   font-weight: 700;
   font-family: "Inter";
   font-style: normal;
@@ -53,10 +89,37 @@
 }
 
 @font-face {
-  font-weight: 700;
-  font-family: "Inter";
+  font-weight: 400;
+  font-family: "XCharter";
   font-style: normal;
-  src: url("Inter-700-normal.woff2") format("woff2"),
-    url("Inter-700-normal.woff") format("woff");
+  src: url("XCharter-400-normal.woff2") format("woff2"),
+    url("XCharter-400-normal.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "XCharter";
+  font-style: italic;
+  src: url("XCharter-400-italic.woff2") format("woff2"),
+    url("XCharter-400-italic.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "XCharter";
+  font-style: italic;
+  src: url("XCharter-700-italic.woff2") format("woff2"),
+    url("XCharter-700-italic.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "XCharter";
+  font-style: normal;
+  src: url("XCharter-700-normal.woff2") format("woff2"),
+    url("XCharter-700-normal.woff") format("woff");
   font-display: swap;
 }
