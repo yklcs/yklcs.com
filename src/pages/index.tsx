@@ -47,36 +47,33 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <Name
-          css={css`
-            grid-column: span 2;
-          `}
-        >
-          Lucas Yunkyu Lee
-        </Name>
-        <Wow>
-          <WowTitle>student </WowTitle>
-          <WowDesc>
+        <Name>Lucas Yunkyu Lee</Name>
+        <BioItem>
+          <BioItemTitle>student </BioItemTitle>
+          <BioItemDesc>
             at POSTECH, Korea, with a focus on scientific machine learning
             research
-          </WowDesc>
-        </Wow>
-        <Wow>
-          <WowTitle>developer </WowTitle>
-          <WowDesc>
+          </BioItemDesc>
+        </BioItem>
+        <BioItem>
+          <BioItemTitle>developer </BioItemTitle>
+          <BioItemDesc>
             at PoApper performing fullstack webdev and cloud-native devops
-          </WowDesc>
-        </Wow>
-        <Wow>
-          <WowTitle>designer </WowTitle>
-          <WowDesc>creating ux, ui, and visuals to inspire</WowDesc>
-        </Wow>
-        <Wow
+          </BioItemDesc>
+        </BioItem>
+        <BioItem>
+          <BioItemTitle>designer </BioItemTitle>
+          <BioItemDesc>creating ux, ui, and visuals to inspire</BioItemDesc>
+        </BioItem>
+        <BioItem
           css={css`
-            margin: 2rem 0 0 0;
+            margin: 3rem 0 0 0;
+            @media screen and (max-width: 50rem) {
+              margin: 2rem 0 0 0;
+            }
           `}
         >
-          <WowTitle>links </WowTitle>
+          <BioItemTitle>links </BioItemTitle>
           <Links>
             <ExternalLink underline={false} href="mailto:me@luc.li">
               Mail↗
@@ -91,12 +88,7 @@ const IndexPage = (): JSX.Element => {
               Blog↗
             </InternalLink>
           </Links>
-        </Wow>
-        {/* <Description>
-          Studying at POSTECH with the Presidential Science Scholarship.
-          Currently working at PoApper performing fullstack web development,
-          DevOps, and UI/UX design.
-        </Description> */}
+        </BioItem>
       </Bio>
       <Sorter show={show} setShow={setShow} />
       <Cards>
@@ -136,7 +128,7 @@ const IndexPage = (): JSX.Element => {
   )
 }
 
-const Wow = styled.div`
+const BioItem = styled.div`
   display: grid;
   grid-column: span 4;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -150,7 +142,7 @@ const Wow = styled.div`
   }
 `
 
-const WowTitle = styled.span`
+const BioItemTitle = styled.span`
   grid-column: span 2;
 
   @media screen and (max-width: 50rem) {
@@ -158,7 +150,7 @@ const WowTitle = styled.span`
   }
 `
 
-const WowDesc = styled.span`
+const BioItemDesc = styled.span`
   grid-column: span 2;
   color: ${({ theme }) => theme.neutral.l65};
 
@@ -168,35 +160,13 @@ const WowDesc = styled.span`
 `
 
 const Name = styled.h1`
-  grid-column: span 1;
+  grid-column: span 2;
   margin: 0 0 3rem 0;
   font-weight: 700;
   font-size: 1em;
 
   @media screen and (max-width: 50rem) {
     margin: 0 0 2rem 0;
-  }
-`
-
-const Hello = styled.p`
-  grid-column: span 3;
-  margin: 0;
-  color: ${({ theme }) => theme.neutral.l15};
-  font-weight: 500;
-  font-size: 1.3em;
-  letter-spacing: -0.03em;
-
-  @media screen and (max-width: 50rem) {
-    grid-column: span 2;
-  }
-`
-
-const Description = styled.p`
-  grid-column: span 2;
-  margin: 0;
-
-  @media screen and (max-width: 40rem) {
-    grid-column: span 2;
   }
 `
 
@@ -211,7 +181,7 @@ const Bio = styled.div`
   display: grid;
   grid-template-rows: auto 1fr 1fr 1fr auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0.75rem 1.5rem;
+  gap: 1rem 1.5rem;
   width: 100%;
   margin: 3rem 0 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
