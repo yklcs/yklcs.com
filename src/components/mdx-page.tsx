@@ -102,10 +102,6 @@ interface ImageQueryData {
   }
 }
 
-const DateTime = styled.time`
-  font-variant-numeric: tabular-nums;
-`
-
 const Tags = styled.div`
   display: grid;
   grid-auto-columns: auto;
@@ -163,9 +159,9 @@ const Header = (props: BlogHeaderProps | PageHeaderProps): JSX.Element => {
           <MetaData>
             <div>
               <span>By {props.author} on </span>
-              <DateTime dateTime={props.date}>
+              <time dateTime={props.date}>
                 {format(new Date(props.date), "PP")}
-              </DateTime>
+              </time>
             </div>
             <Tags>
               {props.tags.map((tag, i) => [i ? "·" : "", <span>{tag}</span>])}

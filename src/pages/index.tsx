@@ -186,6 +186,7 @@ const Bio = styled.div`
   margin: 3rem 0 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
   font-size: 1.1em;
+  letter-spacing: -0.01em;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;

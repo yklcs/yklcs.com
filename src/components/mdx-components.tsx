@@ -39,7 +39,7 @@ mdxComponents.inlineCode = styled.code`
 `
 
 const headerStyle = css`
-  font-weight: 700;
+  font-weight: 500;
   font-family: "Suisse Int'l", "Helvetica Neue", Helvetica, Arial, sans-serif;
 `
 
