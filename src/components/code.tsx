@@ -40,8 +40,7 @@ const Pre = styled.pre`
   margin: 1rem -0.5rem;
   padding: 0.5rem;
   overflow-x: auto;
-  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
+  font-family: Iosevka, Menlo, Consolas, monospace;
   text-align: left;
 `
 
