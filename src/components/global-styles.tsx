@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
     font-size: clamp(14px, 2vw, 16px);
+    font-synthesis: none;
     background: ${({ theme }) => theme.neutral.l100};
     scroll-behavior: smooth;
   }
