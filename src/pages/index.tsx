@@ -227,18 +227,13 @@ const SorterContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding: 0.5rem 0;
+  color: ${({ theme }) => theme.neutral.l65};
   line-height: 2rem;
 `
 
-interface SortButtonProps {
-  theme: DefaultTheme
-  active?: boolean
-}
-
 const SortButton = styled.button`
   padding: 0;
-  color: ${({ theme, active = false }: SortButtonProps) =>
-    active ? "inherit" : theme.neutral.l65};
+  color: inherit;
   font-size: 1em;
   line-height: inherit;
   letter-spacing: inherit;
@@ -248,7 +243,7 @@ const SortButton = styled.button`
   appearance: none;
 
   &:hover {
-    color: inherit;
+    color: ${({ theme }) => theme.neutral.l15};
   }
 `
 
@@ -292,6 +287,13 @@ const Sorter = ({
           `}
           style={{ width: open ? "100%" : 0 }}
         >
+          <span
+            css={css`
+              margin: 0 0.75rem 0 0;
+            `}
+          >
+            /
+          </span>
           {showTypes
             .filter(type => type !== show)
             .map(type => (
@@ -299,7 +301,6 @@ const Sorter = ({
                 css={css`
                   margin-right: 0.7rem;
                 `}
-                active={false}
                 onClick={() => {
                   setShow(type)
                   setOpen(false)
