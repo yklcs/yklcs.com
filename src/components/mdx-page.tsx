@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   letter-spacing: -0.015rem;
 
   @media screen and (max-width: 65rem) {
-    grid-column: 1/5;
+    grid-column: 1/4;
   }
 `
 
