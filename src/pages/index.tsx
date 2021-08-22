@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState } from "react"
 import { graphql, useStaticQuery, Node } from "gatsby"
-import styled, { css, DefaultTheme } from "styled-components"
+import styled, { css } from "styled-components"
 
 import SEO from "../components/seo"
 import { getImage, IGatsbyImageData } from "gatsby-plugin-image"
