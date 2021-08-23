@@ -204,9 +204,9 @@ const TitleDiv = styled.div`
   grid-column: span 2;
 `
 
-const TitleText = styled.h2`
+const TitleText = styled.h2<{ main: boolean }>`
   margin: 0;
-  font-weight: 700;
+  font-weight: ${({ main }) => (main ? 700 : 500)};
   font-size: inherit;
 `
 
@@ -215,9 +215,11 @@ interface TitleProps {
   main?: boolean
 }
 
-const Title: FunctionComponent<TitleProps> = ({ children, main }) => (
+const Title: FunctionComponent<TitleProps> = ({ children, main = false }) => (
   <TitleDiv>
-    <TitleText as={main ? "h1" : "h2"}>{children}</TitleText>
+    <TitleText main={main} as={main ? "h1" : "h2"}>
+      {children}
+    </TitleText>
   </TitleDiv>
 )
 

@@ -28,21 +28,19 @@ mdxComponents.p = styled.p`
 `
 
 mdxComponents.pre = styled.pre`
-  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
+  font-family: Iosevka, Menlo, Consolas, monospace;
 `
 
 mdxComponents.code = Code
 
 mdxComponents.inlineCode = styled.code`
-  font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
-    monospace;
+  font-family: Iosevka, Menlo, Consolas, monospace;
   background: ${({ theme }) => theme.neutral.l100};
 `
 
 const headerStyle = css`
-  font-weight: 700;
-  font-family: Inter, sans-serif;
+  font-weight: 500;
+  font-family: "Suisse Int'l", "Helvetica Neue", Helvetica, Arial, sans-serif;
 `
 
 mdxComponents.h2 = styled.h2`
@@ -84,7 +82,7 @@ const Sidenote = styled.span`
   padding: 0 0 0 2rem;
   color: ${({ theme }) => theme.neutral.l65};
   font-size: 0.75em;
-  font-family: Inter, sans-serif;
+  font-family: "Suisse Int'l", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: ${lineHeight}rem;
   letter-spacing: -0.012em;
   transform: translateX(100%);

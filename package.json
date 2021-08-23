@@ -10,6 +10,8 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
+    "get-fonts": "aws s3 sync s3://luc.li-fonts src/fonts/private",
+    "prebuild": "[ -z $DISABLE_PRIVATE_FONTS ] && npm run get-fonts",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",

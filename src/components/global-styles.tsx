@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
     font-size: clamp(14px, 2vw, 16px);
+    font-synthesis: none;
     background: ${({ theme }) => theme.neutral.l100};
     scroll-behavior: smooth;
   }
@@ -11,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     color: ${({ theme }) => theme.neutral.l15};
+    font-family: "Suisse Int'l", "Helvetica Neue", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
