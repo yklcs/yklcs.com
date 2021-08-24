@@ -12,30 +12,33 @@ const Footer = (): JSX.Element => (
       <span>© 2021</span>
     </Copyright>
     <Links>
-      <InternalLink to="/" underline={false}>
+      <InternalLink to="/" $underline={false}>
         Home
       </InternalLink>
-      <InternalLink to="/blog" underline={false}>
+      <InternalLink to="/blog" $underline={false}>
         Blog
       </InternalLink>
-      <InternalLink to="/resume" underline={false}>
+      <InternalLink to="/resume" $underline={false}>
         Resume
       </InternalLink>
     </Links>
     <Links>
-      <ExternalLink href="mailto:me@luc.li" underline={false}>
+      <ExternalLink href="mailto:me@luc.li" $underline={false}>
         me@luc.li
       </ExternalLink>
-      <ExternalLink href="https://github.com/rocketll" underline={false}>
+      <ExternalLink href="https://github.com/rocketll" $underline={false}>
         github.com/rocketll
       </ExternalLink>
     </Links>
     <SiteInfo>
-      <InternalLink to="/colophon" underline={false}>
+      <InternalLink to="/colophon" $underline={false}>
         Colophon
       </InternalLink>
       {" · "}
-      <ExternalLink href="https://github.com/rocketll/luc.li" underline={false}>
+      <ExternalLink
+        href="https://github.com/rocketll/luc.li"
+        $underline={false}
+      >
         Site source
       </ExternalLink>
     </SiteInfo>

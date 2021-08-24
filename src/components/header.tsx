@@ -22,7 +22,7 @@ const Breadcrumbs = ({ location }: { location: WindowLocation }) => (
       css={css`
         color: ${({ theme }) => theme.brand.l50};
       `}
-      underline={false}
+      $underline={false}
       to="/"
     >
       luc.li
@@ -40,7 +40,7 @@ const Breadcrumbs = ({ location }: { location: WindowLocation }) => (
             /
           </span>
           <InternalLink
-            underline={false}
+            $underline={false}
             to={`/${arr.slice(0, idx + 1).join("/")}`}
           >
             {elm}

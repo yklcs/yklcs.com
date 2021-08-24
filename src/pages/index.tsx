@@ -75,16 +75,16 @@ const IndexPage = (): JSX.Element => {
         >
           <BioItemTitle>links </BioItemTitle>
           <Links>
-            <ExternalLink underline={false} href="mailto:me@luc.li">
+            <ExternalLink $underline={false} href="mailto:me@luc.li">
               Mail↗
             </ExternalLink>
-            <ExternalLink underline={false} href="https://github.com/rocketll">
+            <ExternalLink $underline={false} href="https://github.com/rocketll">
               Github↗
             </ExternalLink>
-            <InternalLink underline={false} to="/resume">
+            <InternalLink $underline={false} to="/resume">
               Resume↗
             </InternalLink>
-            <InternalLink underline={false} to="/blog">
+            <InternalLink $underline={false} to="/blog">
               Blog↗
             </InternalLink>
           </Links>
@@ -298,6 +298,7 @@ const Sorter = ({
             .filter(type => type !== show)
             .map(type => (
               <SortButton
+                key={type}
                 css={css`
                   margin-right: 0.7rem;
                 `}

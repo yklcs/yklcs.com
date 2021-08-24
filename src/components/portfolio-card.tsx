@@ -27,8 +27,8 @@ const Card = ({
   const content = (
     <>
       {image && (
-        <CardImageWrapper background={background}>
-          <CardImage background={background} alt={title} image={image} />
+        <CardImageWrapper $background={background}>
+          <CardImage $background={background} alt={title} image={image} />
         </CardImageWrapper>
       )}
       <CardTitle>{title}</CardTitle>
@@ -56,20 +56,20 @@ const CardImageWrapper = styled.div`
     opacity: 1;
   }
 
-  ${({ background }: { background: boolean }) =>
-    background &&
+  ${({ $background }: { $background: boolean }) =>
+    $background &&
     css`
       background: #eeeeee;
     `}
 `
 
 interface CardImageProps {
-  background: boolean
+  $background: boolean
 }
 
 const CardImage = styled(GatsbyImage)`
-  ${({ background }: CardImageProps) =>
-    background &&
+  ${({ $background }: CardImageProps) =>
+    $background &&
     `
     width: 70%;
     height: auto;

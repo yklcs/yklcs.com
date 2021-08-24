@@ -2,10 +2,10 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { Link as GatsbyLink } from "gatsby"
 
-const linkStyle = css`
+const linkStyle = css<{ $underline?: boolean }>`
   color: inherit;
-  text-decoration: ${({ underline = true }: { underline?: boolean }) =>
-    underline ? "underline" : "none"};
+  text-decoration: ${({ $underline = true }) =>
+    $underline ? "underline" : "none"};
   text-decoration-thickness: 1px;
 `
 
