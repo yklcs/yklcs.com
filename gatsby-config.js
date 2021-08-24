@@ -61,7 +61,6 @@ module.exports = {
       },
       __key: "pages",
     },
-    "gatsby-plugin-preact",
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
