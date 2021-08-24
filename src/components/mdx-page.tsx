@@ -157,15 +157,13 @@ const Header = (props: BlogHeaderProps | PageHeaderProps): JSX.Element => {
         </div>
         {props.type === "Blog" ? (
           <MetaData>
-            <div>
-              <span>By {props.author} on </span>
-              <time dateTime={props.date}>
-                {format(new Date(props.date), "PP")}
-              </time>
-            </div>
-            <Tags>
-              {props.tags.map((tag, i) => [i ? "·" : "", <span>{tag}</span>])}
-            </Tags>
+            <time dateTime={props.date}>
+              {format(new Date(props.date), "PP")}
+            </time>
+            <span>—</span>
+            <span>
+              {props.tags.map((tag, i) => [i ? " · " : "", <span>{tag}</span>])}
+            </span>
           </MetaData>
         ) : (
           props.large && (
@@ -188,11 +186,15 @@ const Header = (props: BlogHeaderProps | PageHeaderProps): JSX.Element => {
 
 const MetaData = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
   margin: ${lineHeight}rem 0;
   color: ${({ theme }) => theme.neutral.l65};
   line-height: ${lineHeight};
+
+  > * {
+    margin: 0 0.5rem 0 0;
+  }
 `
 
 export {
