@@ -102,14 +102,6 @@ interface ImageQueryData {
   }
 }
 
-const Tags = styled.div`
-  display: grid;
-  grid-auto-columns: auto;
-  grid-auto-flow: column;
-  grid-template-rows: 1fr;
-  gap: 0.25rem;
-`
-
 const Category = styled.div`
   color: ${({ theme }) => theme.neutral.l65};
   font-weight: 700;
