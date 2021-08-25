@@ -11,11 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: "14"
-
       - name: Configure AWS
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -23,15 +18,32 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Get Node cache
+        uses: actions/cache@v2
+        id: get-node-cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+
       - name: Install
+        if: steps.get-node-cache.outputs.cache-hit != 'true'
         run: npm ci
+
+      - name: Get Gatsby cache
+        uses: actions/cache@v2
+        id: get-gatsby-cache
+        with:
+          path: |
+            .cache
+            public
+          key: gatsby-output-${{ github.ref }}
+          restore-keys: |
+            gatsby-output-
 
       - name: Build
         run: npm run build
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: luc.li-artifact
-          path: public
-          if-no-files-found: error
