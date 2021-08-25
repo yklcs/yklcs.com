@@ -100,7 +100,7 @@ jobs:
           path: |
             .cache
             public
-          key: gatsby-output-${{ github.ref }}
+          key: gatsby-output-${{ github.sha }}
           restore-keys: |
             gatsby-output-
 
@@ -127,6 +127,7 @@ jobs:
               environment: "Production",
               description: "Triggered deployment to AWS",
               ref: "heads/main",
+              required_contexts: ["install, build, lint"],
               environment_url: "https://luc.li"
             })
             console.log(`Created deployment ${id}`)
@@ -146,7 +147,7 @@ jobs:
           path: |
             .cache
             public
-          key: gatsby-output-${{ github.ref }}
+          key: gatsby-output-${{ github.sha }}
 
       - name: Deploy to AWS S3
         run: |

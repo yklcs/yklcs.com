@@ -41,7 +41,7 @@ jobs:
           path: |
             .cache
             public
-          key: gatsby-output-${{ github.ref }}
+          key: gatsby-output-${{ github.sha }}
           restore-keys: |
             gatsby-output-
 
