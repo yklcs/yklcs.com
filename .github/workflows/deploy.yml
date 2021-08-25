@@ -127,7 +127,7 @@ jobs:
               environment: "Production",
               description: "Triggered deployment to AWS",
               ref: "heads/main",
-              required_contexts: ["install, build, lint"],
+              required_contexts: ["install", "build", "lint"],
               environment_url: "https://luc.li"
             })
             console.log(`Created deployment ${id}`)
