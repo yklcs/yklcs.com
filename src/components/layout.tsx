@@ -26,7 +26,7 @@ const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
 )
 
 const Wrapper = styled.div`
-  max-width: 80em;
+  max-width: 70em;
   margin: auto;
   padding: 0 1.5rem;
   line-height: 1.5;
