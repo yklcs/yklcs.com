@@ -47,89 +47,17 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <span
-          css={css`
-            grid-column: 1 / span 3;
-            /* margin: 0 0 3rem 0; */
-            color: ${({ theme }) => theme.neutral.l15};
-            /* font-weight: 500; */
-            font-size: 1.25em;
-            line-height: 1.5;
-
-            @media screen and (max-width: 50rem) {
-              grid-column: span 2;
-              font-size: 1.15em;
-            }
-          `}
-        >
-          I'm Lucas Yunkyu Lee.
-          <br />
-          <span
-            css={css`
-              color: ${({ theme }) => theme.neutral.l50};
-            `}
-          >
-            I research, develop, and design.
-          </span>
-        </span>
-        <span
-          css={css`
-            grid-column: 3 / span 2;
-            margin: 3rem 0 3rem 0;
-            color: ${({ theme }) => theme.neutral.l50};
-            font-weight: 400;
-            font-size: 1em;
-            line-height: 1.9rem;
-
-            @media screen and (max-width: 50rem) {
-              grid-column: 1 / span 2;
-            }
-          `}
-        >
-          Studying at{" "}
-          <span
-            css={css`
-              color: ${({ theme }) => theme.neutral.l15};
-            `}
-          >
-            POSTECH
-          </span>{" "}
-          on a Presidential Science Scholarship focusing on SciML research.
-          Performing fullstack webdev and cloud-native devops for{" "}
-          <span
-            css={css`
-              color: ${({ theme }) => theme.neutral.l15};
-            `}
-          >
-            PoApper
-          </span>
-          . Designing on-and-off for various projects.
-        </span>
-        <Links
-          css={css`
-            display: grid;
-            grid-auto-flow: column;
-            grid-column: 3 / span 2;
-            grid-template-rows: 1fr 1fr;
-            grid-template-columns: 1fr 1fr;
-            gap: 0 1.5rem;
-            justify-items: start;
-            color: ${({ theme }) => theme.neutral.l50};
-            font-size: 1em;
-            line-height: 1.9rem;
-
-            @media screen and (max-width: 50rem) {
-              display: flex;
-              flex-direction: column;
-              grid-column: 1 / span 2;
-              align-items: flex-start;
-            }
-
-            *:hover {
-              color: ${({ theme }) => theme.neutral.l15};
-            }
-          `}
-        >
+        <Hello>
+          <Emphasis>I'm Lucas Yunkyu Lee.</Emphasis>
+          <br />I research, develop, and design.
+        </Hello>
+        <Description>
+          Studying at <Emphasis>POSTECH</Emphasis> on a Presidential Science
+          Scholarship focusing on SciML research. Performing fullstack webdev
+          and cloud-native devops for <Emphasis>PoApper</Emphasis>. Designing
+          on-and-off for various projects.
+        </Description>
+        <Links>
           <ExternalLink $underline={false} href="mailto:me@luc.li">
             me@luc.li
           </ExternalLink>
@@ -182,45 +110,32 @@ const IndexPage = (): JSX.Element => {
   )
 }
 
-const BioItem = styled.div`
-  display: grid;
-  grid-column: span 4;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0.5rem 1.5rem;
+const Emphasis = styled.span`
   color: ${({ theme }) => theme.neutral.l15};
+`
+
+const Hello = styled.div`
+  grid-column: 1 / span 3;
+  color: ${({ theme }) => theme.neutral.l50};
+  font-size: 1.25em;
+  line-height: 1.5;
 
   @media screen and (max-width: 50rem) {
-    display: flex;
-    flex-direction: column;
-    grid-template-columns: 1fr 1fr;
+    grid-column: span 2;
+    font-size: 1.15em;
   }
 `
 
-const BioItemTitle = styled.span`
-  grid-column: span 2;
-
-  @media screen and (max-width: 50rem) {
-    grid-column: span 1;
-  }
-`
-
-const BioItemDesc = styled.span`
-  grid-column: span 2;
-  color: ${({ theme }) => theme.neutral.l65};
-
-  @media screen and (max-width: 50rem) {
-    grid-column: span 1;
-  }
-`
-
-const Name = styled.h1`
-  grid-column: span 4;
-  margin: 0 0 3rem 0;
-  font-weight: 700;
+const Description = styled.p`
+  grid-column: 3 / span 2;
+  margin: 3rem 0 3rem 0;
+  color: ${({ theme }) => theme.neutral.l50};
+  font-weight: 400;
   font-size: 1em;
+  line-height: 1.9rem;
 
   @media screen and (max-width: 50rem) {
-    margin: 0 0 2rem 0;
+    grid-column: 1 / span 2;
   }
 `
 
@@ -262,18 +177,26 @@ const Cards = styled.div`
 `
 
 const Links = styled.div`
-  display: flex;
-  flex-direction: row;
-  grid-column: span 2;
-  align-items: flex-start;
-  color: ${({ theme }) => theme.brand.l50};
+  display: grid;
+  grid-auto-flow: column;
+  grid-column: 3 / span 2;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.5rem;
+  justify-items: start;
+  color: ${({ theme }) => theme.neutral.l50};
+  font-size: 1em;
+  line-height: 1.9rem;
 
   @media screen and (max-width: 50rem) {
-    grid-column: span 1;
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / span 2;
+    align-items: flex-start;
   }
 
-  * {
-    margin: 0 1rem 0 0;
+  *:hover {
+    color: ${({ theme }) => theme.neutral.l15};
   }
 `
 
