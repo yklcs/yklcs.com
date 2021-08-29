@@ -52,8 +52,8 @@ const IndexPage = (): JSX.Element => {
             grid-column: 1 / span 3;
             /* margin: 0 0 3rem 0; */
             color: ${({ theme }) => theme.neutral.l15};
-            font-weight: 400;
-            font-size: 1.35em;
+            /* font-weight: 500; */
+            font-size: 1.25em;
             line-height: 1.5;
 
             @media screen and (max-width: 50rem) {
@@ -71,29 +71,10 @@ const IndexPage = (): JSX.Element => {
             Research — Development — Design
           </span>
         </span>
-        {/* <span
-          css={css`
-            grid-column: 3 / span 2;
-            margin: 0 0 0 0;
-            color: ${({ theme }) => theme.neutral.l50};
-            font-weight: 400;
-            font-size: 1em;
-            line-height: 1.9rem;
-
-            @media screen and (max-width: 50rem) {
-              grid-column: 1 / span 2;
-            }
-        `}>
-          <span css={css`font-size: 1em; color: ${({ theme }) => theme.neutral.l15};`}>
-            Research —
-            Development —
-            Design
-          </span>
-        </span> */}
         <span
           css={css`
             grid-column: 3 / span 2;
-            margin: 3.8rem 0 1.9rem 0;
+            margin: 3rem 0 3rem 0;
             color: ${({ theme }) => theme.neutral.l50};
             font-weight: 400;
             font-size: 1em;
@@ -131,12 +112,20 @@ const IndexPage = (): JSX.Element => {
             grid-template-rows: 1fr 1fr;
             grid-template-columns: 1fr 1fr;
             gap: 0 1.5rem;
-            color: ${({ theme }) => theme.neutral.l15};
+            justify-items: start;
+            color: ${({ theme }) => theme.neutral.l50};
             font-size: 1em;
             line-height: 1.9rem;
 
             @media screen and (max-width: 50rem) {
+              display: flex;
+              flex-direction: column;
               grid-column: 1 / span 2;
+              align-items: flex-start;
+            }
+
+            *:hover {
+              color: ${({ theme }) => theme.neutral.l15};
             }
           `}
         >
