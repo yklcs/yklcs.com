@@ -69,8 +69,7 @@ const IndexPage = (): JSX.Element => {
               color: ${({ theme }) => theme.neutral.l50};
             `}
           >
-            Research <br /> Development <br />
-            Design
+            research <br /> development <br /> design
           </span>
         </span>
         <span
@@ -120,9 +119,9 @@ const IndexPage = (): JSX.Element => {
             line-height: 1.9rem;
 
             @media screen and (max-width: 50rem) {
-              display: flex;
+              /* display: flex; */
               flex-direction: column;
-              grid-column: 2 / span 1;
+              grid-column: 1 / span 2;
               align-items: flex-start;
             }
 
