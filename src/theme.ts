@@ -5,6 +5,7 @@ const theme: DefaultTheme = {
   neutral: {
     l100: hsl(228, 0.07, 1),
     l95: hsl(228, 0.07, 0.95),
+    l50: hsl(228, 0.07, 0.5),
     l65: hsl(228, 0.07, 0.65),
     l15: hsl(228, 0.07, 0.15),
   },

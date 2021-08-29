@@ -47,48 +47,112 @@ const IndexPage = (): JSX.Element => {
     <Container>
       <SEO />
       <Bio>
-        <Name>Lucas Yunkyu Lee</Name>
-        <BioItem>
-          <BioItemTitle>student </BioItemTitle>
-          <BioItemDesc>
-            at POSTECH, Korea, with a focus on scientific machine learning
-            research
-          </BioItemDesc>
-        </BioItem>
-        <BioItem>
-          <BioItemTitle>developer </BioItemTitle>
-          <BioItemDesc>
-            at PoApper performing fullstack webdev and cloud-native devops
-          </BioItemDesc>
-        </BioItem>
-        <BioItem>
-          <BioItemTitle>designer </BioItemTitle>
-          <BioItemDesc>creating ux, ui, and visuals to inspire</BioItemDesc>
-        </BioItem>
-        <BioItem
+        <span
           css={css`
-            margin: 3rem 0 0 0;
+            grid-column: 1 / span 3;
+            /* margin: 0 0 3rem 0; */
+            color: ${({ theme }) => theme.neutral.l15};
+            font-weight: 400;
+            font-size: 1.35em;
+            line-height: 1.5;
+
             @media screen and (max-width: 50rem) {
-              margin: 2rem 0 0 0;
+              grid-column: span 2;
             }
           `}
         >
-          <BioItemTitle>links </BioItemTitle>
-          <Links>
-            <ExternalLink $underline={false} href="mailto:me@luc.li">
-              Mail↗
-            </ExternalLink>
-            <ExternalLink $underline={false} href="https://github.com/rocketll">
-              Github↗
-            </ExternalLink>
-            <InternalLink $underline={false} to="/resume">
-              Resume↗
-            </InternalLink>
-            <InternalLink $underline={false} to="/blog">
-              Blog↗
-            </InternalLink>
-          </Links>
-        </BioItem>
+          Lucas Yunkyu Lee
+          <br />
+          <span
+            css={css`
+              color: ${({ theme }) => theme.neutral.l50};
+            `}
+          >
+            Research — Development — Design
+          </span>
+        </span>
+        {/* <span
+          css={css`
+            grid-column: 3 / span 2;
+            margin: 0 0 0 0;
+            color: ${({ theme }) => theme.neutral.l50};
+            font-weight: 400;
+            font-size: 1em;
+            line-height: 1.9rem;
+
+            @media screen and (max-width: 50rem) {
+              grid-column: 1 / span 2;
+            }
+        `}>
+          <span css={css`font-size: 1em; color: ${({ theme }) => theme.neutral.l15};`}>
+            Research —
+            Development —
+            Design
+          </span>
+        </span> */}
+        <span
+          css={css`
+            grid-column: 3 / span 2;
+            margin: 3.8rem 0 1.9rem 0;
+            color: ${({ theme }) => theme.neutral.l50};
+            font-weight: 400;
+            font-size: 1em;
+            line-height: 1.9rem;
+
+            @media screen and (max-width: 50rem) {
+              grid-column: 1 / span 2;
+            }
+          `}
+        >
+          Studying at{" "}
+          <span
+            css={css`
+              color: ${({ theme }) => theme.neutral.l15};
+            `}
+          >
+            POSTECH
+          </span>{" "}
+          on a Presidential Science Scholarship focusing on SciML research.
+          Performing fullstack webdev and cloud-native devops for{" "}
+          <span
+            css={css`
+              color: ${({ theme }) => theme.neutral.l15};
+            `}
+          >
+            PoApper
+          </span>
+          . Designing on-and-off for various projects.
+        </span>
+        <Links
+          css={css`
+            display: grid;
+            grid-auto-flow: column;
+            grid-column: 3 / span 2;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 1.5rem;
+            color: ${({ theme }) => theme.neutral.l15};
+            font-size: 1em;
+            line-height: 1.9rem;
+
+            @media screen and (max-width: 50rem) {
+              grid-column: 1 / span 2;
+            }
+          `}
+        >
+          <ExternalLink $underline={false} href="mailto:me@luc.li">
+            me@luc.li
+          </ExternalLink>
+          <ExternalLink $underline={false} href="https://github.com/rocketll">
+            github.com/rocketll
+          </ExternalLink>
+          <InternalLink $underline={false} to="/resume">
+            Resume↗
+          </InternalLink>
+          <InternalLink $underline={false} to="/blog">
+            Blog↗
+          </InternalLink>
+        </Links>
       </Bio>
       <Sorter show={show} setShow={setShow} />
       <Cards>
@@ -160,7 +224,7 @@ const BioItemDesc = styled.span`
 `
 
 const Name = styled.h1`
-  grid-column: span 2;
+  grid-column: span 4;
   margin: 0 0 3rem 0;
   font-weight: 700;
   font-size: 1em;
@@ -179,18 +243,18 @@ const Container = styled.div`
 
 const Bio = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr 1fr 1fr auto;
+  grid-auto-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1rem 1.5rem;
+  gap: 0rem 1.5rem;
   width: 100%;
-  margin: 3rem 0 6rem 0;
+  margin: 6rem 0 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
-  font-size: 1.1em;
+  font-size: 1em;
   letter-spacing: -0.01em;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
-    gap: 2rem 1rem;
+    gap: 0.5rem 1rem;
   }
 `
 

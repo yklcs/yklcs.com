@@ -8,6 +8,7 @@ declare module "styled-components" {
       l100: string
       l95: string
       l65: string
+      l50: string
       l15: string
     }
     brand: {
