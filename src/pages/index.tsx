@@ -58,6 +58,7 @@ const IndexPage = (): JSX.Element => {
 
             @media screen and (max-width: 50rem) {
               grid-column: span 2;
+              font-size: 1.15em;
             }
           `}
         >
@@ -68,7 +69,8 @@ const IndexPage = (): JSX.Element => {
               color: ${({ theme }) => theme.neutral.l50};
             `}
           >
-            Research — Development — Design
+            Research <br /> Development <br />
+            Design
           </span>
         </span>
         <span
@@ -120,7 +122,7 @@ const IndexPage = (): JSX.Element => {
             @media screen and (max-width: 50rem) {
               display: flex;
               flex-direction: column;
-              grid-column: 1 / span 2;
+              grid-column: 2 / span 1;
               align-items: flex-start;
             }
 
@@ -236,7 +238,7 @@ const Bio = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 0rem 1.5rem;
   width: 100%;
-  margin: 6rem 0 6rem 0;
+  margin: 4.5rem 0 6rem 0;
   color: ${({ theme }) => theme.brand.l50};
   font-size: 1em;
   letter-spacing: -0.01em;
