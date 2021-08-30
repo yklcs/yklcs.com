@@ -7,23 +7,8 @@ import { InternalLink } from "./links"
 const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
   <HeaderContainer>
     <Breadcrumbs location={location} />
-    <Links>
-      <InternalLink to="/blog" $underline={false}>
-        Blog
-      </InternalLink>
-      <InternalLink to="/resume" $underline={false}>
-        Resume
-      </InternalLink>
-    </Links>
   </HeaderContainer>
 )
-
-const Links = styled.div`
-  display: flex;
-  * {
-    margin: 0 0 0 0.75rem;
-  }
-`
 
 const HeaderContainer = styled.div`
   display: flex;
