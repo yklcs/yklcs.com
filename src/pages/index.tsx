@@ -108,10 +108,6 @@ const IndexPage = (): JSX.Element => {
   )
 }
 
-const Emphasis = styled.span`
-  font-style: italic;
-`
-
 const Hello = styled.div`
   grid-column: 1 / span 3;
   color: ${({ theme }) => theme.neutral.l15};
@@ -120,7 +116,7 @@ const Hello = styled.div`
 
   @media screen and (max-width: 50rem) {
     grid-column: span 2;
-    font-size: 1.15em;
+    font-size: 1.3em;
   }
 `
 
@@ -141,7 +137,7 @@ const Bio = styled.div`
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 4.5rem 1.5rem;
   width: 100%;
-  margin: 4.5rem 0 6rem 0;
+  margin: 6rem 0 12rem 0;
   font-size: 1em;
   letter-spacing: -0.01em;
 
