@@ -48,15 +48,13 @@ const IndexPage = (): JSX.Element => {
       <SEO />
       <Bio>
         <Hello>
-          <Emphasis>I'm Lucas Yunkyu Lee.</Emphasis>
-          <br />I research, develop, and design.
+          Lucas Yunkyu Lee — research, development, design.{" "}
+          <Description>
+            Studying at POSTECH with a presidential science scholarship focusing
+            on SciML research. Performing fullstack webdev and cloud-native
+            devops for PoApper. Designing on-and-off for various projects.
+          </Description>
         </Hello>
-        <Description>
-          Studying at <Emphasis>POSTECH</Emphasis> on a Presidential Science
-          Scholarship focusing on SciML research. Performing fullstack webdev
-          and cloud-native devops for <Emphasis>PoApper</Emphasis>. Designing
-          on-and-off for various projects.
-        </Description>
         <Links>
           <ExternalLink $underline={false} href="mailto:me@luc.li">
             me@luc.li
@@ -111,14 +109,14 @@ const IndexPage = (): JSX.Element => {
 }
 
 const Emphasis = styled.span`
-  color: ${({ theme }) => theme.neutral.l15};
+  font-style: italic;
 `
 
 const Hello = styled.div`
   grid-column: 1 / span 3;
-  color: ${({ theme }) => theme.neutral.l50};
-  font-size: 1.25em;
-  line-height: 1.5;
+  color: ${({ theme }) => theme.neutral.l15};
+  font-size: 1.5em;
+  line-height: 1.6;
 
   @media screen and (max-width: 50rem) {
     grid-column: span 2;
@@ -126,17 +124,8 @@ const Hello = styled.div`
   }
 `
 
-const Description = styled.p`
-  grid-column: 3 / span 2;
-  margin: 3rem 0 3rem 0;
+const Description = styled.span`
   color: ${({ theme }) => theme.neutral.l50};
-  font-weight: 400;
-  font-size: 1em;
-  line-height: 1.9rem;
-
-  @media screen and (max-width: 50rem) {
-    grid-column: 1 / span 2;
-  }
 `
 
 const Container = styled.div`
@@ -150,16 +139,15 @@ const Bio = styled.div`
   display: grid;
   grid-auto-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 0rem 1.5rem;
+  gap: 4.5rem 1.5rem;
   width: 100%;
   margin: 4.5rem 0 6rem 0;
-  color: ${({ theme }) => theme.brand.l50};
   font-size: 1em;
   letter-spacing: -0.01em;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
-    gap: 0.5rem 1rem;
+    gap: 4.5rem 1rem;
   }
 `
 
@@ -179,12 +167,11 @@ const Cards = styled.div`
 const Links = styled.div`
   display: grid;
   grid-auto-flow: column;
-  grid-column: 3 / span 2;
+  grid-column: 1 / span 2;
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   gap: 0 1.5rem;
   justify-items: start;
-  color: ${({ theme }) => theme.neutral.l50};
   font-size: 1em;
   line-height: 1.9rem;
 
