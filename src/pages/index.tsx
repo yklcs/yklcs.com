@@ -111,12 +111,12 @@ const IndexPage = (): JSX.Element => {
 const Hello = styled.div`
   grid-column: 1 / span 3;
   color: ${({ theme }) => theme.neutral.l15};
-  font-size: 1.5em;
+  font-size: 1.7em;
   line-height: 1.6;
 
   @media screen and (max-width: 50rem) {
     grid-column: span 2;
-    font-size: 1.3em;
+    font-size: 1.5em;
   }
 `
 
@@ -135,7 +135,7 @@ const Bio = styled.div`
   display: grid;
   grid-auto-rows: auto;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 4.5rem 1.5rem;
+  gap: 6rem 1.5rem;
   width: 100%;
   margin: 6rem 0 12rem 0;
   font-size: 1em;
@@ -144,6 +144,7 @@ const Bio = styled.div`
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
     gap: 4.5rem 1rem;
+    margin: 3rem 0 9rem 0;
   }
 `
 
