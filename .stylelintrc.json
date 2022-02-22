@@ -10,5 +10,6 @@
     "color-hex-length": "long",
     "string-quotes": "double",
     "indentation": 2
-  }
+  },
+  "customSyntax": "@stylelint/postcss-css-in-js"
 }
