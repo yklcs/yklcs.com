@@ -2,6 +2,11 @@ import { hsl } from "polished"
 import { DefaultTheme } from "styled-components"
 
 const theme: DefaultTheme = {
+  breakpoints: {
+    sm: "40rem",
+    md: "70rem",
+    lg: "100rem",
+  },
   neutral: {
     l100: hsl(228, 0.07, 1),
     l95: hsl(228, 0.07, 0.95),

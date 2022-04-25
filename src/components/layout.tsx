@@ -26,13 +26,15 @@ const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
 )
 
 const Wrapper = styled.div`
-  max-width: 70em;
-  margin: auto;
-  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(1.5rem, 1fr)
+    [main-start] minmax(0, 100em) [main-end]
+    minmax(1.5rem, 1fr) [full-end];
   line-height: 1.5;
 
-  @media screen and (max-width: 50rem) {
-    padding: 0 1rem;
+  & > * {
+    grid-column: main;
   }
 `
 

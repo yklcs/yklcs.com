@@ -1,60 +1,58 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
+import respond from "../utils/responsive"
 import { ExternalLink, InternalLink } from "./links"
 
 const Footer = (): JSX.Element => (
   <FooterContainer>
-    <FooterHeader>
-      <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton>
-    </FooterHeader>
-    <Copyright>
-      <Name>Lucas Lee</Name>
-      <span>© 2021</span>
-    </Copyright>
-    <Links>
-      <InternalLink to="/" $underline={false}>
-        Home
-      </InternalLink>
-      <InternalLink to="/blog" $underline={false}>
-        Blog
-      </InternalLink>
-      <InternalLink to="/resume" $underline={false}>
-        Resume
-      </InternalLink>
-    </Links>
-    <Links>
-      <ExternalLink href="mailto:me@luc.li" $underline={false}>
-        me@luc.li
-      </ExternalLink>
-      <ExternalLink href="https://github.com/rocketll" $underline={false}>
-        github.com/rocketll
-      </ExternalLink>
-    </Links>
+    {/* <FooterHeader> */}
+    {/* <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton> */}
+    {/* </FooterHeader> */}
     <SiteInfo>
-      <InternalLink to="/colophon" $underline={false}>
-        Colophon
-      </InternalLink>
-      {" · "}
-      <ExternalLink
-        href="https://github.com/rocketll/luc.li"
-        $underline={false}
-      >
-        Site source
-      </ExternalLink>
+      <Copyright>© Lucas Lee 2021</Copyright>
+      <Links>
+        <InternalLink to="/" $underline={false}>
+          Home{" "}
+        </InternalLink>
+        {" · "}
+        <InternalLink to="/colophon" $underline={false}>
+          Colophon
+        </InternalLink>
+        {" · "}
+        <ExternalLink
+          href="https://github.com/rocketll/luc.li"
+          $underline={false}
+        >
+          Site source
+        </ExternalLink>
+      </Links>
     </SiteInfo>
   </FooterContainer>
 )
 
+const Links = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+`
+
 const Copyright = styled.div`
   display: flex;
   flex-direction: column;
-  grid-column: span 2;
+  margin: 0 auto 0 0;
 `
 
 const SiteInfo = styled.div`
-  grid-column: 1/-1;
-  margin: 3rem 0 0 0;
-  color: ${({ theme }) => theme.neutral.l65};
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+
+  ${respond(
+    "md",
+    css`
+      flex-direction: column-reverse;
+    `
+  )}
 `
 
 const ScrollUpButton = styled.button`
@@ -79,36 +77,18 @@ const FooterHeader = styled.div`
   display: flex;
   grid-column: 1/-1;
   justify-content: center;
-  border-bottom: 1px solid ${({ theme }) => theme.neutral.l95};
-`
-
-const Name = styled.span`
-  font-weight: 700;
-`
-
-const Links = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  @media screen and (max-width: 50rem) {
-    grid-column: span 2;
-  }
+  /* border-bottom: 1px solid ${({ theme }) => theme.neutral.l95}; */
 `
 
 const FooterContainer = styled.footer`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 12rem 0 0 0;
+  gap: 1rem;
   padding: 1.5rem 0;
-  color: inherit;
+  color: ${({ theme }) => theme.neutral.l65};
   line-height: 1.5rem;
-
-  @media screen and (max-width: 50rem) {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 1rem;
-  }
 `
 
 export default Footer

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactNode } from "react"
 import styled, { css } from "styled-components"
 import { Link as GatsbyLink } from "gatsby"
 
@@ -20,17 +20,19 @@ const ExternalLink = styled.a`
 const Link = ({
   to,
   children,
+  $underline,
   ...props
 }: {
   to: string
-  children: JSX.Element
+  children: ReactNode
+  $underline?: boolean
 }): JSX.Element =>
   to.startsWith("/") ? (
-    <InternalLink to={to} {...props}>
+    <InternalLink to={to} $underline={$underline} {...props}>
       {children}
     </InternalLink>
   ) : (
-    <ExternalLink href={to} {...props}>
+    <ExternalLink href={to} $underline={$underline} {...props}>
       {children}
     </ExternalLink>
   )

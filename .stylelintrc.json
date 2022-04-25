@@ -1,6 +1,6 @@
 {
   "extends": [
-    "stylelint-config-recommended",
+    "stylelint-config-standard",
     "stylelint-config-styled-components",
     "stylelint-config-rational-order",
     "stylelint-config-prettier"
@@ -11,5 +11,10 @@
     "string-quotes": "double",
     "indentation": 2
   },
-  "customSyntax": "@stylelint/postcss-css-in-js"
+  "overrides": [
+    {
+      "files": ["**/*.tsx", "**/*.jsx"],
+      "customSyntax": "@stylelint/postcss-css-in-js"
+    }
+  ]
 }

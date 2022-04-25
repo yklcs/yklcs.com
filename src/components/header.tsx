@@ -2,19 +2,59 @@ import React from "react"
 import styled, { css } from "styled-components"
 import { WindowLocation } from "@reach/router"
 
-import { InternalLink } from "./links"
+import Link, { InternalLink } from "./links"
+import respond from "../utils/responsive"
 
 const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
   <HeaderContainer>
-    <Breadcrumbs location={location} />
+    {/* <Breadcrumbs location={location} /> */}
+    <Title>Lucas Yunkyu Lee</Title>
+    <HeaderLinks>
+      <Link to="/blog" $underline={false}>
+        Blog
+      </Link>
+      <Link to="/resume" $underline={false}>
+        Resume
+      </Link>
+    </HeaderLinks>
   </HeaderContainer>
 )
+
+const Title = styled.h1`
+  font-weight: 400;
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  margin: 0 0 0 -0.01em;
+`
+
+const HeaderLinks = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  ${respond(
+    "sm",
+    css`
+      display: none;
+    `
+  )}
+`
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
+  font-size: 1.125em;
+
+  ${respond(
+    "sm",
+    css`
+      gap: 1rem;
+      margin: 1.5rem 0;
+      flex-direction: column;
+    `
+  )}
 `
 
 const Breadcrumbs = ({ location }: { location: WindowLocation }) => (
