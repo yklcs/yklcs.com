@@ -3,7 +3,7 @@ import styled, { css } from "styled-components"
 import respond from "../utils/responsive"
 import { ExternalLink, InternalLink } from "./links"
 
-const Footer = (): JSX.Element => (
+const Footer = ({ buildDate }: { buildDate: string }): JSX.Element => (
   <FooterContainer>
     {/* <FooterHeader> */}
     {/* <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton> */}
@@ -32,10 +32,7 @@ const Footer = (): JSX.Element => (
         font-size: 0.8em;
       `}
     >
-      Site built at{" "}
-      <time dateTime={new Date().toISOString()}>
-        {new Date().toISOString()}
-      </time>
+      Site built at <time dateTime={buildDate}>{buildDate}</time>
     </code>
   </FooterContainer>
 )

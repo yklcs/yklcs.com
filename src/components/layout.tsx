@@ -15,7 +15,11 @@ if (process.env.DISABLE_PRIVATE_FONTS !== "1") {
   require("../fonts/private/fonts.css")
 }
 
-const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
+const Layout = ({
+  children,
+  location,
+  pageContext,
+}: PageProps<object, object & { date: string }>) => (
   <ThemeProvider theme={theme}>
     <Wrapper>
       <GlobalStyle />
@@ -23,7 +27,7 @@ const Layout: FunctionComponent<PageProps> = ({ children, location }) => (
     </Wrapper>
     {children}
     <Wrapper>
-      <Footer />
+      <Footer buildDate={pageContext.date} />
     </Wrapper>
   </ThemeProvider>
 )
