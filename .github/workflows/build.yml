@@ -18,21 +18,19 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
+
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: "14"
-
-      - name: Get Node cache
-        uses: actions/cache@v2
-        id: get-node-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+          cache: "pnpm"
 
       - name: Install
-        if: steps.get-node-cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: pnpm i
 
       - name: Get Gatsby cache
         uses: actions/cache@v2
@@ -46,4 +44,4 @@ jobs:
             gatsby-output-
 
       - name: Build
-        run: npm run build
+        run: pnpm build

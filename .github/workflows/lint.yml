@@ -11,32 +11,30 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
+
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: "14"
-
-      - name: Get Node cache
-        uses: actions/cache@v2
-        id: get-node-cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+          cache: "pnpm"
 
       - name: Install
-        if: steps.get-node-cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: pnpm i
 
       - name: Lint JS
         env:
           NODE_ENV: test
-        run: npm run lint:js
+        run: pnpm lint:js
 
       - name: Lint CSS
-        run: npm run lint:css
+        run: pnpm lint:css
 
       - name: Lint formatting
-        run: npm run lint:format
+        run: pnpm lint:format
 
       - name: Check types
-        run: npm run type-check
+        run: pnpm type-check
