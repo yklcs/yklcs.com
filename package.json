@@ -18,7 +18,7 @@
     "get-fonts": "aws s3 sync s3://luc.li-fonts src/fonts/private",
     "push-fonts": "aws s3 sync src/fonts/private s3://luc.li-fonts",
     "prebuild": "[ -z $DISABLE_PRIVATE_FONTS ] && pnpm get-fonts",
-    "build": "gatsby build",
+    "build": "pnpm prebuild && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "format": "prettier --write .",
