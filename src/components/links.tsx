@@ -1,6 +1,6 @@
-import React, { ReactNode } from "react"
+import React, { HTMLProps, ReactNode } from "react"
 import styled, { css } from "styled-components"
-import { Link as GatsbyLink } from "gatsby"
+import { GatsbyLinkProps, Link as GatsbyLink } from "gatsby"
 
 const linkStyle = css<{ $underline?: boolean }>`
   color: inherit;
@@ -17,22 +17,18 @@ const ExternalLink = styled.a`
   ${linkStyle}
 `
 
-const Link = ({
-  to,
-  children,
-  $underline,
-  ...props
-}: {
+type LinkProps = HTMLProps<HTMLAnchorElement> & {
   to: string
-  children: ReactNode
   $underline?: boolean
-}): JSX.Element =>
+}
+
+const Link = ({ to, $underline, children }: LinkProps): JSX.Element =>
   to.startsWith("/") ? (
-    <InternalLink to={to} $underline={$underline} {...props}>
+    <InternalLink to={to} $underline={$underline}>
       {children}
     </InternalLink>
   ) : (
-    <ExternalLink href={to} $underline={$underline} {...props}>
+    <ExternalLink href={to} $underline={$underline}>
       {children}
     </ExternalLink>
   )

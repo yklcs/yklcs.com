@@ -5,6 +5,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import Sticky from "react-stickynode"
 
 import SEO from "../components/seo"
+import { Wrapper } from "../components/layout"
 
 interface ResumeQueryData {
   allFile: {
@@ -38,149 +39,152 @@ const Resume: FunctionComponent = () => {
   }, [])
 
   return (
-    <Container>
-      <SEO title="Resume" description="Resume of Lucas Yunkyu Lee" />
-      <Grid>
-        <Title main>
-          <Emph>Lucas Yunkyu Lee</Emph>
-        </Title>
-        <Content>
-          <ContentItem>
-            <ALink href="mailto:me@luc.li">me@luc.li</ALink>
-            <InternalLink to="/">https://luc.li/</InternalLink>
-            <ContentItemText>Seoul, Korea</ContentItemText>
-          </ContentItem>
-        </Content>
+    <Wrapper>
+      <Container>
+        <SEO title="Resume" description="Resume of Lucas Yunkyu Lee" />
+        <Grid>
+          <Title>
+            <Emph>Information</Emph>
+          </Title>
+          <Content>
+            <ContentItem>
+              <ALink href="mailto:me@luc.li">me@luc.li</ALink>
+              <InternalLink to="/">https://luc.li/</InternalLink>
+              <ContentItemText>Seoul, Korea</ContentItemText>
+            </ContentItem>
+          </Content>
 
-        <Title>Education</Title>
-        <Content>
-          <ContentItem>
-            <ContentItemText>POSTECH, 2021–</ContentItemText>
-            <ContentItemText>Hana Academy Seoul, 2018–2020</ContentItemText>
-          </ContentItem>
-        </Content>
+          <Title>Education</Title>
+          <Content>
+            <ContentItem>
+              <ContentItemText>POSTECH, 2021–</ContentItemText>
+              <ContentItemText>Hana Academy Seoul, 2018–2020</ContentItemText>
+            </ContentItem>
+          </Content>
 
-        <Title>Skills</Title>
-        <Content>
-          <ContentItem text title="Fully Proficient Languages">
-            JavaScript, Python, TeX
-          </ContentItem>
-          <ContentItem text title="Novice Languages">
-            Go, Java, Julia, C, TypeScript, Mathematica, MATLAB
-          </ContentItem>
-          <ContentItem text title="Cloud Computing">
-            AWS (S3, CloudFront, Lambda@Edge, Amplify, EC2, Route53)
-          </ContentItem>
-          <ContentItem text title="Web Frontend Technologies">
-            React, Gatsby, ES6+, SASS, CSS-in-JS, Babel, Webpack
-          </ContentItem>
-          <ContentItem text title="Web Backend Technologies">
-            Go, Django, Express, Apache, Nginx
-          </ContentItem>
-          <ContentItem text title="Web Integrations">
-            Ghost, Wordpress, Google Workspace, Microsoft 365
-          </ContentItem>
-          <ContentItem text title="Systems">
-            macOS, Linux (Arch, Ubuntu), Windows 10, Raspberry Pi, Arduino
-          </ContentItem>
-          <ContentItem text title="Tooling">
-            Git, Github Actions
-          </ContentItem>
-        </Content>
+          <Title>Skills</Title>
+          <Content>
+            <ContentItem text title="Fully Proficient Languages">
+              JavaScript, Python, TeX
+            </ContentItem>
+            <ContentItem text title="Novice Languages">
+              Go, Java, Julia, C, TypeScript, Mathematica, MATLAB
+            </ContentItem>
+            <ContentItem text title="Cloud Computing">
+              AWS (S3, CloudFront, Lambda@Edge, Amplify, EC2, Route53)
+            </ContentItem>
+            <ContentItem text title="Web Frontend Technologies">
+              React, Gatsby, ES6+, SASS, CSS-in-JS, Babel, Webpack
+            </ContentItem>
+            <ContentItem text title="Web Backend Technologies">
+              Go, Django, Express, Apache, Nginx
+            </ContentItem>
+            <ContentItem text title="Web Integrations">
+              Ghost, Wordpress, Google Workspace, Microsoft 365
+            </ContentItem>
+            <ContentItem text title="Systems">
+              macOS, Linux (Arch, Ubuntu), Windows 10, Raspberry Pi, Arduino
+            </ContentItem>
+            <ContentItem text title="Tooling">
+              Git, Github Actions
+            </ContentItem>
+          </Content>
 
-        <Title>
-          <Sticky top={100} enabled={bp}>
-            Experience
-          </Sticky>
-        </Title>
-        <Content>
-          <ContentItem
-            title={<ALink href="https://hashmm.com">hashmm.com</ALink>}
-            large
-          >
-            <ContentItemText>
-              2020 – Project Manager + Lead Developer
-            </ContentItemText>
-            <p>
-              Led a small team to create and develop hashmm.com, the Hana
-              Academy Seoul student webzine. Used Ghost for effective content
-              management and SEO, maximizing traffic and exposure. Deployed onto
-              AWS EC2 and served via AWS CloudFront for performance and
-              scalability.
-            </p>
-            <StaticImage
-              src="../images/hashmm-screenshot.png"
-              alt="hashmm.com screenshot"
-              layout="fullWidth"
-              style={imageWrapperStyle}
-              imgStyle={imageStyle}
-            />
-          </ContentItem>
-          <ContentItem title="Interactive Epidemiology Model" large>
-            <ContentItemText>2020 – Lead Developer</ContentItemText>
-            <p>
-              Participated in creating a website showing the SIR model and its
-              variants in epidemiology. Solved the SIR differential equation
-              through numerical analysis and visualized the results
-              interactively. Frontend developed in React using Ant Design.
-            </p>
-            <video
-              style={imageWrapperStyle}
-              autoPlay
-              loop
-              muted
-              playsInline
-              poster={
-                data.allFile.nodes.find(node => node.name === "sir-screenshot")
-                  ?.publicURL
-              }
+          <Title>
+            <Sticky top={100} enabled={bp}>
+              Experience
+            </Sticky>
+          </Title>
+          <Content>
+            <ContentItem
+              title={<ALink href="https://hashmm.com">hashmm.com</ALink>}
+              large
             >
-              <source
-                src={
-                  data.allFile.nodes.find(node => node.name === "sir-movie")
-                    ?.publicURL
-                }
-                type="video/mp4"
+              <ContentItemText>
+                2020 – Project Manager + Lead Developer
+              </ContentItemText>
+              <p>
+                Led a small team to create and develop hashmm.com, the Hana
+                Academy Seoul student webzine. Used Ghost for effective content
+                management and SEO, maximizing traffic and exposure. Deployed
+                onto AWS EC2 and served via AWS CloudFront for performance and
+                scalability.
+              </p>
+              <StaticImage
+                src="../images/hashmm-screenshot.png"
+                alt="hashmm.com screenshot"
+                layout="fullWidth"
+                style={imageWrapperStyle}
+                imgStyle={imageStyle}
               />
-            </video>
-          </ContentItem>
-          <ContentItem title="Korea Young Physicists' Tournament" large>
-            <ContentItemText>2019 – Team Member</ContentItemText>
-            <ContentItemText>2020 – Team Captain</ContentItemText>
-            <p>
-              Participated in KYPT 2019 as a team member and in KYPT 2020 as the
-              team captain. Represented Hana Academy Seoul in Team ForMAT,
-              winning Gold and Grand prizes. Leveraged skills in programming and
-              technical computing in addition to physical knowledge, conducting
-              calculations and visualizations through Python, MATLAB,
-              Mathematica, Julia, and more.
-            </p>
-          </ContentItem>
-          <ContentItem title="KdV Equation PINN" large>
-            <ContentItemText>2019</ContentItemText>
-            <p>
-              Solved the KdV differential equation with physics-informed neural
-              networks togther with a partner. Succeeded in superior performance
-              compared to traditional numerical methods (Crank-Nicolson).
-              Implemented in Python using DeepXDE and Tensorflow, with
-              processing and utilities from MATLAB.
-            </p>
-            <StaticImage
-              src="../images/kdvpinn.png"
-              alt="hashmm.com screenshot"
-              layout="fullWidth"
-              style={imageWrapperStyle}
-              imgStyle={imageStyle}
-            />
-          </ContentItem>
-        </Content>
-      </Grid>
-    </Container>
+            </ContentItem>
+            <ContentItem title="Interactive Epidemiology Model" large>
+              <ContentItemText>2020 – Lead Developer</ContentItemText>
+              <p>
+                Participated in creating a website showing the SIR model and its
+                variants in epidemiology. Solved the SIR differential equation
+                through numerical analysis and visualized the results
+                interactively. Frontend developed in React using Ant Design.
+              </p>
+              <video
+                style={imageWrapperStyle}
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster={
+                  data.allFile.nodes.find(
+                    node => node.name === "sir-screenshot"
+                  )?.publicURL
+                }
+              >
+                <source
+                  src={
+                    data.allFile.nodes.find(node => node.name === "sir-movie")
+                      ?.publicURL
+                  }
+                  type="video/mp4"
+                />
+              </video>
+            </ContentItem>
+            <ContentItem title="Korea Young Physicists' Tournament" large>
+              <ContentItemText>2019 – Team Member</ContentItemText>
+              <ContentItemText>2020 – Team Captain</ContentItemText>
+              <p>
+                Participated in KYPT 2019 as a team member and in KYPT 2020 as
+                the team captain. Represented Hana Academy Seoul in Team ForMAT,
+                winning Gold and Grand prizes. Leveraged skills in programming
+                and technical computing in addition to physical knowledge,
+                conducting calculations and visualizations through Python,
+                MATLAB, Mathematica, Julia, and more.
+              </p>
+            </ContentItem>
+            <ContentItem title="KdV Equation PINN" large>
+              <ContentItemText>2019</ContentItemText>
+              <p>
+                Solved the KdV differential equation with physics-informed
+                neural networks togther with a partner. Succeeded in superior
+                performance compared to traditional numerical methods
+                (Crank-Nicolson). Implemented in Python using DeepXDE and
+                Tensorflow, with processing and utilities from MATLAB.
+              </p>
+              <StaticImage
+                src="../images/kdvpinn.png"
+                alt="hashmm.com screenshot"
+                layout="fullWidth"
+                style={imageWrapperStyle}
+                imgStyle={imageStyle}
+              />
+            </ContentItem>
+          </Content>
+        </Grid>
+      </Container>
+    </Wrapper>
   )
 }
 
 const Container = styled.div`
-  margin: 10rem 0 0 0;
+  margin: 4rem 0 0 0;
   font-size: 1em;
   line-height: 1.5;
 `
@@ -206,7 +210,7 @@ const TitleDiv = styled.div`
 
 const TitleText = styled.h2<{ main: boolean }>`
   margin: 0;
-  font-weight: ${({ main }) => (main ? 700 : 500)};
+  font-weight: ${({ main }) => (main ? 700 : 600)};
   font-size: inherit;
 `
 

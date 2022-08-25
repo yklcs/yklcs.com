@@ -27,6 +27,16 @@ const Footer = (): JSX.Element => (
         </ExternalLink>
       </Links>
     </SiteInfo>
+    <code
+      css={css`
+        font-size: 0.8em;
+      `}
+    >
+      Site built at{" "}
+      <time dateTime={new Date().toISOString()}>
+        {new Date().toISOString()}
+      </time>
+    </code>
   </FooterContainer>
 )
 
@@ -45,6 +55,8 @@ const Copyright = styled.div`
 const SiteInfo = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
   gap: 0.5rem;
 
   ${respond(
@@ -83,7 +95,7 @@ const FooterHeader = styled.div`
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
   margin: 12rem 0 0 0;
   gap: 1rem;
   padding: 1.5rem 0;

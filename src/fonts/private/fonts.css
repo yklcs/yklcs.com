@@ -17,6 +17,22 @@
 }
 
 @font-face {
+  font-weight: 450;
+  font-family: "Suisse Int'l";
+  font-style: normal;
+  src: url("Suisse_Int'l-450-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 450;
+  font-family: "Suisse Int'l";
+  font-style: italic;
+  src: url("Suisse_Int'l-450-italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
   font-weight: 500;
   font-family: "Suisse Int'l";
   font-style: normal;
@@ -29,6 +45,22 @@
   font-family: "Suisse Int'l";
   font-style: italic;
   src: url("Suisse_Int'l-500-italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 600;
+  font-family: "Suisse Int'l";
+  font-style: normal;
+  src: url("Suisse_Int'l-600-normal.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 600;
+  font-family: "Suisse Int'l";
+  font-style: italic;
+  src: url("Suisse_Int'l-600-italic.woff2") format("woff2");
   font-display: swap;
 }
 

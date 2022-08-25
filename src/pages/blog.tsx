@@ -1,11 +1,12 @@
 import React, { Dispatch, FunctionComponent, SetStateAction } from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import { groupBy } from "../utils/collections"
 import { useState } from "react"
 import { format, getYear } from "date-fns"
+import { Wrapper } from "../components/layout"
 
 interface PostNode {
   frontmatter: {
@@ -51,7 +52,11 @@ const Blog: FunctionComponent = () => {
   const posts = data.allMdx.nodes.filter(node => !!node.frontmatter.date)
 
   return (
-    <Layout>
+    <Wrapper
+      css={css`
+        margin: 2rem 0 0 0;
+      `}
+    >
       <Title>Blog</Title>
       <Sorter group={group} setGroup={setGroup} />
       <SEO title="Blog" description="Lucas's Blog" />
@@ -67,7 +72,7 @@ const Blog: FunctionComponent = () => {
         .map(n => {
           return <PostCollection group={n[0]} posts={n[1]} />
         })}
-    </Layout>
+    </Wrapper>
   )
 }
 
@@ -95,14 +100,6 @@ const PostCollection = ({
 
 const PostGroupName = styled.div`
   grid-column: span 2;
-`
-
-const Layout = styled.div`
-  margin: 6rem 0 0 0;
-
-  @media screen and (max-width: 40rem) {
-    margin: 4.5rem 0 0 0;
-  }
 `
 
 const PostGroupContainer = styled.div`
@@ -164,7 +161,7 @@ const PostTags = styled.div`
 `
 
 const Title = styled.h1`
-  grid-column: span 2;
+  /* grid-column: span 2; */
   margin: 0;
   font-weight: 500;
   font-size: 2em;
