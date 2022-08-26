@@ -93,16 +93,20 @@ const IndexPage = (): JSX.Element => {
           {[
             {
               title: "Research",
-              entries: ["Generative models", "Neural networks", "SciML"],
+              entries: [
+                "Neural networks",
+                "Generative models",
+                "Scientific ML",
+              ],
             },
             {
               title: "Development",
               entries: [
+                "Web development",
                 "Systems development",
-                "MLOps",
-                "Web frontend",
-                "DevOps",
                 "Scientific computing",
+                "DevOps",
+                "MLOps",
               ],
             },
             {
@@ -181,22 +185,22 @@ const IndexPage = (): JSX.Element => {
           <Project
             title="fights.ai"
             year="2022"
-            description="Environments for competitive multi-agent artificial intelligence development"
+            description="Environments for competitive multi-agent reinforcement learning research and development"
           />
           <Project
-            title="Sane color theme"
+            title="Multi-object tracking"
             year="2022"
-            description="A saner color theme"
+            description="Evaluating state-of-the-art multi-object tracking models with real-world data"
           />
           <Project
             title="Deep learning hardware design"
             year="2022"
-            description="Hardware acceleration of object detection"
+            description="Accelerating object detection networks with FPGAs"
           />
           <Project
             title="hashmm.com"
-            year="2022"
-            description="School newspaper"
+            year="2020"
+            description="Online student magazine for Hana Academy Seoul"
           />
         </Section>
       </Wrapper>
@@ -208,7 +212,7 @@ const gridStyle = css`
   display: grid;
   grid-auto-rows: min-content;
   grid-template-columns: repeat(6, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
 `
 
 const Description = styled.p`
