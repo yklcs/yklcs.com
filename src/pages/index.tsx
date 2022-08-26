@@ -37,9 +37,17 @@ const IndexPage = (): JSX.Element => {
               ${respond(
                 50,
                 css`
+                  grid-column: span 6;
                   grid-template-columns: 1fr;
                   gap: 1.5rem 0;
                   margin: 2rem 0 0;
+                `
+              )}
+
+              ${respond(
+                "sm",
+                css`
+                  font-size: 1em;
                 `
               )}
             `}
@@ -125,7 +133,7 @@ const IndexPage = (): JSX.Element => {
                 display: grid;
                 grid-column: span 6;
                 grid-template-columns: 1fr 1fr;
-                gap: 1.25rem 1.25rem;
+                gap: 2rem;
                 margin: 0 0 1rem;
 
                 ${respond(
@@ -149,6 +157,13 @@ const IndexPage = (): JSX.Element => {
                       font-size: 1.5em;
                     `
                   )}
+
+                  ${respond(
+                    "sm",
+                    css`
+                      font-size: 1.25em;
+                    `
+                  )}
                 `}
               >
                 {title}
@@ -163,6 +178,13 @@ const IndexPage = (): JSX.Element => {
                     "md",
                     css`
                       font-size: 1.125em;
+                    `
+                  )}
+
+                  ${respond(
+                    "sm",
+                    css`
+                      font-size: 1em;
                     `
                   )}
                 `}
@@ -251,7 +273,15 @@ const SectionHeader = styled.h2`
   ${respond(
     "md",
     css`
+      margin: 0 -0.025em 3rem 0;
       font-size: 2rem;
+    `
+  )}
+
+  ${respond(
+    "sm",
+    css`
+      margin: 0 -0.025em 2rem 0;
     `
   )}
 `
@@ -280,6 +310,7 @@ const ProjectContainer = styled.div`
     "sm",
     css`
       grid-column: span 6;
+      font-size: 1em;
     `
   )}
 `
