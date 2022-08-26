@@ -10,12 +10,12 @@ const IndexPage = (): JSX.Element => {
       <Wrapper>
         <Section
           css={css`
+            gap: 1rem 0;
             margin: 3rem 0 6rem;
-
             ${respond(
               "sm",
               css`
-                margin: 1.5rem 0 3rem;
+                margin: 1rem 0 3rem;
               `
             )}
           `}
@@ -28,7 +28,7 @@ const IndexPage = (): JSX.Element => {
           <div
             css={css`
               display: grid;
-              grid-column: 1 / span 3;
+              grid-column: span 3;
               grid-template-columns: 1fr 1fr;
               gap: 2rem 0;
               margin: 4rem 0 0;
@@ -38,7 +38,8 @@ const IndexPage = (): JSX.Element => {
                 50,
                 css`
                   grid-template-columns: 1fr;
-                  gap: 1rem 0;
+                  gap: 1.5rem 0;
+                  margin: 2rem 0 0;
                 `
               )}
             `}
