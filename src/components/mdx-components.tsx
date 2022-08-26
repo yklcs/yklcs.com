@@ -1,8 +1,8 @@
-import { MDXProviderComponentsProp } from "@mdx-js/react"
 import styled, { css } from "styled-components"
 import Code from "./code"
 import { ExternalLink, InternalLink } from "./links"
 import { StaticImage } from "gatsby-plugin-image"
+import { Components } from "@mdx-js/react/lib"
 
 const lineHeight = 1.8
 const typeScale = 1.2
@@ -16,7 +16,7 @@ const Title = styled.h1`
   letter-spacing: -0.022em;
 `
 
-const mdxComponents: MDXProviderComponentsProp = {}
+const mdxComponents: Components = {}
 
 mdxComponents.h1 = Title
 
@@ -96,7 +96,7 @@ const Sidenote = styled.span`
   }
 `
 
-const components = {
+const components: Components = {
   ...mdxComponents,
   Sidenote,
   ExternalLink,

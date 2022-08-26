@@ -1,25 +1,21 @@
-import React, { FunctionComponent, ReactChild } from "react"
+import React, { HTMLProps } from "react"
 import Highlight, { defaultProps, Language } from "prism-react-renderer"
 import styled, { useTheme } from "styled-components"
 
-interface CodeProps {
-  children: ReactChild
-  className: string
-}
-
-const Code: FunctionComponent<CodeProps> = ({ children, className }) => {
+const Code = ({ children, className = "" }: HTMLProps<HTMLElement>) => {
+  console.log(className)
   const theme = useTheme()
   const language = className.replace(/language-/, "") || ""
 
-  return (
+  return language ? (
     <Highlight
       {...defaultProps}
-      code={children.toString()}
+      code={children as string}
       language={language as Language}
       theme={theme.syntax}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={style}>
+        <Div className={className} style={style}>
           {tokens.slice(0, -1).map((line, i) => (
             <Line key={i} {...getLineProps({ line, key: i })}>
               <LineNo>{i + 1}</LineNo>
@@ -30,13 +26,15 @@ const Code: FunctionComponent<CodeProps> = ({ children, className }) => {
               </LineContent>
             </Line>
           ))}
-        </Pre>
+        </Div>
       )}
     </Highlight>
+  ) : (
+    <code>{children}</code>
   )
 }
 
-const Pre = styled.pre`
+const Div = styled.div`
   margin: 1rem -0.5rem;
   padding: 0.5rem;
   overflow-x: auto;

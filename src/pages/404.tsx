@@ -20,12 +20,12 @@ const ErrorContainer = styled.div`
 `
 
 const ErrorTitle = styled.h1`
-  margin: 10rem 0 1rem 0;
+  margin: 10rem 0 1rem;
   font-size: 3em;
 `
 
 const ErrorText = styled.p`
-  margin: 0 0 3rem 0;
+  margin: 0 0 3rem;
   color: ${({ theme }) => theme.neutral.l65};
   font-size: 1.1em;
 `

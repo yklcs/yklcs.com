@@ -17,7 +17,6 @@ interface PostNode {
   fields: {
     slug: string
   }
-  timeToRead: number
 }
 
 interface BlogQueryData {
@@ -33,7 +32,9 @@ const Blog: FunctionComponent = () => {
 
   const data: BlogQueryData = useStaticQuery(graphql`
     query BlogQuery {
-      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+      allMdx(
+        filter: { internal: { contentFilePath: { glob: "**/blog/**" } } }
+      ) {
         nodes {
           frontmatter {
             title
@@ -43,7 +44,6 @@ const Blog: FunctionComponent = () => {
           fields {
             slug
           }
-          timeToRead
         }
       }
     }
@@ -54,7 +54,7 @@ const Blog: FunctionComponent = () => {
   return (
     <Wrapper
       css={css`
-        margin: 2rem 0 0 0;
+        margin: 2rem 0 0;
       `}
     >
       <Title>Blog</Title>
@@ -106,7 +106,7 @@ const PostGroupContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1.5rem;
-  margin: 0 0 3rem 0;
+  margin: 0 0 3rem;
 
   @media screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
@@ -172,7 +172,7 @@ const PostLinkContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 0 2rem 0;
+  margin: 0 0 2rem;
   color: inherit;
   text-decoration: none;
 `
@@ -193,7 +193,7 @@ const SorterContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.75rem;
-  margin: 0.75rem 0 3rem 0;
+  margin: 0.75rem 0 3rem;
 `
 
 const Sorter = ({

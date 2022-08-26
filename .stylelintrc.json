@@ -9,7 +9,8 @@
     "color-hex-case": "lower",
     "color-hex-length": "long",
     "string-quotes": "double",
-    "indentation": 2
+    "indentation": 2,
+    "function-no-unknown": null
   },
   "overrides": [
     {

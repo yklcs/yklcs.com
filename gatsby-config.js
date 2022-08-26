@@ -12,6 +12,7 @@ module.exports = {
     username: "rocketll",
     gender: "male",
   },
+  trailingSlash: false,
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
@@ -32,8 +33,10 @@ module.exports = {
           default: require.resolve("./src/templates/page.tsx"),
           blog: require.resolve("./src/templates/blog.tsx"),
         },
-        remarkPlugins: [require("remark-math")],
-        rehypePlugins: [require("rehype-katex")],
+        mdxOptions: {
+          remarkPlugins: [require("remark-math"), require("remark-gfm")],
+          rehypePlugins: [require("rehype-katex")],
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
@@ -75,37 +78,36 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "blog",
-        path: "./content/blog",
-      },
-      __key: "blog",
-    },
+    // {
+    //   resolve: "gatsby-source-filesystem",
+    //   options: {
+    //     name: "blog",
+    //     path: "./content/blog",
+    //   },
+    //   __key: "blog",
+    // },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "page",
-        path: "./content/pages",
+        path: "./src/pages",
       },
       __key: "page",
     },
     {
       resolve: "gatsby-plugin-page-creator",
       options: {
-        path: "./content/pages",
+        path: "./src/pages",
       },
     },
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        path: "./content",
-        ignore: {
-          patterns: ["!blog/**/*"],
-        },
-      },
-    },
-    "gatsby-plugin-remove-trailing-slashes",
+    // {
+    //   resolve: "gatsby-plugin-page-creator",
+    //   options: {
+    //     path: "./content",
+    //     ignore: {
+    //       patterns: ["!blog/**/*"],
+    //     },
+    //   },
+    // },
   ],
 }

@@ -184,7 +184,7 @@ const Resume: FunctionComponent = () => {
 }
 
 const Container = styled.div`
-  margin: 4rem 0 0 0;
+  margin: 4rem 0 0;
   font-size: 1em;
   line-height: 1.5;
 `
@@ -231,7 +231,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   grid-column: span 2;
-  margin: 0 0 1.5rem 0;
+  margin: 0 0 1.5rem;
 `
 
 const linkStyle = css`
@@ -304,7 +304,7 @@ const imageStyle = {
 }
 
 const imageWrapperStyle = {
-  margin: "0 0 1rem 0",
+  margin: "0 0 1rem",
   width: "100%",
   boxShadow: "0 0.5rem 1.1rem 0.4rem #00000020",
   ...imageStyle,

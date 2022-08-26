@@ -52,9 +52,9 @@ const Copyright = styled.div`
 const SiteInfo = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 0.5rem;
   justify-content: space-between;
   width: 100%;
-  gap: 0.5rem;
 
   ${respond(
     "md",
@@ -86,15 +86,16 @@ const FooterHeader = styled.div`
   display: flex;
   grid-column: 1/-1;
   justify-content: center;
+
   /* border-bottom: 1px solid ${({ theme }) => theme.neutral.l95}; */
 `
 
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 12rem 0 0 0;
   gap: 1rem;
+  align-items: center;
+  margin: 12rem 0 0;
   padding: 1.5rem 0;
   color: ${({ theme }) => theme.neutral.l65};
   line-height: 1.5rem;

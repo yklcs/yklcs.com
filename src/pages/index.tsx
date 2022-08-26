@@ -10,12 +10,12 @@ const IndexPage = (): JSX.Element => {
       <Wrapper>
         <Section
           css={css`
-            margin: 3rem 0 6rem 0;
+            margin: 3rem 0 6rem;
 
             ${respond(
               "sm",
               css`
-                margin: 1.5rem 0 3rem 0;
+                margin: 1.5rem 0 3rem;
               `
             )}
           `}
@@ -27,12 +27,12 @@ const IndexPage = (): JSX.Element => {
           <Description>I build my ideas.</Description>
           <div
             css={css`
-              grid-column: 1 / span 3;
               display: grid;
-              font-size: 1.125em;
+              grid-column: 1 / span 3;
               grid-template-columns: 1fr 1fr;
-              margin: 4rem 0 0 0;
               gap: 2rem 0;
+              margin: 4rem 0 0;
+              font-size: 1.125em;
 
               ${respond(
                 50,
@@ -84,8 +84,8 @@ const IndexPage = (): JSX.Element => {
       </Wrapper>
       <Wrapper
         css={css`
-          background-color: #040404;
           color: #ffffff;
+          background-color: #040404;
         `}
       >
         <Section>
@@ -118,10 +118,10 @@ const IndexPage = (): JSX.Element => {
             <div
               css={css`
                 display: grid;
+                grid-column: span 6;
                 grid-template-columns: 1fr 1fr;
                 gap: 1.25rem 1.25rem;
-                grid-column: span 6;
-                margin: 0 0 1rem 0;
+                margin: 0 0 1rem;
 
                 ${respond(
                   "sm",
@@ -133,10 +133,10 @@ const IndexPage = (): JSX.Element => {
             >
               <div
                 css={css`
-                  font-size: 1.75em;
                   font-weight: 400;
-                  letter-spacing: -0.025em;
+                  font-size: 1.75em;
                   line-height: 1;
+                  letter-spacing: -0.025em;
 
                   ${respond(
                     "md",
@@ -150,9 +150,9 @@ const IndexPage = (): JSX.Element => {
               </div>
               <div
                 css={css`
-                  font-size: 1.25em;
                   display: flex;
                   flex-direction: column;
+                  font-size: 1.25em;
 
                   ${respond(
                     "md",
@@ -206,20 +206,18 @@ const IndexPage = (): JSX.Element => {
 
 const gridStyle = css`
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: min-content;
+  grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
 `
 
 const Description = styled.p`
-  font-size: 2.75em;
-  font-weight: 450;
-  line-height: 1.3;
   grid-column: span 4;
-
-  letter-spacing: -0.025em;
-
   margin: 0;
+  font-weight: 450;
+  font-size: 2.75em;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
 
   ${respond(
     "md",
@@ -231,19 +229,19 @@ const Description = styled.p`
   ${respond(
     "sm",
     css`
-      font-size: 2em;
       grid-column: 1 / -1;
+      font-size: 2em;
     `
   )}
 `
 
 const SectionHeader = styled.h2`
+  grid-column: 1 / -1;
   margin: 0 -0.025em 4rem 0;
   font-weight: 600;
-  letter-spacing: -0.03em;
   font-size: 2.75em;
   line-height: 1;
-  grid-column: 1 / -1;
+  letter-spacing: -0.03em;
 
   ${respond(
     "md",
@@ -260,11 +258,11 @@ const Section = styled.div`
 `
 
 const ProjectContainer = styled.div`
-  grid-column: span 2;
   display: flex;
-  font-size: 1.125em;
   flex-direction: column;
+  grid-column: span 2;
   justify-content: start;
+  font-size: 1.125em;
 
   ${respond(
     "lg",
@@ -293,9 +291,9 @@ const Project = ({
   <ProjectContainer>
     <h3
       css={css`
-        font-size: 1em;
         margin: 0;
         font-weight: 500;
+        font-size: 1em;
       `}
     >
       {title}
@@ -303,8 +301,8 @@ const Project = ({
     <time dateTime={`${year}`}>{year}</time>
     <p
       css={css`
-        margin: 0;
         max-width: 80%;
+        margin: 0;
 
         ${respond(
           "sm",

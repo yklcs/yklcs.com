@@ -16,17 +16,23 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
+
   if (
     node.internal.type === "Mdx" &&
-    node.fileAbsolutePath.includes("/blog/")
+    node.internal.contentFilePath.includes("/blog/")
   ) {
     const slug = replacePath(
-      createFilePath({ node, getNode, basePath: "content/blog" })
+      createFilePath({
+        node,
+        getNode,
+        basePath: "src/pages/blog",
+        trailingSlash: false,
+      })
     )
     createNodeField({
       node,
       name: "slug",
-      value: `/blog${slug}`,
+      value: slug,
     })
   }
 }

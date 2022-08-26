@@ -12,7 +12,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     color: ${({ theme }) => theme.neutral.l15};
-    font-family: "Suisse Int'l";
+    font-family: "Suisse Int'l", "Helvetica Neue", Helvetica, sans-serif;
+
     /* font-family: "Diatype", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
