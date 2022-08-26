@@ -12,7 +12,7 @@ module.exports = {
     username: "rocketll",
     gender: "male",
   },
-  trailingSlash: false,
+  trailingSlash: "never",
   plugins: [
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
