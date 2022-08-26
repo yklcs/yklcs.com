@@ -9,7 +9,7 @@ const Footer = ({ buildDate }: { buildDate: string }): JSX.Element => (
     {/* <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton> */}
     {/* </FooterHeader> */}
     <SiteInfo>
-      <Copyright>© Lucas Lee 2021</Copyright>
+      <Copyright>© Lucas Lee 2022</Copyright>
       <Links>
         <InternalLink to="/" $underline={false}>
           Home{" "}
@@ -19,10 +19,7 @@ const Footer = ({ buildDate }: { buildDate: string }): JSX.Element => (
           Colophon
         </InternalLink>
         {" · "}
-        <ExternalLink
-          href="https://github.com/rocketll/luc.li"
-          $underline={false}
-        >
+        <ExternalLink href="https://github.com/yklcs/luc.li" $underline={false}>
           Site source
         </ExternalLink>
       </Links>
