@@ -49,6 +49,20 @@ module.exports = {
     },
     "gatsby-transformer-sharp",
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: ["G-SKY9NLT5FT"],
+        gtagConfig: {
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        pluginConfig: {
+          head: false,
+          respectDNT: true,
+        },
+      },
+    },
+    {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
@@ -65,49 +79,10 @@ module.exports = {
       __key: "pages",
     },
     {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: ["G-SKY9NLT5FT"],
-        gtagConfig: {
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-        pluginConfig: {
-          head: false,
-          respectDNT: true,
-        },
-      },
-    },
-    // {
-    //   resolve: "gatsby-source-filesystem",
-    //   options: {
-    //     name: "blog",
-    //     path: "./content/blog",
-    //   },
-    //   __key: "blog",
-    // },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "page",
-        path: "./src/pages",
-      },
-      __key: "page",
-    },
-    {
       resolve: "gatsby-plugin-page-creator",
       options: {
         path: "./src/pages",
       },
     },
-    // {
-    //   resolve: "gatsby-plugin-page-creator",
-    //   options: {
-    //     path: "./content",
-    //     ignore: {
-    //       patterns: ["!blog/**/*"],
-    //     },
-    //   },
-    // },
   ],
 }
