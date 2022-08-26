@@ -32,6 +32,7 @@ const IndexPage = (): JSX.Element => {
               grid-template-columns: 1fr 1fr;
               gap: 2rem 0;
               margin: 4rem 0 0;
+              font-weight: 450;
               font-size: 1.125em;
 
               ${respond(
@@ -41,6 +42,7 @@ const IndexPage = (): JSX.Element => {
                   grid-template-columns: 1fr;
                   gap: 1.5rem 0;
                   margin: 2rem 0 0;
+                  line-height: 1.3;
                 `
               )}
 
@@ -52,42 +54,39 @@ const IndexPage = (): JSX.Element => {
               )}
             `}
           >
-            <div
-              css={css`
-                display: flex;
-                flex-direction: column;
-              `}
-            >
-              <span>Send spam</span>
-              <Link to="mailto:me@luc.li">me@luc.li</Link>
-            </div>
-            <div
-              css={css`
-                display: flex;
-                flex-direction: column;
-              `}
-            >
-              <span>Read ramblings</span>
-              <Link to="/blog">luc.li/blog</Link>
-            </div>
-            <div
-              css={css`
-                display: flex;
-                flex-direction: column;
-              `}
-            >
-              <span>Criticize code</span>
-              <Link to="https://github.com/yklcs">github.com/yklcs</Link>
-            </div>
-            <div
-              css={css`
-                display: flex;
-                flex-direction: column;
-              `}
-            >
-              <span>Question qualifications</span>
-              <Link to="/resume">luc.li/resume</Link>
-            </div>
+            {[
+              {
+                description: "Send spam",
+                to: "mailto:me@luc.li",
+                text: "me@luc.li",
+              },
+              {
+                description: "Read ramblings",
+                to: "/blog",
+                text: "luc.li/blog",
+              },
+              {
+                description: "Criticize code",
+                to: "https://github.com/yklcs",
+                text: "github.com/yklcs",
+              },
+              {
+                description: "Question qualifications",
+                to: "/resume",
+                text: "luc.li/resume",
+              },
+            ].map(({ description, to, text }) => (
+              <div
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                `}
+              >
+                <span>{description}</span>
+                <Link to={to}>{text}</Link>
+              </div>
+            ))}
           </div>
         </Section>
       </Wrapper>
