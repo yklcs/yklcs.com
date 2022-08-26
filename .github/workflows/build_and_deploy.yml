@@ -110,7 +110,7 @@ jobs:
           aws s3 sync public s3://luc.li --delete
 
       - name: Invalidate AWS CloudFront Cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DIST_ID }} --paths "/index.html" "/sw.js"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DIST_ID }} --paths "/index.html" "/sw.js" "/page-data/*"
 
       - name: Update Deployment Status
         if: always()
