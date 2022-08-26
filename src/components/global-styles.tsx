@@ -13,10 +13,9 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     color: ${({ theme }) => theme.neutral.l15};
     font-family: "Suisse Int'l", "Helvetica Neue", Helvetica, sans-serif;
-
-    /* font-family: "Diatype", "SF Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; */
-    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
 
     *::selection {
       background: ${({ theme }) => theme.brand.l80};
