@@ -40,19 +40,19 @@ jobs:
         run: pnpm i
 
       - name: Lint JS
-        if: ${{ always() && steps.install.conclusion == "success" }}
+        if: ${{ always() && steps.install.conclusion == 'success' }}
         env:
           NODE_ENV: test
         run: pnpm lint:js
 
       - name: Lint CSS
-        if: ${{ always() && steps.install.conclusion == "success" }}
+        if: ${{ always() && steps.install.conclusion == 'success' }}
         run: pnpm lint:css
 
       - name: Lint formatting
-        if: ${{ always() && steps.install.conclusion == "success" }}
+        if: ${{ always() && steps.install.conclusion == 'success' }}
         run: pnpm lint:format
 
       - name: Check types
-        if: ${{ always() && steps.install.conclusion == "success" }}
+        if: ${{ always() && steps.install.conclusion == 'success' }}
         run: pnpm type-check
