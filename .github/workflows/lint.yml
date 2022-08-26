@@ -1,4 +1,4 @@
-name: Lint CI
+name: Lint
 
 on:
   push:
@@ -22,19 +22,37 @@ jobs:
           node-version: 16
           cache: "pnpm"
 
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install
+        id: install
         run: pnpm i
 
       - name: Lint JS
+        if: always() && steps.install.conclusion == "success"
         env:
           NODE_ENV: test
         run: pnpm lint:js
 
       - name: Lint CSS
+        if: always() && steps.install.conclusion == "success"
         run: pnpm lint:css
 
       - name: Lint formatting
+        if: always() && steps.install.conclusion == "success"
         run: pnpm lint:format
 
       - name: Check types
+        if: always() && steps.install.conclusion == "success"
         run: pnpm type-check

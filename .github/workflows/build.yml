@@ -1,7 +1,8 @@
-name: Build CI
+name: Build
 
 on:
   push:
+    branches-ignore: [main]
   pull_request:
   workflow_dispatch:
 
@@ -29,12 +30,25 @@ jobs:
           node-version: 16
           cache: "pnpm"
 
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install
+        id: install
         run: pnpm i
 
-      - name: Get Gatsby cache
-        uses: actions/cache@v2
-        id: get-gatsby-cache
+      - name: Setup Gatsby cache
+        uses: actions/cache@v3
         with:
           path: |
             .cache
