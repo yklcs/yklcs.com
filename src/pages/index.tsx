@@ -22,7 +22,7 @@ const IndexPage = (): JSX.Element => {
         >
           <Description>
             Student at POSTECH with interests in research, development, and
-            design. Currently on an internship at KIST.
+            design. Currently on military leave.
           </Description>
           <Description>I build my ideas.</Description>
           <div
@@ -32,7 +32,7 @@ const IndexPage = (): JSX.Element => {
               grid-template-columns: 1fr 1fr;
               gap: 2rem 0;
               margin: 4rem 0 0;
-              font-weight: 450;
+              font-weight: 400;
               font-size: 1.125em;
 
               ${respond(
