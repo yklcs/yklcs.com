@@ -15,7 +15,7 @@ const IndexPage = (): JSX.Element => {
             ${respond(
               "sm",
               css`
-                margin: 1rem 0 3rem;
+                margin: 0.5rem 0 3rem;
               `
             )}
           `}
@@ -240,9 +240,9 @@ const gridStyle = css`
 const Description = styled.p`
   grid-column: span 4;
   margin: 0;
-  font-weight: 450;
+  font-weight: 400;
   font-size: 2.75em;
-  line-height: 1.3;
+  line-height: 1.2;
   letter-spacing: -0.025em;
 
   ${respond(
@@ -256,7 +256,7 @@ const Description = styled.p`
     "sm",
     css`
       grid-column: 1 / -1;
-      font-size: 2em;
+      font-size: 2.25em;
     `
   )}
 `
