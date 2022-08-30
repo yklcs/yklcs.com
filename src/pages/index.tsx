@@ -249,6 +249,7 @@ const Description = styled.p`
     "md",
     css`
       grid-column: span 5;
+      font-size: 2.5em;
     `
   )}
 
