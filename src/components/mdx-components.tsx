@@ -25,6 +25,9 @@ mdxComponents.p = styled.p`
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
+  text-rendering: optimizelegibility;
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
 `
 
 mdxComponents.pre = styled.pre`
@@ -71,7 +74,7 @@ const Sidenote = styled.span`
   right: 0;
   display: block;
   width: 40%;
-  margin: -${1.125 * 1.5}rem 0 0;
+  margin: -${1.125 * 1.5 - 0.1}rem 0 0;
   padding: 0 0 0 2rem;
   color: ${({ theme }) => theme.neutral.l65};
   font-size: 0.75em;

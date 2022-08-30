@@ -94,7 +94,7 @@ const Content = styled.div`
     css`
       grid-column: main;
       width: 100%;
-      font-size: 1em;
+      font-size: 1.075em;
     `
   )}
 `
