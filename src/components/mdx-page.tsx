@@ -104,12 +104,13 @@ const HeaderContainer = styled.div`
   flex-direction: column;
   grid-column: main;
   gap: 1rem 0;
-  margin: 2rem 0;
+  margin: 2rem 0 4rem;
 
   ${respond(
     "sm",
     css`
-      margin: 1rem 0;
+      gap: 0.5rem 0;
+      margin: 1rem 0 4rem;
     `
   )}
 `
