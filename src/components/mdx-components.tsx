@@ -21,7 +21,7 @@ mdxComponents.h1 = Title
 
 mdxComponents.p = styled.p`
   margin: 0 0 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
