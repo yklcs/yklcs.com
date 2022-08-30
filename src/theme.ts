@@ -3,9 +3,9 @@ import { DefaultTheme } from "styled-components"
 
 const theme: DefaultTheme = {
   breakpoints: {
-    sm: "40rem",
+    sm: "35rem",
     md: "70rem",
-    lg: "100rem",
+    lg: "105rem",
   },
   neutral: {
     l100: hsl(228, 0.07, 1),

@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   grid-template-columns:
     [full-start] minmax(1.5rem, 1fr)
     [main-start] minmax(0, 16rem)
-    [narrow-start] minmax(0, 64ch) [narrow-end]
+    [narrow-start] minmax(0, 60ch) [narrow-end]
     minmax(0, 16rem) [main-end]
     minmax(1.5rem, 1fr) [full-end];
   line-height: 1.5;
@@ -52,7 +52,7 @@ const Wrapper = styled.div`
       grid-template-columns:
         [full-start] minmax(1.5rem, 1fr)
         [main-start] 1fr
-        [narrow-start] minmax(0, 64ch) [narrow-end]
+        [narrow-start] minmax(0, 60ch) [narrow-end]
         1fr [main-end]
         minmax(1.5rem, 1fr) [full-end];
     `

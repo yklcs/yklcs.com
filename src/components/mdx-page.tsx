@@ -7,24 +7,22 @@ import respond from "../utils/responsive"
 const Header = (props: MdxFrontmatter): JSX.Element => {
   return (
     <HeaderContainer>
-      <HeaderData>
-        <div>
-          {props.tags &&
-            props.tags.map((tag, i) => [i ? " · " : "", <span>{tag}</span>])}
-        </div>
-        <Title>{props.title}</Title>
-        <Description>{props.description}</Description>
-        {props.date && (
-          <time
-            dateTime={props.date}
-            css={css`
-              color: #888888;
-            `}
-          >
-            {format(new Date(props.date), "PP")}
-          </time>
-        )}
-      </HeaderData>
+      <div>
+        {props.tags &&
+          props.tags.map((tag, i) => [i ? " · " : "", <span>{tag}</span>])}
+      </div>
+      <Title>{props.title}</Title>
+      <Description>{props.description}</Description>
+      {props.date && (
+        <time
+          dateTime={props.date}
+          css={css`
+            color: #888888;
+          `}
+        >
+          {format(new Date(props.date), "PP")}
+        </time>
+      )}
     </HeaderContainer>
   )
 }
@@ -35,11 +33,25 @@ const Title = styled.h1`
   font-size: 2.5em;
   line-height: 1.1;
   letter-spacing: -0.022em;
+
+  ${respond(
+    "sm",
+    css`
+      font-size: 2.25em;
+    `
+  )}
 `
 
 const Description = styled.p`
   margin: 0;
   font-size: 1.375em;
+
+  ${respond(
+    "sm",
+    css`
+      font-size: 1.25em;
+    `
+  )}
 `
 
 const Layout = styled.div`
@@ -66,7 +78,7 @@ const Wrapper = styled.div`
 const Content = styled.div`
   position: relative;
   grid-column: narrow;
-  font-size: 1.2em;
+  font-size: 1.125em;
   font-family: XCharter, Georgia, serif;
 
   ${respond(
@@ -82,39 +94,24 @@ const Content = styled.div`
     css`
       grid-column: main;
       width: 100%;
+      font-size: 1em;
     `
   )}
 `
 
-const HeaderData = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem 0;
-`
-
 const HeaderContainer = styled.div`
-  grid-column: main;
-  gap: 1.5rem;
-  margin: 4rem 0 2rem;
-`
-
-const Category = styled.div`
-  color: ${({ theme }) => theme.neutral.l65};
-  font-weight: 700;
-  font-size: 0.9em;
-  letter-spacing: 0.1ch;
-  text-transform: uppercase;
-`
-const MetaData = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 1rem 0;
-  color: ${({ theme }) => theme.neutral.l65};
+  grid-column: main;
+  gap: 1rem 0;
+  margin: 2rem 0;
 
-  > * {
-    margin: 0 0.5rem 0 0;
-  }
+  ${respond(
+    "sm",
+    css`
+      margin: 1rem 0;
+    `
+  )}
 `
 
 export { Layout, Wrapper, Title, Description, Content, Header }
