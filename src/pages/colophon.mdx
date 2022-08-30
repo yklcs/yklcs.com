@@ -1,30 +1,25 @@
 ---
 title: Colophon
-description: Technical details of this website (WIP)
+description: Technical details
 ---
 
-## Frontend
+## Webpage
 
-### Gatsby
+### Development
 
 This site uses [Gatsby](https://gatsbyjs.com) for React static site generation.
-All source code is available publicly on [github.com/rocketll/luc.li](https://github.com/rocketll/luc.li) under GPLv3.
-TypeScript is used for a sane development experience, and styling is done with styled-components.
-
-### Tooling
-
-ESLint and Stylelint are used for linting, and Prettier is used for formatting.
-Linting/formatting is done at the pre-commit stage via Husky + Lint-staged.
+All source code is available publicly on [github.com/yklcs/luc.li](https://github.com/yklcs/luc.li) under GPLv3.
+TypeScript is used for a sane development experience, and CSS-in-JS styling is done with styled-components.
 
 ### Hosting
 
 No backend is used, following a [Jamstack](https://jamstack.org/) approach.
 Instead, static hosting is done on AWS S3, with the site being served behind AWS CloudFront.
+The site is built with [Github Actions](https://github.com/yklcs/luc.li/actions) then uploaded to S3.
 
 ## Design
 
-Design inspiration:
+### Typography
 
-- [openai.com](https://openai.com)
-- [madebystudio.family](https://madebystudio.family)
-- [apple.com/newsroom](https://apple.com/newsroom)
+[Suisse Int'l](https://www.swisstypefaces.com/fonts/suisse/) by Swiss Typefaces is used as the primary sans serif font.
+XCharter is used as the serif body text font.
