@@ -50,7 +50,7 @@ const IndexPage = (): JSX.Element => {
                   grid-template-columns: 1fr;
                   gap: 1.25rem 0;
                   margin: 2rem 0 0;
-                  line-height: 1.3;
+                  line-height: 1.4;
                 `
               )}
 
@@ -268,6 +268,7 @@ const Description = styled.p`
     css`
       grid-column: 1 / -1;
       font-size: 2em;
+      line-height: 1.3;
     `
   )}
 `
