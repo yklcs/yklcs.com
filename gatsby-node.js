@@ -1,4 +1,5 @@
 const { createFilePath } = require("gatsby-source-filesystem")
+const path = require("node:path")
 const replacePath = path => (path === `/` ? path : path.replace(/\/$/, ``))
 
 exports.onCreateWebpackConfig = ({ actions }) => {
@@ -40,8 +41,16 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage, deletePage } = actions
   deletePage(page)
+
+  const isMdx = /\.mdx$/.test(page.componentPath)
+
   createPage({
     ...page,
+    component: isMdx
+      ? `${path.resolve("./src/templates/mdx.tsx")}?__contentFilePath=${
+          page.component
+        }`
+      : page.component,
     context: {
       ...page.context,
       date: new Date().toISOString(),

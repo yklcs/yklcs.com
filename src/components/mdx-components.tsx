@@ -3,6 +3,7 @@ import Code from "./code"
 import { ExternalLink, InternalLink } from "./links"
 import { StaticImage } from "gatsby-plugin-image"
 import { Components } from "@mdx-js/react/lib"
+import respond from "../utils/responsive"
 
 const lineHeight = 1.8
 const typeScale = 1.2
@@ -77,7 +78,7 @@ const Sidenote = styled.span`
   position: absolute;
   right: 0;
   display: block;
-  width: 50%;
+  width: 40%;
   margin: -${lineHeight}rem 0 0 0;
   padding: 0 0 0 2rem;
   color: ${({ theme }) => theme.neutral.l65};
@@ -87,13 +88,19 @@ const Sidenote = styled.span`
   letter-spacing: -0.012em;
   transform: translateX(100%);
 
-  @media screen and (max-width: 65rem) {
-    width: 33%;
-  }
+  ${respond(
+    "md",
+    css`
+      width: 33.3333%;
+    `
+  )}
 
-  @media screen and (max-width: 50rem) {
-    display: none;
-  }
+  ${respond(
+    "sm",
+    css`
+      display: none;
+    `
+  )}
 `
 
 const components: Components = {

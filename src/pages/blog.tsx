@@ -163,8 +163,8 @@ const PostTags = styled.div`
 const Title = styled.h1`
   /* grid-column: span 2; */
   margin: 0;
-  font-weight: 500;
-  font-size: 2em;
+  font-weight: 600;
+  font-size: 2.75em;
   letter-spacing: -0.02em;
 `
 

@@ -29,10 +29,6 @@ module.exports = {
     {
       resolve: "gatsby-plugin-mdx",
       options: {
-        defaultLayouts: {
-          default: require.resolve("./src/templates/page.tsx"),
-          blog: require.resolve("./src/templates/blog.tsx"),
-        },
         mdxOptions: {
           remarkPlugins: [require("remark-math"), require("remark-gfm")],
           rehypePlugins: [require("rehype-katex")],

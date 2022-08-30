@@ -1,27 +1,45 @@
 import React from "react"
 import { format } from "date-fns"
-import { graphql, Node, useStaticQuery } from "gatsby"
-import { GatsbyImage, getImage, IGatsbyImageData } from "gatsby-plugin-image"
-import styled from "styled-components"
-import { BlogFrontmatter } from "../templates/blog"
-import { PageFrontmatter } from "../templates/page"
+import styled, { css } from "styled-components"
+import { MdxFrontmatter } from "../templates/mdx"
+import respond from "../utils/responsive"
 
-const lineHeight = 1.8
-const typeScale = 1.2
+const Header = (props: MdxFrontmatter): JSX.Element => {
+  return (
+    <HeaderContainer>
+      <HeaderData>
+        <div>
+          {props.tags &&
+            props.tags.map((tag, i) => [i ? " · " : "", <span>{tag}</span>])}
+        </div>
+        <Title>{props.title}</Title>
+        <Description>{props.description}</Description>
+        {props.date && (
+          <time
+            dateTime={props.date}
+            css={css`
+              color: #888888;
+            `}
+          >
+            {format(new Date(props.date), "PP")}
+          </time>
+        )}
+      </HeaderData>
+    </HeaderContainer>
+  )
+}
 
 const Title = styled.h1`
-  margin: ${lineHeight}rem 0 ${lineHeight / 2}rem 0;
-  font-weight: 700;
+  margin: 0;
+  font-weight: 600;
   font-size: 2.5em;
-  font-family: XCharter, serif;
-  line-height: ${lineHeight * 1.5}rem;
+  line-height: 1.1;
   letter-spacing: -0.022em;
 `
 
 const Description = styled.p`
   margin: 0;
-  font-size: ${typeScale}em;
-  line-height: ${lineHeight}rem;
+  font-size: 1.375em;
 `
 
 const Layout = styled.div`
@@ -47,60 +65,38 @@ const Wrapper = styled.div`
 
 const Content = styled.div`
   position: relative;
+  grid-column: narrow;
   font-size: 1.2em;
-  line-height: ${lineHeight}rem;
-`
+  font-family: XCharter, Georgia, serif;
 
-const HeaderImage = styled(GatsbyImage)`
-  justify-self: end;
-  margin: ${lineHeight}rem 0;
-  box-shadow: 0 0 16px 7px #00000011;
+  ${respond(
+    "md",
+    css`
+      grid-column: main;
+      width: 75%;
+    `
+  )}
 
-  @media screen and (max-width: 50rem) {
-    justify-self: start;
-    max-width: 66%;
-    object-position: left;
-  }
+  ${respond(
+    "sm",
+    css`
+      grid-column: main;
+      width: 100%;
+    `
+  )}
 `
 
 const HeaderData = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  @media screen and (max-width: 50rem) {
-    order: 100;
-  }
+  gap: 1rem 0;
 `
 
-const HeaderContainer = styled.div<{ large: boolean }>`
-  display: grid;
-  grid-column: ${({ large }) => (large ? "1/5" : "2/4")};
-  grid-template-rows: 1fr;
-  grid-template-columns: ${({ large }) => (large ? "1fr 1fr" : "1fr")};
+const HeaderContainer = styled.div`
+  grid-column: main;
   gap: 1.5rem;
-  margin: ${lineHeight * 3}rem 0 ${lineHeight * 2}rem;
-
-  @media screen and (max-width: 65rem) {
-    grid-column: ${({ large }) => (large ? "1/5" : "1/4")};
-  }
-
-  @media screen and (max-width: 50rem) {
-    grid-template-rows: auto auto;
-    grid-template-columns: 1fr;
-  }
+  margin: 4rem 0 2rem;
 `
-
-interface ImageQueryData {
-  allFile: {
-    nodes: (Node & {
-      name: string
-      childImageSharp: Node & {
-        gatsbyImageData: IGatsbyImageData
-      }
-    })[]
-  }
-}
 
 const Category = styled.div`
   color: ${({ theme }) => theme.neutral.l65};
@@ -109,93 +105,16 @@ const Category = styled.div`
   letter-spacing: 0.1ch;
   text-transform: uppercase;
 `
-
-type BlogHeaderProps = BlogFrontmatter & { type: "Blog" }
-type PageHeaderProps = PageFrontmatter & { type: "Page" }
-
-const Header = (props: BlogHeaderProps | PageHeaderProps): JSX.Element => {
-  const data: ImageQueryData = useStaticQuery(graphql`
-    query {
-      allFile(filter: { relativeDirectory: { eq: "mdx" } }) {
-        nodes {
-          name
-          childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, height: 400)
-          }
-        }
-      }
-    }
-  `)
-
-  const images = Object.fromEntries(
-    data.allFile.nodes.map(node => [node.name, getImage(node)])
-  )
-
-  let image: IGatsbyImageData | null
-
-  if (!props.image) {
-    image = null
-  } else {
-    image = images[props.image] ?? null
-  }
-
-  return (
-    <HeaderContainer large={props.large ?? false}>
-      <HeaderData>
-        <div>
-          {props.type === "Blog" && <Category>{props.tags[0]}</Category>}
-          <Title>{props.title}</Title>
-          <Description>{props.description}</Description>
-        </div>
-        {props.type === "Blog" ? (
-          <MetaData>
-            <time dateTime={props.date}>
-              {format(new Date(props.date), "PP")}
-            </time>
-            <span>—</span>
-            <span>
-              {props.tags.map((tag, i) => [i ? " · " : "", <span>{tag}</span>])}
-            </span>
-          </MetaData>
-        ) : (
-          props.large && (
-            <MetaData>
-              <span>By {props.author}</span>
-            </MetaData>
-          )
-        )}
-      </HeaderData>
-      {image && (
-        <HeaderImage
-          imgStyle={{ objectFit: "cover" }}
-          alt={props.image ?? "Post"}
-          image={image}
-        />
-      )}
-    </HeaderContainer>
-  )
-}
-
 const MetaData = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
-  margin: ${lineHeight}rem 0;
+  margin: 1rem 0;
   color: ${({ theme }) => theme.neutral.l65};
-  line-height: ${lineHeight};
 
   > * {
     margin: 0 0.5rem 0 0;
   }
 `
 
-export {
-  Layout,
-  Wrapper,
-  Title,
-  Description,
-  Content,
-  Header,
-  lineHeight,
-  ImageQueryData,
-}
+export { Layout, Wrapper, Title, Description, Content, Header }

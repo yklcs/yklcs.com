@@ -36,9 +36,9 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns:
     [full-start] minmax(1.5rem, 1fr)
-    [wide-start] minmax(0, 6rem)
-    [main-start] minmax(0, 80rem) [main-end]
-    minmax(0, 6rem) [wide-end]
+    [main-start] minmax(0, 16rem)
+    [narrow-start] minmax(0, 64ch) [narrow-end]
+    minmax(0, 16rem) [main-end]
     minmax(1.5rem, 1fr) [full-end];
   line-height: 1.5;
 
@@ -47,25 +47,13 @@ const Wrapper = styled.div`
   }
 
   ${respond(
-    "lg",
-    css`
-      grid-template-columns:
-        [full-start] minmax(3rem, 1fr)
-        [wide-start] minmax(0, 3rem)
-        [main-start] minmax(0, 90rem) [main-end]
-        minmax(0, 3rem) [wide-end]
-        minmax(3rem, 1fr) [full-end];
-    `
-  )}
-
-  ${respond(
     "md",
     css`
       grid-template-columns:
         [full-start] minmax(1.5rem, 1fr)
-        [wide-start] 0
-        [main-start] minmax(0, 90rem) [main-end]
-        0 [wide-end]
+        [main-start] 1fr
+        [narrow-start] minmax(0, 64ch) [narrow-end]
+        1fr [main-end]
         minmax(1.5rem, 1fr) [full-end];
     `
   )}
