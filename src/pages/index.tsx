@@ -12,6 +12,14 @@ const IndexPage = (): JSX.Element => {
           css={css`
             gap: 1rem 0;
             margin: 3rem 0 6rem;
+
+            ${respond(
+              "md",
+              css`
+                margin: 1rem 0 3rem;
+              `
+            )}
+
             ${respond(
               "sm",
               css`
@@ -36,11 +44,11 @@ const IndexPage = (): JSX.Element => {
               font-size: 1.125em;
 
               ${respond(
-                50,
+                55,
                 css`
                   grid-column: span 6;
                   grid-template-columns: 1fr;
-                  gap: 1.5rem 0;
+                  gap: 1.25rem 0;
                   margin: 2rem 0 0;
                   line-height: 1.3;
                 `
@@ -49,6 +57,7 @@ const IndexPage = (): JSX.Element => {
               ${respond(
                 "sm",
                 css`
+                  gap: 1rem 0;
                   font-size: 1em;
                 `
               )}
@@ -139,6 +148,7 @@ const IndexPage = (): JSX.Element => {
                   "sm",
                   css`
                     grid-template-columns: 1fr;
+                    gap: 1.25rem;
                   `
                 )}
               `}
@@ -257,7 +267,7 @@ const Description = styled.p`
     "sm",
     css`
       grid-column: 1 / -1;
-      font-size: 2.25em;
+      font-size: 2em;
     `
   )}
 `
