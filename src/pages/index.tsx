@@ -11,7 +11,7 @@ const IndexPage = (): JSX.Element => {
         <Section
           css={css`
             gap: 1rem 0;
-            margin: 3rem 0 6rem;
+            margin: 1rem 0 6rem;
 
             ${respond(
               "md",
@@ -251,7 +251,7 @@ const Description = styled.p`
   grid-column: span 4;
   margin: 0;
   font-weight: 400;
-  font-size: 2.75em;
+  font-size: 2.5em;
   line-height: 1.2;
   letter-spacing: -0.025em;
 
@@ -259,7 +259,7 @@ const Description = styled.p`
     "md",
     css`
       grid-column: span 5;
-      font-size: 2.5em;
+      font-size: 2.25em;
     `
   )}
 
