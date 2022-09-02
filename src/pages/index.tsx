@@ -7,11 +7,17 @@ import respond from "../utils/responsive"
 const IndexPage = (): JSX.Element => {
   return (
     <>
-      <Wrapper>
+      <Wrapper
+        css={css`
+          height: calc(100vh - 5.5rem);
+        `}
+      >
         <Section
           css={css`
             gap: 1rem 0;
             margin: 1rem 0 6rem;
+            font-size: 1.5em;
+            line-height: 1.35;
 
             ${respond(
               "md",
@@ -30,61 +36,35 @@ const IndexPage = (): JSX.Element => {
         >
           <Description>
             Student at POSTECH with interests in research, development, and
-            design. Currently on military leave.
+            design. Currently on leave awaiting military service.
           </Description>
-          <Description>I build my ideas.</Description>
           <div
             css={css`
-              display: grid;
-              grid-column: span 3;
-              grid-template-columns: 1fr 1fr;
-              gap: 2rem 0;
-              margin: 4rem 0 0;
-              font-weight: 400;
-              font-size: 1.125em;
-
-              ${respond(
-                55,
-                css`
-                  grid-column: span 6;
-                  grid-template-columns: 1fr;
-                  gap: 1.25rem 0;
-                  margin: 2rem 0 0;
-                  line-height: 1.4;
-                `
-              )}
-
-              ${respond(
-                "sm",
-                css`
-                  gap: 1rem 0;
-                  font-size: 1em;
-                `
-              )}
+              display: flex;
+              flex-direction: column;
+              grid-column: span 6;
+              justify-content: start;
+              margin: 1rem 0 0;
             `}
           >
             {[
               {
-                description: "Send spam",
                 to: "mailto:me@luc.li",
-                text: "me@luc.li",
+                text: "Mail",
               },
               {
-                description: "Read ramblings",
                 to: "/blog",
-                text: "luc.li/blog",
+                text: "Blog",
               },
               {
-                description: "Criticize code",
-                to: "https://github.com/yklcs",
-                text: "github.com/yklcs",
-              },
-              {
-                description: "Question qualifications",
                 to: "/resume",
-                text: "luc.li/resume",
+                text: "Resume",
               },
-            ].map(({ description, to, text }) => (
+              {
+                to: "https://github.com/yklcs",
+                text: "Code",
+              },
+            ].map(({ text, to }) => (
               <div
                 css={css`
                   display: flex;
@@ -92,8 +72,9 @@ const IndexPage = (): JSX.Element => {
                   align-items: flex-start;
                 `}
               >
-                <span>{description}</span>
-                <Link to={to}>{text}</Link>
+                <Link to={to} $underline={false}>
+                  {text} ↗
+                </Link>
               </div>
             ))}
           </div>
@@ -143,6 +124,7 @@ const IndexPage = (): JSX.Element => {
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
                 margin: 0 0 1rem;
+                font-size: 1.125em;
 
                 ${respond(
                   "sm",
@@ -155,24 +137,8 @@ const IndexPage = (): JSX.Element => {
             >
               <div
                 css={css`
-                  font-weight: 400;
-                  font-size: 1.75em;
-                  line-height: 1;
-                  letter-spacing: -0.025em;
-
-                  ${respond(
-                    "md",
-                    css`
-                      font-size: 1.5em;
-                    `
-                  )}
-
-                  ${respond(
-                    "sm",
-                    css`
-                      font-size: 1.25em;
-                    `
-                  )}
+                  font-weight: 500;
+                  font-size: 1.025em;
                 `}
               >
                 {title}
@@ -181,21 +147,6 @@ const IndexPage = (): JSX.Element => {
                 css={css`
                   display: flex;
                   flex-direction: column;
-                  font-size: 1.25em;
-
-                  ${respond(
-                    "md",
-                    css`
-                      font-size: 1.125em;
-                    `
-                  )}
-
-                  ${respond(
-                    "sm",
-                    css`
-                      font-size: 1em;
-                    `
-                  )}
                 `}
               >
                 {entries.map(entry => (
@@ -250,16 +201,11 @@ const gridStyle = css`
 const Description = styled.p`
   grid-column: span 4;
   margin: 0;
-  font-weight: 400;
-  font-size: 2.5em;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
 
   ${respond(
     "md",
     css`
       grid-column: span 5;
-      font-size: 2.25em;
     `
   )}
 
@@ -267,8 +213,6 @@ const Description = styled.p`
     "sm",
     css`
       grid-column: 1 / -1;
-      font-size: 2em;
-      line-height: 1.3;
     `
   )}
 `
@@ -276,8 +220,8 @@ const Description = styled.p`
 const SectionHeader = styled.h2`
   grid-column: 1 / -1;
   margin: 0 -0.025em 4rem 0;
-  font-weight: 600;
-  font-size: 2.75em;
+  font-weight: 500;
+  font-size: 1.5em;
   line-height: 1;
   letter-spacing: -0.03em;
 
@@ -285,7 +229,6 @@ const SectionHeader = styled.h2`
     "md",
     css`
       margin: 0 -0.025em 3rem 0;
-      font-size: 2rem;
     `
   )}
 

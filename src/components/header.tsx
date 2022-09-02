@@ -7,15 +7,11 @@ import respond from "../utils/responsive"
 
 const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
   <HeaderContainer>
-    <Link
-      to="/"
-      $underline={false}
-      style={{
-        justifySelf: "start",
-      }}
-    >
-      <Title>Lucas Yunkyu Lee</Title>
-    </Link>
+    <Title as={location.pathname === "/" ? "h1" : "span"}>
+      <Link to="/" $underline={false} rel="author">
+        Lucas Yunkyu Lee
+      </Link>
+    </Title>
     <div
       css={css`
         display: flex;
@@ -46,14 +42,15 @@ const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
 
 const Title = styled.h1`
   margin: 0 0 0 -0.01em;
-  font-weight: 600;
-  font-size: 1.125em;
+  font-weight: 500;
+  font-size: 1.375em;
   letter-spacing: -0.015em;
 `
 
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   padding: 2rem 0;
 `
