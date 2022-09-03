@@ -1,10 +1,23 @@
 import React from "react"
+import { differenceInDays } from "date-fns"
 import styled, { css } from "styled-components"
 import { Wrapper } from "../components/layout"
 import Link from "../components/links"
 import respond from "../utils/responsive"
 
+const elapsedDateRatio = (begin: Date, now: Date, end: Date) =>
+  Math.min(
+    Math.max(
+      (now.valueOf() - begin.valueOf()) / (end.valueOf() - begin.valueOf()),
+      0
+    ),
+    1
+  )
+
 const IndexPage = (): JSX.Element => {
+  const serviceBeginDate = new Date("2022-09-19T14:00:00+0900")
+  const serviceEndDate = new Date("2024-03-17T14:00:00+0900")
+
   return (
     <>
       <Wrapper
@@ -36,8 +49,27 @@ const IndexPage = (): JSX.Element => {
         >
           <Description>
             Student at POSTECH with interests in research, development, and
-            design. Currently on leave awaiting military service.
+            design. Currently on leave awaiting military service.{" "}
+            <span
+              css={css`
+                /* stylelint-disable */
+                color: hsl(
+                  ${elapsedDateRatio(
+                      serviceBeginDate,
+                      new Date(),
+                      serviceEndDate
+                    ) * 0.3}turn
+                    70% 40%
+                );
+                /* stylelint-enable */
+              `}
+            >
+              Served for {differenceInDays(new Date(), serviceBeginDate)} days,{" "}
+              {differenceInDays(serviceEndDate, new Date())} days until
+              discharge.
+            </span>
           </Description>
+          <Description></Description>
           <div
             css={css`
               display: flex;
