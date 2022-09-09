@@ -28,21 +28,14 @@ const IndexPage = (): JSX.Element => {
         <Section
           css={css`
             gap: 1rem 0;
-            margin: 1rem 0 6rem;
+            margin: 0 0 6rem;
             font-size: 1.5em;
             line-height: 1.35;
 
             ${respond(
               "md",
               css`
-                margin: 1rem 0 3rem;
-              `
-            )}
-
-            ${respond(
-              "sm",
-              css`
-                margin: 0.5rem 0 3rem;
+                margin: 0 0 3rem;
               `
             )}
           `}
@@ -69,7 +62,6 @@ const IndexPage = (): JSX.Element => {
               discharge.
             </span>
           </Description>
-          <Description></Description>
           <div
             css={css`
               display: flex;
