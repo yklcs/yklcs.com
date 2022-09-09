@@ -42,7 +42,7 @@ const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
 
 const Title = styled.h1`
   margin: 0 0 0 -0.01em;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.125em;
   letter-spacing: -0.015em;
 `
