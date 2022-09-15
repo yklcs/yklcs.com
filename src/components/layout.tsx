@@ -35,11 +35,11 @@ const Layout = ({
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns:
-    [full-start] minmax(6rem, 1fr)
+    [full-start] minmax(3rem, 1fr)
     [main-start] minmax(0, 21rem)
     [narrow-start] 60ch [narrow-end]
     minmax(0, 21rem) [main-end]
-    minmax(6rem, 1fr) [full-end];
+    minmax(3rem, 1fr) [full-end];
   line-height: 1.5;
 
   & > * {
@@ -47,26 +47,26 @@ const Wrapper = styled.div`
   }
 
   ${respond(
-    "lg",
+    "md",
     css`
       grid-template-columns:
-        [full-start] minmax(3rem, 1fr)
-        [main-start] minmax(0, 12rem)
+        [full-start] 3rem
+        [main-start] 1fr
         [narrow-start] minmax(0, 60ch) [narrow-end]
-        minmax(0, 12rem) [main-end]
-        minmax(3rem, 1fr) [full-end];
+        1fr [main-end]
+        3rem [full-end];
     `
   )}
 
   ${respond(
-    "md",
+    "sm",
     css`
       grid-template-columns:
-        [full-start] minmax(1.5rem, 1fr)
+        [full-start] 1.5rem
         [main-start] 1fr
         [narrow-start] minmax(0, 60ch) [narrow-end]
         1fr [main-end]
-        minmax(1.5rem, 1fr) [full-end];
+        1.5rem [full-end];
     `
   )}
 `
