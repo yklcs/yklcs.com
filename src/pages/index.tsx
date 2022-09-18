@@ -42,7 +42,8 @@ const IndexPage = (): JSX.Element => {
         >
           <Description>
             Student at POSTECH with interests in research, development, and
-            design. Currently on leave awaiting military service.{" "}
+            design. Currently performing military service under the KATUSA
+            program.{" "}
             <span
               css={css`
                 /* stylelint-disable */
