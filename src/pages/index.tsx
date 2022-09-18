@@ -81,10 +81,10 @@ const IndexPage = (): JSX.Element => {
                 to: "/blog",
                 text: "Blog",
               },
-              {
-                to: "/resume",
-                text: "Resume",
-              },
+              // {
+              //   to: "/resume",
+              //   text: "Resume",
+              // },
               {
                 to: "https://github.com/yklcs",
                 text: "Code",
