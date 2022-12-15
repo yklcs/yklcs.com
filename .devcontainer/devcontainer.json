@@ -2,5 +2,6 @@
   "name": "devcontainer",
   "build": {
     "dockerfile": "Dockerfile"
-  }
+  },
+  "forwardPorts": [8000, 9000]
 }
