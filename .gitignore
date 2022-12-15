@@ -5,3 +5,4 @@ node_modules/
 .DS_Store
 /src/fonts/private/*
 !/src/fonts/private/fonts.css
+.pnpm-store/
