@@ -17,7 +17,6 @@ const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
       <Breadcrumbs
         css={css`
           color: ${({ theme }) => theme.neutral.l65};
-          font-family: monospace;
 
           & > a:hover {
             color: ${({ theme }) => theme.neutral.l50};
