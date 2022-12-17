@@ -67,28 +67,14 @@ const Layout = styled.div`
 `
 
 const Content = styled.div`
-  /* position: relative; */
-  grid-column: main;
   font-size: 1.25em;
-
-  /* font-family: "Basier Square", "Iosevka LL", XCharter, Georgia, serif; */
-
-  /* ${respond(
-    "md",
-    css`
-      grid-column: main;
-      width: 75%;
-    `
-  )}
 
   ${respond(
     "sm",
     css`
-      grid-column: main;
-      width: 100%;
-      font-size: 1.075em;
+      font-size: 1.125em;
     `
-  )} */
+  )}
 `
 
 const HeaderContainer = styled.div`
