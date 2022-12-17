@@ -5,7 +5,7 @@ const theme: DefaultTheme = {
   breakpoints: {
     sm: "35rem",
     md: "70rem",
-    lg: "105rem",
+    lg: "100rem",
   },
   neutral: {
     l100: hsl(228, 0.07, 1),

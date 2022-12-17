@@ -60,18 +60,25 @@ const Blog: FunctionComponent = () => {
       <Title>Blog</Title>
       <Sorter group={group} setGroup={setGroup} />
       <SEO title="Blog" description="Lucas's Blog" />
-      {Object.entries(
-        group === "Year"
-          ? groupBy(posts, k =>
-              getYear(new Date(k.frontmatter.date)).toString()
-            )
-          : groupBy(posts, k => k.frontmatter.tags[0])
-      )
-        .sort()
-        .reverse()
-        .map(n => {
-          return <PostCollection group={n[0]} posts={n[1]} />
-        })}
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+        `}
+      >
+        {Object.entries(
+          group === "Year"
+            ? groupBy(posts, k =>
+                getYear(new Date(k.frontmatter.date)).toString()
+              )
+            : groupBy(posts, k => k.frontmatter.tags[0])
+        )
+          .sort()
+          .reverse()
+          .map(n => {
+            return <PostCollection group={n[0]} posts={n[1]} />
+          })}
+      </div>
     </Wrapper>
   )
 }
@@ -98,20 +105,21 @@ const PostCollection = ({
   </PostGroupContainer>
 )
 
+const Title = styled.h1`
+  margin: 0;
+  font-weight: 700;
+  font-size: 2em;
+`
+
 const PostGroupName = styled.div`
-  grid-column: span 2;
+  margin: 0 0 1em;
+  font-weight: 700;
+  font-size: 1.25em;
+  border-bottom: 1px solid #ffffff33;
 `
 
 const PostGroupContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 1.5rem;
-  margin: 0 0 3rem;
-
-  @media screen and (max-width: 50rem) {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem 1rem;
-  }
+  padding: 1em 0;
 `
 
 interface PostLinkProps {
@@ -125,7 +133,7 @@ const PostLink = ({ title, tags, date, slug }: PostLinkProps): JSX.Element => (
   <PostLinkContainer>
     <PostTitle to={slug}>{title}</PostTitle>
     <PostMeta>
-      <PostDate>{format(date, "y/MM/dd")}</PostDate>—
+      <PostDate>{format(date, "y-MM-dd")}</PostDate>
       <PostTags>
         {tags.map((tag, i) => [i ? "·" : "", <span>{tag}</span>])}
       </PostTags>
@@ -134,18 +142,16 @@ const PostLink = ({ title, tags, date, slug }: PostLinkProps): JSX.Element => (
 )
 
 const PostGroup = styled.div`
-  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1em 0;
 `
 
 const PostMeta = styled.div`
-  display: grid;
-  grid-auto-columns: auto;
-  grid-auto-flow: column;
-  grid-template-rows: 1fr;
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
   color: ${({ theme }) => theme.neutral.l65};
   font-size: 1em;
-  line-height: 1.5rem;
 `
 
 const PostDate = styled.time`
@@ -160,18 +166,10 @@ const PostTags = styled.div`
   gap: 0.25rem;
 `
 
-const Title = styled.h1`
-  margin: 0;
-  font-weight: 500;
-  font-size: 2em;
-  letter-spacing: -0.02em;
-`
-
 const PostLinkContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 0 2rem;
   color: inherit;
   text-decoration: none;
 `
@@ -205,14 +203,14 @@ const Sorter = ({
   <SorterContainer>
     {
       <SorterButton active={group === "Year"} onClick={() => setGroup("Year")}>
-        Year ↓
+        Sorted by year ↓
       </SorterButton>
     }
     <SorterButton
       active={group === "Category"}
       onClick={() => setGroup("Category")}
     >
-      Category ↓
+      Sorted by category ↓
     </SorterButton>
   </SorterContainer>
 )

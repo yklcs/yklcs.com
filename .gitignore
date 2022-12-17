@@ -6,3 +6,4 @@ node_modules/
 /src/fonts/private/*
 !/src/fonts/private/fonts.css
 .pnpm-store/
+built-fonts/

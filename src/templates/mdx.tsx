@@ -7,6 +7,7 @@ import "katex/dist/katex.min.css"
 import { Content, Header } from "../components/mdx-page"
 import { components } from "../components/mdx-components"
 import { Wrapper } from "../components/layout"
+import { css } from "styled-components"
 
 interface MdxFrontmatter {
   title: string
@@ -27,7 +28,12 @@ const MdxLayout: FunctionComponent<
         tags={frontmatter.tags}
       />
       <MDXProvider components={components}>
-        <Wrapper as="article">
+        <Wrapper
+          as="article"
+          css={css`
+            line-height: inherit;
+          `}
+        >
           <Header {...frontmatter} />
           <Content>{children}</Content>
         </Wrapper>

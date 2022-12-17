@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import { PageProps } from "gatsby"
 import styled, { css, ThemeProvider } from "styled-components"
 import "modern-normalize/modern-normalize.css"
@@ -20,27 +20,43 @@ const Layout = ({
   location,
   pageContext,
 }: PageProps<object, object & { date: string }>) => (
-  <ThemeProvider theme={theme}>
-    <Wrapper>
-      <GlobalStyle />
-      <Header location={location} />
-    </Wrapper>
-    {children}
-    <Wrapper>
-      <Footer buildDate={pageContext.date} />
-    </Wrapper>
-  </ThemeProvider>
+  <div
+    css={css`
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 5rem 0 0;
+    `}
+  >
+    <ThemeProvider theme={theme}>
+      <Wrapper>
+        <GlobalStyle />
+        <Header location={location} />
+      </Wrapper>
+      {children}
+      <Wrapper
+        css={css`
+          margin: 5rem 0 0;
+          padding: 0.5rem 0;
+          border-top: 1px solid #ffffff22;
+        `}
+      >
+        <Footer buildDate={pageContext.date} />
+      </Wrapper>
+    </ThemeProvider>
+  </div>
 )
+
+const mainWidth = `${1.25 * 56}ch`
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns:
     [full-start] minmax(3rem, 1fr)
-    [main-start] minmax(0, 21rem)
-    [narrow-start] 60ch [narrow-end]
-    minmax(0, 21rem) [main-end]
+    [wide-start] minmax(0, 18rem)
+    [main-start] ${mainWidth} [main-end]
+    minmax(0, 18rem) [wide-end]
     minmax(3rem, 1fr) [full-end];
-  line-height: 1.5;
 
   & > * {
     grid-column: main;
@@ -51,9 +67,9 @@ const Wrapper = styled.div`
     css`
       grid-template-columns:
         [full-start] 3rem
-        [main-start] 1fr
-        [narrow-start] minmax(0, 60ch) [narrow-end]
-        1fr [main-end]
+        [wide-start] 1fr
+        [main-start] minmax(0, ${mainWidth}) [main-end]
+        1fr [wide-end]
         3rem [full-end];
     `
   )}
@@ -63,9 +79,9 @@ const Wrapper = styled.div`
     css`
       grid-template-columns:
         [full-start] 1.5rem
-        [main-start] 1fr
-        [narrow-start] minmax(0, 60ch) [narrow-end]
-        1fr [main-end]
+        [wide-start] 1fr
+        [main-start] minmax(0, ${mainWidth}) [main-end]
+        1fr [wide-end]
         1.5rem [full-end];
     `
   )}

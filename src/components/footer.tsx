@@ -5,10 +5,7 @@ import { ExternalLink, InternalLink } from "./links"
 
 const Footer = ({ buildDate }: { buildDate: string }): JSX.Element => (
   <FooterContainer>
-    {/* <FooterHeader> */}
-    {/* <ScrollUpButton onClick={() => window.scrollTo(0, 0)}>↑</ScrollUpButton> */}
-    {/* </FooterHeader> */}
-    <SiteInfo>
+    {/* <SiteInfo>
       <Copyright>© Lucas Lee 2022</Copyright>
       <Links>
         <InternalLink to="/" $underline={false}>
@@ -23,14 +20,10 @@ const Footer = ({ buildDate }: { buildDate: string }): JSX.Element => (
           Site source
         </ExternalLink>
       </Links>
-    </SiteInfo>
-    <code
-      css={css`
-        font-size: 0.8em;
-      `}
-    >
+    </SiteInfo> */}
+    <span>
       Site built at <time dateTime={buildDate}>{buildDate}</time>
-    </code>
+    </span>
   </FooterContainer>
 )
 
@@ -92,10 +85,9 @@ const FooterContainer = styled.footer`
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  margin: 12rem 0 0;
-  padding: 1.5rem 0;
   color: ${({ theme }) => theme.neutral.l65};
-  line-height: 1.5rem;
+  font-size: 0.8em;
+  line-height: 1rem;
 `
 
 export default Footer

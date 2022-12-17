@@ -65,3 +65,45 @@
   src: url("Iosevka-400-italic.woff2") format("woff2");
   font-display: swap;
 }
+
+/* Iosevka LL */
+
+@font-face {
+  font-weight: 400;
+  font-family: "Iosevka LL";
+  font-style: normal;
+  src: url("iosevka-ll-regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Iosevka LL";
+  font-style: italic;
+  src: url("iosevka-ll-italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Iosevka LL";
+  font-style: normal;
+  src: url("iosevka-ll-bold.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 700;
+  font-family: "Iosevka LL";
+  font-style: italic;
+  src: url("iosevka-ll-bolditalic.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "Basier Square";
+  font-style: normal;
+  src: url("basiersquare-regular-webfont.woff2") format("woff2");
+  font-display: swap;
+}
