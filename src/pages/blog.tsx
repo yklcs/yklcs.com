@@ -200,14 +200,14 @@ const Sorter = ({
   <SorterContainer>
     {
       <SorterButton active={group === "Year"} onClick={() => setGroup("Year")}>
-        Sorted by year ↓
+        Sorted by category ↓
       </SorterButton>
     }
     <SorterButton
       active={group === "Category"}
       onClick={() => setGroup("Category")}
     >
-      Sorted by category ↓
+      Sorted by year ↓
     </SorterButton>
   </SorterContainer>
 )
