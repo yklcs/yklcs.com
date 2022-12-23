@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
-    font-size: clamp(14px, 1.25vw, 20px);
+    font-size: clamp(14px, 1.5vw, 18px);
     font-synthesis: none;
     background: #171718;
     scroll-behavior: smooth;
