@@ -152,7 +152,6 @@ const PostMeta = styled.div`
   display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.colors.subtext};
-  font-size: 1em;
 `
 
 const PostDate = styled.time`
@@ -172,6 +171,7 @@ const PostLinkContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   color: inherit;
+  font-size: 1.125em;
   text-decoration: none;
 `
 
@@ -188,6 +188,7 @@ const SorterContainer = styled.div`
   flex-direction: row;
   gap: 0.75rem;
   margin: 0.75rem 0 3rem;
+  font-size: 1.125em;
 `
 
 const Sorter = ({
@@ -200,14 +201,14 @@ const Sorter = ({
   <SorterContainer>
     {
       <SorterButton active={group === "Year"} onClick={() => setGroup("Year")}>
-        Sorted by category ↓
+        By category ↓
       </SorterButton>
     }
     <SorterButton
       active={group === "Category"}
       onClick={() => setGroup("Category")}
     >
-      Sorted by year ↓
+      By year ↓
     </SorterButton>
   </SorterContainer>
 )
