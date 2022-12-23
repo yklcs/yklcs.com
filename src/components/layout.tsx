@@ -38,7 +38,7 @@ const Layout = ({
         css={css`
           margin: 5rem 0 0;
           padding: 0.5rem 0;
-          border-top: 1px solid #ffffff22;
+          border-top: 1px solid ${({ theme }) => theme.colors.subbg};
         `}
       >
         <Footer buildDate={pageContext.date} />

@@ -16,11 +16,7 @@ const Header = ({ location }: { location: WindowLocation }): JSX.Element => (
     {location.pathname !== "/" && (
       <Breadcrumbs
         css={css`
-          color: ${({ theme }) => theme.neutral.l65};
-
-          & > a:hover {
-            color: ${({ theme }) => theme.neutral.l50};
-          }
+          color: ${({ theme }) => theme.colors.subtext};
 
           ${respond(
             "sm",

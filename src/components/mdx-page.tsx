@@ -18,7 +18,7 @@ const Header = (props: MdxFrontmatter): JSX.Element => {
           <time
             dateTime={props.date}
             css={css`
-              color: #888888;
+              color: ${({ theme }) => theme.colors.subtext};
             `}
           >
             {format(new Date(props.date), "PP")}

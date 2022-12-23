@@ -1,12 +1,13 @@
 import React, { Dispatch, FunctionComponent, SetStateAction } from "react"
 import styled, { css } from "styled-components"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import { groupBy } from "../utils/collections"
 import { useState } from "react"
 import { format, getYear } from "date-fns"
 import { Wrapper } from "../components/layout"
+import { InternalLink } from "../components/links"
 
 interface PostNode {
   frontmatter: {
@@ -115,7 +116,7 @@ const PostGroupName = styled.div`
   margin: 0 0 1em;
   font-weight: 700;
   font-size: 1.25em;
-  border-bottom: 1px solid #ffffff33;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.subbg};
 `
 
 const PostGroupContainer = styled.div`
@@ -150,7 +151,7 @@ const PostGroup = styled.div`
 const PostMeta = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${({ theme }) => theme.neutral.l65};
+  color: ${({ theme }) => theme.colors.subtext};
   font-size: 1em;
 `
 
@@ -174,16 +175,12 @@ const PostLinkContainer = styled.div`
   text-decoration: none;
 `
 
-const PostTitle = styled(Link)`
+const PostTitle = styled(InternalLink)`
   display: block;
   margin: 0;
   color: inherit;
   font-size: 1em;
   text-decoration: none;
-
-  &:hover {
-    color: ${({ theme }) => theme.neutral.l15};
-  }
 `
 
 const SorterContainer = styled.div`
@@ -218,7 +215,7 @@ const Sorter = ({
 const SorterButton = styled.button<{ active: boolean }>`
   display: ${({ active }) => (active ? "none" : "inline")};
   padding: 0;
-  color: ${({ theme, active = false }) => theme.neutral.l65};
+  color: ${({ theme, active = false }) => theme.colors.subtext};
   font-size: 1em;
   line-height: inherit;
   letter-spacing: inherit;
@@ -228,7 +225,7 @@ const SorterButton = styled.button<{ active: boolean }>`
   appearance: none;
 
   &:hover {
-    color: inherit;
+    filter: brightness(60%);
   }
 `
 

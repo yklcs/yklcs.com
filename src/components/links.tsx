@@ -7,6 +7,10 @@ const linkStyle = css<{ $underline?: boolean }>`
   text-decoration: ${({ $underline = true }) =>
     $underline ? "underline" : "none"};
   text-decoration-thickness: 1px;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.highlight};
+  }
 `
 
 const InternalLink = styled(GatsbyLink)`

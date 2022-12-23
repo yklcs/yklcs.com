@@ -9,17 +9,9 @@ declare module "styled-components" {
     breakpoints: {
       [key in Breakpoint]: string
     }
-    neutral: {
-      l100: string
-      l95: string
-      l65: string
-      l50: string
-      l15: string
-    }
-    brand: {
-      l80: string
-      l50: string
-    }
     syntax: PrismTheme
+    colors: {
+      [key: string]: string
+    }
   }
 }

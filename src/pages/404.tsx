@@ -26,7 +26,7 @@ const ErrorTitle = styled.h1`
 
 const ErrorText = styled.p`
   margin: 0 0 3rem;
-  color: ${({ theme }) => theme.neutral.l65};
+  color: ${({ theme }) => theme.colors.subtext};
   font-size: 1.1em;
 `
 
@@ -36,7 +36,6 @@ const HomeLink = styled(Link)`
   color: inherit;
   font-size: 1.1em;
   text-decoration: underline;
-  text-decoration-color: ${({ theme }) => theme.brand.l50};
   text-decoration-thickness: 1px;
   background: none;
   border: none;
@@ -44,10 +43,6 @@ const HomeLink = styled(Link)`
   outline: inherit;
   cursor: pointer;
   transition: background 0.3s;
-
-  &:hover {
-    background: ${({ theme }) => theme.neutral.l100};
-  }
 `
 
 export default ErrorPage

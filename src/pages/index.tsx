@@ -23,16 +23,7 @@ const IndexPage = (): JSX.Element => {
             the KATUSA program, MOS 11B infantryman.{" "}
             <span
               css={css`
-                /* stylelint-disable */
-                color: hsl(
-                  ${elapsedDateRatio(
-                      serviceBeginDate,
-                      new Date(),
-                      serviceEndDate
-                    ) * 0.3}turn
-                    70% 65%
-                );
-                /* stylelint-enable */
+                color: ${({ theme }) => theme.colors.highlight};
               `}
             >
               Served for {differenceInDays(new Date(), serviceBeginDate)} days,{" "}
@@ -71,15 +62,6 @@ const IndexPage = (): JSX.Element => {
     </>
   )
 }
-
-const elapsedDateRatio = (begin: Date, now: Date, end: Date) =>
-  Math.min(
-    Math.max(
-      (now.valueOf() - begin.valueOf()) / (end.valueOf() - begin.valueOf()),
-      0
-    ),
-    1
-  )
 
 const Description = styled.p`
   grid-column: span 6;

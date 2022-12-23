@@ -54,38 +54,12 @@ const SiteInfo = styled.div`
   )}
 `
 
-const ScrollUpButton = styled.button`
-  justify-self: center;
-  margin: -1.75rem;
-  padding: 0.75rem 0.3rem;
-  color: ${({ theme }) => theme.neutral.l65};
-  font-size: 1em;
-  line-height: inherit;
-  background: ${({ theme }) => theme.neutral.l100};
-  border: none;
-  outline: none;
-  transition: transform 0.5s;
-  appearance: none;
-
-  &:hover {
-    transform: translateY(-0.5rem);
-  }
-`
-
-const FooterHeader = styled.div`
-  display: flex;
-  grid-column: 1/-1;
-  justify-content: center;
-
-  /* border-bottom: 1px solid ${({ theme }) => theme.neutral.l95}; */
-`
-
 const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  color: ${({ theme }) => theme.neutral.l65};
+  color: ${({ theme }) => theme.colors.subtext};
   font-size: 0.8em;
   line-height: 1rem;
 `

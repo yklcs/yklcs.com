@@ -241,13 +241,9 @@ const linkStyle = css`
   padding: 0.1em 0.4em;
   color: inherit;
   text-decoration: underline;
-  text-decoration-color: ${({ theme }) => theme.brand.l50};
+  text-decoration-color: ${({ theme }) => theme.colors.subtext};
   border-radius: 0.6rem;
   transition: background 0.3s;
-
-  &:hover {
-    background: ${({ theme }) => theme.brand.l80};
-  }
 `
 
 const ALink = styled.a`
