@@ -46,15 +46,12 @@ const HeaderContainer = styled.div`
 
 const Breadcrumbs = ({ location, ...props }: { location: WindowLocation }) => (
   <BreadcrumbsContainer {...props}>
-    <InternalLink $underline={false} to="/">
-      /
-    </InternalLink>
     {location.pathname
       .split("/")
       .filter(str => str)
       .map((elm, idx, arr) => (
         <>
-          {idx !== 0 && <span>/</span>}
+          {<span>/</span>}
           <InternalLink
             $underline={false}
             to={`/${arr.slice(0, idx + 1).join("/")}`}
