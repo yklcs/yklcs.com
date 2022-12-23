@@ -12,50 +12,47 @@ const elapsedDateRatio = (begin: Date, now: Date, end: Date) =>
 const serviceBeginDate = new Date("2022-09-19T14:00:00+0900")
 const serviceEndDate = new Date("2024-03-18T14:00:00+0900")
 
+const colors = {
+  text: hsl(228, 0.07, 0.88),
+  subtext: hsl(228, 0.07, 0.5),
+  highlight: hsl(
+    elapsedDateRatio(serviceBeginDate, new Date(), serviceEndDate) * 120,
+    0.7,
+    0.65
+  ),
+  bg: hsl(228, 0.07, 0.08),
+  subbg: hsl(228, 0.07, 0.15),
+}
+
 const theme: DefaultTheme = {
   breakpoints: {
     sm: "35rem",
     md: "70rem",
     lg: "100rem",
   },
-  colors: {
-    l100: hsl(228, 0.07, 1),
-    l95: hsl(228, 0.07, 0.95),
-    l50: hsl(228, 0.07, 0.5),
-    l65: hsl(228, 0.07, 0.65),
-    l15: hsl(228, 0.07, 0.15),
-    text: hsl(228, 0.07, 0.88),
-    subtext: hsl(228, 0.07, 0.5),
-    highlight: hsl(
-      elapsedDateRatio(serviceBeginDate, new Date(), serviceEndDate) * 120,
-      0.7,
-      0.65
-    ),
-    bg: hsl(228, 0.07, 0.08),
-    subbg: hsl(228, 0.07, 0.2),
-  },
+  colors: colors,
   syntax: {
     plain: {
-      color: "#333333ff",
-      backgroundColor: "#eeeeeeff",
+      color: colors.text,
+      backgroundColor: hsl(228, 0.07, 0.15),
     },
     styles: [
       {
         types: ["comment"],
         style: {
-          color: "#a0a0a0ff",
+          color: colors.subtext,
         },
       },
       {
         types: ["builtin", "changed", "keyword", "punctuation", "operator"],
         style: {
-          color: "#777777ff",
+          color: colors.subtext,
         },
       },
       {
         types: ["constant", "number", "inserted", "string"],
         style: {
-          color: "#6196f2ff",
+          color: colors.highlight,
         },
       },
       {

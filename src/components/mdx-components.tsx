@@ -33,7 +33,7 @@ mdxComponents.code = Code
 
 mdxComponents.inlineCode = styled.code`
   font-family: Iosevka, Menlo, Consolas, monospace;
-  background: ${({ theme }) => theme.neutral.l100};
+  background: ${({ theme }) => theme.colors.subbg};
 `
 
 const headerStyle = css`
@@ -62,34 +62,6 @@ mdxComponents.h4 = styled.h4`
 `
 
 mdxComponents.a = ExternalLink
-
-// const Sidenote = styled.span`
-//   position: absolute;
-//   right: 0;
-//   display: block;
-//   width: 40%;
-//   margin: -${1.125 * 1.5 - 0.1}rem 0 0;
-//   padding: 0 0 0 2rem;
-//   color: ${({ theme }) => theme.neutral.l65};
-//   font-size: 0.75em;
-//   line-height: ${1.125 * 1.5}rem;
-//   letter-spacing: -0.012em;
-//   transform: translateX(100%);
-
-//   ${respond(
-//     "md",
-//     css`
-//       width: 33.3333%;
-//     `
-//   )}
-
-//   ${respond(
-//     "sm",
-//     css`
-//       display: none;
-//     `
-//   )}
-// `
 
 const components: Components = {
   ...mdxComponents,

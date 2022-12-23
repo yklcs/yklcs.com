@@ -49,8 +49,8 @@ const Line = styled.div`
 const LineNo = styled.span`
   display: table-cell;
   padding-right: 1rem;
+  color: ${({ theme }) => theme.colors.subtext};
   text-align: right;
-  opacity: 0.5;
   user-select: none;
 `
 
