@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components"
 const GlobalStyle = createGlobalStyle`
   html {
     font-size: 16px;
-    font-size: clamp(14px, 1.5vw, 18px);
+    font-size: clamp(14px, 1.125vw, 18px);
     font-synthesis: none;
     background: ${({ theme }) => theme.colors.bg};
     scroll-behavior: smooth;
@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     color: ${({ theme }) => theme.colors.text};
     font-family: "Iosevka LL", "Basier Square", "Suisse Int'l", "Helvetica Neue", Helvetica, sans-serif;
-    line-height: 1.7;
+    line-height: 1.75;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 
