@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     color: ${({ theme }) => theme.colors.text};
-    font-family: "Basier Square", "Suisse Int'l", "Helvetica Neue", Helvetica, sans-serif;
+    font-family: Diatype, "Helvetica Neue", Helvetica, sans-serif;
     line-height: 1.75;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;

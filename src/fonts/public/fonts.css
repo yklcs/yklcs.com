@@ -99,11 +99,3 @@
   src: url("iosevka-ll-bolditalic.woff2") format("woff2");
   font-display: swap;
 }
-
-@font-face {
-  font-weight: 400;
-  font-family: "Basier Square";
-  font-style: normal;
-  src: url("basiersquare-regular-webfont.woff2") format("woff2");
-  font-display: swap;
-}
