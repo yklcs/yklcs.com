@@ -1,26 +1,24 @@
 ---
 import Html from "../layouts/Html.astro"
-import Layout from "../components/Layout.astro"
 ---
 
 <Html title="Welcome to Astro.">
   <main>
-    <section>
-      Lucas Yunkyu Lee is a student at POSTECH with interests in research,
-      development, and design. Currently performing military service under the
-      KATUSA program, MOS 11B.
-    </section>
-    <div class="links">
-      <a href="mailto:me@luc.li">Send mail →</a>
-      <a href="/blog">Read blog →</a>
-      <a href="https://github.com/yklcs">View code →</a>
-    </div>
+    Lucas Yunkyu Lee is a student at POSTECH with interests in research,
+    development, and design. Currently performing military service under the
+    KATUSA program, MOS 11B.
   </main>
+  <div class="links">
+    <a href="mailto:me@luc.li">Send mail →</a>
+    <a href="/blog">Read blog →</a>
+    <a href="https://github.com/yklcs">View code →</a>
+  </div>
 </Html>
 
 <style>
   .links {
     display: flex;
     flex-direction: column;
+    align-items: start;
   }
 </style>
