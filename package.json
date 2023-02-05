@@ -9,8 +9,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
