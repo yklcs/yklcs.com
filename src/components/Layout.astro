@@ -1,0 +1,42 @@
+<div>
+  <slot />
+</div>
+<style>
+  div {
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(3rem, 1fr)
+      [wide-start] minmax(0, 18rem)
+      [main-start] 70ch [main-end]
+      minmax(0, 18rem) [wide-end]
+      minmax(3rem, 1fr) [full-end];
+    gap: 1rem 0;
+    padding: 5rem 0;
+  }
+
+  div > :global(*) {
+    grid-column: main;
+  }
+
+  @media screen and (max-width: 70rem) {
+    div {
+      grid-template-columns:
+        [full-start] 3rem
+        [wide-start] 1fr
+        [main-start] minmax(0, 70ch) [main-end]
+        1fr [wide-end]
+        3rem [full-end];
+    }
+  }
+
+  @media screen and (max-width: 50rem) {
+    div {
+      grid-template-columns:
+        [full-start] 1.5rem
+        [wide-start] 1fr
+        [main-start] minmax(0, 70ch) [main-end]
+        1fr [wide-end]
+        1.5rem [full-end];
+    }
+  }
+</style>

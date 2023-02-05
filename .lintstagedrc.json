@@ -1,5 +1,3 @@
 {
-  "*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-  "*.{jsx,tsx,css}": "stylelint --fix",
-  "*": "prettier --write --ignore-unknown"
+  "*": "prettier --write --plugin-search-dir=. --ignore-unknown"
 }

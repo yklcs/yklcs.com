@@ -1,6 +1,13 @@
+# build output
+dist/
+.output/
+
+# generated types
+.astro/
+
+# dependencies
 node_modules/
-.cache/
-public
+
+# package manager
 package.json
-package-lock.json
-font-preload-cache.json
+pnpm-lock.yaml
