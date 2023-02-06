@@ -1,0 +1,13 @@
+---
+import { getCollection } from "astro:content"
+import Html from "../../layouts/Html.astro"
+const allBlogPosts = await getCollection("blog")
+---
+
+<Html title="luc.li blog">
+  {
+    allBlogPosts.map(entry => (
+      <a href={`/blog/${entry.slug}`}>{entry.data.title}</a>
+    ))
+  }
+</Html>
