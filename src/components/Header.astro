@@ -1,8 +1,27 @@
-<header>luc.li</header>
+---
+const url = Astro.url
+---
+
+<header>
+  <a href="/">luc.li</a>
+  {
+    url.pathname
+      .split("/")
+      .filter(str => str)
+      .map((elm, idx, arr) => (
+        <>
+          {<span>/</span>}
+          <a href={`/${arr.slice(0, idx + 1).join("/")}`}>{elm}</a>
+        </>
+      ))
+  }
+</header>
 
 <style>
   header {
+    display: flex;
+    flex-direction: row;
+    gap: 0 0.75ch;
     font-weight: 700;
-    font-family: Menlo, monospace;
   }
 </style>
