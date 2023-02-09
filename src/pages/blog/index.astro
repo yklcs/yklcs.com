@@ -3,34 +3,51 @@ import { getCollection } from "astro:content"
 import { format, formatISO } from "date-fns"
 import PageHeader from "../../components/PageHeader.astro"
 import Default from "../../layouts/Default.astro"
+import group from "../../utils/group"
 
 const allBlogPosts = await getCollection("blog")
+const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 ---
 
 <Default title="luc.li blog">
   <PageHeader title="Blog" />
-  <section>
+  <div>
     {
-      allBlogPosts.map(entry => (
-        <a href={`/blog/${entry.slug}`}>
-          <article>
-            <h1>{entry.data.title}</h1>
-            <time datetime={formatISO(entry.data.date)}>
-              {format(entry.data.date, "d MMM yyyy")}
-            </time>
-          </article>
-        </a>
-      ))
+      Object.entries(grouped)
+        .reverse()
+        .map(([year, posts]) => (
+          <section>
+            <h1 class="group-title">{year}</h1>
+            {posts.reverse().map(entry => (
+              <a href={`/blog/${entry.slug}`}>
+                <article>
+                  <h1 class="article-title">{entry.data.title}</h1>
+                  <time
+                    class="article-meta"
+                    datetime={formatISO(entry.data.date)}
+                  >
+                    {format(entry.data.date, "d MMM yyyy")}
+                  </time>
+                </article>
+              </a>
+            ))}
+          </section>
+        ))
     }
-  </section>
+  </div>
 </Default>
 
-<style>
+<style lang="scss">
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
   section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 0;
   }
 
   article {
@@ -39,8 +56,18 @@ const allBlogPosts = await getCollection("blog")
     gap: 0 1ch;
   }
 
-  h1 {
-    margin: 0;
+  h1.group-title {
+    margin: 0 0 0.5rem 0;
     font-size: 1em;
+  }
+
+  h1.article-title {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1em;
+  }
+
+  .article-meta {
+    color: var(--neutral-60);
   }
 </style>
