@@ -3,7 +3,8 @@ import Html from "./Html.astro"
 import Header from "../components/Header.astro"
 import Wrapper from "../components/Wrapper.astro"
 import type { CollectionEntry } from "astro:content"
-import PageTitle from "../components/PageTitle.astro"
+import PageHeader from "../components/PageHeader.astro"
+import { format, formatISO } from "date-fns"
 
 export interface Props {
   entry: CollectionEntry<"blog">
@@ -18,7 +19,11 @@ const { entry } = Astro.props
   </Wrapper>
   <main>
     <Wrapper element="article">
-      <PageTitle title={entry.data.title} />
+      <PageHeader title={entry.data.title}>
+        <time datetime={formatISO(entry.data.date)}
+          >{format(entry.data.date, "MMM dd yyyy")}</time
+        >
+      </PageHeader>
       <slot />
     </Wrapper>
   </main>
@@ -26,6 +31,10 @@ const { entry } = Astro.props
 
 <style is:global lang="scss">
   article {
+    time {
+      color: var(--neutral-60);
+    }
+
     h2,
     h3,
     h4,

@@ -1,7 +1,7 @@
 ---
 title: Hello world!
 date: 2023-02-07
-tags: []
+tags: [test]
 ---
 
 ## Level 2 heading

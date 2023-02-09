@@ -6,12 +6,20 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<h1>{title}</h1>
+<div>
+  <h1>{title}</h1>
+  <slot />
+</div>
 
 <style>
   h1 {
-    margin: 1rem 0 0 0;
+    margin: 0;
     font-weight: 700;
     font-size: 1.75em;
+    line-height: 1.5;
+  }
+
+  div {
+    margin: 1.5rem 0;
   }
 </style>

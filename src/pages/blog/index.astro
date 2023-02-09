@@ -1,14 +1,14 @@
 ---
 import { getCollection } from "astro:content"
 import { format, formatISO } from "date-fns"
-import PageTitle from "../../components/PageTitle.astro"
+import PageHeader from "../../components/PageHeader.astro"
 import Default from "../../layouts/Default.astro"
 
 const allBlogPosts = await getCollection("blog")
 ---
 
 <Default title="luc.li blog">
-  <PageTitle title="Blog" />
+  <PageHeader title="Blog" />
   <section>
     {
       allBlogPosts.map(entry => (
@@ -30,6 +30,7 @@ const allBlogPosts = await getCollection("blog")
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin: 0;
   }
 
   article {
