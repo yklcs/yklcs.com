@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content"
-import { format } from "date-fns"
+import { format, formatISO } from "date-fns"
 import PageTitle from "../../components/PageTitle.astro"
 import Default from "../../layouts/Default.astro"
 
@@ -9,25 +9,36 @@ const allBlogPosts = await getCollection("blog")
 
 <Default title="luc.li blog">
   <PageTitle title="Blog" />
-  <div>
+  <section>
     {
       allBlogPosts.map(entry => (
         <a href={`/blog/${entry.slug}`}>
-          <h2>{entry.data.title}</h2>
-          <time>{format(entry.data.date, "d MMM yyyy")}</time>
+          <article>
+            <h1>{entry.data.title}</h1>
+            <time datetime={formatISO(entry.data.date)}>
+              {format(entry.data.date, "d MMM yyyy")}
+            </time>
+          </article>
         </a>
       ))
     }
-  </div>
+  </section>
 </Default>
 
 <style>
-  a {
+  section {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  h2 {
+  article {
+    display: flex;
+    flex-direction: row;
+    gap: 0 1ch;
+  }
+
+  h1 {
     margin: 0;
     font-size: 1em;
   }
