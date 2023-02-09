@@ -1,6 +1,6 @@
 ---
-import { getCollection } from "astro:content"
-import Html from "../../layouts/Html.astro"
+import { type CollectionEntry, getCollection } from "astro:content"
+import Markdown from "../../layouts/Markdown.astro"
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog")
   return blogEntries.map(entry => ({
@@ -9,11 +9,13 @@ export async function getStaticPaths() {
   }))
 }
 
+interface Props {
+  entry: CollectionEntry<"blog">
+}
 const { entry } = Astro.props
 const { Content } = await entry.render()
 ---
 
-<Html title={entry.data.title}>
-  <h1>{entry.data.title}</h1>
+<Markdown entry={entry}>
   <Content />
-</Html>
+</Markdown>

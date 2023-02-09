@@ -1,0 +1,51 @@
+---
+import Html from "./Html.astro"
+import Header from "../components/Header.astro"
+import Wrapper from "../components/Wrapper.astro"
+import type { CollectionEntry } from "astro:content"
+import PageTitle from "../components/PageTitle.astro"
+
+export interface Props {
+  entry: CollectionEntry<"blog">
+}
+
+const { entry } = Astro.props
+---
+
+<Html title={entry.data.title}>
+  <Wrapper>
+    <Header />
+  </Wrapper>
+  <main>
+    <Wrapper element="article">
+      <PageTitle title={entry.data.title} />
+      <slot />
+    </Wrapper>
+  </main>
+</Html>
+
+<style is:global lang="scss">
+  article {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 0.5rem 0 -0.25rem 0;
+    }
+
+    h2 {
+      font-size: 1.5em;
+    }
+
+    h3 {
+      font-size: 1.2em;
+    }
+
+    h4,
+    h5,
+    h6 {
+      font-size: 1em;
+    }
+  }
+</style>

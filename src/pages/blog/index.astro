@@ -1,13 +1,14 @@
 ---
 import { getCollection } from "astro:content"
 import { format } from "date-fns"
-import Html from "../../layouts/Html.astro"
+import PageTitle from "../../components/PageTitle.astro"
+import Default from "../../layouts/Default.astro"
 
 const allBlogPosts = await getCollection("blog")
 ---
 
-<Html title="luc.li blog">
-  <h1>Blog</h1>
+<Default title="luc.li blog">
+  <PageTitle title="Blog" />
   <div>
     {
       allBlogPosts.map(entry => (
@@ -18,7 +19,7 @@ const allBlogPosts = await getCollection("blog")
       ))
     }
   </div>
-</Html>
+</Default>
 
 <style>
   a {
