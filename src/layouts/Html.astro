@@ -1,7 +1,9 @@
 ---
 import Header from "../components/Header.astro"
 import Layout from "../components/Layout.astro"
-import "../components/GlobalStyles.astro"
+import "../styles/global.css"
+import "../styles/fonts.css"
+import colors from "../styles/colors"
 
 export interface Props {
   title: string
@@ -12,13 +14,12 @@ const { title } = Astro.props
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title}</title>
+
   <body>
     <Layout>
       <Header />
@@ -26,23 +27,10 @@ const { title } = Astro.props
     </Layout>
   </body>
 </html>
-
-<style is:global>
-  :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
-  }
-
+<style is:global define:vars={colors}>
   html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background: hsl(228, 7%, 8%);
-    color: hsl(228, 7%, 88%);
     font-size: 16px;
     font-size: clamp(18px, 2vw, 24px); /* 900-1200px */
     line-height: 1.75;

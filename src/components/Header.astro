@@ -10,8 +10,13 @@ const url = Astro.url
       .filter(str => str)
       .map((elm, idx, arr) => (
         <>
-          {<span>/</span>}
-          <a href={`/${arr.slice(0, idx + 1).join("/")}`}>{elm}</a>
+          {<span class="breadcrumb-child">/</span>}
+          <a
+            href={`/${arr.slice(0, idx + 1).join("/")}`}
+            class="breadcrumb-child"
+          >
+            {elm}
+          </a>
         </>
       ))
   }
@@ -21,7 +26,11 @@ const url = Astro.url
   header {
     display: flex;
     flex-direction: row;
-    gap: 0 0.75ch;
+    gap: 0 0.5ch;
     font-weight: 700;
+  }
+
+  .breadcrumb-child {
+    color: var(--neutral-70);
   }
 </style>

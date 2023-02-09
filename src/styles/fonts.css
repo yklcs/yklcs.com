@@ -1,0 +1,47 @@
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/private/Diatype-400-normal.woff2") format("woff2");
+  font-family: Diatype;
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/private/Diatype-400-italic.woff2") format("woff2");
+  font-family: Diatype;
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/private/Diatype-500-normal.woff2") format("woff2");
+  font-family: Diatype;
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 500;
+  src: url("/fonts/private/Diatype-500-italic.woff2") format("woff2");
+  font-family: Diatype;
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/private/Diatype-700-normal.woff2") format("woff2");
+  font-family: Diatype;
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 700;
+  src: url("/fonts/private/Diatype-700-italic.woff2") format("woff2");
+  font-family: Diatype;
+  font-display: swap;
+}
