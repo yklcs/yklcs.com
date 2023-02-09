@@ -47,15 +47,14 @@ jobs:
         id: install
         run: pnpm i
 
-      - name: Setup Gatsby cache
+      - name: Setup Astro cache
         uses: actions/cache@v3
         with:
           path: |
-            .cache
-            public
-          key: gatsby-output-${{ github.sha }}
+            dist
+          key: astro-output-${{ github.sha }}
           restore-keys: |
-            gatsby-output-
+            astro-output-
 
       - name: Build
         run: pnpm build

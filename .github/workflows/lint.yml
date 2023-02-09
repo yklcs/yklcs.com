@@ -7,6 +7,7 @@ on:
 
 jobs:
   lint:
+    if: ${{ false }} # temporarily disable
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

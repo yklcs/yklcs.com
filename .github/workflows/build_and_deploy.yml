@@ -49,15 +49,14 @@ jobs:
         id: install
         run: pnpm i
 
-      - name: Setup Gatsby cache
+      - name: Setup Astro cache
         uses: actions/cache@v3
         with:
           path: |
-            .cache
-            public
-          key: gatsby-output-${{ github.sha }}
+            dist
+          key: astro-output-${{ github.sha }}
           restore-keys: |
-            gatsby-output-
+            astro-output-
 
       - name: Build
         run: pnpm build
@@ -95,19 +94,18 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
 
-      - name: Setup Gatsby cache
+      - name: Setup Astro cache
         uses: actions/cache@v3
         with:
           path: |
-            .cache
-            public
-          key: gatsby-output-${{ github.sha }}
+            dist
+          key: astro-output-${{ github.sha }}
 
       - name: Deploy to AWS S3
         run: |
-          aws s3 cp public s3://luc.li --cache-control "no-cache" --recursive --exclude "*" --include "*.html" --include "page-data/**/*.json" --include "sw.js"
-          aws s3 cp public s3://luc.li --cache-control "public, max-age=31536000, immutable" --recursive --exclude "*" --include "static/**" --include "*.js" --include "*.css" --exclude "sw.js"
-          aws s3 sync public s3://luc.li --delete
+          aws s3 cp dist s3://luc.li --cache-control "no-cache" --recursive --exclude "*" --include "*.html" --include "page-data/**/*.json" --include "sw.js"
+          aws s3 cp dist s3://luc.li --cache-control "public, max-age=31536000, immutable" --recursive --exclude "*" --include "static/**" --include "*.js" --include "*.css" --exclude "sw.js"
+          aws s3 sync dist s3://luc.li --delete
 
       # - name: Invalidate AWS CloudFront Cache
       #   run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DIST_ID }} --paths "/index.html" "/sw.js" "/page-data/*"
