@@ -7,7 +7,6 @@ on:
 
 jobs:
   lint:
-    if: ${{ false }} # temporarily disable
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -40,20 +39,20 @@ jobs:
         id: install
         run: pnpm i
 
-      - name: Lint JS
-        if: ${{ always() && steps.install.conclusion == 'success' }}
-        env:
-          NODE_ENV: test
-        run: pnpm lint:js
+      # - name: Lint JS
+      #   if: ${{ always() && steps.install.conclusion == 'success' }}
+      #   env:
+      #     NODE_ENV: test
+      #   run: pnpm lint:js
 
-      - name: Lint CSS
-        if: ${{ always() && steps.install.conclusion == 'success' }}
-        run: pnpm lint:css
+      # - name: Lint CSS
+      #   if: ${{ always() && steps.install.conclusion == 'success' }}
+      #   run: pnpm lint:css
 
-      - name: Lint formatting
-        if: ${{ always() && steps.install.conclusion == 'success' }}
-        run: pnpm lint:format
+      # - name: Lint formatting
+      #   if: ${{ always() && steps.install.conclusion == 'success' }}
+      #   run: pnpm lint:format
 
-      - name: Check types
-        if: ${{ always() && steps.install.conclusion == 'success' }}
-        run: pnpm type-check
+      # - name: Check types
+      #   if: ${{ always() && steps.install.conclusion == 'success' }}
+      #   run: pnpm type-check
