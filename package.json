@@ -10,7 +10,7 @@
   "scripts": {
     "prepare": "husky install",
     "dev": "astro dev --host 0.0.0.0",
-    "build": "astro build",
+    "build": "pnpm pull-fonts && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w --plugin-search-dir=. .",
