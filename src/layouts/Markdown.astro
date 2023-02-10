@@ -16,9 +16,7 @@ const { entry } = Astro.props
 ---
 
 <Html title={entry.data.title}>
-  <Wrapper>
-    <Header />
-  </Wrapper>
+  <Header />
   <main>
     <Wrapper element="article">
       <PageHeader title={entry.data.title}>
