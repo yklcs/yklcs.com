@@ -2,7 +2,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
-  font-size: clamp(18px, 2vw, 24px); /* 900-1200px */
+  font-size: clamp(16px, 2vw, 20px); /* 800-1000px */
   line-height: 1.75;
 }
 
@@ -25,4 +25,20 @@ a {
 
 p {
   margin: 0;
+  hyphens: auto;
+}
+
+.astro-code::-webkit-scrollbar {
+  background-color: transparent;
+  height: 8px;
+}
+
+.astro-code::-webkit-scrollbar-thumb {
+  opacity: 0.1;
+  background-color: white;
+  height: 8px;
+}
+
+.astro-code::-webkit-scrollbar-track {
+  padding: 1px;
 }
