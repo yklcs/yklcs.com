@@ -5,6 +5,8 @@ import Wrapper from "../components/Wrapper.astro"
 import type { CollectionEntry } from "astro:content"
 import PageHeader from "../components/PageHeader.astro"
 import { format, formatISO } from "date-fns"
+import Footer from "../components/Footer.astro"
+import FlexSpacer from "../components/FlexSpacer.astro"
 
 export interface Props {
   entry: CollectionEntry<"blog">
@@ -27,6 +29,8 @@ const { entry } = Astro.props
       <slot />
     </Wrapper>
   </main>
+  <FlexSpacer />
+  <Footer />
 </Html>
 
 <style is:global lang="scss">

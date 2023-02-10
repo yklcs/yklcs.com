@@ -1,13 +1,13 @@
 ---
 interface Props {
   element?: keyof astroHTML.JSX.DefinedIntrinsicElements
-  gap?: string
+  className?: string
 }
 
-const { element: Element = "div" } = Astro.props
+const { element: Element = "div", className } = Astro.props
 ---
 
-<Element class="wrapper">
+<Element class:list={["wrapper", className]}>
   <slot />
 </Element>
 
