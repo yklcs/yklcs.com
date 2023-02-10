@@ -18,7 +18,7 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
         .map(([year, posts]) => (
           <section>
             <h1 class="group-title">{year}</h1>
-            {posts.reverse().map(entry => (
+            {posts.map(entry => (
               <a href={`/blog/${entry.slug}`}>
                 <article>
                   <h1 class="article-title">{entry.data.title}</h1>
