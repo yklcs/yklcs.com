@@ -15,7 +15,7 @@ body {
   padding: 5rem 0 0.5rem 0;
   min-height: 100vh;
   color: var(--neutral-90);
-  font-family: Diatype, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
 a {
@@ -28,17 +28,28 @@ p {
   hyphens: auto;
 }
 
-.astro-code::-webkit-scrollbar {
-  background-color: transparent;
-  height: 8px;
+pre,
+code {
+  font-family: Iosevka, monospace;
 }
 
-.astro-code::-webkit-scrollbar-thumb {
-  opacity: 0.1;
-  background-color: white;
-  height: 8px;
-}
+.astro-code {
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+  font-size: 0.875em;
 
-.astro-code::-webkit-scrollbar-track {
-  padding: 1px;
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    opacity: 0.1;
+    background-color: #ffffff;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    padding: 1px;
+  }
 }

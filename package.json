@@ -14,8 +14,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w --plugin-search-dir=. .",
-    "pull-fonts": "aws s3 sync s3://luc.li-fonts public/fonts/private",
-    "push-fonts": "aws s3 sync public/fonts/private s3://luc.li-fonts"
+    "pull-fonts": "aws s3 sync s3://luc.li-fonts public/fonts/closed",
+    "push-fonts": "aws s3 sync public/fonts/closed s3://luc.li-fonts"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.2",
