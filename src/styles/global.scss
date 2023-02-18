@@ -30,12 +30,10 @@ p {
 
 pre,
 code {
-  font-family: Iosevka, monospace;
+  font-family: var(--font-mono);
 }
 
 .astro-code {
-  -moz-osx-font-smoothing: auto;
-  -webkit-font-smoothing: auto;
   font-size: 0.875em;
 
   &::-webkit-scrollbar {
