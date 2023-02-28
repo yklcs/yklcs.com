@@ -33,8 +33,10 @@ code {
   font-family: var(--font-mono);
 }
 
-.astro-code {
-  font-size: 0.875em;
+pre.astro-code {
+  margin: 0 -1rem;
+  padding: 1rem;
+  font-size: 0.825em;
 
   &::-webkit-scrollbar {
     background-color: transparent;
