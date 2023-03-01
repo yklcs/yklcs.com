@@ -6,7 +6,6 @@ const vscodeTheme = await fetch(
 )
 const shikiTheme = toShikiTheme(await vscodeTheme.json())
 shikiTheme.settings[3].settings.fontStyle = "underline" // https://github.com/withastro/astro/issues/6383
-console.log(shikiTheme.settings)
 
 // https://astro.build/config
 export default defineConfig({
