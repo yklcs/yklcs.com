@@ -1,12 +1,13 @@
-import Color from "colorjs.io"
+import chroma from "chroma-js"
 
-const neutral = new Color("lch", [50, 2, 280])
+const c = 0.01
+const h = 240
 
 const colors = {
-  "neutral-90": neutral.clone().set("lch.l", 90).to("srgb"),
-  "neutral-60": neutral.clone().set("lch.l", 60).to("srgb"),
-  "neutral-10": neutral.clone().set("lch.l", 10).to("srgb"),
-  "neutral-7": neutral.clone().set("lch.l", 7).to("srgb"),
+  "neutral-90": chroma.oklch(0.87, c, h).hex(),
+  "neutral-60": chroma.oklch(0.6, c, h),
+  "neutral-10": chroma.oklch(0.3, c, h),
+  "neutral-7": chroma.oklch(0.18, c, h).hex(),
 }
 
 export default colors

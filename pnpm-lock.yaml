@@ -1,9 +1,10 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/chroma-js': ^2.4.0
   astro: ^2.0.1
   autoprefixer: ^10.4.13
-  colorjs.io: ^0.4.3
+  chroma-js: ^2.4.2
   date-fns: ^2.29.3
   husky: ^8.0.3
   lint-staged: ^13.1.0
@@ -15,9 +16,10 @@ specifiers:
   shiki: ^0.14.1
 
 dependencies:
+  '@types/chroma-js': 2.4.0
   astro: 2.0.1_sass@1.58.0
   autoprefixer: 10.4.13_postcss@8.4.21
-  colorjs.io: 0.4.3
+  chroma-js: 2.4.2
   date-fns: 2.29.3
 
 devDependencies:
@@ -664,6 +666,10 @@ packages:
       '@babel/types': 7.20.7
     dev: false
 
+  /@types/chroma-js/2.4.0:
+    resolution: {integrity: sha512-JklMxityrwjBTjGY2anH8JaTx3yjRU3/sEHSblLH1ba5lqcSh1LnImXJZO5peJfXyqKYWjHTGy4s5Wz++hARrw==}
+    dev: false
+
   /@types/debug/4.1.7:
     resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
     dependencies:
@@ -1017,6 +1023,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
+  /chroma-js/2.4.2:
+    resolution: {integrity: sha512-U9eDw6+wt7V8z5NncY2jJfZa+hUH8XEj8FQHgFJTrUFnJfXYf4Ml4adI2vXZOjqRDpFWtYVWypDfZwnJ+HIR4A==}
+    dev: false
+
   /ci-info/3.7.1:
     resolution: {integrity: sha512-4jYS4MOAaCIStSRwiuxc4B8MYhIe676yO1sYGzARnjXkWpmzZMMYxY6zu8WYWDhSuth5zhrQ1rhNSibyyvv4/w==}
     engines: {node: '>=8'}
@@ -1094,10 +1104,6 @@ packages:
   /colorette/2.0.19:
     resolution: {integrity: sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==}
     dev: true
-
-  /colorjs.io/0.4.3:
-    resolution: {integrity: sha512-Jr6NiWFZCuSECl23Bhe4jvDldQsE0ErnWrdl3xIUFy+Bkp0l8r5qt/iZlNH47/xxGP5izcyC8InjoUoI4Po+Pg==}
-    dev: false
 
   /comma-separated-tokens/2.0.3:
     resolution: {integrity: sha512-Fu4hJdvzeylCfQPp9SGWidpzrMs7tTrlu6Vb8XGaRGck8QSNZJJp538Wrb60Lax4fPwR64ViY468OIUTbRlGZg==}

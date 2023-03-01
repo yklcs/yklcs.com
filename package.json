@@ -18,9 +18,10 @@
     "push-fonts": "aws s3 sync public/fonts/closed s3://luc.li-fonts"
   },
   "dependencies": {
+    "@types/chroma-js": "^2.4.0",
     "astro": "^2.0.1",
     "autoprefixer": "^10.4.13",
-    "colorjs.io": "^0.4.3",
+    "chroma-js": "^2.4.2",
     "date-fns": "^2.29.3"
   },
   "devDependencies": {
