@@ -5,8 +5,10 @@ import Default from "../layouts/Default.astro"
 <Default title="luc.li">
   <p>
     Lucas Yunkyu Lee is a student at POSTECH with interests in research,
-    development, and design. Currently performing military service under the
-    KATUSA program, MOS 11B.
+    development, and design.
+    <span class="sub"
+      >Currently performing military service under the KATUSA program, MOS 11B.
+    </span>
   </p>
   <div class="links">
     <a href="mailto:me@luc.li">Send mail →</a>
@@ -17,9 +19,8 @@ import Default from "../layouts/Default.astro"
 
 <style>
   p {
-    margin: 2rem 0 1rem;
-    font-size: 1.25em;
-    line-height: 1.4;
+    margin: 2rem 0 0;
+    font-size: 1.1em;
     hyphens: none;
   }
 
@@ -27,5 +28,9 @@ import Default from "../layouts/Default.astro"
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .sub {
+    color: var(--neutral-60);
   }
 </style>
