@@ -1,6 +1,6 @@
 import chroma from "chroma-js"
 
-const c = 0.01
+const c = 0.0
 const h = 240
 
 const colors = {
