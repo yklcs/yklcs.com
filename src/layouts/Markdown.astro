@@ -33,6 +33,10 @@ const { entry } = Astro.props
 
 <style is:global lang="scss">
   article {
+    & > p {
+      max-width: 52ch;
+    }
+
     time {
       color: var(--neutral-60);
     }
@@ -43,6 +47,7 @@ const { entry } = Astro.props
     h5,
     h6 {
       margin: 0.5rem 0 -0.25rem 0;
+      font-weight: 400;
     }
 
     h2 {

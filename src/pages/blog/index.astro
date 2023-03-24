@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content"
 import { format, formatISO } from "date-fns"
 import PageHeader from "../../components/PageHeader.astro"
+import Wrapper from "../../components/Wrapper.astro"
 import Default from "../../layouts/Default.astro"
 import group from "../../utils/group"
 
@@ -10,13 +11,13 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 ---
 
 <Default title="luc.li blog">
-  <PageHeader title="Blog" />
-  <div>
+  <PageHeader title="Ramblings and reflections" />
+  <Wrapper className={"posts"}>
     {
       Object.entries(grouped)
         .reverse()
         .map(([year, posts]) => (
-          <section>
+          <Wrapper element={"section"} className={"group"}>
             <h1 class="group-title">{year}</h1>
             {posts
               .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
@@ -34,23 +35,20 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
                   </article>
                 </a>
               ))}
-          </section>
+          </Wrapper>
         ))
     }
-  </div>
+  </Wrapper>
 </Default>
 
 <style lang="scss">
-  div {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+  .posts {
+    grid-column: full;
   }
 
-  section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  section.group {
+    grid-column: full;
+    gap: 0;
   }
 
   article {
@@ -60,11 +58,17 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
   }
 
   h1.group-title {
-    margin: 0 0 0.5rem 0;
+    grid-column: wide-start;
+    margin: 0;
+    font-weight: 400;
     font-size: 1em;
+    @media screen and (max-width: 50rem) {
+      grid-column: main;
+    }
   }
 
   h1.article-title {
+    grid-column: main;
     margin: 0;
     font-weight: 400;
     font-size: 1em;
@@ -72,5 +76,9 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 
   .article-meta {
     color: var(--neutral-60);
+  }
+
+  a {
+    justify-self: start;
   }
 </style>

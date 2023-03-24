@@ -37,6 +37,10 @@ const { element: Element = "div", className } = Astro.props
         1fr [wide-end]
         3rem [full-end];
     }
+
+    .wrapper > :global(*) {
+      grid-column: wide-start / main-end;
+    }
   }
 
   @media screen and (max-width: 50rem) {
@@ -48,5 +52,9 @@ const { element: Element = "div", className } = Astro.props
         1fr [wide-end]
         1.5rem [full-end];
     }
+
+    /* .wrapper > :global(*) {
+      grid-column: main;
+    } */
   }
 </style>

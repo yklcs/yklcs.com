@@ -4,37 +4,53 @@ import Wrapper from "./Wrapper.astro"
 const url = Astro.url
 ---
 
-<Wrapper>
+<Wrapper className={"wrapper"}>
   <header>
-    <a href="/">luc.li</a>
-    {
-      url.pathname
-        .split("/")
-        .filter(str => str)
-        .map((elm, idx, arr) => (
-          <>
-            {<span class="breadcrumb-child">/</span>}
-            <a
-              href={`/${arr.slice(0, idx + 1).join("/")}`}
-              class="breadcrumb-child"
-            >
-              {elm}
-            </a>
-          </>
-        ))
-    }
+    <a href="/" class="breadcrumb-home">luc.li</a>
+    <div class="breadcrumbs">
+      {
+        url.pathname
+          .split("/")
+          .filter(str => str)
+          .map((elm, idx, arr) => (
+            <>
+              {<span class="breadcrumb-separator">/</span>}
+              <a
+                href={`/${arr.slice(0, idx + 1).join("/")}`}
+                class="breadcrumb-child"
+              >
+                {elm}
+              </a>
+            </>
+          ))
+      }
+    </div>
   </header>
 </Wrapper>
 
-<style>
+<style lang="scss">
   header {
-    display: flex;
-    flex-direction: row;
-    gap: 0 0.5ch;
+    display: contents;
+    @media screen and (max-width: 70rem) {
+      display: flex;
+    }
+  }
+
+  a.breadcrumb-home {
+    grid-column: wide-start;
+    justify-self: start;
     font-weight: 700;
   }
 
-  .breadcrumb-child {
+  .breadcrumbs {
+    display: flex;
+    grid-column: main;
+    flex-direction: row;
+    gap: 0 0.5ch;
+    margin: 0 0.5ch;
+  }
+
+  .breadcrumb-separator {
     color: var(--neutral-60);
     font-weight: 400;
   }

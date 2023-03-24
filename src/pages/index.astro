@@ -19,15 +19,19 @@ import Default from "../layouts/Default.astro"
 
 <style>
   p.bio {
-    margin: 2rem 0 0;
-    font-size: 1.1em;
+    grid-column: wide-start / main-end;
+    margin: 3rem 0 1rem;
+    font-size: 1.4em;
+    line-height: 1.4;
     hyphens: none;
   }
 
   .links {
     display: flex;
+    grid-column: wide;
     flex-direction: column;
     align-items: flex-start;
+    font-size: 1.1em;
   }
 
   .sub {
