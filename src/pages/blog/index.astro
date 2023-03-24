@@ -18,19 +18,22 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
         .map(([year, posts]) => (
           <section>
             <h1 class="group-title">{year}</h1>
-            {posts.map(entry => (
-              <a href={`/blog/${entry.slug}`}>
-                <article>
-                  <h1 class="article-title">{entry.data.title}</h1>
-                  <time
-                    class="article-meta"
-                    datetime={formatISO(entry.data.date)}
-                  >
-                    {format(entry.data.date, "d MMM yyyy")}
-                  </time>
-                </article>
-              </a>
-            ))}
+            {posts
+              .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+              .reverse()
+              .map(entry => (
+                <a href={`/blog/${entry.slug}`}>
+                  <article>
+                    <h1 class="article-title">{entry.data.title}</h1>
+                    <time
+                      class="article-meta"
+                      datetime={formatISO(entry.data.date)}
+                    >
+                      {format(entry.data.date, "d MMM yyyy")}
+                    </time>
+                  </article>
+                </a>
+              ))}
           </section>
         ))
     }
