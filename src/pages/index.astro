@@ -11,16 +11,25 @@ import Default from "../layouts/Default.astro"
     </span>
   </p>
   <div class="links">
-    <a href="mailto:me@luc.li">Send mail →</a>
-    <a href="/blog">Read blog →</a>
-    <a href="https://github.com/yklcs">View code →</a>
+    <span>
+      <span class="sub">Send</span>
+      <a href="mailto:me@luc.li">mail<sup>↗</sup></a>
+    </span>
+    <span>
+      <span class="sub">Browse</span>
+      <a href="/blog">blog<sup>↗</sup></a>
+    </span>
+    <span>
+      <span class="sub">Grok</span>
+      <a href="https://github.com/yklcs">code<sup>↗</sup></a>
+    </span>
   </div>
 </Default>
 
 <style>
   p.bio {
     grid-column: wide-start / main-end;
-    margin: 3rem 0 1rem;
+    margin: 3rem 0 0;
     font-size: 1.4em;
     line-height: 1.4;
     hyphens: none;
@@ -31,7 +40,8 @@ import Default from "../layouts/Default.astro"
     grid-column: wide;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 1.1em;
+    font-size: 1.4em;
+    line-height: 1.3;
   }
 
   .sub {
