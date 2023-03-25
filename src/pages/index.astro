@@ -27,11 +27,15 @@ import Default from "../layouts/Default.astro"
 </Default>
 
 <style>
-  p.bio {
-    grid-column: wide-start / main-end;
-    margin: 3rem 0 0;
+  .bio,
+  .links {
     font-size: 1.4em;
     line-height: 1.4;
+  }
+
+  .bio {
+    grid-column: wide-start / main-end;
+    margin: 3rem 0 0;
     hyphens: none;
   }
 
@@ -40,8 +44,6 @@ import Default from "../layouts/Default.astro"
     grid-column: wide;
     flex-direction: column;
     align-items: flex-start;
-    font-size: 1.4em;
-    line-height: 1.3;
   }
 
   .sub {
