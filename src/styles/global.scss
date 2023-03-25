@@ -4,6 +4,7 @@ html {
   font-size: 16px;
   font-size: clamp(16px, 2vw, 20px); /* 800-1000px */
   line-height: 1.6;
+  font-synthesis: none;
 }
 
 body {
