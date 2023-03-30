@@ -2,22 +2,22 @@ lockfileVersion: 5.4
 
 specifiers:
   '@types/chroma-js': ^2.4.0
-  astro: ^2.1.4
+  astro: ^2.1.8
   autoprefixer: ^10.4.14
   chroma-js: ^2.4.2
   date-fns: ^2.29.3
   husky: ^8.0.3
   lint-staged: ^13.2.0
   postcss: ^8.4.21
-  prettier: ^2.8.6
+  prettier: ^2.8.7
   prettier-plugin-astro: ^0.8.0
   prettier-plugin-css-order: ^1.3.0
-  sass: ^1.59.3
+  sass: ^1.60.0
   shiki: ^0.14.1
 
 dependencies:
   '@types/chroma-js': 2.4.0
-  astro: 2.1.4_sass@1.59.3
+  astro: 2.1.8_sass@1.60.0
   autoprefixer: 10.4.14_postcss@8.4.21
   chroma-js: 2.4.2
   date-fns: 2.29.3
@@ -26,10 +26,10 @@ devDependencies:
   husky: 8.0.3
   lint-staged: 13.2.0
   postcss: 8.4.21
-  prettier: 2.8.6
+  prettier: 2.8.7
   prettier-plugin-astro: 0.8.0
-  prettier-plugin-css-order: 1.3.0_t226hhi2ekw4xzaoilkpfwdbai
-  sass: 1.59.3
+  prettier-plugin-css-order: 1.3.0_ym2jnfrylgnmfwpgbxikmv3hy4
+  sass: 1.60.0
   shiki: 0.14.1
 
 packages:
@@ -50,8 +50,8 @@ packages:
     resolution: {integrity: sha512-77aacobLKcL98NmhK3OBS5EHIrX9gs1ckB/vGSIdkVZuB7u51V4jh05I6W0tSvG7/86tALv6QtHTRZ8rLhFTbQ==}
     dev: true
 
-  /@astrojs/compiler/1.2.2:
-    resolution: {integrity: sha512-S5UfaoYPgdKjxXjHq9jwHfNJJYZq77WRGgT6bQRmccGI/3dC/TakDW2nITNhju6kvRK1I8GI7ZHFJnVfA9cyhg==}
+  /@astrojs/compiler/1.3.0:
+    resolution: {integrity: sha512-VxSj3gh/UTB/27rkRCT7SvyGjWtuxUO7Jf7QqDduch7j/gr/uA5P/Q5I/4zIIrZjy2yQAKyKLoox2QI2mM/BSA==}
     dev: false
 
   /@astrojs/language-server/0.28.3:
@@ -60,7 +60,7 @@ packages:
     dependencies:
       '@vscode/emmet-helper': 2.8.6
       events: 3.3.0
-      prettier: 2.8.6
+      prettier: 2.8.7
       prettier-plugin-astro: 0.7.2
       source-map: 0.7.4
       vscode-css-languageservice: 6.2.2
@@ -72,13 +72,13 @@ packages:
       vscode-uri: 3.0.7
     dev: false
 
-  /@astrojs/markdown-remark/2.1.1_astro@2.1.4:
-    resolution: {integrity: sha512-qVb5QCDeX2huUTzmt0cb7IXZ1iUS5k5kzatl2XE6BGZFPPZwhN2rUAf6oKDBOO+TcvFqIgns0AfA5gq2km/J9g==}
+  /@astrojs/markdown-remark/2.1.2_astro@2.1.8:
+    resolution: {integrity: sha512-rYkmFEv2w7oEk6ZPgxHkhWzwcxSUGc1vJU0cbCu5sHF8iFNnc1cmMsjXWa5DrU5sCEf8VVYE1iFlbbnFzvHQJw==}
     peerDependencies:
-      astro: ^2.1.4
+      astro: ^2.1.5
     dependencies:
       '@astrojs/prism': 2.1.1
-      astro: 2.1.4_sass@1.59.3
+      astro: 2.1.8_sass@1.60.0
       github-slugger: 1.5.0
       import-meta-resolve: 2.2.1
       rehype-raw: 6.1.1
@@ -819,8 +819,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /astro/2.1.4_sass@1.59.3:
-    resolution: {integrity: sha512-NPTrU+9jo0N7rKZuQxcpsWgMEaoVhza0MdBI2RWGOgnMAxZQ+aJxV3DMbWb4Rmz7jTkP7b/P4+XoWNQ+e52aNQ==}
+  /astro/2.1.8_sass@1.60.0:
+    resolution: {integrity: sha512-4XryaPNUSf6u9rwzd4gd9lX3KpVaann8DesWxIPE3IdhpVjzY0U0wqUjuvkw3DKUbKr4eLbbvJDb4+5h0q623g==}
     engines: {node: '>=16.12.0', npm: '>=6.14.0'}
     hasBin: true
     peerDependencies:
@@ -829,9 +829,9 @@ packages:
       sharp:
         optional: true
     dependencies:
-      '@astrojs/compiler': 1.2.2
+      '@astrojs/compiler': 1.3.0
       '@astrojs/language-server': 0.28.3
-      '@astrojs/markdown-remark': 2.1.1_astro@2.1.4
+      '@astrojs/markdown-remark': 2.1.2_astro@2.1.8
       '@astrojs/telemetry': 2.1.0
       '@astrojs/webapi': 2.1.0
       '@babel/core': 7.20.12
@@ -878,7 +878,7 @@ packages:
       typescript: 4.9.4
       unist-util-visit: 4.1.2
       vfile: 5.3.6
-      vite: 4.2.1_sass@1.59.3
+      vite: 4.2.1_sass@1.60.0
       vitefu: 0.2.4_vite@4.2.1
       yargs-parser: 21.1.1
       zod: 3.20.2
@@ -2468,7 +2468,7 @@ packages:
     engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
     dependencies:
       '@astrojs/compiler': 0.31.4
-      prettier: 2.8.6
+      prettier: 2.8.7
       sass-formatter: 0.7.5
       synckit: 0.8.4
     dev: false
@@ -2478,12 +2478,12 @@ packages:
     engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
     dependencies:
       '@astrojs/compiler': 1.0.1
-      prettier: 2.8.6
+      prettier: 2.8.7
       sass-formatter: 0.7.5
       synckit: 0.8.4
     dev: true
 
-  /prettier-plugin-css-order/1.3.0_t226hhi2ekw4xzaoilkpfwdbai:
+  /prettier-plugin-css-order/1.3.0_ym2jnfrylgnmfwpgbxikmv3hy4:
     resolution: {integrity: sha512-wOS4qlbUARCoiiuOG0TiB/j751soC3+gUnMMva5HVWKvHJdLNYqh+jXK3MvvixR6xkJVPxHSF7rIIhkHIuHTFg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -2492,14 +2492,14 @@ packages:
       css-declaration-sorter: 6.3.1_postcss@8.4.21
       postcss-less: 6.0.0_postcss@8.4.21
       postcss-scss: 4.0.6_postcss@8.4.21
-      prettier: 2.8.6
+      prettier: 2.8.7
       sync-threads: 1.0.1
     transitivePeerDependencies:
       - postcss
     dev: true
 
-  /prettier/2.8.6:
-    resolution: {integrity: sha512-mtuzdiBbHwPEgl7NxWlqOkithPyp4VN93V7VeHVWBF+ad3I5avc0RVDT4oImXQy9H/AqxA2NSQH8pSxHW6FYbQ==}
+  /prettier/2.8.7:
+    resolution: {integrity: sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
 
@@ -2720,8 +2720,8 @@ packages:
     dependencies:
       suf-log: 2.5.3
 
-  /sass/1.59.3:
-    resolution: {integrity: sha512-QCq98N3hX1jfTCoUAsF3eyGuXLsY7BCnCEg9qAact94Yc21npG2/mVOqoDvE0fCbWDqiM4WlcJQla0gWG2YlxQ==}
+  /sass/1.60.0:
+    resolution: {integrity: sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -3144,7 +3144,7 @@ packages:
       vfile-message: 3.1.3
     dev: false
 
-  /vite/4.2.1_sass@1.59.3:
+  /vite/4.2.1_sass@1.60.0:
     resolution: {integrity: sha512-7MKhqdy0ISo4wnvwtqZkjke6XN4taqQ2TBaTccLIpOKv7Vp2h4Y+NpmWCnGDeSvvn45KxvWgGyb0MkHvY1vgbg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -3173,7 +3173,7 @@ packages:
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 3.20.0
-      sass: 1.59.3
+      sass: 1.60.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
@@ -3186,7 +3186,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 4.2.1_sass@1.59.3
+      vite: 4.2.1_sass@1.60.0
     dev: false
 
   /vscode-css-languageservice/6.2.2:
