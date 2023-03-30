@@ -34,34 +34,6 @@ code {
   font-family: var(--font-mono);
 }
 
-pre.astro-code {
-  grid-column: wide;
-  margin: 0 -1rem;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  border-color: var(--neutral-10);
-  padding: 1rem;
-  font-size: 0.825em;
-
-  &::-webkit-scrollbar {
-    background-color: transparent;
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    opacity: 0.1;
-    background-color: #ffffff;
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-track {
-    padding: 1px;
-  }
-}
-
 sup {
   line-height: 0;
-  // vertical-align: baseline;
-  // position: relative;
-  // top: -0.4em;
 }
