@@ -24,7 +24,7 @@ const { element: Element = "div", className } = Astro.props
     margin: 0 0 1.25rem 0;
   }
 
-  .wrapper > :global(*) {
+  :where(.wrapper) > :where(:global(*)) {
     grid-column: main;
   }
 
@@ -52,9 +52,5 @@ const { element: Element = "div", className } = Astro.props
         1fr [wide-end]
         1.5rem [full-end];
     }
-
-    /* .wrapper > :global(*) {
-      grid-column: main;
-    } */
   }
 </style>
