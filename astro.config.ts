@@ -9,6 +9,9 @@ shikiTheme.settings[3].settings.fontStyle = "underline" // https://github.com/wi
 
 // https://astro.build/config
 export default defineConfig({
+  experimental: {
+    assets: true,
+  },
   markdown: {
     shikiConfig: {
       theme: shikiTheme,
