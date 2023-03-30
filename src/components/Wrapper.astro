@@ -38,7 +38,7 @@ const { element: Element = "div", className } = Astro.props
         3rem [full-end];
     }
 
-    .wrapper > :global(*) {
+    :where(.wrapper) > :where(:global(*)) {
       grid-column: wide-start / main-end;
     }
   }
