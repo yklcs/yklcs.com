@@ -6,7 +6,10 @@ import Wrapper from "../../components/Wrapper.astro"
 import Default from "../../layouts/Default.astro"
 import group from "../../utils/group"
 
-const allBlogPosts = await getCollection("blog")
+const allBlogPosts = await getCollection(
+  "blog",
+  ({ data }) => data.draft !== true || import.meta.env.DEV
+)
 const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 ---
 
