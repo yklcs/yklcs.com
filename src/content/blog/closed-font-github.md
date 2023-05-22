@@ -19,12 +19,12 @@ abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
 That brings me to my solution: downloading font files at build time from an S3 bucket.
 
 ```shell
-$ aws s3 sync s3://luc.li-fonts public/fonts/closed
+$ aws s3 sync s3://yklcs.com-fonts public/fonts/closed
 ```
 
 ```json
 {
-  "pull-fonts": "aws s3 sync s3://luc.li-fonts public/fonts/closed"
+  "pull-fonts": "aws s3 sync s3://yklcs.com-fonts public/fonts/closed"
 }
 ```
 

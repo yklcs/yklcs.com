@@ -14,8 +14,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier -w --plugin-search-dir=. .",
-    "pull-fonts": "aws s3 sync s3://luc.li-fonts public/fonts/closed",
-    "push-fonts": "aws s3 sync public/fonts/closed s3://luc.li-fonts",
+    "pull-fonts": "aws s3 sync s3://yklcs.com-fonts public/fonts/closed",
+    "push-fonts": "aws s3 sync public/fonts/closed s3://yklcs.com-fonts",
     "cdk": "tsc -b cdk && cdk"
   },
   "dependencies": {
