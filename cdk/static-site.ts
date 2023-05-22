@@ -24,7 +24,7 @@ import { fileURLToPath } from "node:url"
 export interface StaticSiteProps extends StackProps {
   cert: acm.Certificate
   domain: string
-  altDomains?: string[]
+  deploy?: boolean
 }
 
 /**
@@ -103,7 +103,7 @@ export class StaticSiteStack extends Stack {
     const distribution = new cloudfront.Distribution(this, "SiteDistribution", {
       certificate: props.cert,
       defaultRootObject: "index.html",
-      domainNames: [props.domain, ...(props.altDomains ?? [])],
+      domainNames: [props.domain],
       minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
       errorResponses: [
         {
@@ -161,12 +161,14 @@ export class StaticSiteStack extends Stack {
       zone,
     })
 
-    // Deploy site contents to S3 bucket
-    new s3deploy.BucketDeployment(this, "DeployWithInvalidation", {
-      sources: [s3deploy.Source.asset("./dist")],
-      destinationBucket: bucket,
-      distribution,
-      distributionPaths: ["/*"],
-    })
+    if (props.deploy === true) {
+      // Deploy site contents to S3 bucket
+      new s3deploy.BucketDeployment(this, "DeployWithInvalidation", {
+        sources: [s3deploy.Source.asset("./dist")],
+        destinationBucket: bucket,
+        distribution,
+        distributionPaths: ["/*"],
+      })
+    }
   }
 }
