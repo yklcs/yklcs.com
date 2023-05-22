@@ -103,12 +103,9 @@ jobs:
 
       - name: Deploy to AWS S3
         run: |
+          aws s3 rm s3://luc.li --recursive --exclude "panchro/*"
           aws s3 cp dist s3://luc.li --cache-control "public, max-age=0, must-revalidate" --recursive --exclude "*" --include "*.html" --include "*.css" --include "*.js"
           aws s3 cp dist s3://luc.li --cache-control "public, max-age=31536000, immutable" --recursive --exclude "*" --include "*.woff2"
-          aws s3 sync dist s3://luc.li --delete
-
-      # - name: Invalidate AWS CloudFront Cache
-      #   run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DIST_ID }} --paths "/index.html" "/sw.js" "/page-data/*"
 
       - name: Update Deployment Status
         if: always()
