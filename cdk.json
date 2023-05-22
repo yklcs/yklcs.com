@@ -1,0 +1,6 @@
+{
+  "app": "node cdk/index",
+  "context": {
+    "domain": "yklcs.com"
+  }
+}

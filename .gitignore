@@ -20,3 +20,9 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# cdk
+cdk.out
+cdk/*.js
+!cdk/*-handler.js
+cdk.context.json
