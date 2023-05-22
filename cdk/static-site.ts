@@ -1,18 +1,28 @@
-import * as route53 from "aws-cdk-lib/aws-route53"
-import * as s3 from "aws-cdk-lib/aws-s3"
-import * as acm from "aws-cdk-lib/aws-certificatemanager"
-import * as cloudfront from "aws-cdk-lib/aws-cloudfront"
-import * as s3deploy from "aws-cdk-lib/aws-s3-deployment"
-import * as targets from "aws-cdk-lib/aws-route53-targets"
-import * as cloudfront_origins from "aws-cdk-lib/aws-cloudfront-origins"
-import { CfnOutput, Duration, RemovalPolicy, Stack } from "aws-cdk-lib"
-import * as iam from "aws-cdk-lib/aws-iam"
-import { Construct } from "constructs"
+import {
+  aws_route53 as route53,
+  aws_s3 as s3,
+  aws_certificatemanager as acm,
+  aws_cloudfront as cloudfront,
+  aws_s3_deployment as s3deploy,
+  aws_route53_targets as targets,
+  aws_cloudfront_origins as cloudfront_origins,
+  aws_iam as iam,
+  App,
+} from "aws-cdk-lib"
+
+import {
+  CfnOutput,
+  Duration,
+  RemovalPolicy,
+  Stack,
+  type StackProps,
+} from "aws-cdk-lib"
 
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
-export interface StaticSiteProps {
+export interface StaticSiteProps extends StackProps {
+  cert: acm.Certificate
   domain: string
   altDomains?: string[]
 }
@@ -23,9 +33,9 @@ export interface StaticSiteProps {
  * The site redirects from HTTP to HTTPS, using a CloudFront distribution,
  * Route53 alias record, and ACM certificate.
  */
-export class StaticSite extends Construct {
-  constructor(parent: Stack, name: string, props: StaticSiteProps) {
-    super(parent, name)
+export class StaticSiteStack extends Stack {
+  constructor(parent: App, name: string, props: StaticSiteProps) {
+    super(parent, name, props)
 
     const zone = route53.HostedZone.fromLookup(this, "Zone", {
       domainName: props.domain,
@@ -66,13 +76,6 @@ export class StaticSite extends Construct {
       autoDeleteObjects: true, // NOT recommended for production code
     })
 
-    const certificate = new acm.Certificate(this, "SiteCertificate", {
-      domainName: props.domain,
-      subjectAlternativeNames: props.altDomains,
-    })
-
-    new CfnOutput(this, "Certificate", { value: certificate.certificateArn })
-
     // CloudFront function
     const dir = path.dirname(fileURLToPath(import.meta.url))
 
@@ -98,7 +101,7 @@ export class StaticSite extends Construct {
 
     // CloudFront distribution
     const distribution = new cloudfront.Distribution(this, "SiteDistribution", {
-      certificate: certificate,
+      certificate: props.cert,
       defaultRootObject: "index.html",
       domainNames: [props.domain, ...(props.altDomains ?? [])],
       minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2021,
