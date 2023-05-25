@@ -1,74 +1,25 @@
-/* Suisse Int'l */
-
 :root {
-  --font-sans: "Suisse Int'l", -apple-system, system-ui, "Helvetica Neue",
-    Helvetica, sans-serif;
+  --font-sans: "Diatype", -apple-system, system-ui, "Helvetica Neue", Helvetica;
   --font-mono: "IBM Plex Mono", Menlo, monospace;
+  /* --font-sans: "GT America"; */
+  /* --font-sans: "IBM Plex Sans"; */
 }
 
 @font-face {
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/closed/Suisse_Int'l-400-normal.woff2") format("woff2");
-  font-family: "Suisse Int'l";
+  src: url("/fonts/closed/Diatype-400-normal.woff2") format("woff2");
+  font-family: "Diatype";
   font-display: swap;
 }
 
 @font-face {
   font-style: italic;
   font-weight: 400;
-  src: url("/fonts/closed/Suisse_Int'l-400-italic.woff2") format("woff2");
-  font-family: "Suisse Int'l";
+  src: url("/fonts/closed/Diatype-400-italic.woff2") format("woff2");
+  font-family: "Diatype";
   font-display: swap;
 }
-
-@font-face {
-  font-style: normal;
-  font-weight: 500;
-  src: url("/fonts/closed/Suisse_Int'l-500-normal.woff2") format("woff2");
-  font-family: "Suisse Int'l";
-  font-display: swap;
-}
-
-@font-face {
-  font-style: italic;
-  font-weight: 500;
-  src: url("/fonts/closed/Suisse_Int'l-500-italic.woff2") format("woff2");
-  font-family: "Suisse Int'l";
-  font-display: swap;
-}
-
-@font-face {
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/closed/Suisse_Int'l-600-normal.woff2") format("woff2");
-  font-family: "Suisse Int'l";
-  font-display: swap;
-}
-
-@font-face {
-  font-style: italic;
-  font-weight: 700;
-  src: url("/fonts/closed/Suisse_Int'l-600-italic.woff2") format("woff2");
-  font-family: "Suisse Int'l";
-  font-display: swap;
-}
-
-/* @font-face {
-  font-style: normal;
-  font-weight: 700;
-  src: url("/fonts/closed/Suisse_Int'l-700-normal.woff2") format("woff2");
-  font-family: "Suisse Int'l";
-  font-display: swap;
-}
-
-@font-face {
-  font-style: italic;
-  font-weight: 700;
-  src: url("/fonts/closed/Suisse_Int'l-700-italic.woff2") format("woff2");
-  font-family: "Suisse Int'l";
-  font-display: swap;
-} */
 
 /* IBMPlexMono */
 
