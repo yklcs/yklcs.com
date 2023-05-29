@@ -11,8 +11,8 @@ import Default from "../layouts/Default.astro"
   <p class="bio-sub" id="ets-counter-container">
     <span id="ets-counter"></span>
   </p>
-  <span style="grid-column: wide-start;">Links</span>
-  <div class="links">
+  <h2 class="section-header">Links</h2>
+  <div class:list={["section", "links"]}>
     <span>
       <a href="mailto:lee@yklcs.com">Mail</a>
       <span class="sub">lee@yklcs.com</span>
@@ -30,8 +30,8 @@ import Default from "../layouts/Default.astro"
       <span class="sub">yklcs</span>
     </span>
   </div>
-  <span style="grid-column: wide-start;"> Projects</span>
-  <div class="projects">
+  <h2 class="section-header">Projects</h2>
+  <div class:list={["section", "projects"]}>
     <div style="display: flex; flex-direction: column;">
       <span>Cram</span>
       <span style="color: var(--neutral-60);">
@@ -47,7 +47,7 @@ import Default from "../layouts/Default.astro"
   </div>
 </Default>
 
-<style>
+<style lang="scss">
   .bio,
   .links,
   .projects {
@@ -63,7 +63,22 @@ import Default from "../layouts/Default.astro"
 
   .bio-sub {
     grid-column: wide-start / main-end;
-    margin: -1rem 0 1rem 0;
+    margin: -1rem 0 0;
+  }
+
+  .section-header {
+    grid-column: wide-start;
+    margin: 0.5rem 0 0;
+    font-weight: 400;
+    font-size: 1em;
+  }
+
+  .section {
+    margin: 0.5rem 0 0;
+
+    @media screen and (max-width: 70rem) {
+      margin: 0;
+    }
   }
 
   #ets-counter {
