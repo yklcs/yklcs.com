@@ -11,3 +11,9 @@ node_modules/
 # package manager
 package.json
 pnpm-lock.yaml
+
+# cdk
+cdk.out
+cdk/*.js
+!cdk/*-handler.js
+cdk.context.json
