@@ -103,7 +103,7 @@ jobs:
 
       - name: Deploy to AWS S3
         run: |
-          aws s3 rm s3://yklcs.com --recursive --exclude "panchro/*"
+          aws s3 rm s3://yklcs.com --recursive --exclude "photos/*"
           aws s3 cp dist s3://yklcs.com --cache-control "public, max-age=0, must-revalidate" --recursive --exclude "*" --include "*.html" --include "*.css" --include "*.js"
           aws s3 cp dist s3://yklcs.com --cache-control "public, max-age=31536000, immutable" --recursive --exclude "*" --include "*.woff2"
 
