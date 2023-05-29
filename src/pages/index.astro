@@ -94,10 +94,26 @@ import Default from "../layouts/Default.astro"
   const ets = new Date("2024-03-18")
   let diff = Math.abs(ets.valueOf() - now.valueOf())
 
+  const before = document.createElement("span")
+  const dot = document.createTextNode("")
+  const after = document.createElement("span")
+  const desc = <HTMLSpanElement>document.createElement("span")
+
+  before.style.fontVariantNumeric = "tabular-nums"
+  after.style.fontVariantNumeric = "tabular-nums"
+  desc.textContent = " days to ETS."
+
+  el.appendChild(before)
+  el.appendChild(dot)
+  el.appendChild(after)
+  el.appendChild(desc)
+
   let paused = false
   container.addEventListener("click", () => {
     paused = !paused
   })
+
+  const lowMotion = window.matchMedia("(prefers-reduced-motion)").matches
 
   let time_prev: number
   const step: FrameRequestCallback = time => {
@@ -107,16 +123,14 @@ import Default from "../layouts/Default.astro"
     const delta = time - time_prev
 
     diff -= delta
-    const lowMotion =
-      window.matchMedia("(prefers-reduced-motion)").matches || paused
-    el.innerHTML = lowMotion
-      ? `${Number(diff / 1000 / 60 / 60 / 24).toFixed(0)} days to ETS.`
-      : `${Number(diff / 1000 / 60 / 60 / 24).toFixed(7)} days to ETS.`
-          .split(".")
-          .map(
-            t => `<span style="font-variant-numeric: tabular-nums;">${t}</span>`
-          )
-          .join(".")
+    const afterDecimal = lowMotion || paused
+
+    const diffDay = diff / 1000 / 60 / 60 / 24
+    before.textContent = Math.floor(diffDay).toString()
+    dot.textContent = afterDecimal ? "" : "."
+    after.textContent = afterDecimal
+      ? ""
+      : Number(diffDay).toFixed(7).split(".")[1]
 
     time_prev = time
     window.requestAnimationFrame(step)
