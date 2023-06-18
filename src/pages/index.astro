@@ -14,8 +14,8 @@ import Default from "../layouts/Default.astro"
   <h2 class="section-header">Links</h2>
   <div class:list={["section", "links"]}>
     <span>
-      <a href="mailto:lee@yklcs.com">Mail</a>
-      <span class="sub">lee@yklcs.com</span>
+      <a href="mailto:lucas@yklcs.com">Mail</a>
+      <span class="sub">lucas@yklcs.com</span>
     </span>
     <span>
       <a href="/blog">Blog</a>
@@ -32,17 +32,25 @@ import Default from "../layouts/Default.astro"
   </div>
   <h2 class="section-header">Projects</h2>
   <div class:list={["section", "projects"]}>
-    <div style="display: flex; flex-direction: column;">
-      <span>Cram</span>
-      <span style="color: var(--neutral-60);">
+    <div class="project">
+      <a href="https://github.com/yklcs/cram">
+        <h3 class="project-title">Cram</h3>
+      </a>
+      <span class="project-desc">
         WASM powered universal image compression that works on any device
       </span>
     </div>
-    <div style="display: flex; flex-direction: column;">
-      <span>Panchro</span>
-      <span style="color: var(--neutral-60);">
+    <div class="project">
+      <h3 class="project-title">Panchro</h3>
+      <span class="project-desc">
         Static site generator for self-hosted image galleries
       </span>
+    </div>
+    <div class="project">
+      <a href="https://github.com/yklcs/lisp-roots">
+        <h3 class="project-title">lisp-roots</h3>
+      </a>
+      <span class="project-desc"> The roots of Lisp in Rust</span>
     </div>
   </div>
 </Default>
@@ -53,6 +61,22 @@ import Default from "../layouts/Default.astro"
   .projects {
     /* font-size: 1.25em; */
     line-height: 1.4;
+  }
+
+  .project {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    .project-title {
+      margin: 0;
+      font-weight: 400;
+      font-size: 1em;
+    }
+
+    .project-desc {
+      color: var(--neutral-60);
+    }
   }
 
   .bio {
@@ -112,7 +136,7 @@ import Default from "../layouts/Default.astro"
   const before = document.createElement("span")
   const dot = document.createTextNode("")
   const after = document.createElement("span")
-  const desc = <HTMLSpanElement>document.createElement("span")
+  const desc = document.createElement("span")
 
   before.style.fontVariantNumeric = "tabular-nums"
   after.style.fontVariantNumeric = "tabular-nums"
