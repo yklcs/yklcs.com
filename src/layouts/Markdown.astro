@@ -7,15 +7,19 @@ import PageHeader from "../components/PageHeader.astro"
 import { format, formatISO } from "date-fns"
 import Footer from "../components/Footer.astro"
 import FlexSpacer from "../components/FlexSpacer.astro"
+import { defaultOpenGraph } from "../meta"
 
 export interface Props {
   entry: CollectionEntry<"blog">
 }
 
 const { entry } = Astro.props
+const og = defaultOpenGraph
+og.title = entry.data.title
+og.type = "article"
 ---
 
-<Html title={entry.data.title}>
+<Html meta={{ title: entry.data.title, og }}>
   <Header />
   <main>
     <Wrapper element="article">

@@ -1,13 +1,25 @@
 ---
+import { SEO } from "astro-seo"
+import { type Meta, defaultOpenGraph } from "../meta"
 import "../styles/global.scss"
 import "../styles/fonts.css"
 import colors from "../styles/colors"
 
 export interface Props {
-  title: string
+  meta: Meta
 }
 
-const { title } = Astro.props
+const { meta } = Astro.props
+
+const stripTrailingSlash = (str: string) =>
+  str.endsWith("/") ? str.slice(0, -1) : str
+
+const og = {
+  basic: {
+    url: stripTrailingSlash(Astro.url.href),
+    ...(meta.og ?? defaultOpenGraph),
+  },
+}
 ---
 
 <!DOCTYPE html>
@@ -17,11 +29,10 @@ const { title } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <SEO title={meta.title} openGraph={og} canonical={og.basic.url} />
   </head>
   <body>
     <slot />
+    <style define:vars={colors}></style>
   </body>
 </html>
-
-<style define:vars={colors}></style>

@@ -21,6 +21,7 @@
   "dependencies": {
     "@types/chroma-js": "^2.4.0",
     "astro": "^2.4.5",
+    "astro-seo": "^0.7.5",
     "autoprefixer": "^10.4.14",
     "chroma-js": "^2.4.2",
     "date-fns": "^2.30.0",

@@ -4,19 +4,20 @@ import Header from "../components/Header.astro"
 import Wrapper from "../components/Wrapper.astro"
 import Footer from "../components/Footer.astro"
 import FlexSpacer from "../components/FlexSpacer.astro"
+import { type Meta } from "../meta"
 
 export interface Props {
-  title: string
+  meta: Meta
 }
 
-const { title } = Astro.props
+const { meta } = Astro.props
 ---
 
-<Html title={title}>
+<Html meta={meta}>
   <Header />
   <Wrapper element="main">
     <slot />
   </Wrapper>
   <FlexSpacer />
   <Footer />
-</Html>
+</Html>../meta.ts
