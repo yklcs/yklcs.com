@@ -8,6 +8,7 @@ const shikiTheme = toShikiTheme(await vscodeTheme.json())
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://yklcs.com",
   experimental: {
     assets: true,
   },
