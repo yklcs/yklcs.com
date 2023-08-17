@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config"
+import sitemap from "@astrojs/sitemap"
 import { type IShikiTheme, toShikiTheme } from "shiki"
 
 const vscodeTheme = await fetch(
@@ -9,6 +10,9 @@ const shikiTheme = toShikiTheme(await vscodeTheme.json())
 // https://astro.build/config
 export default defineConfig({
   site: "https://yklcs.com",
+  integrations: [sitemap({
+    customPages: ["https://yklcs.com/photos"]
+  })],
   experimental: {
     assets: true,
   },
