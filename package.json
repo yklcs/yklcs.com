@@ -19,6 +19,7 @@
     "cdk": "tsc -b cdk && cdk"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^2.0.2",
     "@types/chroma-js": "^2.4.0",
     "astro": "^2.4.5",
     "astro-seo": "^0.7.5",
