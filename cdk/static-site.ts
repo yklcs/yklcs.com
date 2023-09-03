@@ -138,14 +138,14 @@ export class StaticSiteStack extends Stack {
     // Grant access to cloudfront
     bucket.addToResourcePolicy(
       new iam.PolicyStatement({
-        actions: ["s3:GetObject"],
-        resources: [bucket.arnForObjects("*")],
+        actions: ["s3:GetObject", "s3:ListBucket"],
+        resources: [bucket.arnForObjects("*"), bucket.bucketArn],
         principals: [new iam.ServicePrincipal("cloudfront.amazonaws.com")],
         conditions: {
           StringEquals: {
             "AWS:SourceArn": `arn:aws:cloudfront::${
               new iam.AccountRootPrincipal().accountId
-            }:/${distribution.distributionId}`,
+            }:distribution/${distribution.distributionId}`,
           },
         },
       })
