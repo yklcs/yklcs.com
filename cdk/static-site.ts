@@ -41,18 +41,14 @@ export class StaticSiteStack extends Stack {
       domainName: props.domain,
     })
 
-    const cloudfrontOAC = new cloudfront.CfnOriginAccessControl(
-      this,
-      "CloudFrontOAC",
-      {
-        originAccessControlConfig: {
-          name: `${props.domain}`,
-          originAccessControlOriginType: "s3",
-          signingBehavior: "always",
-          signingProtocol: "sigv4",
-        },
-      }
-    )
+    const oac = new cloudfront.CfnOriginAccessControl(this, "CloudFrontOAC", {
+      originAccessControlConfig: {
+        name: `${props.domain}`,
+        originAccessControlOriginType: "s3",
+        signingBehavior: "always",
+        signingProtocol: "sigv4",
+      },
+    })
 
     new CfnOutput(this, "Site", { value: `https://${props.domain}` })
 
@@ -112,6 +108,12 @@ export class StaticSiteStack extends Stack {
           responsePagePath: "/error.html",
           ttl: Duration.minutes(30),
         },
+        {
+          httpStatus: 404,
+          responseHttpStatus: 404,
+          responsePagePath: "/404.html",
+          ttl: Duration.minutes(30),
+        },
       ],
       defaultBehavior: {
         origin: new cloudfront_origins.S3Origin(bucket, {}),
@@ -130,6 +132,16 @@ export class StaticSiteStack extends Stack {
         ],
       },
     })
+
+    const cfndist = distribution.node.defaultChild as cloudfront.CfnDistribution
+    cfndist.addPropertyOverride(
+      "DistributionConfig.Origins.0.S3OriginConfig.OriginAccessIdentity",
+      ""
+    )
+    cfndist.addPropertyOverride(
+      "DistributionConfig.Origins.0.OriginAccessControlId",
+      oac.getAtt("Id")
+    )
 
     new CfnOutput(this, "DistributionId", {
       value: distribution.distributionId,
