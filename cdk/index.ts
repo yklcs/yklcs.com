@@ -4,7 +4,7 @@ import { CertStack } from "./cert.js"
 
 const app = new cdk.App()
 
-const certStack = new CertStack(app, "CertStack", {
+const certStack = new CertStack(app, "yklcs-cert", {
   domain: app.node.tryGetContext("domain"),
   crossRegionReferences: true,
   env: {
@@ -13,7 +13,7 @@ const certStack = new CertStack(app, "CertStack", {
   },
 })
 
-const staticSiteStack = new StaticSiteStack(app, "StaticSiteStack", {
+const staticSiteStack = new StaticSiteStack(app, "yklcs", {
   domain: app.node.tryGetContext("domain"),
   crossRegionReferences: true,
   cert: certStack.cert,
