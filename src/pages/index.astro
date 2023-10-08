@@ -37,6 +37,14 @@ import Default from "../layouts/Default.astro"
   <h2 class="section-header">Projects</h2>
   <div class:list={["section", "projects"]}>
     <div class="project">
+      <a href="https://github.com/yklcs/chocc">
+        <h3 class="project-title">chocc</h3>
+      </a>
+      <span class="project-desc">
+        ANSI C compiler in ANSI C, targeting WebAssembly
+      </span>
+    </div>
+    <div class="project">
       <a href="https://github.com/yklcs/cram">
         <h3 class="project-title">Cram</h3>
       </a>
@@ -84,18 +92,15 @@ import Default from "../layouts/Default.astro"
   }
 
   .bio {
-    grid-column: wide-start / main-end;
     margin: 1rem 0 0;
     hyphens: none;
   }
 
   .bio-sub {
-    grid-column: wide-start / main-end;
     margin: -1rem 0 0;
   }
 
   .section-header {
-    grid-column: wide-start;
     margin: 0.5rem 0 0;
     font-weight: 400;
     font-size: 1em;
