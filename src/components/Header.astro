@@ -7,24 +7,28 @@ const url = Astro.url
 <Wrapper className={"wrapper"}>
   <header>
     <a href="/" class="breadcrumb-home">yklcs.com</a>
-    <div class="breadcrumbs">
-      {
-        url.pathname
-          .split("/")
-          .filter(str => str)
-          .map((elm, idx, arr) => (
-            <>
-              {<span class="breadcrumb-separator">/</span>}
-              <a
-                href={`/${arr.slice(0, idx + 1).join("/")}`}
-                class="breadcrumb-child"
-              >
-                {elm}
-              </a>
-            </>
-          ))
-      }
-    </div>
+    {
+      url.pathname == "/" ? (
+        <h1 class="index-name">Lucas Yunkyu Lee</h1>
+      ) : (
+        <div class="breadcrumbs">
+          {url.pathname
+            .split("/")
+            .filter(str => str)
+            .map((elm, idx, arr) => (
+              <>
+                {<span class="breadcrumb-separator">/</span>}
+                <a
+                  href={`/${arr.slice(0, idx + 1).join("/")}`}
+                  class="breadcrumb-child"
+                >
+                  {elm}
+                </a>
+              </>
+            ))}
+        </div>
+      )
+    }
   </header>
 </Wrapper>
 
@@ -33,6 +37,15 @@ const url = Astro.url
     display: contents;
     @media screen and (max-width: 70rem) {
       display: flex;
+    }
+  }
+
+  .index-name {
+    margin: 0;
+    font-weight: 400;
+    font-size: 1em;
+    @media screen and (max-width: 70rem) {
+      display: none;
     }
   }
 

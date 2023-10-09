@@ -4,7 +4,8 @@ import Default from "../layouts/Default.astro"
 
 <Default meta={{ title: "yklcs.com" }}>
   <p class="bio">
-    Lucas Yunkyu Lee is a student at POSTECH with interests in research,
+    <span class="bio-name">Lucas Yunkyu Lee is a</span>
+    <span class="bio-first">student</span> at POSTECH with interests in research,
     development, and design. Currently performing military service in the KATUSA
     program, MOS 11B.
   </p>
@@ -69,9 +70,10 @@ import Default from "../layouts/Default.astro"
 
 <style lang="scss">
   .bio,
+  .bio-sub,
   .links,
-  .projects {
-    /* font-size: 1.25em; */
+  .projects,
+  .section-header {
     line-height: 1.4;
   }
 
@@ -92,8 +94,19 @@ import Default from "../layouts/Default.astro"
   }
 
   .bio {
-    margin: 1rem 0 0;
     hyphens: none;
+  }
+
+  .bio-name {
+    @media screen and (min-width: 70rem) {
+      display: none;
+    }
+  }
+
+  .bio-first {
+    @media screen and (min-width: 70rem) {
+      text-transform: capitalize;
+    }
   }
 
   .bio-sub {
@@ -101,6 +114,7 @@ import Default from "../layouts/Default.astro"
   }
 
   .section-header {
+    grid-column: wide-start / main-start;
     margin: 0.5rem 0 0;
     font-weight: 400;
     font-size: 1em;
