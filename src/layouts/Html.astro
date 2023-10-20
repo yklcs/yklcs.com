@@ -34,5 +34,70 @@ const og = {
   <body>
     <slot />
     <style define:vars={colors}></style>
+    <script>
+      // https://bleech.de/en/blog/the-ups-and-downs-of-text-wrap-balance-and-a-polyfill/
+      const balance = () => {
+        if (!window.CSS.supports("text-wrap", "balance")) {
+          const elements = document.querySelectorAll<HTMLElement>(
+            "h1, h2, h3, h4, h5, h6"
+          )
+          const resizeObserver = new ResizeObserver(entries => {
+            entries.forEach(entry => {
+              relayout(entry.target as HTMLElement)
+            })
+          })
+          elements.forEach(element => {
+            relayout(element)
+            resizeObserver.observe(element)
+          })
+          window.addEventListener("resize", () => {
+            elements.forEach(element => {
+              relayout(element)
+            })
+          })
+        }
+      }
+
+      const relayout = (wrapper: HTMLElement, ratio = 1) => {
+        const container = wrapper.parentElement!
+
+        const update = (width: number) =>
+          (wrapper.style.maxWidth = width + "px")
+
+        // wrapper.style.display = "inline-block"
+        wrapper.style.verticalAlign = "top"
+        // Reset wrapper width
+        wrapper.style.maxWidth = ""
+
+        // Get the initial container size
+        const width = container.clientWidth
+        const height = container.clientHeight
+
+        // Synchronously do binary search and calculate the layout
+        let lower = width / 2 - 0.25
+        let upper = width + 0.5
+        let middle
+
+        if (width) {
+          // Ensure we don't search widths lower than when the text overflows
+          update(lower)
+          lower = Math.max(wrapper.scrollWidth, lower)
+
+          while (lower + 1 < upper) {
+            middle = Math.round((lower + upper) / 2)
+            update(middle)
+            if (container.clientHeight === height) {
+              upper = middle
+            } else {
+              lower = middle
+            }
+          }
+
+          update(upper * ratio + width * (1 - ratio))
+        }
+      }
+
+      balance()
+    </script>
   </body>
 </html>

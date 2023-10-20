@@ -15,29 +15,30 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 
 <Default meta={{ title: "blog" }}>
   <PageHeader title="Ramblings and reflections" />
-  <Wrapper className={"posts"}>
+  <Wrapper className={"groups"}>
     {
       Object.entries(grouped)
         .reverse()
         .map(([year, posts]) => (
           <Wrapper element={"section"} className={"group"}>
             <h1 class="group-title">{year}</h1>
-            {posts
-              .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
-              .reverse()
-              .map(entry => (
-                <a href={`/blog/${entry.slug}`}>
-                  <article>
-                    <h1 class="article-title">{entry.data.title}</h1>
-                    <time
-                      class="article-meta"
-                      datetime={formatISO(entry.data.date)}
-                    >
-                      {format(entry.data.date, "d MMM yyyy")}
-                    </time>
-                  </article>
-                </a>
-              ))}
+            <div class="posts">
+              {posts
+                .sort((a, b) => a.data.date.getTime() - b.data.date.getTime())
+                .reverse()
+                .map(entry => (
+                  <a href={`/blog/${entry.slug}`}>
+                    <article>
+                      <h1 class="article-title">{entry.data.title}</h1>
+                      <div class="article-meta">
+                        <time datetime={formatISO(entry.data.date)}>
+                          {format(entry.data.date, "MMM d")}
+                        </time>
+                      </div>
+                    </article>
+                  </a>
+                ))}
+            </div>
           </Wrapper>
         ))
     }
@@ -45,7 +46,7 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 </Default>
 
 <style lang="scss">
-  .posts {
+  .groups {
     grid-column: full;
   }
 
@@ -54,10 +55,17 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
     gap: 0;
   }
 
+  .posts {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+  }
+
   article {
     display: flex;
-    flex-direction: row;
-    gap: 0 1ch;
+    flex-direction: column;
+    line-height: 1.3;
   }
 
   h1.group-title {
@@ -66,19 +74,27 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
     font-weight: 400;
     font-size: 1em;
 
-    @media screen and (max-width: 50rem) {
+    @media screen and (max-width: 70rem) {
       margin: 0 0 0.5rem 0;
     }
   }
 
   h1.article-title {
+    display: inline;
     grid-column: main;
     margin: 0;
     font-weight: 400;
     font-size: 1em;
   }
 
+  .article-tags {
+    // display: flex;
+    // gap: 0.5ch;
+  }
+
   .article-meta {
+    display: flex;
+    gap: 0.5ch;
     color: var(--neutral-60);
   }
 
