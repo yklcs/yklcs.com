@@ -8,6 +8,7 @@ import { format, formatISO } from "date-fns"
 import Footer from "../components/Footer.astro"
 import FlexSpacer from "../components/FlexSpacer.astro"
 import { defaultOpenGraph } from "../meta"
+import "katex/dist/katex.css"
 
 export interface Props {
   entry: CollectionEntry<"blog">
@@ -145,6 +146,24 @@ og.type = "article"
       margin: 0;
       border-left: 1px solid var(--neutral-60);
       padding: 0 0 0 2rem;
+    }
+
+    math {
+      font-family: "STIX Two Math";
+    }
+    mtext {
+      font-family: "STIX Two Math";
+    }
+    *[mathvariant="normal"] {
+      font-family: "Libertinus Serif";
+    }
+
+    .katex-display {
+      margin: 0;
+    }
+
+    .katex {
+      font-size: 1em;
     }
   }
 </style>

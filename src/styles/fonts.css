@@ -54,3 +54,29 @@
   font-family: "IBM Plex Mono";
   font-display: swap;
 }
+
+/* STIX */
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/open/STIXTwoMath-400-normal.woff2") format("woff2");
+  font-family: "STIX Two Math";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/open/STIXTwoText-400-normal.woff2") format("woff2");
+  font-family: "STIX Two Text";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/open/STIXTwoText-700-normal.woff2") format("woff2");
+  font-family: "STIX Two Text";
+  font-display: swap;
+}
