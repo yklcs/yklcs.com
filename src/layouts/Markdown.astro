@@ -148,10 +148,25 @@ og.type = "article"
       padding: 0 0 0 2rem;
     }
 
-    mjx-container.MathJax[jax="CHTML"] {
+    .katex {
+      font-size: 1.125em;
+    }
+
+    .katex-display {
       margin: 0;
       overflow-x: scroll;
       overflow-y: hidden;
+    }
+
+    mjx-container.MathJax[jax] {
+      margin: 0;
+      overflow-x: scroll;
+      overflow-y: hidden;
+    }
+
+    mjx-container[jax="SVG"] path[data-c],
+    mjx-container[jax="SVG"] use[data-c] {
+      stroke-width: 0;
     }
   }
 </style>
