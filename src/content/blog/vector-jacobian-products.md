@@ -13,10 +13,12 @@ $$
 For $\mathbf{v} \in \mathbb{R}^m$ , let’s look at the product of the row vector $\mathbf{v}^\top$ and $\mathbf{J}_f$. This is known as the _vector Jacobian product_ (VJP).
 
 $$
-\mathbf{v}^\top \mathbf{J}_f = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_m \end{bmatrix}^\top \begin{bmatrix} \dfrac{\partial{f_1}}{\partial{x_1}} & \cdots & \dfrac{\partial{f_1}}{\partial{x_n}} \\ \vdots & \ddots & \vdots \\ \dfrac{\partial{f_m}}{\partial{x_1}} & \cdots & \dfrac{\partial{f_m}}{\partial{x_n}} \end{bmatrix} = \begin{bmatrix} v_1 \dfrac{\partial{f_1}}{\partial{x_1}} + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_1}} \\ \vdots \\ v_1 \dfrac{\partial{f_1}}{\partial{x_n}} + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_n}} \end{bmatrix}^\top
+\begin{aligned}
+\mathbf{v}^\top \mathbf{J}_f &= \begin{bmatrix} v_1 & v_2 & \cdots & v_m \end{bmatrix}\begin{bmatrix} \dfrac{\partial{f_1}}{\partial{x_1}} & \cdots & \dfrac{\partial{f_1}}{\partial{x_n}} \\ \vdots & \ddots & \vdots \\ \dfrac{\partial{f_m}}{\partial{x_1}} & \cdots & \dfrac{\partial{f_m}}{\partial{x_n}} \end{bmatrix} \\ &= \begin{bmatrix} v_1 \dfrac{\partial{f_1}}{\partial{x_1}} + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_1}} \\ \vdots \\ v_1 \dfrac{\partial{f_1}}{\partial{x_n}} + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_n}} \end{bmatrix}^\top
+\end{aligned}
 $$
 
-The column vectors are pesky, so transposes are taken.
+The row vectors are pesky, so transposes are taken.
 
 $$
 {\mathbf{J}_f}^\top\mathbf{v} = \begin{bmatrix} v_1 \dfrac{\partial{f_1}}{\partial{x_1}} + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_1}} \\ \vdots \\ v_1 \dfrac{\partial{f_1}}{\partial{x_n}} + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_n}} \end{bmatrix}
@@ -52,7 +54,7 @@ $$
 \begin{aligned}\operatorname{vjp}(f,\mathbf{v}) &= {\mathbf{J}_{f_1}}^\top {\mathbf{J}_{f_2}}^\top \cdots {\mathbf{J}_{f_{i-1}}}^\top {\mathbf{J}_{f_i}}^\top \mathbf{v} \\ &= {\mathbf{J}_{f_1}}^\top {\mathbf{J}_{f_2}}^\top \cdots {\mathbf{J}_{f_{i-1}}}^\top \operatorname{vjp}(f_i, \mathbf{v}) \\ &= {\mathbf{J}_{f_1}}^\top {\mathbf{J}_{f_2}}^\top \cdots \operatorname{vjp}\left(f_{i-1}, \operatorname{vjp}\left(f_i, \mathbf{v} \right) \right) \\ &= \operatorname{vjp}\left( f_1, \operatorname{vjp}\left( f_2, \cdots \operatorname{vjp}\left(f_{i-1}, \operatorname{vjp} \left(f_i, \mathbf{v} \right) \right) \right) \right) \end{aligned}
 $$
 
-This is messy, so we can curry $\operatorname{vjp}(f, \mathbf{v})$ into a new function $\operatorname{vjp}'(f)(\mathbf{v})$. Note that $\operatorname{vjp}': (\mathbb{R}^n \to \mathbb{R}^m) \to \mathbb{R}^n \to \mathbb{R}^n$. That is, $\operatorname{vjp}'$ takes a map $\mathbb{R}^n \to \mathbb{R}^m$ ($f$), then returns a function from $\mathbb{R}^n$ ($\mathbf{v}$) to $\mathbb{R}^n$ ($\operatorname{vjp}$).
+This is messy, so we can curry $\operatorname{vjp}(f, \mathbf{v})$ into a new function $\operatorname{vjp}'(f)(\mathbf{v})$. Note that $\operatorname{vjp}': (\mathbb{R}^n \to \mathbb{R}^m) \to \mathbb{R}^m \to \mathbb{R}^n$. That is, $\operatorname{vjp}'$ takes a map $\mathbb{R}^n \to \mathbb{R}^m$ ($f$), then returns a function from $\mathbb{R}^m$ ($\mathbf{v}$) to $\mathbb{R}^n$ ($\operatorname{vjp}$).
 
 $$
 \begin{aligned}\operatorname{vjp}(f,\mathbf{v}) &= \operatorname{vjp}\left( f_1, \operatorname{vjp}\left( f_2, \cdots \operatorname{vjp}\left(f_{i-1}, \operatorname{vjp} \left(f_i, \mathbf{v} \right) \right) \right) \right) \\ &= \left( \operatorname{vjp}'(f_1) \circ \operatorname{vjp}' (f_2) \cdots \circ \operatorname{vjp}' (f_i) \right)(\mathbf{v}) \end{aligned}

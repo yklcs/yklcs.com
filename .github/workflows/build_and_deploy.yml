@@ -105,7 +105,7 @@ jobs:
         run: |
           aws s3 rm s3://yklcs.com --recursive --exclude "photos/*"
           aws s3 cp dist s3://yklcs.com --cache-control "public, max-age=0, must-revalidate" --recursive --exclude "*" --include "*"
-          aws s3 cp dist s3://yklcs.com --cache-control "public, max-age=31536000, immutable" --recursive --exclude "*" --include "*.woff2" --include "*.webp"
+          aws s3 cp dist s3://yklcs.com --cache-control "public, max-age=31536000, immutable" --recursive --exclude "*" --include "*.woff" --include "*.woff2" --include "*.webp"
 
       - name: Update Deployment Status
         if: always()
