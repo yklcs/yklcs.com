@@ -7,6 +7,7 @@ const blogCollection = defineCollection({
     tags: z.array(z.string()),
     draft: z.boolean().optional().default(false),
     subtitle: z.string().optional(),
+    font: z.string().optional(),
   }),
 })
 

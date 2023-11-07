@@ -1,8 +1,7 @@
 :root {
   --font-sans: "Diatype", -apple-system, system-ui, "Helvetica Neue", Helvetica;
   --font-mono: "IBM Plex Mono", Menlo, monospace;
-  /* --font-sans: "GT America"; */
-  /* --font-sans: "IBM Plex Sans"; */
+  --font-serif: "XCharter", Georgia, serif;
 }
 
 @font-face {
@@ -52,5 +51,53 @@
   font-weight: 700;
   src: url("/fonts/open/IBMPlexMono-700-italic.woff2") format("woff2");
   font-family: "IBM Plex Mono";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/open/IBMPlexSerif-400-normal.woff2") format("woff2");
+  font-family: "IBM Plex Serif";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/open/IBMPlexSerif-400-italic.woff2") format("woff2");
+  font-family: "IBM Plex Serif";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/open/CharisSIL-400-normal.woff2") format("woff2");
+  font-family: "Charis SIL";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/open/CharisSIL-400-italic.woff2") format("woff2");
+  font-family: "Charis SIL";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/open/XCharter-400-normal.woff2") format("woff2");
+  font-family: "XCharter";
+  font-display: swap;
+}
+
+@font-face {
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/open/XCharter-400-italic.woff2") format("woff2");
+  font-family: "XCharter";
   font-display: swap;
 }

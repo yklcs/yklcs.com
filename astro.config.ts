@@ -37,13 +37,6 @@ export default defineConfig({
               R: "\\mathbb{R}",
             },
           },
-          chtml: {
-            fontURL: "/fonts/open",
-            scale: 1.14,
-          },
-          svg: {
-            fontCache: "none",
-          },
         },
       ],
     ],

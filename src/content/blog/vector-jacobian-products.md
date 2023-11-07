@@ -2,6 +2,7 @@
 title: Vector-Jacobian products
 date: 2023-11-06
 tags: [math, ai]
+font: serif
 ---
 
 Consider $f: \R^n \to \R^m$. The Jacobian of $f$, denoted $\mathbf{J}_f$, is an $m \times n$ matrix of all the partial derivatives. Pretty basic:
