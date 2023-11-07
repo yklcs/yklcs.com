@@ -41,7 +41,7 @@ We can define $\mathbf{x}_k = (f_k \circ f_{k-1} \circ \cdots \circ f_1) (\mathb
 Reconciling this with VJPs:
 
 $$
-\begin{aligned}\operatorname{vjp}(f,\mathbf{x})
+\begin{aligned}\operatorname{vjp}(f,\mathbf{x})(\mathbf{v})
 &= {\mathbf{J}_f} (\mathbf{x})^\top \mathbf{v} \\
 &= (\mathbf{J}_{f_i \circ \cdots \circ f_3 \circ f_2 \circ f_1}(\mathbf{x})) ^\top \mathbf{v} \\
 &= (\mathbf{J}_{f_i \circ \cdots \circ f_3 \circ f_2} (f_1(\mathbf{x})) \mathbf{J}_{f_1} (\mathbf{x})) ^\top \mathbf{v} \\
@@ -52,7 +52,7 @@ $$
 \end{aligned}
 $$
 
-Noting that $\mathbf{J}_{f_i}(\mathbf{x})^\top\mathbf{v} = \operatorname{vjp}(f_i, \mathbf{x})$, we can express $\operatorname{vjp}(f, \mathbf{x})$ with a composition of $\operatorname{vjp}$s.
+Noting that $\mathbf{J}_{f_i}(\mathbf{x})^\top\mathbf{v} = \operatorname{vjp}(f_i, \mathbf{x})(\mathbf{v})$, we can express $\operatorname{vjp}(f, \mathbf{x})(\mathbf{v})$ with a composition of $\operatorname{vjp}$s.
 
 $$
 \begin{aligned}
