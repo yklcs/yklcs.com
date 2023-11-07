@@ -1,5 +1,5 @@
 ---
-title: Universal Libraries with WebAssembly
+title: Universal libraries with WebAssembly
 date: 2023-10-19
 tags: [tech, dev]
 ---
