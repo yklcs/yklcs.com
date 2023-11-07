@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config"
 import sitemap from "@astrojs/sitemap"
 import { toShikiTheme } from "shiki"
-import rehypeMathjax, { type Options } from "rehype-mathjax/svg"
+import rehypeMathjax from "rehype-mathjax/svg"
 
 const vscodeTheme = await fetch(
   "https://raw.githubusercontent.com/yklcs/deol-vscode/main/themes/deol-dull-vscode-color-theme.json"
@@ -25,7 +25,6 @@ export default defineConfig({
     },
     remarkPlugins: ["remark-math"],
     rehypePlugins: [
-      "rehype-katex",
       [
         rehypeMathjax,
         {

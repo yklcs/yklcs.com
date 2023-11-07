@@ -4,7 +4,7 @@ date: 2023-11-06
 tags: [math, ai]
 ---
 
-Consider $f: \R^n \to \R^m$. The Jacobian of $f$, denoted $\mathbf{J}_f$, is a $m \times n$ matrix of all the partial derivatives. Pretty basic:
+Consider $f: \R^n \to \R^m$. The Jacobian of $f$, denoted $\mathbf{J}_f$, is an $m \times n$ matrix of all the partial derivatives. Pretty basic:
 
 $$
 \textbf{J}_f = \frac{\partial{f}}{\partial{\mathbf{x}}} = \begin{bmatrix} \dfrac{\partial{f_1}}{\partial{x_1}} & \cdots & \dfrac{\partial{f_1}}{\partial{x_n}} \\ \vdots & \ddots & \vdots \\ \dfrac{\partial{f_m}}{\partial{x_1}} & \cdots & \dfrac{\partial{f_m}}{\partial{x_n}} \end{bmatrix}
@@ -37,7 +37,7 @@ But that still requires us to calculate $\partial{f}/\partial{x_k}$, which can b
 This is especially the case if $f$ is a composition of multiple functions.
 Take $f = f_i \circ f_{i-1} \circ \cdots \circ f_1$[^2].
 The chain rule for Jacobians is $\mathbf{J}_{f_{k+1} \circ f_k} (\mathbf{x}) = \mathbf{J}_{f_{k+1}} (f_k (\mathbf{x})) \mathbf{J}_{f_k}(\mathbf{x})$.
-We can denote define $\mathbf{x}_k = (f_k \circ f_{k-1} \circ \cdots \circ f_1) (\mathbf{x})$ as the $k$th intermediate function value.
+We can define $\mathbf{x}_k = (f_k \circ f_{k-1} \circ \cdots \circ f_1) (\mathbf{x})$ as the $k$th intermediate function value.
 Reconciling this with VJPs:
 
 $$
@@ -102,7 +102,7 @@ $$
 \end{bmatrix}
 $$
 
-It is worth noting that building the entire Jacobian with VJPs requires $m$ passes for $f: \R^n \to \R^m$ with a $m \times n$ Jacobian.
+It is worth noting that building the entire Jacobian with VJPs requires $m$ passes for $f: \R^n \to \R^m$ with an $m \times n$ Jacobian.
 We can assume that this method is more efficent the smaller $m$ is compared to $n$.
 In a machine learning context, $m=1 \ll n$ is common as the outputs are scalar loss values and the inputs are model weights, making JVPs effective.
 
