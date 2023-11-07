@@ -148,22 +148,10 @@ og.type = "article"
       padding: 0 0 0 2rem;
     }
 
-    math {
-      font-family: "STIX Two Math";
-    }
-    mtext {
-      font-family: "STIX Two Math";
-    }
-    *[mathvariant="normal"] {
-      font-family: "Libertinus Serif";
-    }
-
-    .katex-display {
+    mjx-container.MathJax[jax="CHTML"] {
       margin: 0;
-    }
-
-    .katex {
-      font-size: 1em;
+      overflow-x: scroll;
+      overflow-y: hidden;
     }
   }
 </style>
