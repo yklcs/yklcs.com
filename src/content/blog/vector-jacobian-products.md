@@ -27,7 +27,7 @@ $$
 {\mathbf{J}_f} (\mathbf{x})^\top\mathbf{v} = \begin{bmatrix} v_1 \dfrac{\partial{f_1}}{\partial{x_1}} (x_1) + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_1}} (x_1) \\ \vdots \\ v_1 \dfrac{\partial{f_1}}{\partial{x_n}} (x_n) + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_n}} (x_n) \end{bmatrix}
 $$
 
-As the "variables" are $f$, $\mathbf{x}$, and $\mathbf{v}$ in ${\mathbf{J}_f} (\mathbf{x})^\top\mathbf{v}$, we can define a new operation $\operatorname{vjp}(f, \mathbf{x})(\mathbf{v})$[^1]. Note that $\operatorname{vjp} : (\R^n \to \R^m, \R^n) \to \R^m \to \R^n$.
+As the "variables" are $f$, $\mathbf{x}$, and $\mathbf{v}$ in ${\mathbf{J}_f} (\mathbf{x})^\top\mathbf{v}$, we can define a new operation $\operatorname{vjp}(f, \mathbf{x})(\mathbf{v})$.[^1] Note that $\operatorname{vjp} : (\R^n \to \R^m, \R^n) \to \R^m \to \R^n$.
 
 $$
 \operatorname{vjp}(f, \mathbf{x})(\mathbf{v}) \coloneqq {\mathbf{J}_f} (\mathbf{x})^\top \mathbf{v}
@@ -35,7 +35,7 @@ $$
 
 But that still requires us to calculate $\partial{f}/\partial{x_k}$, which can be hard depending on $f$.
 This is especially the case if $f$ is a composition of multiple functions.
-Take $f = f_i \circ f_{i-1} \circ \cdots \circ f_1$[^2].
+Take $f = f_i \circ f_{i-1} \circ \cdots \circ f_1$.[^2]
 The chain rule for Jacobians is $\mathbf{J}_{f_{k+1} \circ f_k} (\mathbf{x}) = \mathbf{J}_{f_{k+1}} (f_k (\mathbf{x})) \mathbf{J}_{f_k}(\mathbf{x})$.
 We can define $\mathbf{x}_k = (f_k \circ f_{k-1} \circ \cdots \circ f_1) (\mathbf{x})$ as the $k$th intermediate function value.
 Reconciling this with VJPs:
@@ -52,7 +52,7 @@ $$
 \end{aligned}
 $$
 
-Noting that $\mathbf{J}_{f_i}(\mathbf{x})^\top\mathbf{v} = \operatorname{vjp}(f_i, \mathbf{x})$, we can express $\operatorname{vjp}(f, \mathbf{x})$ out of nested $\operatorname{vjp}$s.
+Noting that $\mathbf{J}_{f_i}(\mathbf{x})^\top\mathbf{v} = \operatorname{vjp}(f_i, \mathbf{x})$, we can express $\operatorname{vjp}(f, \mathbf{x})$ with a composition of $\operatorname{vjp}$s.
 
 $$
 \begin{aligned}

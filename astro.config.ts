@@ -23,6 +23,9 @@ export default defineConfig({
     shikiConfig: {
       theme: shikiTheme,
     },
+    remarkRehype: {
+      clobberPrefix: "",
+    },
     remarkPlugins: ["remark-math"],
     rehypePlugins: [
       [
