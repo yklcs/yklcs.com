@@ -60,6 +60,7 @@ og.type = "article"
     }
 
     h3 {
+      font-feature-settings: "c2sc";
       font-style: normal;
       font-variant: small-caps;
       font-weight: 700;
@@ -124,7 +125,7 @@ og.type = "article"
     h4,
     h5,
     h6 {
-      margin: 0.75rem 0 -0.25rem 0;
+      margin: 1.5rem 0 -0.25rem 0;
       font-style: italic;
       font-weight: 400;
     }
@@ -163,13 +164,12 @@ og.type = "article"
     }
 
     section.footnotes {
-      #footnote-label {
-        font-size: 1em;
+      h2#footnote-label {
+        font-family: var(--font-sans);
       }
 
       a[data-footnote-backref] {
         font-family: var(--font-mono);
-
         text-decoration: none;
       }
     }
