@@ -8,6 +8,7 @@ import { format, formatISO } from "date-fns"
 import Footer from "../components/Footer.astro"
 import FlexSpacer from "../components/FlexSpacer.astro"
 import { defaultOpenGraph } from "../meta"
+import "/node_modules/katex/dist/katex.css"
 
 export interface Props {
   entry: CollectionEntry<"blog">
@@ -22,7 +23,7 @@ og.type = "article"
 <Html meta={{ title: entry.data.title, og }}>
   <Header />
   <main>
-    <Wrapper element="article">
+    <Wrapper element="article" className={entry.data.style}>
       <PageHeader title={entry.data.title}>
         {
           entry.data.subtitle && (
@@ -40,24 +41,33 @@ og.type = "article"
   <Footer />
 </Html>
 
-<style
-  is:global
-  lang="scss"
-  define:vars={{
-    "md-font":
-      entry.data.font === "serif" ? "var(--font-serif)" : "var(--font-sans)",
-  }}
->
+<style is:global lang="scss">
   .subtitle {
     font-style: italic;
   }
 
-  article {
+  article.serif {
     p {
-      font-family: var(--font-sans);
-      font-family: var(--md-font);
+      font-family: var(--font-serif);
     }
 
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: var(--font-serif);
+    }
+
+    h3 {
+      font-style: normal;
+      font-variant: small-caps;
+      font-weight: 700;
+      font-size: 1em;
+    }
+  }
+
+  article {
     .astro-code {
       grid-column: wide;
       margin: 0 -1rem;
@@ -114,33 +124,23 @@ og.type = "article"
     h4,
     h5,
     h6 {
-      margin: 0.5rem 0 -0.25rem 0;
+      margin: 0.75rem 0 -0.25rem 0;
+      font-style: italic;
       font-weight: 400;
     }
 
     h2 {
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
 
     h3 {
-      font-size: 1.2em;
+      font-size: 1.1em;
     }
 
     h4,
     h5,
     h6 {
       font-size: 1em;
-    }
-
-    .footnotes {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem 0;
-      color: var(--neutral-60);
-    }
-
-    .data-footnote-backref {
-      font-family: var(--font-mono);
     }
 
     hr {
@@ -155,12 +155,21 @@ og.type = "article"
       padding: 0 0 0 2rem;
     }
 
+    .footnotes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem 0;
+      color: var(--neutral-60);
+    }
+
     section.footnotes {
       #footnote-label {
         font-size: 1em;
       }
 
       a[data-footnote-backref] {
+        font-family: var(--font-mono);
+
         text-decoration: none;
       }
     }
@@ -170,14 +179,14 @@ og.type = "article"
       text-decoration: none;
     }
 
-    mjx-container.MathJax[jax] {
-      margin: 0;
-      overflow: auto hidden;
+    .katex {
+      font-size: 1.125em;
     }
 
-    mjx-container[jax="SVG"] path[data-c],
-    mjx-container[jax="SVG"] use[data-c] {
-      stroke-width: 0;
+    .katex-display {
+      margin: 0;
+      padding: 1px 0 0;
+      overflow: auto hidden;
     }
   }
 </style>
