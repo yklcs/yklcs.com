@@ -46,7 +46,6 @@ $$
 &= {\mathbf{J}_f} (\mathbf{x})^\top \mathbf{v} \\
 &= (\mathbf{J}_{f_i \circ \cdots \circ f_3 \circ f_2 \circ f_1}(\mathbf{x})) ^\top \mathbf{v} \\
 &= (\mathbf{J}_{f_i \circ \cdots \circ f_3 \circ f_2} (f_1(\mathbf{x})) \mathbf{J}_{f_1} (\mathbf{x})) ^\top \mathbf{v} \\
-&= (\mathbf{J}_{f_i \circ \cdots \circ f_3} (f_2(f_1(\mathbf{x}))) \mathbf{J}_{f_2} (f_1(\mathbf{x})) \mathbf{J}_{f_1} (\mathbf{x})) ^\top \mathbf{v} \\
 &= (\mathbf{J}_{f_i \circ \cdots \circ f_3} (f_2(f_1(\mathbf{x}))) \mathbf{J}_{f_2} (\mathbf{x}_1) \mathbf{J}_{f_1} (\mathbf{x})) ^\top \mathbf{v} \\
 &= (\mathbf{J}_{f_i} (\mathbf{x}_{i-1}) \cdots \mathbf{J}_{f_2} (\mathbf{x}_1) \mathbf{J}_{f_1} (\mathbf{x})) ^\top \mathbf{v} \\
 &= \mathbf{J}_{f_1} (\mathbf{x})^\top \mathbf{J}_{f_2} (\mathbf{x}_1)^\top \cdots \mathbf{J}_{f_i} (\mathbf{x}_{i-1})^\top \mathbf{v}
@@ -71,13 +70,15 @@ $$
 \operatorname{vjp}(f,\mathbf{x})(\mathbf{v}) = (\operatorname{vjp} (f_1, \mathbf{x}) \circ \cdots \circ \operatorname{vjp}(f_i,\mathbf{x}_{i-1})) (\mathbf{v})
 $$
 
-The value of this representation lies in the fact that it enables reverse mode automatic differentiation.
+The value of this representation of VJPs lies in the fact that it enables reverse mode automatic differentiation.
 
-_Automatic differentiation_ follows from the fact that we can obtain the VJP of a composite function algorithmically by evaluating the VJPs of its constituent functions.
+### Automatic differentiation
+
+_Automatic differentiation_ (autodiff) follows from the fact that we can obtain the VJP of a composite function algorithmically by evaluating the VJPs of its constituent functions.
 Since even the most complicated of functions are made up of a composition of elementary functions, and the VJP of elementary functions is trivial, we can build up VJPs for "complicated" (i.e. lots of variables, deep composition, etc.) functions step-by-step.
 We require numeric values for $\mathbf{v}$ and $\mathbf{x}$ which sets this method apart from symbol differentiation.
 
-_Reverse mode_ refers to the fact that two passes -- forward and backward -- are required to calculate VJPs.
+_Reverse mode autodiff_ refers to the fact that two passes -- forward and backward -- are required to calculate VJPs.
 Calculating the VJP of $f_k$ requires us to have calculated the VJP of $f_{k+1}$ as well as $\mathbf{x}_{k-1}$.
 The forward pass as we evaluate $f$ from $f_1$ to $f_i$ gives us the intermediate value $\mathbf{x}_{k-1}$.
 The backwards pass as we build up the VJPs from $f_i$ to $f_1$ calculates the VJP of $f_{k+1}$.
@@ -105,7 +106,8 @@ $$
 
 It is worth noting that building the entire Jacobian with VJPs requires $m$ passes for $f: \R^n \to \R^m$ with an $m \times n$ Jacobian.
 We can assume that this method is more efficent the smaller $m$ is compared to $n$.
-In a machine learning context, $m=1 \ll n$ is common as the outputs are scalar loss values and the inputs are model weights, making JVPs effective.
+In a machine learning context, $m=1 \ll n$ is common as the outputs are scalar loss values and the inputs are model weights.
+This makes VJPs suitable for machine learning backpropagation.
 
 Vector-Jacobian products can be built up from VJPs and produce gradients and Jacobians.
 This enables reverse mode automatic differentiation, which is efficient for machine learning. Everything falls into place.
