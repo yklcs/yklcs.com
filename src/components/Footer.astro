@@ -10,13 +10,12 @@ const commit = readFileSync(".git/refs/heads/main").toString()
   <footer>
     <div class="links">
       <div>
-        <a href="/" class="href">Home</a>
-        <a href="/blog" class="href">Blog</a>
-        <a href="/photos" class="href">Photos</a>
+        <a href="/blog">Blog</a>
+        <a href="/photos">Photos</a>
         <a href="/colophon">Colophon</a>
       </div>
       <div>
-        <a href="/">⁂</a>
+        <a href="/" class="home">⁂</a>
       </div>
     </div>
     <div class="info">
@@ -44,7 +43,7 @@ const commit = readFileSync(".git/refs/heads/main").toString()
 
 <style lang="scss">
   .footer-wrapper {
-    margin: 4.5rem 0;
+    margin: 4.5rem 0 3rem;
   }
 
   footer {
@@ -74,6 +73,10 @@ const commit = readFileSync(".git/refs/heads/main").toString()
       display: flex;
       flex-direction: row;
       gap: 1ch;
+    }
+
+    a.home {
+      font-size: 1rem;
     }
   }
 
