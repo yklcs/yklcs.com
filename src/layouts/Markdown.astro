@@ -31,7 +31,7 @@ og.type = "article"
           )
         }
         <time datetime={formatISO(entry.data.date)}
-          >{format(entry.data.date, "MMM dd yyyy")}</time
+          >{format(entry.data.date, "MMM d yyyy")}</time
         >
       </PageHeader>
       <slot />
@@ -69,6 +69,10 @@ og.type = "article"
   }
 
   article {
+    p {
+      max-width: 52ch;
+    }
+
     .astro-code {
       grid-column: wide;
       margin: 0 -1rem;
