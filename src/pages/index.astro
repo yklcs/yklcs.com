@@ -87,16 +87,16 @@ const posts = await getCollection(
   <h2 class="section-header">Posts</h2>
   <div class:list={["section", "projects"]}>
     {
-      posts.slice(0, 3).map(post => (
-        <div class="entry">
-          <a href={`/blog/${post.slug}`}>
-            <h3 class="entry-name">{post.data.title}</h3>
-            <time class="entry-desc" datetime={formatISO(post.data.date)}>
-              {format(post.data.date, "MMM d yyyy")}
-            </time>
-          </a>
-        </div>
-      ))
+      posts
+        .slice(0, 3)
+        .reverse()
+        .map(post => (
+          <div class="entry">
+            <a href={`/blog/${post.slug}`}>
+              <h3 class="entry-name sub">{post.data.title}</h3>
+            </a>
+          </div>
+        ))
     }
   </div>
 </Default>
