@@ -3,6 +3,7 @@ html {
   -webkit-font-smoothing: antialiased;
   text-size-adjust: none;
   font-size: 16px;
+  font-size: clamp(14px, 12px + 0.333vw, 18px); // 14px@600px, 18px@1800px
   line-height: 1.5;
   font-synthesis: none;
 }
