@@ -1,7 +1,8 @@
 :root {
-  --font-sans: "Diatype", -apple-system, system-ui, "Helvetica Neue", Helvetica;
+  --font-sans: "Yklcs Asterism", "Diatype", -apple-system, system-ui,
+    "Helvetica Neue", Helvetica;
   --font-mono: "IBM Plex Mono", Menlo, monospace;
-  --font-serif: "Charis SIL", Georgia, Palatino, serif;
+  --font-serif: "Yklcs Asterism", "Charis SIL", Georgia, Palatino, serif;
 }
 
 @font-face {
@@ -84,4 +85,13 @@
   src: url("/fonts/open/CharisSIL-700-italic.woff2") format("woff2");
   font-family: "Charis SIL";
   font-display: swap;
+}
+
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/open/Asterism-400-normal.woff2") format("woff2");
+  font-family: "Yklcs Asterism";
+  font-display: swap;
+  unicode-range: U+2042;
 }

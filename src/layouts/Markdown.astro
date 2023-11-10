@@ -11,7 +11,8 @@ import { defaultOpenGraph } from "../meta"
 import "/node_modules/katex/dist/katex.css"
 
 export interface Props {
-  entry: CollectionEntry<"blog">
+  entry?: CollectionEntry<"blog">
+  frontmatter?: any
 }
 
 const frontmatter = Astro.props.entry
@@ -41,6 +42,7 @@ og.type = "article"
         }
       </PageHeader>
       <slot />
+      <span class="signature">⁂</span>
     </Wrapper>
   </main>
   <FlexSpacer />
@@ -111,8 +113,9 @@ og.type = "article"
     }
 
     a {
-      color: var(--neutral-60);
       text-decoration: underline;
+      text-decoration-color: var(--neutral-60);
+      text-decoration-thickness: 1px;
     }
 
     ul,
@@ -155,9 +158,12 @@ og.type = "article"
     }
 
     hr {
-      border-top: none;
-      border-bottom: 1px solid var(--neutral-60);
-      width: 20%;
+      color: var(--neutral-60);
+      display: inline-block;
+      border: none;
+      &::after {
+        content: "⁂";
+      }
     }
 
     blockquote {
@@ -166,14 +172,13 @@ og.type = "article"
       padding: 0 0 0 2rem;
     }
 
-    .footnotes {
+    section.footnotes {
+      order: 100;
       display: flex;
       flex-direction: column;
       gap: 1.25rem 0;
       color: var(--neutral-60);
-    }
 
-    section.footnotes {
       h2#footnote-label {
         font-family: var(--font-sans);
       }
@@ -197,6 +202,10 @@ og.type = "article"
       margin: 0;
       padding: 1px 0 0;
       overflow: auto hidden;
+    }
+
+    .signature {
+      margin: 0 0 2rem;
     }
   }
 </style>
