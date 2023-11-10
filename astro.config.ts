@@ -15,9 +15,6 @@ export default defineConfig({
       customPages: ["https://yklcs.com/photos"],
     }),
   ],
-  experimental: {
-    assets: true,
-  },
   markdown: {
     shikiConfig: {
       theme: shikiTheme,

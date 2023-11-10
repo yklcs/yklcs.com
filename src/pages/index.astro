@@ -53,9 +53,9 @@ const posts = await getCollection(
 <Default meta={{ title: "yklcs.com" }}>
   <p class="bio">
     <span class="bio-name">Lucas Yunkyu Lee is a</span>
-    <span class="bio-first">student</span> at POSTECH with interests in research,
-    development, and design. Currently performing military service in the KATUSA
-    program, MOS 11B.
+    <span class="bio-first">student</span> at POSTECH with interests in
+    research, development, and design. Currently performing military service in
+    the KATUSA program, MOS 11B.
   </p>
   <p class="bio-sub" id="ets-counter-container">
     <span id="ets-counter"></span>
@@ -169,6 +169,8 @@ const posts = await getCollection(
     align-items: flex-start;
 
     .link {
+      display: flex;
+      gap: 1ch;
     }
   }
 

@@ -4,10 +4,10 @@ interface Props {
   className?: string
 }
 
-const { element: Element = "div", className } = Astro.props
+const { element: Element = "div", className, ...rest } = Astro.props
 ---
 
-<Element class:list={["wrapper", className]}>
+<Element class:list={["wrapper", className]} {...rest}>
   <slot />
 </Element>
 
