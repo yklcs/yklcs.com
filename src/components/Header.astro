@@ -17,7 +17,7 @@ const url = Astro.url
             .filter(str => str)
             .map((elm, idx, arr) => (
               <div class="breadcrumb-group">
-                {<span class="breadcrumb-separator">/</span>}
+                {<span class="breadcrumb-separator">⁄</span>}
                 <a
                   href={`/${arr.slice(0, idx + 1).join("/")}`}
                   class="breadcrumb-link"
@@ -53,12 +53,6 @@ const url = Astro.url
   a.breadcrumb-home {
     grid-column: wide-start;
     justify-self: start;
-    font-weight: 700;
-  }
-
-  .breadcrumb-group {
-    display: flex;
-    gap: 0 0.5ch;
   }
 
   .breadcrumbs {
@@ -66,12 +60,17 @@ const url = Astro.url
     grid-column: main;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0 0.5ch;
-    margin: 0 0.5ch;
-  }
+    gap: 0 1ch;
+    margin: 0 1ch;
 
-  .breadcrumb-separator {
-    color: var(--neutral-60);
-    font-weight: 400;
+    .breadcrumb-group {
+      display: flex;
+      gap: 0 1ch;
+    }
+
+    .breadcrumb-separator {
+      color: var(--neutral-60);
+      font-weight: 400;
+    }
   }
 </style>
