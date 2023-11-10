@@ -1,24 +1,67 @@
 ---
+import { readFileSync } from "fs"
 import Wrapper from "./Wrapper.astro"
+import { format } from "date-fns"
 
-const now = new Date().toISOString()
+const now = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss'Z'")
+const commit = readFileSync(".git/refs/heads/main").toString().slice(0, 7)
 ---
 
 <Wrapper className={"footer-wrapper"}>
-  <footer>
-    Built at {now}
-  </footer>
+  <hr />
+  <div class="links">
+    <a href="/" class="home">Home</a>
+    <a href="/blog" class="href">Blog</a>
+    <a href="/photos" class="href">Photos</a>
+  </div>
+  <div class="built">
+    <span>Built at <time datetime={now}>{now}</time></span>
+    <span>#{commit}</span>
+  </div>
 </Wrapper>
 
 <style>
+  div {
+    display: flex;
+    grid-column: wide;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .links {
+    gap: 1ch;
+  }
+
+  .built {
+    justify-content: space-between;
+    font-size: 0.8em;
+  }
+
   .footer-wrapper {
     margin: 3rem 0 0 0;
+    padding: 1.5rem 0 3rem;
+    color: var(--neutral-60);
+    /* row-gap: 0.75rem; */
+  }
+
+  a.home {
+  }
+
+  hr {
+    grid-column: wide;
+    border: none;
+    border-top: 1px solid;
+    border-color: var(--neutral-10);
+    width: 100%;
+    height: 1px;
   }
 
   footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: -2rem 0 0;
+    padding: 1rem 0;
     color: var(--neutral-60);
     font-size: 0.75em;
     font-family: var(--font-sans);
