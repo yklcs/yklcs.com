@@ -42,7 +42,6 @@ og.type = "article"
         }
       </PageHeader>
       <slot />
-      <span class="signature">⁂</span>
     </Wrapper>
   </main>
   <FlexSpacer />
@@ -55,18 +54,20 @@ og.type = "article"
   }
 
   article.serif {
-    font-family: var(--font-serif);
+    & > * {
+      font-family: var(--font-serif);
+    }
 
     .article-header {
       font-family: var(--font-sans);
     }
 
     h3 {
-      font-feature-settings: "c2sc";
       font-style: normal;
       font-variant: small-caps;
       font-weight: 700;
       font-size: 1em;
+      font-feature-settings: "c2sc";
     }
   }
 
@@ -152,9 +153,9 @@ og.type = "article"
     }
 
     hr {
-      color: var(--neutral-60);
       display: inline-block;
       border: none;
+      color: var(--neutral-60);
       &::after {
         content: "⁂";
       }
@@ -167,9 +168,9 @@ og.type = "article"
     }
 
     section.footnotes {
-      order: 100;
       display: flex;
       flex-direction: column;
+      order: 100;
       gap: 1.25rem 0;
       color: var(--neutral-60);
 
@@ -192,10 +193,6 @@ og.type = "article"
       margin: 0;
       padding: 1px 0 0;
       overflow: auto hidden;
-    }
-
-    .signature {
-      margin: 0 0 2rem;
     }
   }
 </style>
