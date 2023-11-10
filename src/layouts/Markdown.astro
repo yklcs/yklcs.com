@@ -14,25 +14,31 @@ export interface Props {
   entry: CollectionEntry<"blog">
 }
 
-const { entry } = Astro.props
+const frontmatter = Astro.props.entry
+  ? Astro.props.entry.data
+  : Astro.props.frontmatter || Astro.props
+
 const og = defaultOpenGraph
-og.title = entry.data.title
+og.title = frontmatter.title
 og.type = "article"
 ---
 
-<Html meta={{ title: entry.data.title, og }}>
+<Html meta={{ title: frontmatter.title, og }}>
   <Header />
   <main>
-    <Wrapper element="article" className={entry.data.style}>
-      <PageHeader title={entry.data.title}>
+    <Wrapper element="article" className={frontmatter.style}>
+      <PageHeader title={frontmatter.title}>
         {
-          entry.data.subtitle && (
-            <div class="subtitle">{entry.data.subtitle}</div>
+          frontmatter.subtitle && (
+            <div class="subtitle">{frontmatter.subtitle}</div>
+          )
+        }{
+          frontmatter.time && (
+            <time datetime={formatISO(frontmatter.date)}>
+              {format(frontmatter.date, "MMM d yyyy")}
+            </time>
           )
         }
-        <time datetime={formatISO(entry.data.date)}
-          >{format(entry.data.date, "MMM d yyyy")}</time
-        >
       </PageHeader>
       <slot />
     </Wrapper>

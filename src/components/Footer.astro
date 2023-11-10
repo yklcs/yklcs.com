@@ -10,9 +10,12 @@ const commit = readFileSync(".git/refs/heads/main").toString().slice(0, 7)
 <Wrapper className={"footer-wrapper"}>
   <hr />
   <div class="links">
-    <a href="/" class="home">Home</a>
-    <a href="/blog" class="href">Blog</a>
-    <a href="/photos" class="href">Photos</a>
+    <div>
+      <a href="/" class="home">Home</a>
+      <a href="/blog" class="href">Blog</a>
+      <a href="/photos" class="href">Photos</a>
+    </div>
+    <a href="/colophon" class="href">Colophon</a>
   </div>
   <div class="built">
     <span>Built at <time datetime={now}>{now}</time></span>
@@ -20,7 +23,7 @@ const commit = readFileSync(".git/refs/heads/main").toString().slice(0, 7)
   </div>
 </Wrapper>
 
-<style>
+<style lang="scss">
   div {
     display: flex;
     grid-column: wide;
@@ -29,7 +32,13 @@ const commit = readFileSync(".git/refs/heads/main").toString().slice(0, 7)
   }
 
   .links {
-    gap: 1ch;
+    justify-content: space-between;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      gap: 1ch;
+    }
   }
 
   .built {
@@ -41,7 +50,7 @@ const commit = readFileSync(".git/refs/heads/main").toString().slice(0, 7)
     margin: 3rem 0 0 0;
     padding: 1.5rem 0 3rem;
     color: var(--neutral-60);
-    /* row-gap: 0.75rem; */
+    font-size: 0.9em;
   }
 
   a.home {
