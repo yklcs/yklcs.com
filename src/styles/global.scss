@@ -3,8 +3,8 @@ html {
   -webkit-font-smoothing: antialiased;
   text-size-adjust: none;
   font-size: 16px;
-  font-size: clamp(14px, 12px + 0.333vw, 18px); // 14px@600px, 18px@1800px
-  line-height: 1.5;
+  font-size: clamp(16px, 14.8px + 0.2vw, 18px); // 14px@600px, 18px@1800px
+  line-height: 1.45;
   font-synthesis: none;
 }
 
@@ -18,6 +18,11 @@ body {
   min-height: 100vh;
   color: var(--neutral-90);
   font-family: var(--font-sans);
+}
+
+:root {
+  --bp-m: 70rem;
+  --w-main: 66ch;
 }
 
 a {

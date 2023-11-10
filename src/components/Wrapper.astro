@@ -17,7 +17,7 @@ const { element: Element = "div", className, ...rest } = Astro.props
     grid-template-columns:
       [full-start] minmax(3rem, 1fr)
       [wide-start] minmax(0, 10rem)
-      [main-start] 52ch [main-end]
+      [main-start] var(--w-main) [main-end]
       minmax(0, 10rem) [wide-end]
       minmax(3rem, 1fr) [full-end];
     gap: 1.25rem 0;
@@ -33,7 +33,7 @@ const { element: Element = "div", className, ...rest } = Astro.props
       grid-template-columns:
         [full-start] 3rem
         [wide-start] 1fr
-        [main-start] minmax(0, 52ch) [main-end]
+        [main-start] minmax(0, var(--w-main)) [main-end]
         1fr [wide-end]
         3rem [full-end];
     }
@@ -48,7 +48,7 @@ const { element: Element = "div", className, ...rest } = Astro.props
       grid-template-columns:
         [full-start] 1.5rem
         [wide-start] 1fr
-        [main-start] minmax(0, 52ch) [main-end]
+        [main-start] minmax(0, var(--w-main)) [main-end]
         1fr [wide-end]
         1.5rem [full-end];
     }

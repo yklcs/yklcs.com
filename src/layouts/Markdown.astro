@@ -28,7 +28,7 @@ og.type = "article"
   <Header />
   <main>
     <Wrapper element="article" className={frontmatter.style}>
-      <PageHeader title={frontmatter.title}>
+      <PageHeader title={frontmatter.title} className="article-header">
         {
           frontmatter.subtitle && (
             <div class="subtitle">{frontmatter.subtitle}</div>
@@ -55,16 +55,10 @@ og.type = "article"
   }
 
   article.serif {
-    p {
-      font-family: var(--font-serif);
-    }
+    font-family: var(--font-serif);
 
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-family: var(--font-serif);
+    .article-header {
+      font-family: var(--font-sans);
     }
 
     h3 {
@@ -78,7 +72,7 @@ og.type = "article"
 
   article {
     p {
-      max-width: 52ch;
+      max-width: var(--w-main);
     }
 
     .astro-code {
@@ -178,10 +172,6 @@ og.type = "article"
       flex-direction: column;
       gap: 1.25rem 0;
       color: var(--neutral-60);
-
-      h2#footnote-label {
-        font-family: var(--font-sans);
-      }
 
       a[data-footnote-backref] {
         font-family: var(--font-mono);
