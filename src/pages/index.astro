@@ -1,5 +1,46 @@
 ---
 import Default from "../layouts/Default.astro"
+
+const links = [
+  {
+    name: "Mail",
+    desc: "lucas@yklcs.com",
+    href: "mailto:lucas@yklcs.com",
+  },
+  {
+    name: "Blog",
+    desc: "yklcs.com/blog",
+    href: "/blog",
+  },
+  {
+    name: "Github",
+    desc: "github.com/yklcs",
+    href: "https://github.com/yklcs",
+  },
+  {
+    name: "Photo",
+    desc: "yklcs.com/photos",
+    href: "/photos",
+  },
+]
+
+const projects = [
+  {
+    name: "chocc",
+    desc: "ANSI C compiler in ANSI C targeting WebAssembly",
+    href: "https://github.com/yklcs/chocc",
+  },
+  {
+    name: "chromogen",
+    desc: "Static site generator for self-hosted image galleries",
+    href: "https://github.com/yklcs/chromogen",
+  },
+  {
+    name: "lisp-roots",
+    desc: "The roots of Lisp à la John McCarthy",
+    href: "https://github.com/yklcs/chromogen",
+  },
+]
 ---
 
 <Default meta={{ title: "yklcs.com" }}>
@@ -14,75 +55,37 @@ import Default from "../layouts/Default.astro"
   </p>
   <h2 class="section-header">Links</h2>
   <div class:list={["section", "links"]}>
-    <span>
-      <a href="mailto:lucas@yklcs.com">Mail</a>
-      <span class="sub">lucas@yklcs.com</span>
-    </span>
-    <span>
-      <a href="/blog">Blog</a>
-      <span class="sub">yklcs.com/blog</span>
-    </span>
-    <span>
-      <a href="https://github.com/yklcs">Github</a>
-      <span class="sub">yklcs</span>
-    </span>
-    <span>
-      <a href="/photos">Photos</a>
-      <span class="sub">yklcs.com/photos</span>
-    </span>
-    <span>
-      <a href="/coverflow">Coverflow</a>
-      <span class="sub">yklcs.com/coverflow</span>
-    </span>
+    {
+      links.map(link => (
+        <a href={link.href} class="link">
+          <span>{link.name}</span>
+          <span class="sub">{link.desc}</span>
+        </a>
+      ))
+    }
   </div>
   <h2 class="section-header">Projects</h2>
   <div class:list={["section", "projects"]}>
-    <div class="project">
-      <a href="https://github.com/yklcs/chocc">
-        <h3 class="project-title">chocc</h3>
-      </a>
-      <span class="project-desc">
-        ANSI C compiler in ANSI C, targeting WebAssembly
-      </span>
-    </div>
-    <div class="project">
-      <a href="https://github.com/yklcs/cram">
-        <h3 class="project-title">Cram</h3>
-      </a>
-      <span class="project-desc">
-        WASM powered universal image compression that works on any device
-      </span>
-    </div>
-    <div class="project">
-      <h3 class="project-title">Panchro</h3>
-      <span class="project-desc">
-        Static site generator for self-hosted image galleries
-      </span>
-    </div>
-    <div class="project">
-      <a href="https://github.com/yklcs/lisp-roots">
-        <h3 class="project-title">lisp-roots</h3>
-      </a>
-      <span class="project-desc"> The roots of Lisp in Rust</span>
-    </div>
+    {
+      projects.map(project => (
+        <div class="project">
+          <a href={project.href}>
+            <h3 class="project-name">{project.name}</h3>
+            <span class="project-desc">{project.desc} </span>
+          </a>
+        </div>
+      ))
+    }
   </div>
 </Default>
 
 <style lang="scss">
-  .bio,
-  .bio-sub,
-  .links,
-  .projects,
-  .section-header {
-    line-height: 1.4;
-  }
-
   .project {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
 
-    .project-title {
+    .project-name {
       margin: 0;
       font-weight: 400;
       font-size: 1em;
@@ -95,22 +98,26 @@ import Default from "../layouts/Default.astro"
 
   .bio {
     hyphens: none;
-  }
 
-  .bio-name {
-    @media screen and (min-width: 70rem) {
-      display: none;
+    .bio-name {
+      @media screen and (min-width: 70rem) {
+        display: none;
+      }
     }
-  }
 
-  .bio-first {
-    @media screen and (min-width: 70rem) {
-      text-transform: capitalize;
+    .bio-first {
+      @media screen and (min-width: 70rem) {
+        text-transform: capitalize;
+      }
     }
   }
 
   .bio-sub {
     margin: -1rem 0 0;
+
+    #ets-counter {
+      pointer-events: none;
+    }
   }
 
   .section-header {
@@ -128,14 +135,13 @@ import Default from "../layouts/Default.astro"
     }
   }
 
-  #ets-counter {
-    pointer-events: none;
-  }
-
   .links {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    .link {
+    }
   }
 
   .projects {
