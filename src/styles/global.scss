@@ -1,3 +1,8 @@
+:root {
+  --bp-m: 70rem;
+  --w-main: 32rem;
+}
+
 html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -18,11 +23,6 @@ body {
   min-height: 100vh;
   color: var(--neutral-90);
   font-family: var(--font-sans);
-}
-
-:root {
-  --bp-m: 70rem;
-  --w-main: 66ch;
 }
 
 a {
