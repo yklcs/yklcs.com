@@ -1,5 +1,7 @@
 ---
+import { getCollection } from "astro:content"
 import Default from "../layouts/Default.astro"
+import { format, formatISO } from "date-fns"
 
 const links = [
   {
@@ -41,6 +43,11 @@ const projects = [
     href: "https://github.com/yklcs/chromogen",
   },
 ]
+
+const posts = await getCollection(
+  "blog",
+  ({ data }) => data.draft !== true || import.meta.env.DEV
+)
 ---
 
 <Default meta={{ title: "yklcs.com" }}>
@@ -68,10 +75,25 @@ const projects = [
   <div class:list={["section", "projects"]}>
     {
       projects.map(project => (
-        <div class="project">
+        <div class="entry">
           <a href={project.href}>
-            <h3 class="project-name">{project.name}</h3>
-            <span class="project-desc">{project.desc} </span>
+            <h3 class="entry-name">{project.name}</h3>
+            <span class="entry-desc">{project.desc} </span>
+          </a>
+        </div>
+      ))
+    }
+  </div>
+  <h2 class="section-header">Posts</h2>
+  <div class:list={["section", "projects"]}>
+    {
+      posts.slice(0, 3).map(post => (
+        <div class="entry">
+          <a href={`/blog/${post.slug}`}>
+            <h3 class="entry-name">{post.data.title}</h3>
+            <time class="entry-desc" datetime={formatISO(post.data.date)}>
+              {format(post.data.date, "MMM d yyyy")}
+            </time>
           </a>
         </div>
       ))
@@ -80,18 +102,18 @@ const projects = [
 </Default>
 
 <style lang="scss">
-  .project {
+  .entry {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 
-    .project-name {
+    .entry-name {
       margin: 0;
       font-weight: 400;
       font-size: 1em;
     }
 
-    .project-desc {
+    .entry-desc {
       color: var(--neutral-60);
     }
   }
@@ -122,16 +144,22 @@ const projects = [
 
   .section-header {
     grid-column: wide-start / main-start;
-    margin: 0.5rem 0 0;
+    margin: 0;
     font-weight: 400;
     font-size: 1em;
+    // color: var(--neutral-60);
+  }
+
+  .section,
+  .section-header {
+    // border-top: 1px solid;
+    // border-color: var(--neutral-10);
+    padding: 1rem 0 0;
   }
 
   .section {
-    margin: 0.5rem 0 0;
-
     @media screen and (max-width: 70rem) {
-      margin: 0;
+      padding: 0;
     }
   }
 
