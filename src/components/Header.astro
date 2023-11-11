@@ -6,7 +6,9 @@ const url = Astro.url
 
 <Wrapper className={"wrapper"}>
   <header>
-    <a href="/" class="breadcrumb-home">⁂</a>
+    <a href="/" class="breadcrumb-home">
+      <span>⁂</span>
+    </a>
     {
       url.pathname == "/" ? (
         <h1 class="index-name">Lucas Yunkyu Lee</h1>
@@ -35,9 +37,10 @@ const url = Astro.url
 <style lang="scss">
   header {
     display: contents;
-    line-height: 1.2;
+    line-height: 1.1;
     @media screen and (max-width: 60rem) {
       display: flex;
+      align-items: flex-start;
     }
   }
 
@@ -51,8 +54,14 @@ const url = Astro.url
   }
 
   a.breadcrumb-home {
+    display: flex;
     grid-column: wide-start;
-    justify-self: start;
+    align-items: center;
+    height: 1.1rem;
+    line-height: 1;
+    span {
+      font-size: 1.2rem;
+    }
   }
 
   .breadcrumbs {
@@ -60,7 +69,7 @@ const url = Astro.url
     grid-column: main;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 0 1ch;
+    gap: 0.25rem 1ch;
     margin: 0 1ch;
 
     .breadcrumb-group {
