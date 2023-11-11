@@ -6,9 +6,7 @@ const url = Astro.url
 
 <Wrapper className={"wrapper"}>
   <header>
-    <a href="/" class="breadcrumb-home">
-      <span>⁂</span>
-    </a>
+    <a href="/" class="breadcrumb-home">⁂</a>
     {
       url.pathname == "/" ? (
         <h1 class="index-name">Lucas Yunkyu Lee</h1>
@@ -54,14 +52,9 @@ const url = Astro.url
   }
 
   a.breadcrumb-home {
-    display: flex;
     grid-column: wide-start;
-    align-items: center;
-    height: 1.1rem;
-    line-height: 1;
-    span {
-      font-size: 1.2rem;
-    }
+    font-size: 1.2rem;
+    line-height: 1.1rem;
   }
 
   .breadcrumbs {
