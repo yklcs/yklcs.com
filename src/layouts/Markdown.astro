@@ -19,7 +19,7 @@ const frontmatter = Astro.props.entry
   ? Astro.props.entry.data
   : Astro.props.frontmatter || Astro.props
 
-const og = defaultOpenGraph
+const og = { ...defaultOpenGraph }
 og.title = frontmatter.title
 og.type = "article"
 ---

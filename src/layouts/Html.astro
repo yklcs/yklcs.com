@@ -17,7 +17,7 @@ const stripTrailingSlash = (str: string) =>
 const og = {
   basic: {
     url: stripTrailingSlash(Astro.url.href),
-    ...(meta.og ?? defaultOpenGraph),
+    ...(meta.og ?? { ...defaultOpenGraph, title: meta.title }),
   },
 }
 ---

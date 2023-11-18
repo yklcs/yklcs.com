@@ -13,7 +13,7 @@ const allBlogPosts = await getCollection(
 const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 ---
 
-<Default meta={{ title: "blog" }}>
+<Default meta={{ title: "yklcs blog" }}>
   <PageHeader title="Ramblings and reflections" />
   <Wrapper className={"groups"}>
     {
