@@ -8,8 +8,8 @@
     "vscode": {
       "extensions": [
         "esbenp.prettier-vscode",
-        "astro-build.astro-vscode",
-        "unifiedjs.vscode-mdx"
+        "unifiedjs.vscode-mdx",
+        "denoland.vscode-deno"
       ]
     }
   }

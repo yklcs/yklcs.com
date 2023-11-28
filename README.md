@@ -4,8 +4,7 @@
 
 Source for <https://yklcs.com>
 
-[![Build and Deploy](https://github.com/yklcs/yklcs.com/actions/workflows/build_and_deploy.yml/badge.svg)](https://github.com/yklcs/yklcs.com/actions/workflows/build_and_deploy.yml)
-[![Lint](https://github.com/yklcs/yklcs.com/actions/workflows/lint.yml/badge.svg)](https://github.com/yklcs/yklcs.com/actions/workflows/lint.yml)
+[![Build](https://github.com/yklcs/yklcs.com/actions/workflows/build.yml/badge.svg?branch=deno-lume)](https://github.com/yklcs/yklcs.com/actions/workflows/build.yml)
 
 </div>
 
@@ -15,7 +14,8 @@ Source for <https://yklcs.com>
 
 ### Frontend
 
-- [Astro](https://astro.build) SSG
+- [Lume](https://lume.land) SSG
+- [Deno](https://deno.com) runtime
 
 ### "Backend"
 
