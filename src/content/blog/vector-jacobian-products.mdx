@@ -5,6 +5,8 @@ tags: [math, ai]
 style: serif
 ---
 
+import Sidenote from "../../components/Sidenote.astro"
+
 Consider $f: \R^n \to \R^m$. The Jacobian of $f$, denoted $\mathbf{J}_f$, is an $m \times n$ matrix of all the partial derivatives. Pretty basic:
 
 $$
@@ -28,7 +30,14 @@ $$
 {\mathbf{J}_f} (\mathbf{x})^\top\mathbf{v} = \begin{bmatrix} v_1 \dfrac{\partial{f_1}}{\partial{x_1}} (x_1) + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_1}} (x_1) \\ \vdots \\ v_1 \dfrac{\partial{f_1}}{\partial{x_n}} (x_n) + \cdots + v_m \dfrac{\partial{f_m}}{\partial{x_n}} (x_n) \end{bmatrix}
 $$
 
-As the "variables" are $f$, $\mathbf{x}$, and $\mathbf{v}$ in ${\mathbf{J}_f} (\mathbf{x})^\top\mathbf{v}$, we can define a new operation $\operatorname{vjp}(f, \mathbf{x})(\mathbf{v})$.[^1] Note that $\operatorname{vjp} : (\R^n \to \R^m, \R^n) \to \R^m \to \R^n$.
+As the "variables" are $f$, $\mathbf{x}$, and $\mathbf{v}$ in ${\mathbf{J}_f} (\mathbf{x})^\top\mathbf{v}$, we can define a new operation $\operatorname{vjp}(f, \mathbf{x})(\mathbf{v})$.
+
+<Sidenote>
+  We could use $\operatorname{vjp}(f, \mathbf{x}, \mathbf{v})$, but currying
+  $\mathbf{v}$ out simplifies later calculations.
+</Sidenote>
+
+Note that $\operatorname{vjp} : (\R^n \to \R^m, \R^n) \to \R^m \to \R^n$.
 
 $$
 \operatorname{vjp}(f, \mathbf{x})(\mathbf{v}) \coloneqq {\mathbf{J}_f} (\mathbf{x})^\top \mathbf{v}
@@ -36,7 +45,13 @@ $$
 
 But that still requires us to calculate $\partial{f}/\partial{x_k}$, which can be hard depending on $f$.
 This is especially the case if $f$ is a composition of multiple functions.
-Take $f = f_i \circ f_{i-1} \circ \cdots \circ f_1$.[^2]
+Take $f = f_i \circ f_{i-1} \circ \cdots \circ f_1$.
+
+<Sidenote>
+  $f_k$ was used as the $k$th component of $f$ before, but we use it to denote
+  different functions from here on.
+</Sidenote>
+
 The chain rule for Jacobians is $\mathbf{J}_{f_{k+1} \circ f_k} (\mathbf{x}) = \mathbf{J}_{f_{k+1}} (f_k (\mathbf{x})) \mathbf{J}_{f_k}(\mathbf{x})$.
 We can define $\mathbf{x}_k = (f_k \circ f_{k-1} \circ \cdots \circ f_1) (\mathbf{x})$ as the $k$th intermediate function value.
 Reconciling this with VJPs:
@@ -111,6 +126,3 @@ This makes VJPs suitable for machine learning backpropagation.
 
 Vector-Jacobian products can be built up from VJPs and produce gradients and Jacobians.
 This enables reverse mode automatic differentiation, which is efficient for machine learning. Everything falls into place.
-
-[^1]: We could use $\operatorname{vjp}(f, \mathbf{x}, \mathbf{v})$, but currying $\mathbf{v}$ out simplifies later calculations.
-[^2]: $f_k$ was used as the $k$th component of $f$ before, but we use it to denote different functions from here on.

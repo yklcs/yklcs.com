@@ -17,8 +17,8 @@ const { element: Element = "div", className, ...rest } = Astro.props
     grid-template-columns:
       [full-start] minmax(1.5rem, 1fr)
       [wide-start l-side-start r-main-start] minmax(10ch, 20ch)
-      [l-side-end l-main-start] 25ch [r-side-start r-main-end]
-      minmax(10ch, 20ch) [l-main-end r-side-end wide-end]
+      [l-side-end l-main-start] 27ch [r-side-start r-side-wide-start r-main-end]
+      minmax(10ch, 20ch) [l-main-end r-side-end] minmax(3ch, 7ch) [r-side-wide-end wide-end]
       minmax(1.5rem, 1fr) [full-end];
     gap: 1.25rem;
     margin: 0 0 1.25rem 0;
@@ -26,8 +26,8 @@ const { element: Element = "div", className, ...rest } = Astro.props
     @media screen and (max-width: $bp) {
       grid-template-columns:
         [full-start] 0.25rem
-        [wide-start l-main-start r-main-start l-side-start r-side-start] 1fr
-        [l-main-end r-main-end l-side-end r-side-end wide-end]
+        [wide-start l-main-start r-main-start l-side-start r-side-start r-side-wide-start] 1fr
+        [l-main-end r-main-end l-side-end r-side-end r-side-wide-end wide-end]
         0.25rem [full-end];
     }
   }

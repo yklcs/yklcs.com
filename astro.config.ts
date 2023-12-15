@@ -1,6 +1,10 @@
 import { defineConfig } from "astro/config"
 import sitemap from "@astrojs/sitemap"
+import mdx from "@astrojs/mdx"
+
 import { toShikiTheme } from "shiki"
+import remarkMath from "remark-math"
+import rehypeKatex from "rehype-katex"
 
 const vscodeTheme = await fetch(
   "https://raw.githubusercontent.com/yklcs/deol-vscode/main/themes/deol-dull-vscode-color-theme.json"
@@ -14,6 +18,7 @@ export default defineConfig({
     sitemap({
       customPages: ["https://yklcs.com/photos"],
     }),
+    mdx({}),
   ],
   vite: {
     css: {
@@ -31,7 +36,7 @@ export default defineConfig({
     remarkRehype: {
       clobberPrefix: "",
     },
-    remarkPlugins: ["remark-math"],
-    rehypePlugins: ["rehype-katex"],
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [rehypeKatex],
   },
 })
