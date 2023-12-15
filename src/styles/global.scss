@@ -22,6 +22,10 @@ body {
   min-height: 100vh;
   color: var(--neutral-90);
   font-family: var(--font-sans);
+
+  @media screen and (max-width: $bp) {
+    padding: 3rem 0 0.5rem 0;
+  }
 }
 
 a {

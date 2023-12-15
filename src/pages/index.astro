@@ -51,13 +51,19 @@ const posts = await getCollection(
 
 <Default meta={{ title: "yklcs.com" }}>
   <p class="bio">
-    Hi, I'm Lucas, also known as Yunkyu. I'm a student at POSTECH with interests
-    in research, development, and design. Currently performing military service
-    in the KATUSA program, MOS 11B.
+    Hi, I'm Lucas, also known as Yunkyu or yklcs. I'm currently a student at
+    POSTECH, Korea.
   </p>
-  <p class="bio-sub" id="ets-counter-container">
-    <span id="ets-counter"></span>
+  <p>
+    My passion lies in the intersection between research, development, and
+    design. I'm working on computer vision, programming languages, compilers,
+    and more.
   </p>
+  <p id="ets-counter-container">
+    I'm currently active duty military, serving under the KATUSA program. My MOS
+    is 11B, and I have <span id="ets-counter"></span>
+  </p>
+
   <h2 class="section-header">Links</h2>
   <div class:list={["section", "links"]}>
     {
@@ -121,7 +127,7 @@ const posts = await getCollection(
     // hyphens: none;
 
     @media screen and (max-width: $bp) {
-      margin: 0;
+      margin: 1rem 0 0;
     }
   }
 
@@ -135,22 +141,25 @@ const posts = await getCollection(
 
   .section-header {
     grid-column: l-side;
-    margin: 0;
+    margin: 0.5rem 0 0;
+    padding: 1rem 0 0;
     color: var(--neutral-60);
     font-weight: 400;
     font-size: 1em;
-  }
 
-  .section,
-  .section-header {
-    // border-top: 1px solid;
-    // border-color: var(--neutral-10);
-    padding: 1rem 0 0;
+    @media screen and (max-width: $bp) {
+      margin: 1rem 0 0.6rem;
+    }
   }
 
   .section {
+    margin: 0.5rem 0 0;
+    border-top: 1px solid;
+    border-color: var(--neutral-10);
+    padding: 1rem 0;
     @media screen and (max-width: $bp) {
-      padding: 0;
+      margin: -1.25rem 0 0;
+      padding: 0.6rem 0 0;
     }
   }
 
