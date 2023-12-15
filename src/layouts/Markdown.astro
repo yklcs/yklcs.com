@@ -26,7 +26,7 @@ og.type = "article"
 
 <Html meta={{ title: frontmatter.title, og }}>
   <Header />
-  <main>
+  <main class="main">
     <Wrapper element="article" className={frontmatter.style}>
       <PageHeader title={frontmatter.title} className="article-header">
         {
@@ -69,6 +69,10 @@ og.type = "article"
       font-size: 1em;
       font-feature-settings: "c2sc";
     }
+  }
+
+  main.main article * {
+    grid-column: r-main;
   }
 
   article {

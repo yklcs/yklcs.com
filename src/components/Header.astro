@@ -8,9 +8,7 @@ const url = Astro.url
   <header>
     <a href="/" class="breadcrumb-home">⁂</a>
     {
-      url.pathname == "/" ? (
-        <h1 class="index-name">Lucas Yunkyu Lee</h1>
-      ) : (
+      url.pathname !== "/" && (
         <div class="breadcrumbs">
           {url.pathname
             .split("/")
@@ -34,32 +32,19 @@ const url = Astro.url
 
 <style lang="scss">
   header {
-    display: contents;
+    display: flex;
+    grid-column: l-side / wide-end;
+    align-items: flex-start;
     line-height: 1.1;
-    @media screen and (max-width: 60rem) {
-      display: flex;
-      align-items: flex-start;
-    }
-  }
-
-  .index-name {
-    margin: 0;
-    font-weight: 400;
-    font-size: 1em;
-    @media screen and (max-width: 60rem) {
-      display: none;
-    }
   }
 
   a.breadcrumb-home {
-    grid-column: wide-start;
     font-size: 1.2rem;
     line-height: 1.1rem;
   }
 
   .breadcrumbs {
     display: flex;
-    grid-column: main;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 0.25rem 1ch;

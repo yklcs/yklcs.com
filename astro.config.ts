@@ -15,6 +15,15 @@ export default defineConfig({
       customPages: ["https://yklcs.com/photos"],
     }),
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "src/styles/vars.scss";`,
+        },
+      },
+    },
+  },
   markdown: {
     shikiConfig: {
       theme: shikiTheme,

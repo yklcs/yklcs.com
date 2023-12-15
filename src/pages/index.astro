@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content"
 import Default from "../layouts/Default.astro"
-import { format, formatISO } from "date-fns"
 
 const links = [
   {
@@ -52,10 +51,9 @@ const posts = await getCollection(
 
 <Default meta={{ title: "yklcs.com" }}>
   <p class="bio">
-    <span class="bio-name">Lucas Yunkyu Lee is a{" "}</span>
-    <span class="bio-first">student</span> at POSTECH with interests in
-    research, development, and design. Currently performing military service in
-    the KATUSA program, MOS 11B.
+    Hi, I'm Lucas, also known as Yunkyu. I'm a student at POSTECH with interests
+    in research, development, and design. Currently performing military service
+    in the KATUSA program, MOS 11B.
   </p>
   <p class="bio-sub" id="ets-counter-container">
     <span id="ets-counter"></span>
@@ -93,7 +91,7 @@ const posts = await getCollection(
         .map(post => (
           <div class="entry">
             <a href={`/blog/${post.slug}`}>
-              <h3 class="entry-name sub">{post.data.title}</h3>
+              <h3 class="entry-name">{post.data.title}</h3>
             </a>
           </div>
         ))
@@ -119,18 +117,11 @@ const posts = await getCollection(
   }
 
   .bio {
-    hyphens: none;
+    margin: -2.5rem 0 0;
+    // hyphens: none;
 
-    .bio-name {
-      @media screen and (min-width: 60rem) {
-        display: none;
-      }
-    }
-
-    .bio-first {
-      @media screen and (min-width: 60rem) {
-        text-transform: capitalize;
-      }
+    @media screen and (max-width: $bp) {
+      margin: 0;
     }
   }
 
@@ -143,11 +134,11 @@ const posts = await getCollection(
   }
 
   .section-header {
-    grid-column: wide-start / main-start;
+    grid-column: l-side;
     margin: 0;
+    color: var(--neutral-60);
     font-weight: 400;
     font-size: 1em;
-    // color: var(--neutral-60);
   }
 
   .section,
@@ -158,7 +149,7 @@ const posts = await getCollection(
   }
 
   .section {
-    @media screen and (max-width: 60rem) {
+    @media screen and (max-width: $bp) {
       padding: 0;
     }
   }

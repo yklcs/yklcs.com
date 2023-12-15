@@ -11,45 +11,32 @@ const { element: Element = "div", className, ...rest } = Astro.props
   <slot />
 </Element>
 
-<style>
+<style lang="scss">
   .wrapper {
     display: grid;
     grid-template-columns:
-      [full-start] minmax(3rem, 1fr)
-      [wide-start] minmax(0, 10rem)
-      [main-start] var(--w-main) [main-end]
-      minmax(0, 10rem) [wide-end]
-      minmax(3rem, 1fr) [full-end];
+      [full-start] minmax(1.5rem, 1fr)
+      [wide-start l-side-start r-main-start] minmax(10ch, 20ch)
+      [l-side-end l-main-start] 30ch [r-side-start r-main-end]
+      minmax(10ch, 20ch) [l-main-end r-side-end wide-end]
+      minmax(1.5rem, 1fr) [full-end];
     gap: 1.25rem 0;
     margin: 0 0 1.25rem 0;
   }
 
   :where(.wrapper) > :global(:where(*)) {
-    grid-column: main;
+    grid-column: l-main;
   }
 
-  @media screen and (max-width: 60rem) {
-    .wrapper {
-      grid-template-columns:
-        [full-start] 3rem
-        [wide-start] 1fr
-        [main-start] minmax(0, var(--w-main)) [main-end]
-        1fr [wide-end]
-        3rem [full-end];
-    }
-
-    :where(.wrapper) > :global(:where(*)) {
-      grid-column: wide-start / main-end;
-    }
-  }
-
-  @media screen and (max-width: 50rem) {
+  @media screen and (max-width: $bp) {
     .wrapper {
       grid-template-columns:
         [full-start] 1.5rem
-        [wide-start] 1fr
-        [main-start] minmax(0, var(--w-main)) [main-end]
-        1fr [wide-end]
+        [wide-start l-main-start r-main-start l-side-start r-side-start] minmax(
+          0,
+          1fr
+        )
+        [l-main-end r-main-end l-side-end r-side-end wide-end]
         1.5rem [full-end];
     }
   }

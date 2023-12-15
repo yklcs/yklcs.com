@@ -14,7 +14,7 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 ---
 
 <Default meta={{ title: "yklcs blog" }}>
-  <PageHeader title="Ramblings and reflections" />
+  <!-- <PageHeader title="Ramblings and reflections" /> -->
   <Wrapper className={"groups"}>
     {
       Object.entries(grouped)
@@ -48,6 +48,7 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
 <style lang="scss">
   .groups {
     grid-column: full;
+    margin: 2rem 0;
   }
 
   section.group {
@@ -69,12 +70,13 @@ const grouped = group(allBlogPosts, el => el.data.date.getFullYear().toString())
   }
 
   h1.group-title {
-    grid-column: wide-start;
+    grid-column: l-side;
     margin: 0;
+    color: var(--neutral-60);
     font-weight: 400;
     font-size: 1em;
 
-    @media screen and (max-width: 60rem) {
+    @media screen and (max-width: $bp) {
       margin: 0 0 0.5rem 0;
     }
   }
