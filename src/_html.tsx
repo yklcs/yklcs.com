@@ -1,34 +1,34 @@
-import type { JSX } from "soar/jsx-runtime";
-import { colors } from "./_colors.ts";
-import Footer from "./_footer.tsx";
-import Wrapper from "./_wrapper.tsx";
-import Header from "./_header.tsx";
+import type { JSX } from "soar/jsx-runtime"
+import { colors } from "./_colors.ts"
+import Footer from "./_footer.tsx"
+import Wrapper from "./_wrapper.tsx"
+import Header from "./_header.tsx"
 
 interface HtmlProps {
-  children: JSX.Children;
-  generator: string;
-  url: string;
+	children: JSX.Children
+	generator: string
+	url: string
 }
 
 const Html = ({ children, generator, url }: HtmlProps) =>
-  (
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="generator" content={generator} />
-        <link href="/katex.css" rel="stylesheet" />
-      </head>
-      <body>
-        <Wrapper style="margin: 2rem 0;">
-          <Header url={url} />
-        </Wrapper>
-        <div>{children}</div>
-        <Wrapper style="margin: 4rem 0 0 0; border-top: 1px solid; border-color: var(--subsub); padding: 1rem 0;">
-          <Footer />
-        </Wrapper>
-      </body>
-    </html>
-  ).styled`
+	(
+		<html lang="en">
+			<head>
+				<meta charset="UTF-8" />
+				<meta name="generator" content={generator} />
+				<link href="/katex.css" rel="stylesheet" />
+			</head>
+			<body>
+				<Wrapper style="margin: 2rem 0;">
+					<Header url={url} />
+				</Wrapper>
+				<div>{children}</div>
+				<Wrapper style="margin: 4rem 0 0 0; border-top: 1px solid; border-color: var(--subsub); padding: 1rem 0;">
+					<Footer />
+				</Wrapper>
+			</body>
+		</html>
+	).styled`
   body {
     font-family: Diatype, AsterismSans, system-ui, -apple-system, "Segoe UI",
       Helvetica, sans-serif;
@@ -62,7 +62,7 @@ const Html = ({ children, generator, url }: HtmlProps) =>
     }
   }
 
-  :global(a) {
+  :global a {
     color: inherit;
     text-decoration: underline;
     text-decoration-thickness: 1px;
@@ -76,6 +76,18 @@ const Html = ({ children, generator, url }: HtmlProps) =>
     }
   }
 
+  :global { 
+    .katex {
+      font-size: 1.25rem;
+    }
+
+    .katex-display {
+      margin: 0;
+      padding: 1px 0 0;
+      overflow: auto hidden;
+    }
+  }
+  
   ${fontface("Diatype", 400, "normal", true)}
   ${fontface("Diatype", 400, "italic", true)}
   ${fontface("Diatype", 500, "normal", true)}
@@ -84,22 +96,20 @@ const Html = ({ children, generator, url }: HtmlProps) =>
   ${fontface("Diatype", 700, "italic", true)}
   ${fontface("AsterismSans", 400, "normal")}
   ${fontface("AsterismSerif", 400, "normal")}
-`;
+`
 
 const fontface = (
-  family: string,
-  weight: number,
-  style: string,
-  closed = false
+	family: string,
+	weight: number,
+	style: string,
+	closed = false,
 ) => `
 @font-face {
   font-family: ${family};
   font-weight: ${weight};
   font-style: ${style};
-  src: url("/fonts${
-    closed ? "/closed/" : "/"
-  }${family}-${weight}-${style}.woff2") format("woff2");
+  src: url("/fonts${closed ? "/closed/" : "/"}${family}-${weight}-${style}.woff2") format("woff2");
 }
-`;
+`
 
-export default Html;
+export default Html

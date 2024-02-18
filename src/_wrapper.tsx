@@ -4,13 +4,19 @@ interface WrapperProps {
 	children: JSX.Children
 	element?: JSX.ElementType
 	style?: string
+	class?: string
 }
 
-const Wrapper = ({ children, element = "div", style }: WrapperProps) => {
+const Wrapper = ({
+	children,
+	element = "div",
+	style,
+	...props
+}: WrapperProps) => {
 	const Tag = element
 
 	return (
-		<Tag class="wrapper" style={style}>
+		<Tag class={["wrapper", props.class]} style={style}>
 			{children}
 		</Tag>
 	).styled(`

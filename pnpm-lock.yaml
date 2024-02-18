@@ -39,7 +39,7 @@ devDependencies:
     version: 10.3.0
   soar:
     specifier: github:yklcs/soar
-    version: github.com/yklcs/soar/3bc815752f450e9714b922cf3f401f5c274c4989
+    version: github.com/yklcs/soar/c0ef64c56b9f9e1f4b200f990cdcc741669f2d5b
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -2596,8 +2596,8 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
 
-  github.com/yklcs/soar/3bc815752f450e9714b922cf3f401f5c274c4989:
-    resolution: {tarball: https://codeload.github.com/yklcs/soar/tar.gz/3bc815752f450e9714b922cf3f401f5c274c4989}
+  github.com/yklcs/soar/c0ef64c56b9f9e1f4b200f990cdcc741669f2d5b:
+    resolution: {tarball: https://codeload.github.com/yklcs/soar/tar.gz/c0ef64c56b9f9e1f4b200f990cdcc741669f2d5b}
     name: soar
     version: 1.0.0
     hasBin: true

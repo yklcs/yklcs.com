@@ -1,4 +1,4 @@
-import { type JSX } from "soar/jsx-runtime"
+import type { JSX } from "soar/jsx-runtime"
 import Html from "./_html.tsx"
 import Wrapper from "./_wrapper.tsx"
 

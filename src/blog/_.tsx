@@ -4,6 +4,7 @@ import Wrapper from "../_wrapper.tsx"
 import { globby } from "globby"
 import path from "node:path"
 import type { MDXProps } from "mdx/types.js"
+import { mdxStyles } from "../_mdx.tsx"
 
 const files = await globby([path.join(import.meta.dirname, "**/*.{mdx, md}")])
 
@@ -47,25 +48,7 @@ const generator = Object.assign(
 							<h1>{meta.title}</h1>
 							<Mdx components={{}} />
 						</>
-					).styled`
-            * { 
-              grid-column: l-main;
-            }
-
-            h1 {
-              margin: 0;
-              font-weight: 400;
-            }
-
-            h2, h3, h4, h5, h6 {
-              margin: 1.5rem 0 -0.25rem 0;
-              font-weight: 400
-            }
-
-            p {
-              margin: 0;
-            }
-          `}
+					).styled(mdxStyles)}
 				</Wrapper>
 			</Html>
 		),
