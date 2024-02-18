@@ -33,8 +33,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
 		</html>
 	).styled`
   body {
-    font-family: Diatype, AsterismSans, system-ui, -apple-system, "Segoe UI",
-      Helvetica, sans-serif;
+    font-family: var(--sans);
     font-synthesis: none;
     text-size-adjust: none;
     font-size: 16px;
@@ -56,6 +55,10 @@ const Html = ({ children, metadata }: HtmlProps) =>
     --bg: ${colors.light.bg};
     --sub: ${colors.light.sub};
     --subsub: ${colors.light.subsub};
+    --sans: Diatype, AsterismSans, system-ui, -apple-system, "Segoe UI",
+      Helvetica, sans-serif;
+    --serif: CharisSIL, Charter, Palatino, Georgia, serif;
+    --mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;
 
     @media (prefers-color-scheme: dark) {
       --fg: ${colors.dark.fg};
@@ -91,6 +94,22 @@ const Html = ({ children, metadata }: HtmlProps) =>
     }
   }
 
+  :global pre, code {
+    font-family: var(--mono);
+  }
+
+  :global code {
+    font-size: 0.91em;
+  }
+
+  ${fontface("CharisSIL", 400, "normal")}
+  ${fontface("CharisSIL", 400, "italic")}
+  ${fontface("CharisSIL", 700, "normal")}
+  ${fontface("CharisSIL", 700, "italic")}
+  ${fontface("IBMPlexMono", 400, "normal")}
+  ${fontface("IBMPlexMono", 400, "italic")}
+  ${fontface("IBMPlexMono", 700, "normal")}
+  ${fontface("IBMPlexMono", 700, "italic")}
   ${fontface("Diatype", 400, "normal", true)}
   ${fontface("Diatype", 400, "italic", true)}
   ${fontface("Diatype", 500, "normal", true)}

@@ -30,6 +30,7 @@ interface PostMeta {
 	url: string
 	title: string
 	date: Date
+	[key: string]: unknown
 }
 
 const posts: PostMeta[] = Object.entries(pages)
@@ -41,14 +42,20 @@ const generator = Object.assign(
 	...Object.entries(pages).map(([slug, { meta, default: Mdx }]) => ({
 		[slug]: async ({ url, generator }: JSX.PageProps) => (
 			<Html metadata={{ url, generator, title: meta.title, type: "article" }}>
-				<Wrapper>
-					{(
+				{(
+					<Wrapper
+						class={`mdx-wrapper${meta.style ? " " : ""}${meta.style ?? ""}`}
+					>
 						<>
 							<h1>{meta.title}</h1>
 							<Mdx components={{}} />
 						</>
-					).styled(mdxStyles)}
-				</Wrapper>
+					</Wrapper>
+				).styled`
+					:global .mdx-wrapper {
+						${mdxStyles}
+					}
+				`}
 			</Html>
 		),
 	})),

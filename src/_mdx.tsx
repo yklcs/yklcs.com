@@ -7,6 +7,25 @@ import path from "node:path"
 useMDXComponents({})
 
 const mdxStyles = `
+	&.serif {
+		& > * {
+			font-family: var(--serif);
+		}
+
+		h1 {
+			font-family: var(--sans);
+			line-height: 1.2;
+		}
+
+		h3 {
+			font-style: normal;
+			font-variant: small-caps;
+			font-weight: 700;
+			font-size: 1em;
+			font-feature-settings: "c2sc";
+		}
+	}
+
 	* { 
 		grid-column: l-main;
 	}
@@ -41,8 +60,8 @@ const Mdx = ({
 
 	return (
 		<Html metadata={{ url, generator, title }}>
-			{(<Wrapper class="mdxWrapper">{children}</Wrapper>).styled`
-				:global .mdxWrapper {
+			{(<Wrapper class="mdx-wrapper">{children}</Wrapper>).styled`
+				:global .mdx-wrapper {
 					${mdxStyles}
 				}
 			`}
