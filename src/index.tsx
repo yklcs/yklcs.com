@@ -13,7 +13,7 @@ const Page = ({ url, generator }: JSX.PageProps) =>
 		>
 			<div class="wrapper">
 				<Wrapper>
-					<h1>I'm Lucas.</h1>
+					<h1>Hi, I'm Lucas.</h1>
 					<p>
 						<span class="sub">I also go by</span> Yunkyu{" "}
 						<span class="sub">or</span> yklcs

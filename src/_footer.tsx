@@ -7,7 +7,7 @@ const Footer = () =>
 				<a href="/">Home</a>
 				<a href="/blog">Blog</a>
 			</div>
-			<span>Made in Korea</span>
+			<a href="/colophon">Colophon</a>
 		</footer>
 	).styled`
   footer {
