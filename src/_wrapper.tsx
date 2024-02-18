@@ -40,7 +40,7 @@ const Wrapper = ({
     }
   }
 
-  :where(.wrapper) > :global(*) {
+  :where(.wrapper) > :global * {
     grid-column: r-main;
   }
 `)
