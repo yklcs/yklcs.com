@@ -2,6 +2,7 @@ import Html from "./_html.tsx"
 import Wrapper from "./_wrapper.tsx"
 import type { JSX } from "soar/jsx-runtime"
 import { useMDXComponents } from "soar"
+import path from "node:path"
 
 useMDXComponents({})
 
@@ -30,8 +31,11 @@ const Mdx = ({
 	generator,
 	url,
 }: { children: JSX.Children } & JSX.PageProps) => {
+	const basename = path.basename(url, path.extname(url))
+	const title = basename.charAt(0).toLocaleUpperCase() + basename.substring(1)
+
 	return (
-		<Html url={url} generator={generator}>
+		<Html metadata={{ url, generator, title }}>
 			{(<Wrapper class="mdxWrapper">{children}</Wrapper>).styled`
 				:global .mdxWrapper {
 					${mdxStyles}

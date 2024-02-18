@@ -3,27 +3,27 @@ import { colors } from "./_colors.ts"
 import Footer from "./_footer.tsx"
 import Wrapper from "./_wrapper.tsx"
 import Header from "./_header.tsx"
+import Meta, { type Metadata } from "./_meta.tsx"
 
 interface HtmlProps {
 	children: JSX.Children
-	generator: string
-	url: string
+	metadata: Metadata
 }
 
-const Html = ({ children, generator, url }: HtmlProps) =>
+const Html = ({ children, metadata }: HtmlProps) =>
 	(
 		<html lang="en">
 			<head>
+				<Meta {...metadata} />
 				<meta charset="UTF-8" />
-				<meta name="generator" content={generator} />
-				<link href="/katex.css" rel="stylesheet" />
 				<meta name="viewport" content="width=device-width" />
 				<link href="/favicon.ico" rel="icon" sizes="48x48" />
 				<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml" />
+				<link href="/katex.css" rel="stylesheet" />
 			</head>
 			<body>
 				<Wrapper style="margin: 2rem 0;">
-					<Header url={url} />
+					<Header url={metadata.url} />
 				</Wrapper>
 				<div>{children}</div>
 				<Wrapper style="margin: 4rem 0 0 0; border-top: 1px solid; border-color: var(--subsub); padding: 1rem 0;">

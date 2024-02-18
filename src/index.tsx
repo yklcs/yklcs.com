@@ -4,7 +4,13 @@ import Wrapper from "./_wrapper.tsx"
 
 const Page = ({ url, generator }: JSX.PageProps) =>
 	(
-		<Html generator={generator} url={url}>
+		<Html
+			metadata={{
+				url,
+				generator,
+				title: "Lucas Yunkyu Lee",
+			}}
+		>
 			<div class="wrapper">
 				<Wrapper>
 					<h1>I'm Lucas.</h1>

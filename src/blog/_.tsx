@@ -40,9 +40,8 @@ const generator = Object.assign(
 	{},
 	...Object.entries(pages).map(([slug, { meta, default: Mdx }]) => ({
 		[slug]: async ({ url, generator }: JSX.PageProps) => (
-			<Html generator={generator} url={url}>
+			<Html metadata={{ url, generator, title: meta.title, type: "article" }}>
 				<Wrapper>
-					{/* <Header url={url} /> */}
 					{(
 						<>
 							<h1>{meta.title}</h1>

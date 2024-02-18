@@ -2,7 +2,6 @@ import type { JSX } from "soar/jsx-runtime"
 import { type PostMeta, posts } from "./_.tsx"
 import Html from "../_html.tsx"
 import Wrapper from "../_wrapper.tsx"
-import path from "node:path"
 import { format } from "date-fns"
 
 const group = <T,>(
@@ -54,7 +53,7 @@ const Page = async ({ url, generator }: JSX.PageProps) => {
     `
 
 	return (
-		<Html generator={generator} url={url}>
+		<Html metadata={{ url, generator, title: "Blog" }}>
 			<Wrapper>
 				{Object.entries(grouped)
 					.sort(([a], [b]) => b.localeCompare(a))
