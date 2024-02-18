@@ -15,7 +15,13 @@ Source for <https://yklcs.com>
 
 ### Frontend
 
-- [Astro](https://astro.build) SSG
+- [Soar](https://github.com/yklcs/soar) SSG
+
+### CI/CD
+
+1. Push to GitHub triggers webhook
+2. AWS Lambda runs Soar to build page
+3. Built page is uploaded to S3
 
 ### "Backend"
 
