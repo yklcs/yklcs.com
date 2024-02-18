@@ -26,7 +26,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
 					<Header url={metadata.url} />
 				</Wrapper>
 				<div>{children}</div>
-				<Wrapper style="margin: 4rem 0 0 0; border-top: 1px solid; border-color: var(--subsub); padding: 1rem 0;">
+				<Wrapper style="margin: 6rem 0 0 0; border-top: 1px solid; border-color: var(--subsub); padding: 1rem 0;">
 					<Footer />
 				</Wrapper>
 			</body>
