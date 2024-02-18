@@ -17,6 +17,9 @@ const Html = ({ children, generator, url }: HtmlProps) =>
 				<meta charset="UTF-8" />
 				<meta name="generator" content={generator} />
 				<link href="/katex.css" rel="stylesheet" />
+				<meta name="viewport" content="width=device-width" />
+				<link href="/favicon.ico" rel="icon" sizes="48x48" />
+				<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml" />
 			</head>
 			<body>
 				<Wrapper style="margin: 2rem 0;">
@@ -87,7 +90,7 @@ const Html = ({ children, generator, url }: HtmlProps) =>
       overflow: auto hidden;
     }
   }
-  
+
   ${fontface("Diatype", 400, "normal", true)}
   ${fontface("Diatype", 400, "italic", true)}
   ${fontface("Diatype", 500, "normal", true)}
