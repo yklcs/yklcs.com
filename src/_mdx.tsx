@@ -31,7 +31,7 @@ const mdxStyles = `
 	}
 
 	h1 {
-		margin: 0;
+		margin: 0 0 1rem 0;
 		font-weight: 400;
 	}
 
@@ -50,17 +50,26 @@ const mdxStyles = `
 	}
 `
 
-const Mdx = ({
-	children,
-	generator,
-	url,
-}: { children: JSX.Children } & JSX.PageProps) => {
+interface MdxProps extends JSX.PageProps {
+	children: JSX.Children
+	meta: {
+		title: string
+		style?: string
+	}
+}
+
+const Mdx = ({ children, generator, url, meta }: MdxProps) => {
 	const basename = path.basename(url, path.extname(url))
-	const title = basename.charAt(0).toLocaleUpperCase() + basename.substring(1)
 
 	return (
-		<Html metadata={{ url, generator, title }}>
-			{(<Wrapper class="mdx-wrapper">{children}</Wrapper>).styled`
+		<Html metadata={{ url, generator, title: meta.title }}>
+			{(
+				<Wrapper
+					class={`mdx-wrapper${meta.style ? " " : ""}${meta.style ?? ""}`}
+				>
+					{children}
+				</Wrapper>
+			).styled`
 				:global .mdx-wrapper {
 					${mdxStyles}
 				}

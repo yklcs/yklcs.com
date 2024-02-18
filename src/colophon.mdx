@@ -1,9 +1,13 @@
 export const meta = {
   title: "Colophon",
-  style: "serif",
 };
 
-export { default as default } from "./_mdx.tsx";
+import Mdx from "./_mdx.tsx";
+export default ({ children, generator, url }) => (
+  <Mdx generator={generator} url={url} meta={meta}>
+    {children}
+  </Mdx>
+);
 
 # Colophon
 
