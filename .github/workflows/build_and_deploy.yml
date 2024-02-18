@@ -54,6 +54,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: "heads/main",
+              required_contexts: [],
               environment: "Production",
               description: "Triggered deployment to AWS",
               environment_url: "https://yklcs.com"
