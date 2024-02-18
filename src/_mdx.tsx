@@ -24,6 +24,11 @@ const mdxStyles = `
 	p {
 		margin: 0;
 	}
+
+	pre {
+		grid-column: wide;
+		overflow: auto hidden;
+	}
 `
 
 const Mdx = ({
