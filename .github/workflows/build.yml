@@ -39,7 +39,7 @@ jobs:
 
       - name: Install
         id: install
-        run: pnpm i
+        run: pnpm i && pnpm i soar
 
       - name: Build
         run: pnpm build
