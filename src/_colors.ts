@@ -239,8 +239,8 @@ export const colors = {
 	},
 	light: {
 		fg: new Hsluv(0, 0, 8).hex(),
-		sub: new Hsluv(0, 0, 50).hex(),
-		subsub: new Hsluv(0, 0, 90).hex(),
+		sub: new Hsluv(0, 0, 65).hex(),
+		subsub: new Hsluv(0, 0, 95).hex(),
 		bg: new Hsluv(0, 0, 100).hex(),
 	},
 }
