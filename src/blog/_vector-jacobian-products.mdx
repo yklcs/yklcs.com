@@ -41,8 +41,7 @@ This is especially the case if $f$ is a composition of multiple functions.:side[
 $f_k$ was used as the $k$th component of $f$ before, but we use it to denote different functions from here on.
 ]
 
-The chain rule:side[We could use $\operatorname{vjp}(f, \mathbf{x}, \mathbf{v})$, but currying
-$\mathbf{v}$ out simplifies later calculations.] for Jacobians is $\mathbf{J}_{f_{k+1} \circ f_k} (\mathbf{x}) = \mathbf{J}_{f_{k+1}} (f_k (\mathbf{x})) \mathbf{J}_{f_k}(\mathbf{x})$.
+The chain rule for Jacobians is $\mathbf{J}_{f_{k+1} \circ f_k} (\mathbf{x}) = \mathbf{J}_{f_{k+1}} (f_k (\mathbf{x})) \mathbf{J}_{f_k}(\mathbf{x})$.
 We can define $\mathbf{x}_k = (f_k \circ f_{k-1} \circ \cdots \circ f_1) (\mathbf{x})$ as the $k$th intermediate function value.
 Reconciling this with VJPs:
 
