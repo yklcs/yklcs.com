@@ -53,11 +53,11 @@ const Html = ({ children, metadata }: HtmlProps) =>
 				<Wrapper style="margin: 6rem 0 0 0;">
 					<Footer />
 				</Wrapper>
+				<script src="/index.js" />
 			</body>
 		</html>
 	).styled`
   body {
-    /* position: ; */
     font-family: var(--sans);
     font-synthesis: none;
     text-size-adjust: none;
@@ -127,6 +127,10 @@ const Html = ({ children, metadata }: HtmlProps) =>
     font-size: 0.91em;
   }
 
+  :global p {
+    hyphens: auto;
+  }
+
   ${fontface("CharisSIL", 400, "normal")}
   ${fontface("CharisSIL", 400, "italic")}
   ${fontface("CharisSIL", 700, "normal")}
@@ -159,4 +163,7 @@ const fontface = (
 }
 `
 
+const breakpoint = "40rem"
+
+export { breakpoint }
 export default Html
