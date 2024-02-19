@@ -11,6 +11,9 @@ const Footer = () =>
 		</footer>
 	).styled`
   footer {
+    border-top: 1px solid;
+    border-color: var(--subsub);
+    padding: 1rem 0; 
     font-size: 0.85em;
     color: var(--sub);
     grid-column: wide;

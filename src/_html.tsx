@@ -22,17 +22,42 @@ const Html = ({ children, metadata }: HtmlProps) =>
 				<link href="/katex.css" rel="stylesheet" />
 			</head>
 			<body>
+				{(
+					<Wrapper class="border-wrapper">
+						<div />
+					</Wrapper>
+				).styled`
+          :global .border-wrapper {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: -1;
+            box-sizing: border-box;
+          }
+
+          div {
+            border-left: 1px solid;
+            border-right: 1px solid;
+            border-color: var(--subsub);
+            margin: 0 -2rem;
+            grid-column: wide;
+            box-sizing: content-box;
+          }
+        `}
 				<Wrapper style="margin: 2rem 0;">
 					<Header url={metadata.url} />
 				</Wrapper>
 				<div>{children}</div>
-				<Wrapper style="margin: 6rem 0 0 0; border-top: 1px solid; border-color: var(--subsub); padding: 1rem 0;">
+				<Wrapper style="margin: 6rem 0 0 0;">
 					<Footer />
 				</Wrapper>
 			</body>
 		</html>
 	).styled`
   body {
+    /* position: ; */
     font-family: var(--sans);
     font-synthesis: none;
     text-size-adjust: none;
@@ -43,7 +68,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
     -webkit-font-smoothing: antialiased;
     color: var(--fg);
     background: var(--bg);
-    margin:0;
+    margin: 0;
   }
 
   div {
