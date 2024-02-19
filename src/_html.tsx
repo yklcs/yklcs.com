@@ -109,7 +109,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
 
   :global { 
     .katex {
-      font-size: 1.25rem;
+      font-size: 1.125em;
     }
 
     .katex-display {
