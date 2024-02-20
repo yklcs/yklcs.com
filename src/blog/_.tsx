@@ -46,10 +46,7 @@ const generator = Object.assign(
 					<Wrapper
 						class={`mdx-wrapper${meta.style ? " " : ""}${meta.style ?? ""}`}
 					>
-						<>
-							<h1>{meta.title}</h1>
-							<Mdx components={{}} />
-						</>
+						<Mdx components={{}} />
 					</Wrapper>
 				).styled`
 					:global .mdx-wrapper {
