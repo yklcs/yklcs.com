@@ -43,7 +43,7 @@ const mdxStyles = `
 
 	.side {
 		position: absolute;
-		right: 0;
+		left: 0;
 		grid-column: l-side;
 		margin: 0 0 1rem 1em;
 		font-size: 0.9em;
@@ -66,6 +66,10 @@ const mdxStyles = `
 		.side-index {
 			color: var(--sub);
 			margin: 0 0 0 -1.5ch;
+
+			@media screen and (max-width: ${breakpoint}) {
+				display: none;
+			}
 		}
 	}
 
@@ -113,6 +117,18 @@ const mdxStyles = `
 	pre {
 		grid-column: wide;
 		overflow: auto hidden;
+
+		code {
+			background: inherit;
+		}
+	}
+
+	code {
+		background: var(--subsub);
+	}
+
+	ol, ul {
+		margin: 0;
 	}
 `
 
