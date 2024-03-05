@@ -15,7 +15,7 @@ const Page = async ({ url, generator }: JSX.PageProps) => {
 					<div class="post">
 						<a href={post.url}>{post.title}</a>
 						<time datetime={post.date.toISOString()}>
-							{format(post.date, "MMM do, yyyy")}
+							{format(post.date, "MMM d, yyyy")}
 						</time>
 					</div>
 				))}
