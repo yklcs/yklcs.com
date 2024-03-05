@@ -57,8 +57,19 @@ const remarkSidenotes = () => (tree: MDRoot) => {
 }
 
 const config: SoarConfig = {
-	rehypePlugins: [rehypeKatex, rehypeSidenotes],
 	remarkPlugins: [remarkMath, remarkDirective, remarkSidenotes],
+	rehypePlugins: [
+		[
+			rehypeKatex,
+			{
+				macros: {
+					"\\vb": "\\mathbf{#1}",
+					"\\R": "\\mathbb{R}",
+				},
+			},
+		],
+		rehypeSidenotes,
+	],
 }
 
 export default config

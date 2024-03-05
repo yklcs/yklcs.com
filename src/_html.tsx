@@ -14,6 +14,9 @@ const Html = ({ children, metadata }: HtmlProps) =>
 	(
 		<html lang="en">
 			<head>
+				<base
+					href={`${metadata.url}${metadata.url.endsWith("/") ? "" : "/"}`}
+				/>
 				<Meta {...metadata} />
 				<meta charset="UTF-8" />
 				<meta name="viewport" content="width=device-width" />

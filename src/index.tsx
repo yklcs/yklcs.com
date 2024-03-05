@@ -79,6 +79,7 @@ const Page = ({ url, generator }: JSX.PageProps) =>
 
     p {
       margin: 0;
+			hyphens: none;
     }
   `)
 
@@ -170,7 +171,7 @@ const Projects = () => {
 }
 
 const Posts = async () => {
-	const { posts } = await import("./blog/_.tsx")
+	const { posts } = await import("./blog/index.tsx")
 
 	const Post = ({ title, href }: { title: string; href: string }) =>
 		(<a href={href}>{title}</a>).styled`
@@ -194,4 +195,4 @@ const Posts = async () => {
   `
 }
 
-export default Page
+export default Pag

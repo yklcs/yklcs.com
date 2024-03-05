@@ -1,27 +1,13 @@
 import type { JSX } from "soar/jsx-runtime"
-import { type PostMeta, posts } from "./_.tsx"
 import Html from "../_html.tsx"
 import Wrapper from "../_wrapper.tsx"
 import { format } from "date-fns"
-
-const group = <T,>(
-	arr: T[],
-	fn: (element: T, index: number, array: T[]) => string,
-): Record<string, T[]> =>
-	arr.reduce(
-		(acc, element, index, array) => {
-			acc[fn(element, index, array)] = acc[fn(element, index, array)] || []
-			acc[fn(element, index, array)].push(element)
-			return acc
-		},
-		{} as {
-			[key: string]: T[]
-		},
-	)
+import { globby } from "globby"
+import path from "path"
+import type { MDXProps } from "mdx/types.js"
 
 const Page = async ({ url, generator }: JSX.PageProps) => {
 	const grouped = group(posts, (post) => post.date.getFullYear().toString())
-
 	const Group = ({ group }: { group: PostMeta[] }) =>
 		(
 			<div class="group">
@@ -79,4 +65,49 @@ const Page = async ({ url, generator }: JSX.PageProps) => {
 	)
 }
 
+interface PostMeta {
+	url: string
+	title: string
+	date: Date
+	[key: string]: unknown
+}
+
+interface PostModule {
+	default: JSX.FunctionalElement<MDXProps>
+	meta: PostMeta
+}
+
+const files = await globby([path.join(import.meta.dirname, "**/*.{mdx, md}")])
+const pages: PostModule[] = await Promise.all(
+	files.map(async (file) => {
+		const rel = path.relative(import.meta.dirname, file)
+		const mod: PostModule = await import(`./${rel}`)
+		const slug =
+			path.basename(rel) === "index.mdx"
+				? path.dirname(rel)
+				: path.basename(rel, path.extname(rel))
+		Object.assign(mod.meta, { url: path.join("/blog", slug) })
+		return mod
+	}),
+)
+const posts: PostMeta[] = pages
+	.map((mod) => mod.meta)
+	.sort((a, b) => b.date.valueOf() - a.date.valueOf())
+
+const group = <T,>(
+	arr: T[],
+	fn: (element: T, index: number, array: T[]) => string,
+): Record<string, T[]> =>
+	arr.reduce(
+		(acc, element, index, array) => {
+			acc[fn(element, index, array)] = acc[fn(element, index, array)] || []
+			acc[fn(element, index, array)].push(element)
+			return acc
+		},
+		{} as {
+			[key: string]: T[]
+		},
+	)
+
 export default Page
+export { posts }

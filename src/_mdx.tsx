@@ -2,16 +2,17 @@ import Html, { breakpoint } from "./_html.tsx"
 import Wrapper from "./_wrapper.tsx"
 import type { JSX } from "soar/jsx-runtime"
 import { useMDXComponents } from "soar"
-import path from "node:path"
 
 useMDXComponents({})
 
+interface MdxMeta {
+	title: string
+	style?: string
+}
+
 interface MdxProps extends JSX.PageProps {
 	children: JSX.Children
-	meta: {
-		title: string
-		style?: string
-	}
+	meta: MdxMeta
 }
 
 const mdxStyles = `
@@ -130,11 +131,14 @@ const mdxStyles = `
 	ol, ul {
 		margin: 0;
 	}
+
+	img {
+		border-radius: 0.2rem;
+		width: 100%;
+	}
 `
 
 const Mdx = ({ children, generator, url, meta }: MdxProps) => {
-	const basename = path.basename(url, path.extname(url))
-
 	return (
 		<Html metadata={{ url, generator, title: meta.title }}>
 			{(
@@ -152,5 +156,9 @@ const Mdx = ({ children, generator, url, meta }: MdxProps) => {
 	)
 }
 
-export { mdxStyles }
+const mdxLayout = (meta: MdxMeta) => (props: Omit<MdxProps, "meta">) => (
+	<Mdx {...props} meta={meta} />
+)
+
+export { mdxStyles, mdxLayout }
 export default Mdx

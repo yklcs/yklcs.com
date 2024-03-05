@@ -2,12 +2,8 @@ export const meta = {
   title: "Colophon",
 };
 
-import Mdx from "./_mdx.tsx";
-export default ({ children, generator, url }) => (
-  <Mdx generator={generator} url={url} meta={meta}>
-    {children}
-  </Mdx>
-);
+import { mdxLayout } from "./_mdx.tsx";
+export default mdxLayout(meta);
 
 # {meta.title}
 
