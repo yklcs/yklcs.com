@@ -5,18 +5,21 @@ export const meta = {
 import { mdxLayout } from "./_mdx.tsx";
 export default mdxLayout(meta);
 
+import { exec } from "node:child_process";
+import { promisify } from "node:util";
+
 # {meta.title}
 
 ### Type
 
-This site is mainly set in _Diatype_ by ABC Dinamo.
-The serif face used for mathematical or academical portions of the site is _Charis SIL_ by SIL International.
+This site is mainly set in _Social_ by ABC Dinamo.
+The serif face used for portions of the site is _Charis SIL_ by SIL International.
 $\TeX$ mathematical expressions are set with $\KaTeX$ in _Computer Modern_.
 Code is set in _IBM Plex Mono_ by IBM.
 
 ### Tech
 
-This version of yklcs.com you are looking at is the product of hundreds of iterations and commits.
-The static site generator used is [Soar](https://github.com/yklcs/soar), created by me.
+This version of yklcs.com you are looking at is the product of {(await promisify(exec)("git rev-list --count HEAD")).stdout.slice(0, -1)} commits.
+The static site generator used is [Soar {(await promisify(exec)("pnpm info soar version")).stdout.slice(0, -1)}](https://github.com/yklcs/soar), created by me.
 Continuous deployment is done through Github Actions.
 Hosting is done on AWS S3 and CloudFront.

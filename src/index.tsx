@@ -15,8 +15,8 @@ const Page = ({ url, generator }: JSX.PageProps) =>
 				<Wrapper>
 					<h1>Hi, I'm Lucas.</h1>
 					<p>
-						<span class="sub">I also go by</span> Yunkyu{" "}
-						<span class="sub">or</span> yklcs
+						<span class="sub">I also go by</span> 이윤규{" "}
+						<span class="sub">and</span> yklcs
 						<span class="sub">
 							, and I'm studying computer science at POSTECH, Korea. I'm
 							currently active duty military, serving under the KATUSA program,

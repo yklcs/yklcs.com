@@ -83,7 +83,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
     --bg: ${colors.light.bg};
     --sub: ${colors.light.sub};
     --subsub: ${colors.light.subsub};
-    --sans: Diatype, AsterismSans, system-ui, -apple-system, "Segoe UI",
+    --sans: SocialVariable, AsterismSans, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
       Helvetica, sans-serif;
     --serif: CharisSIL, Charter, Palatino, Georgia, serif;
     --mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;
@@ -112,7 +112,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
 
   :global { 
     .katex {
-      font-size: 1.125em;
+      font-size: 1.15em;
     }
 
     .katex-display {
@@ -122,12 +122,10 @@ const Html = ({ children, metadata }: HtmlProps) =>
     }
   }
 
-  :global pre, code {
-    font-family: var(--mono);
-  }
-
-  :global code {
-    font-size: 0.91em;
+  :global {
+    pre, code {
+      font-family: var(--mono);
+    }
   }
 
   :global p {
@@ -138,18 +136,14 @@ const Html = ({ children, metadata }: HtmlProps) =>
   ${fontface("CharisSIL", 400, "italic")}
   ${fontface("CharisSIL", 700, "normal")}
   ${fontface("CharisSIL", 700, "italic")}
-  ${fontface("IBMPlexMono", 400, "normal")}
-  ${fontface("IBMPlexMono", 400, "italic")}
-  ${fontface("IBMPlexMono", 700, "normal")}
-  ${fontface("IBMPlexMono", 700, "italic")}
-  ${fontface("Diatype", 400, "normal", true)}
-  ${fontface("Diatype", 400, "italic", true)}
-  ${fontface("Diatype", 500, "normal", true)}
-  ${fontface("Diatype", 500, "italic", true)}
-  ${fontface("Diatype", 700, "normal", true)}
-  ${fontface("Diatype", 700, "italic", true)}
+  ${fontface("IBMPlexMono", 400, "normal", false, 98)}
+  ${fontface("IBMPlexMono", 400, "italic", false, 98)}
+  ${fontface("IBMPlexMono", 700, "normal", false, 98)}
+  ${fontface("IBMPlexMono", 700, "italic", false, 98)}
   ${fontface("AsterismSans", 400, "normal")}
   ${fontface("AsterismSerif", 400, "normal")}
+  ${fontfaceVariable("SocialVariable", true)}
+  ${fontfaceVariable("SourceHanSansKRVariable", false, 90)}
 `
 
 const fontface = (
@@ -157,13 +151,25 @@ const fontface = (
 	weight: number,
 	style: string,
 	closed = false,
+	sizeAdjust = 100,
 ) => `
-@font-face {
-  font-family: ${family};
-  font-weight: ${weight};
-  font-style: ${style};
-  src: url("/fonts${closed ? "/closed/" : "/"}${family}-${weight}-${style}.woff2") format("woff2");
-}
+  @font-face {
+    font-family: ${family};
+    font-weight: ${weight};
+    font-style: ${style};
+    size-adjust: ${sizeAdjust}%;
+    src: url("/fonts${closed ? "/closed/" : "/"}${family}-${weight}-${style}.woff2")
+      format("woff2");
+  }
+`
+
+const fontfaceVariable = (family: string, closed = false, sizeAdjust = 100) => `
+  @font-face {
+    font-family: ${family};
+    size-adjust: ${sizeAdjust}%;
+    src: url("/fonts${closed ? "/closed/" : "/"}${family}.woff2")
+      format("woff2-variations");
+  }
 `
 
 const breakpoint = "40rem"
