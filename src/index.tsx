@@ -195,4 +195,4 @@ const Posts = async () => {
   `
 }
 
-export default Pag
+export default Page
