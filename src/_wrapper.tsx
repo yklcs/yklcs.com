@@ -33,6 +33,7 @@ const Wrapper = ({
     margin: 0;
 
     @media screen and (max-width: ${breakpoint}) {
+      gap: 1rem;
       grid-template-columns:
         [full-start] 0.25rem
         [wide-start r-main-start l-main-start r-side-start l-side-start l-side-wide-start] 1fr
