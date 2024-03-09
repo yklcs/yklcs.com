@@ -34,9 +34,6 @@ devDependencies:
   '@biomejs/biome':
     specifier: ^1.5.3
     version: 1.5.3
-  '@types/hast':
-    specifier: ^3.0.4
-    version: 3.0.4
   '@types/mdast':
     specifier: ^4.0.3
     version: 4.0.3
@@ -62,8 +59,8 @@ devDependencies:
     specifier: ^15.0.1
     version: 15.0.1
   soar:
-    specifier: ^0.6.0
-    version: 0.6.0
+    specifier: ^0.7.0
+    version: 0.7.0
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -643,8 +640,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001593
-      electron-to-chromium: 1.4.692
+      caniuse-lite: 1.0.30001596
+      electron-to-chromium: 1.4.699
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -665,8 +662,8 @@ packages:
       set-function-length: 1.2.1
     dev: true
 
-  /caniuse-lite@1.0.30001593:
-    resolution: {integrity: sha512-UWM1zlo3cZfkpBysd7AS+z+v007q9G1+fLTUU42rQnY6t2axoogPW/xol6T7juU5EUoOhML4WgBIdG+9yYqAjQ==}
+  /caniuse-lite@1.0.30001596:
+    resolution: {integrity: sha512-zpkZ+kEr6We7w63ORkoJ2pOfBwBkY/bJrG/UZ90qNb45Isblu8wzDgevEOrRL1r9dWayHjYiiyCMEXPn4DweGQ==}
     dev: true
 
   /ccount@2.0.1:
@@ -859,8 +856,8 @@ packages:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
     dev: true
 
-  /electron-to-chromium@1.4.692:
-    resolution: {integrity: sha512-d5rZRka9n2Y3MkWRN74IoAsxR0HK3yaAt7T50e3iT9VZmCCQDT3geXUO5ZRMhDToa1pkCeQXuNo+0g+NfDOVPA==}
+  /electron-to-chromium@1.4.699:
+    resolution: {integrity: sha512-I7q3BbQi6e4tJJN5CRcyvxhK0iJb34TV8eJQcgh+fR2fQ8miMgZcEInckCo1U9exDHbfz7DLDnFn8oqH/VcRKw==}
     dev: true
 
   /emoji-regex@10.3.0:
@@ -1200,7 +1197,7 @@ packages:
       estree-util-is-identifier-name: 3.0.0
       hast-util-whitespace: 3.0.0
       mdast-util-mdx-expression: 2.0.0
-      mdast-util-mdx-jsx: 3.1.0
+      mdast-util-mdx-jsx: 3.1.1
       mdast-util-mdxjs-esm: 2.0.1
       property-information: 6.4.1
       space-separated-tokens: 2.0.2
@@ -1222,7 +1219,7 @@ packages:
       estree-util-is-identifier-name: 3.0.0
       hast-util-whitespace: 3.0.0
       mdast-util-mdx-expression: 2.0.0
-      mdast-util-mdx-jsx: 3.1.0
+      mdast-util-mdx-jsx: 3.1.1
       mdast-util-mdxjs-esm: 2.0.1
       property-information: 6.4.1
       space-separated-tokens: 2.0.2
@@ -1557,8 +1554,8 @@ packages:
       - supports-color
     dev: true
 
-  /mdast-util-mdx-jsx@3.1.0:
-    resolution: {integrity: sha512-A8AJHlR7/wPQ3+Jre1+1rq040fX9A4Q1jG8JxmSNp/PLPHg80A6475wxTp3KzHpApFH6yWxFotHrJQA3dXP6/w==}
+  /mdast-util-mdx-jsx@3.1.1:
+    resolution: {integrity: sha512-Di63TQEHbiApe6CFp/qQXCORHMHnmW2JFdr5PYH57LuEIPjijRHicAmL5wQu+B0/Q4p0qJaEOE1EkhiwxiNmAQ==}
     dependencies:
       '@types/estree-jsx': 1.0.5
       '@types/hast': 3.0.4
@@ -1582,7 +1579,7 @@ packages:
     dependencies:
       mdast-util-from-markdown: 2.0.0
       mdast-util-mdx-expression: 2.0.0
-      mdast-util-mdx-jsx: 3.1.0
+      mdast-util-mdx-jsx: 3.1.1
       mdast-util-mdxjs-esm: 2.0.1
       mdast-util-to-markdown: 2.1.0
     transitivePeerDependencies:
@@ -2278,8 +2275,8 @@ packages:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
 
-  /soar@0.6.0:
-    resolution: {integrity: sha512-d3SbJwXv4iDS7UBp926KiCdZayAXW1mlU4DkLxQnJ44NArsM1w41O/+ONZm8tEuzRkjTHZM+boe990eLGVbsww==}
+  /soar@0.7.0:
+    resolution: {integrity: sha512-Mwu0Dp3m8SYDGjwo/zqObsZZs2WNZkzn1rcBLiMn8bE3MNQ9Z9DNLglcJ4rn2YBkHzLeiobOEx8wNJ/W2YQywg==}
     hasBin: true
     dependencies:
       '@mdx-js/mdx': 3.0.1

@@ -22,7 +22,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
 				<meta name="viewport" content="width=device-width" />
 				<link href="/favicon.ico" rel="icon" sizes="48x48" />
 				<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml" />
-				<link href="/katex.css" rel="stylesheet" />
+				<link href="/_katex.css" rel="stylesheet" />
 			</head>
 			<body>
 				{(
@@ -83,7 +83,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
     --bg: ${colors.light.bg};
     --sub: ${colors.light.sub};
     --subsub: ${colors.light.subsub};
-    --sans: SocialVariable, AsterismSans, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
+    --sans: GTAmerica, SocialVariable, AsterismSans, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
       Helvetica, sans-serif;
     --serif: CharisSIL, Charter, Palatino, Georgia, serif;
     --mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;

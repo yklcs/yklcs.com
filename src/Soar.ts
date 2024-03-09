@@ -5,17 +5,6 @@ import { visit, SKIP } from "unist-util-visit"
 import type { SoarConfig } from "soar"
 import type { TextDirective } from "mdast-util-directive"
 import type { Root as MDRoot } from "mdast"
-import type { Root as HRoot } from "hast"
-
-const rehypeSidenotes = () => (tree: HRoot) => {
-	visit(tree, "element", (node, idx, parent) => {})
-}
-
-declare module "mdast" {
-	interface ParagraphData {
-		side?: boolean
-	}
-}
 
 const remarkSidenotes = () => (tree: MDRoot) => {
 	visit(tree, (node) => {
@@ -68,8 +57,8 @@ const config: SoarConfig = {
 				},
 			},
 		],
-		rehypeSidenotes,
 	],
+	ignore: ["_*.tsx"]
 }
 
 export default config
