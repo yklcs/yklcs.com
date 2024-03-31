@@ -103,7 +103,7 @@ const mdxStyles = `
 
 	h2, h3, h4, h5, h6 {
 		margin: 1.5rem 0 -0.25rem 0;
-		font-weight: 400
+		font-weight: 400;
 	}
 
 	h1, h2, h3, h4, h5, h6 {

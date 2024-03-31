@@ -83,7 +83,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
     --bg: ${colors.light.bg};
     --sub: ${colors.light.sub};
     --subsub: ${colors.light.subsub};
-    --sans: GTAmerica, SocialVariable, AsterismSans, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
+    --sans: GTAmerica, AsterismSans, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
       Helvetica, sans-serif;
     --serif: CharisSIL, Charter, Palatino, Georgia, serif;
     --mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;
@@ -132,6 +132,8 @@ const Html = ({ children, metadata }: HtmlProps) =>
     hyphens: auto;
   }
 
+  ${fontface("GTAmerica", 400, "normal", true)}
+  ${fontface("GTAmerica", 400, "italic", true)}
   ${fontface("CharisSIL", 400, "normal")}
   ${fontface("CharisSIL", 400, "italic")}
   ${fontface("CharisSIL", 700, "normal")}
@@ -142,7 +144,6 @@ const Html = ({ children, metadata }: HtmlProps) =>
   ${fontface("IBMPlexMono", 700, "italic", false, 98)}
   ${fontface("AsterismSans", 400, "normal")}
   ${fontface("AsterismSerif", 400, "normal")}
-  ${fontfaceVariable("SocialVariable", true)}
   ${fontfaceVariable("SourceHanSansKRVariable", false, 90)}
 `
 
