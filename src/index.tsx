@@ -18,12 +18,8 @@ const Page = ({ url, generator }: JSX.PageProps) =>
 						<span class="sub">I also go by</span> 이윤규{" "}
 						<span class="sub">and</span> yklcs
 						<span class="sub">
-							, and I'm studying computer science at POSTECH, Korea. I'm
-							currently active duty military, serving under the KATUSA program,
-							MOS 11B.
-						</span>
-					</p>
-					<p>
+							, and I'm studying computer science at POSTECH, Korea.
+						</span>{" "}
 						<span class="sub">My passion lies in the intersection between</span>{" "}
 						research, development, and design
 						<span class="sub">
