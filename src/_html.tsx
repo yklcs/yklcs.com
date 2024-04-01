@@ -65,7 +65,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
     font-synthesis: none;
     text-size-adjust: none;
     font-size: 16px;
-    font-size: clamp(16px, 14.8px + 0.2vw, 18px);
+    font-size: clamp(15px, 14px + 0.2vw, 18px); /* 500-2000px  */
     line-height: 1.45;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -83,9 +83,8 @@ const Html = ({ children, metadata }: HtmlProps) =>
     --bg: ${colors.light.bg};
     --sub: ${colors.light.sub};
     --subsub: ${colors.light.subsub};
-    --sans: GTAmerica, AsterismSans, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
+    --sans: GTAmerica, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
       Helvetica, sans-serif;
-    --serif: CharisSIL, Charter, Palatino, Georgia, serif;
     --mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;
 
     @media (prefers-color-scheme: dark) {
@@ -134,16 +133,10 @@ const Html = ({ children, metadata }: HtmlProps) =>
 
   ${fontface("GTAmerica", 400, "normal", true)}
   ${fontface("GTAmerica", 400, "italic", true)}
-  ${fontface("CharisSIL", 400, "normal")}
-  ${fontface("CharisSIL", 400, "italic")}
-  ${fontface("CharisSIL", 700, "normal")}
-  ${fontface("CharisSIL", 700, "italic")}
   ${fontface("IBMPlexMono", 400, "normal", false, 98)}
   ${fontface("IBMPlexMono", 400, "italic", false, 98)}
   ${fontface("IBMPlexMono", 700, "normal", false, 98)}
   ${fontface("IBMPlexMono", 700, "italic", false, 98)}
-  ${fontface("AsterismSans", 400, "normal")}
-  ${fontface("AsterismSerif", 400, "normal")}
   ${fontfaceVariable("SourceHanSansKRVariable", false, 90)}
 `
 

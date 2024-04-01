@@ -74,24 +74,6 @@ const mdxStyles = `
 		}
 	}
 
-	&.serif {
-		& > * {
-			font-family: var(--serif);
-		}
-
-		h1 {
-			font-family: var(--sans);
-		}
-
-		h3 {
-			font-style: normal;
-			font-variant: small-caps;
-			font-weight: 700;
-			font-size: 1em;
-			font-feature-settings: "c2sc";
-		}
-	}
-
 	* { 
 		grid-column: l-main;
 	}
