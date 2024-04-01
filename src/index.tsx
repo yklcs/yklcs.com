@@ -13,19 +13,16 @@ const Page = ({ url, generator }: JSX.PageProps) =>
 		>
 			<div class="wrapper">
 				<Wrapper>
-					<h1>Hi, I'm Lucas.</h1>
+					<h1>Lucas Yunkyu Lee</h1>
 					<p>
-						<span class="sub">I also go by</span> 이윤규{" "}
-						<span class="sub">and</span> yklcs
-						<span class="sub">
-							, and I'm studying computer science at POSTECH, Korea.
-						</span>{" "}
-						<span class="sub">My passion lies in the intersection between</span>{" "}
-						research, development, and design
-						<span class="sub">
-							. I'm working on computer vision, programming languages,
-							compilers, and more.
-						</span>
+						I'm studying computer science at POSTECH, Korea. My passion lies in
+						the intersection between research, development, and design.
+					</p>
+					<p class="sub">
+						I'm currently undergoing a research internship on scene
+						representation at the SNU Visual & Geometric Intelligence Lab. My
+						interests include machine learning, computer vision, programming
+						languages, and compilers.
 					</p>
 					<p>
 						<span class="sub">Reach out to me at</span>{" "}
@@ -50,7 +47,7 @@ const Page = ({ url, generator }: JSX.PageProps) =>
 				</Wrapper>
 			</div>
 		</Html>
-	).styled(`
+	).styled`
     h1,
     h2 {
       margin: 0;
@@ -58,6 +55,10 @@ const Page = ({ url, generator }: JSX.PageProps) =>
       font-size: 1em;
       font-weight: 400;
     }
+
+		h1 {
+			margin: 0 0 0.5rem 0;
+		}
 
     h2 {
       color: var(--sub);
@@ -77,7 +78,7 @@ const Page = ({ url, generator }: JSX.PageProps) =>
       margin: 0;
 			hyphens: none;
     }
-  `)
+  `
 
 const Link = ({
 	title,
