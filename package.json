@@ -36,7 +36,7 @@
     "constructs": "^10.3.0",
     "mdast-util-directive": "^3.0.0",
     "remark": "^15.0.1",
-    "soar": "^0.7.0",
+    "soar": "^0.7.1",
     "typescript": "^5.3.3",
     "unified": "^11.0.4"
   }
