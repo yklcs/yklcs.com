@@ -6,30 +6,30 @@ import Header from "./_header.tsx"
 import Meta, { type Metadata } from "./_meta.tsx"
 
 interface HtmlProps {
-	children: JSX.Children
-	metadata: Metadata
+  children: JSX.Children
+  metadata: Metadata
 }
 
 const Html = ({ children, metadata }: HtmlProps) =>
-	(
-		<html lang="en">
-			<head>
-				<base
-					href={`${metadata.url}${metadata.url.endsWith("/") ? "" : "/"}`}
-				/>
-				<Meta {...metadata} />
-				<meta charset="UTF-8" />
-				<meta name="viewport" content="width=device-width" />
-				<link href="/favicon.ico" rel="icon" sizes="48x48" />
-				<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml" />
-				<link href="/_katex.css" rel="stylesheet" />
-			</head>
-			<body>
-				{(
-					<Wrapper class="border-wrapper">
-						<div />
-					</Wrapper>
-				).styled`
+  (
+    <html lang="en">
+      <head>
+        <base
+          href={`${metadata.url}${metadata.url.endsWith("/") ? "" : "/"}`}
+        />
+        <Meta {...metadata} />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link href="/favicon.ico" rel="icon" sizes="48x48" />
+        <link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml" />
+        <link href="/_katex.css" rel="stylesheet" />
+      </head>
+      <body>
+        {(
+          <Wrapper class="border-wrapper">
+            <div />
+          </Wrapper>
+        ).styled`
           :global .border-wrapper {
             position: fixed;
             top: 0;
@@ -49,17 +49,17 @@ const Html = ({ children, metadata }: HtmlProps) =>
             box-sizing: content-box;
           }
         `}
-				<Wrapper style="margin: 2rem 0;">
-					<Header url={metadata.url} />
-				</Wrapper>
-				<div>{children}</div>
-				<Wrapper style="margin: 6rem 0 0 0;">
-					<Footer />
-				</Wrapper>
-				<script src="/index.js" />
-			</body>
-		</html>
-	).styled`
+        <Wrapper style="margin: 2rem 0;">
+          <Header url={metadata.url} />
+        </Wrapper>
+        <div>{children}</div>
+        <Wrapper style="margin: 6rem 0 0 0;">
+          <Footer />
+        </Wrapper>
+        <script src="/index.js" />
+      </body>
+    </html>
+  ).styled`
   body {
     font-family: var(--sans);
     font-synthesis: none;
@@ -83,6 +83,8 @@ const Html = ({ children, metadata }: HtmlProps) =>
     --bg: ${colors.light.bg};
     --sub: ${colors.light.sub};
     --subsub: ${colors.light.subsub};
+    --accent: ${colors.light.accent};
+
     --sans: GTAmerica, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
       Helvetica, sans-serif;
     --mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;
@@ -92,14 +94,13 @@ const Html = ({ children, metadata }: HtmlProps) =>
       --bg: ${colors.dark.bg};
       --sub: ${colors.dark.sub};
       --subsub: ${colors.dark.subsub};
+      --accent: ${colors.dark.accent};
     }
   }
 
   :global a {
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-thickness: 1px;
-    text-decoration-color: var(--sub);
+    color: var(--accent);
+    text-decoration: none;
     padding: 0.2rem;
     margin: -0.2rem;
     border-radius: 0.2rem;
@@ -109,7 +110,7 @@ const Html = ({ children, metadata }: HtmlProps) =>
     }
   }
 
-  :global { 
+  :global {
     .katex {
       font-size: 1.15em;
     }
@@ -141,11 +142,11 @@ const Html = ({ children, metadata }: HtmlProps) =>
 `
 
 const fontface = (
-	family: string,
-	weight: number,
-	style: string,
-	closed = false,
-	sizeAdjust = 100,
+  family: string,
+  weight: number,
+  style: string,
+  closed = false,
+  sizeAdjust = 100,
 ) => `
   @font-face {
     font-family: ${family};
