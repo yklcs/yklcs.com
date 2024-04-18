@@ -32,6 +32,10 @@ const Page = async ({ url, generator }: JSX.PageProps) => {
         flex-direction: column;
         align-items: flex-start;
 
+        a {
+          color: var(--fg);
+        }
+
         time {
           color: var(--sub);
         }
