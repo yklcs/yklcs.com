@@ -35,6 +35,7 @@
     "aws-cdk-lib": "^2.130.0",
     "constructs": "^10.3.0",
     "mdast-util-directive": "^3.0.0",
+    "prettier": "^3.2.5",
     "remark": "^15.0.1",
     "soar": "^0.7.1",
     "typescript": "^5.3.3",
