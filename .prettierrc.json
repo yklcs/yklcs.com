@@ -1,3 +1,5 @@
 {
-  "semi": false
+	"$schema": "https://json.schemastore.org/prettierrc",
+	"semi": false,
+	"useTabs": true
 }

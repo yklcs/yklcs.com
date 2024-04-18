@@ -1,44 +1,44 @@
 {
-  "name": "yklcs.com",
-  "type": "module",
-  "version": "0.0.1",
-  "private": true,
-  "engines": {
-    "node": ">=20",
-    "pnpm": ">=8"
-  },
-  "scripts": {
-    "prepare": "",
-    "dev": "soar serve src",
-    "build": "pnpm pull-fonts && soar build src",
-    "format": "biome format --write **/*",
-    "pull-fonts": "aws s3 sync s3://yklcs.com-fonts src/fonts/closed",
-    "push-fonts": "aws s3 sync src/fonts/closed s3://yklcs.com-fonts",
-    "cdk": "tsc -b cdk && cdk"
-  },
-  "dependencies": {
-    "date-fns": "^3.3.1",
-    "globby": "^14.0.1",
-    "katex": "^0.16.9",
-    "motion": "^10.17.0",
-    "rehype-katex": "^7.0.0",
-    "remark-directive": "^3.0.0",
-    "remark-math": "^6.0.0",
-    "unist-util-visit": "^5.0.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.5.3",
-    "@types/mdast": "^4.0.3",
-    "@types/mdx": "^2.0.11",
-    "@types/node": "^20.11.20",
-    "aws-cdk": "^2.130.0",
-    "aws-cdk-lib": "^2.130.0",
-    "constructs": "^10.3.0",
-    "mdast-util-directive": "^3.0.0",
-    "prettier": "^3.2.5",
-    "remark": "^15.0.1",
-    "soar": "^0.7.1",
-    "typescript": "^5.3.3",
-    "unified": "^11.0.4"
-  }
+	"name": "yklcs.com",
+	"type": "module",
+	"version": "0.0.1",
+	"private": true,
+	"engines": {
+		"node": ">=20",
+		"pnpm": ">=8"
+	},
+	"scripts": {
+		"prepare": "",
+		"dev": "soar serve src",
+		"build": "pnpm pull-fonts && soar build src",
+		"format": "prettier -u --write .",
+		"pull-fonts": "aws s3 sync s3://yklcs.com-fonts src/fonts/closed",
+		"push-fonts": "aws s3 sync src/fonts/closed s3://yklcs.com-fonts",
+		"cdk": "tsc -b cdk && cdk"
+	},
+	"dependencies": {
+		"date-fns": "^3.3.1",
+		"globby": "^14.0.1",
+		"katex": "^0.16.9",
+		"motion": "^10.17.0",
+		"rehype-katex": "^7.0.0",
+		"remark-directive": "^3.0.0",
+		"remark-math": "^6.0.0",
+		"unist-util-visit": "^5.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.5.3",
+		"@types/mdast": "^4.0.3",
+		"@types/mdx": "^2.0.11",
+		"@types/node": "^20.11.20",
+		"aws-cdk": "^2.130.0",
+		"aws-cdk-lib": "^2.130.0",
+		"constructs": "^10.3.0",
+		"mdast-util-directive": "^3.0.0",
+		"prettier": "^3.2.5",
+		"remark": "^15.0.1",
+		"soar": "^0.7.1",
+		"typescript": "^5.3.3",
+		"unified": "^11.0.4"
+	}
 }

@@ -1,16 +1,16 @@
 {
-  "name": "devcontainer",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "forwardPorts": [3000],
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "esbenp.prettier-vscode",
-        "astro-build.astro-vscode",
-        "unifiedjs.vscode-mdx"
-      ]
-    }
-  }
+	"name": "devcontainer",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"forwardPorts": [3000],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"esbenp.prettier-vscode",
+				"astro-build.astro-vscode",
+				"unifiedjs.vscode-mdx"
+			]
+		}
+	}
 }
