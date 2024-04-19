@@ -5,65 +5,63 @@ import { format } from "date-fns"
 import { globby } from "globby"
 import path from "path"
 import type { MDXProps } from "mdx/types.js"
+import { css } from "soar"
+
+const style = {
+	group: css`
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	`,
+	groupTitle: css`
+		font-size: 1em;
+		font-weight: 400;
+		margin: 0;
+		grid-column: r-side;
+		color: var(--sub);
+	`,
+	post: css`
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	`,
+	postTitle: css`
+		color: var(--fg);
+	`,
+	postMeta: css`
+		color: var(--sub);
+	`,
+}
+
+const Group = ({ group }: { group: PostMeta[] }) => (
+	<div {...style.group}>
+		{group.map((post) => (
+			<div {...style.post}>
+				<a {...style.postTitle} href={post.url}>
+					{post.title}
+				</a>
+				<time {...style.postMeta} datetime={post.date.toISOString()}>
+					{format(post.date, "MMM d, yyyy")}
+				</time>
+			</div>
+		))}
+	</div>
+)
 
 const Page = async ({ url, generator }: JSX.PageProps) => {
 	const grouped = group(posts, (post) => post.date.getFullYear().toString())
-	const Group = ({ group }: { group: PostMeta[] }) =>
-		(
-			<div class="group">
-				{group.map((post) => (
-					<div class="post">
-						<a href={post.url}>{post.title}</a>
-						<time datetime={post.date.toISOString()}>
-							{format(post.date, "MMM d, yyyy")}
-						</time>
-					</div>
-				))}
-			</div>
-		).styled`
-      div.group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      div.post {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        a {
-          color: var(--fg);
-        }
-
-        time {
-          color: var(--sub);
-        }
-      }
-    `
 
 	return (
 		<Html metadata={{ url, generator, title: "Blog" }}>
 			<Wrapper>
 				{Object.entries(grouped)
 					.sort(([a], [b]) => b.localeCompare(a))
-					.map(
-						([year, group]) =>
-							(
-								<>
-									<h2>{year}</h2>
-									<Group group={group} />
-								</>
-							).styled`
-            h2 {
-              font-size: 1em;
-              font-weight: 400;
-              margin: 0;
-              grid-column: r-side;
-              color: var(--sub);
-            }
-          `,
-					)}
+					.map(([year, group]) => (
+						<>
+							<h2 {...style.groupTitle}>{year}</h2>
+							<Group group={group} />
+						</>
+					))}
 			</Wrapper>
 		</Html>
 	)

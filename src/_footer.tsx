@@ -1,57 +1,63 @@
 import { exec as exec_ } from "node:child_process"
 import { promisify } from "node:util"
+import { css } from "soar"
 
 const exec = promisify(exec_)
 
-const Footer = async () =>
-	(
-		<footer>
-			<div>
-				<div>
-					<a href="/">Home</a>
-					<a href="/blog">Blog</a>
-				</div>
-				<a href="/colophon">Colophon</a>
-			</div>
-			<div style="gap: 0.5ch;">
-				<a class="mono" href="https://github.com/yklcs/yklcs.com">
-					{(await exec("git rev-parse HEAD")).stdout.substring(0, 7)}
-				</a>
-				<span>+</span>
-				<a href="https://github.com/yklcs/soar">
-					Soar {(await exec("pnpm info soar version")).stdout}
-				</a>
-			</div>
-		</footer>
-	).styled`
-  footer {
-    border-top: 1px solid;
-    border-color: var(--subsub);
-    padding: 1rem 0;
-    font-size: 0.85em;
-    color: var(--sub);
-    grid-column: wide;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 1ch;
-  }
+const style = {
+	footer: css`
+		border-top: 1px solid;
+		border-color: var(--subsub);
+		padding: 1rem 0;
+		font-size: 0.85em;
+		color: var(--sub);
+		grid-column: wide;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 1ch;
+	`,
+	link: css`
+		color: var(--sub);
+	`,
+	mono: css`
+		font-family: var(--mono);
+	`,
+	div: (gap: number) => css`
+		display: flex;
+		flex-direction: row;
+		gap: ${gap}ch;
+		justify-content: flex-start;
+		align-items: baseline;
+	`,
+}
 
-  div {
-    display: flex;
-    flex-direction: row;
-    gap: 1ch;
-    justify-content: flex-start;
-    align-items: baseline;
-  }
-
-  a {
-    color: var(--sub);
-  }
-
-  .mono {
-    font-family: var(--mono);
-  }
-`
+const Footer = async () => (
+	<footer {...style.footer}>
+		<div {...style.div(1)}>
+			<a href="/" {...style.link}>
+				Home
+			</a>
+			<a href="/blog" {...style.link}>
+				Blog
+			</a>
+			<a href="/colophon" {...style.link}>
+				Colophon
+			</a>
+		</div>
+		<div {...style.div(0.5)}>
+			<a
+				href="https://github.com/yklcs/yklcs.com"
+				{...css(style.link, style.mono)}
+			>
+				{(await exec("git rev-parse HEAD")).stdout.substring(0, 7)}
+			</a>
+			<span>+</span>
+			<a href="https://github.com/yklcs/soar" {...style.link}>
+				Soar {(await exec("pnpm info soar version")).stdout}
+			</a>
+		</div>
+	</footer>
+)
 
 export default Footer
