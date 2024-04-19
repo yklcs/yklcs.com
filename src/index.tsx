@@ -79,6 +79,10 @@ const Page = ({ url, generator }: JSX.PageProps) =>
     p {
       margin: 0;
 			hyphens: none;
+
+			a {
+			  color: var(--fg);
+			}
     }
   `
 
