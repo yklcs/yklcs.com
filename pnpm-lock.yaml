@@ -62,8 +62,8 @@ devDependencies:
     specifier: ^15.0.1
     version: 15.0.1
   soar:
-    specifier: ^0.7.1
-    version: 0.7.1
+    specifier: ^0.9.0
+    version: 0.9.0
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -643,8 +643,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001603
-      electron-to-chromium: 1.4.722
+      caniuse-lite: 1.0.30001611
+      electron-to-chromium: 1.4.744
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -665,8 +665,8 @@ packages:
       set-function-length: 1.2.2
     dev: true
 
-  /caniuse-lite@1.0.30001603:
-    resolution: {integrity: sha512-iL2iSS0eDILMb9n5yKQoTBim9jMZ0Yrk8g0N9K7UzYyWnfIKzXBZD5ngpM37ZcL/cv0Mli8XtVMRYMQAfFpi5Q==}
+  /caniuse-lite@1.0.30001611:
+    resolution: {integrity: sha512-19NuN1/3PjA3QI8Eki55N8my4LzfkMCRLgCVfrl/slbSAchQfV0+GwjPrK3rq37As4UCLlM/DHajbKkAqbv92Q==}
     dev: true
 
   /ccount@2.0.1:
@@ -859,8 +859,8 @@ packages:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
     dev: true
 
-  /electron-to-chromium@1.4.722:
-    resolution: {integrity: sha512-5nLE0TWFFpZ80Crhtp4pIp8LXCztjYX41yUcV6b+bKR2PqzjskTMOOlBi1VjBHlvHwS+4gar7kNKOrsbsewEZQ==}
+  /electron-to-chromium@1.4.744:
+    resolution: {integrity: sha512-nAGcF0yeKKfrP13LMFr5U1eghfFSvFLg302VUFzWlcjPOnUYd52yU5x6PBYrujhNbc4jYmZFrGZFK+xasaEzVA==}
     dev: true
 
   /emoji-regex@10.3.0:
@@ -2284,8 +2284,8 @@ packages:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
 
-  /soar@0.7.1:
-    resolution: {integrity: sha512-hNXi8UtVhHhGyBNEPsrJVuQpvblq6D0Q5JHS13jA4jhmU47xgfWjswTQR3x650au8en94WbpBQDuYe4dy36VRQ==}
+  /soar@0.9.0:
+    resolution: {integrity: sha512-Yfelt0tbJy6Lqj4ibfbLivNyRPHaIAMVMYTW4OZKE0ulJb5hoAI1+QrGLLv8g51Zv5yP5V1ebWwtZboem4Nx8A==}
     hasBin: true
     dependencies:
       '@mdx-js/mdx': 3.0.1

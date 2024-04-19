@@ -37,7 +37,7 @@
 		"mdast-util-directive": "^3.0.0",
 		"prettier": "^3.2.5",
 		"remark": "^15.0.1",
-		"soar": "^0.7.1",
+		"soar": "^0.9.0",
 		"typescript": "^5.3.3",
 		"unified": "^11.0.4"
 	}
