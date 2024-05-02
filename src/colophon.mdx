@@ -1,14 +1,14 @@
-export const meta = {
+export const data = {
 title: "Colophon",
 }
 
-import { mdxLayout } from "./\_mdx.tsx"
-export default mdxLayout(meta)
+import { mdx } from "./\_markdown.tsx"
+export default mdx(data)
 
 import { exec } from "node:child_process"
 import { promisify } from "node:util"
 
-# {meta.title}
+# {data.title}
 
 ### Type
 

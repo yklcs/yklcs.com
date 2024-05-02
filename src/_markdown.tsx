@@ -3,20 +3,19 @@ import Html, { breakpoint } from "./_html.tsx"
 import Wrapper from "./_wrapper.tsx"
 import type { JSX } from "soar/jsx-runtime"
 
-interface MdxMeta {
+interface MarkdownData {
 	title: string
-	style?: string
+	date?: Date
 }
 
-interface MdxProps extends JSX.PageProps {
+interface MarkdownProps extends JSX.PageProps {
 	children: JSX.Children
-	meta: MdxMeta
+	data: MarkdownData
 }
 
-const mdxStyles = css.global`
-	.mdx-wrapper {
+const markdownStyles = css.global`
+	.md-wrapper {
 		position: relative;
-
 		.side-label {
 			all: unset;
 			font-size: 0.8em;
@@ -130,22 +129,19 @@ const mdxStyles = css.global`
 	}
 `
 
-const Mdx = ({ children, generator, url, meta }: MdxProps) => {
+const Markdown = ({ children, generator, url, data }: MarkdownProps) => {
 	return (
-		<Html metadata={{ url, generator, title: meta.title }}>
-			<Wrapper
-				class={`mdx-wrapper${meta.style ? " " : ""}${meta.style ?? ""}`}
-				{...mdxStyles}
-			>
+		<Html metadata={{ url, generator, title: data.title }}>
+			<Wrapper class="md-wrapper" {...markdownStyles}>
 				{children}
 			</Wrapper>
 		</Html>
 	)
 }
 
-const mdxLayout = (meta: MdxMeta) => (props: Omit<MdxProps, "meta">) => (
-	<Mdx {...props} meta={meta} />
+const mdx = (data: MarkdownData) => (props: Omit<MarkdownProps, "data">) => (
+	<Markdown {...props} data={data} />
 )
 
-export { mdxStyles, mdxLayout }
-export default Mdx
+export { markdownStyles, mdx }
+export default Markdown

@@ -23,8 +23,11 @@
 		"motion": "^10.17.0",
 		"rehype-katex": "^7.0.0",
 		"remark-directive": "^3.0.0",
+		"remark-frontmatter": "^5.0.0",
 		"remark-math": "^6.0.0",
-		"unist-util-visit": "^5.0.0"
+		"unist-util-select": "^5.1.0",
+		"unist-util-visit": "^5.0.0",
+		"yaml": "^2.4.2"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.5.3",
@@ -37,7 +40,7 @@
 		"mdast-util-directive": "^3.0.0",
 		"prettier": "^3.2.5",
 		"remark": "^15.0.1",
-		"soar": "^0.10.0",
+		"soar": "^0.11.0",
 		"typescript": "^5.3.3",
 		"unified": "^11.0.4"
 	}

@@ -56,10 +56,10 @@ const Page = ({ url, generator }: JSX.PageProps) => (
 					the intersection between research, development, and design.
 				</p>
 				<p {...css(style.p, style.sub)}>
-					I'm currently undergoing a research internship on scene representation
-					at the SNU Visual & Geometric Intelligence Lab. My interests include
-					machine learning, computer vision, programming languages, and
-					compilers.
+					My interests include machine learning, computer vision, programming
+					languages, and compilers. I'm currently undergoing a research
+					internship on scene representation at the SNU Visual & Geometric
+					Intelligence Lab.
 				</p>
 				<p {...css(style.p, style.sub)}>
 					Reach out to me at{" "}
@@ -159,8 +159,8 @@ const Posts = async () => {
 	return (
 		<div {...style.list}>
 			{posts.map((post) => (
-				<a {...style.link} href={post.url}>
-					{post.title}
+				<a {...style.link} href={post.path}>
+					{post.data.title}
 				</a>
 			))}
 		</div>

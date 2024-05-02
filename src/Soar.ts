@@ -1,10 +1,14 @@
 import rehypeKatex from "rehype-katex"
+import remarkFrontmatter from "remark-frontmatter"
 import remarkMath from "remark-math"
 import remarkDirective from "remark-directive"
-import { visit, SKIP } from "unist-util-visit"
 import type { SoarConfig } from "soar"
 import type { TextDirective } from "mdast-util-directive"
 import type { Root as MDRoot } from "mdast"
+import yaml from "yaml"
+import { visit, SKIP } from "unist-util-visit"
+import { select, selectAll } from "unist-util-select"
+import Markdown from "./_markdown.tsx"
 
 const remarkSidenotes = () => (tree: MDRoot) => {
 	visit(tree, (node) => {
@@ -46,7 +50,25 @@ const remarkSidenotes = () => (tree: MDRoot) => {
 }
 
 const config: SoarConfig = {
-	remarkPlugins: [remarkMath, remarkDirective, remarkSidenotes],
+	remarkPlugins: [
+		remarkFrontmatter,
+		() => (tree, file) => {
+			const frontmatter: any = select("yaml", tree)
+			if (frontmatter !== undefined) {
+				const parsed = yaml.parse(frontmatter.value)
+				Object.assign(file.data, parsed)
+			}
+
+			const h1 = selectAll(`heading[depth="1"] text`, tree)
+				.map((node: any) => node.value)
+				.join("")
+
+			file.data.title = h1
+		},
+		remarkMath,
+		remarkDirective,
+		remarkSidenotes,
+	],
 	rehypePlugins: [
 		[
 			rehypeKatex,
@@ -58,7 +80,8 @@ const config: SoarConfig = {
 			},
 		],
 	],
-	ignore: ["_*.tsx"]
+	defaultMarkdownLayout: Markdown,
+	ignore: ["_*.tsx"],
 }
 
 export default config

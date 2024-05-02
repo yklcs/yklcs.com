@@ -1,12 +1,8 @@
-export const meta = {
-	title: "An ad monetized future for LLMs",
-	date: new Date("2023-08-13"),
-}
+---
+date: 2023-08-13
+---
 
-import { mdxLayout } from "../_mdx.tsx"
-export default mdxLayout(meta)
-
-# {meta.title}
+# An ad monetized future for LLMs
 
 Large language models (LLMs) are the newest untapped reservoir of advertisement space since the creation of the internet.
 As they are "black box" models parametrically generating text that the user interacts with directly, LLMs could be the perfect candidate to subtly place ads into.

@@ -2,10 +2,7 @@ import type { JSX } from "soar/jsx-runtime"
 import Html from "../_html.tsx"
 import Wrapper from "../_wrapper.tsx"
 import { format } from "date-fns"
-import { globby } from "globby"
-import path from "path"
-import type { MDXProps } from "mdx/types.js"
-import { css } from "soar"
+import { css, glob, type File } from "soar"
 
 const style = {
 	group: css`
@@ -33,23 +30,42 @@ const style = {
 	`,
 }
 
-const Group = ({ group }: { group: PostMeta[] }) => (
+const Group = ({ group }: { group: File<PostData>[] }) => (
 	<div {...style.group}>
-		{group.map((post) => (
+		{group.map((file) => (
 			<div {...style.post}>
-				<a {...style.postTitle} href={post.url}>
-					{post.title}
+				<a {...style.postTitle} href={file.path}>
+					{file.data.title}
 				</a>
-				<time {...style.postMeta} datetime={post.date.toISOString()}>
-					{format(post.date, "MMM d, yyyy")}
-				</time>
+				{file.data.date && (
+					<time {...style.postMeta} datetime={file.data.date.toISOString()}>
+						{format(file.data.date, "MMM d, yyyy")}
+					</time>
+				)}
 			</div>
 		))}
 	</div>
 )
 
+interface PostData {
+	title: string
+	date?: Date
+}
+
+const posts: File<PostData>[] = glob(["/blog/**", "!/blog/index.html"])
+	.map((file) => {
+		file.data.date = new Date(file.data.date ?? new Date())
+		return file
+	})
+	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+
 const Page = async ({ url, generator }: JSX.PageProps) => {
-	const grouped = group(posts, (post) => post.date.getFullYear().toString())
+	const grouped = group(posts, (post) => {
+		if (post.data.date === undefined) {
+			return ""
+		}
+		return post.data.date.getFullYear().toString()
+	})
 
 	return (
 		<Html metadata={{ url, generator, title: "Blog" }}>
@@ -66,35 +82,6 @@ const Page = async ({ url, generator }: JSX.PageProps) => {
 		</Html>
 	)
 }
-
-interface PostMeta {
-	url: string
-	title: string
-	date: Date
-	[key: string]: unknown
-}
-
-interface PostModule {
-	default: JSX.FunctionalElement<MDXProps>
-	meta: PostMeta
-}
-
-const files = await globby([path.join(import.meta.dirname, "**/*.{mdx, md}")])
-const pages: PostModule[] = await Promise.all(
-	files.map(async (file) => {
-		const rel = path.relative(import.meta.dirname, file)
-		const mod: PostModule = await import(`./${rel}`)
-		const slug =
-			path.basename(rel) === "index.mdx"
-				? path.dirname(rel)
-				: path.basename(rel, path.extname(rel))
-		Object.assign(mod.meta, { url: path.join("/blog", slug) })
-		return mod
-	}),
-)
-const posts: PostMeta[] = pages
-	.map((mod) => mod.meta)
-	.sort((a, b) => b.date.valueOf() - a.date.valueOf())
 
 const group = <T,>(
 	arr: T[],

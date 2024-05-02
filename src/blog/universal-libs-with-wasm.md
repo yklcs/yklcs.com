@@ -1,12 +1,8 @@
-export const meta = {
-	title: "Universal libraries with WebAssembly",
-	date: new Date("2023-10-19"),
-}
+---
+date: 2023-10-19
+---
 
-import { mdxLayout } from "../_mdx.tsx"
-export default mdxLayout(meta)
-
-# {meta.title}
+# Universal libraries with WebAssembly
 
 A lot of common software utilities have just a single library implementation. For example, WebP encoding exists only in [a C library](https://chromium.googlesource.com/webm/libwebp). This means that any program looking to encode WebP requires C interop through FFI. There are a number of reasons to avoid this, including harder debugging, toolchain complications, and losing cross compiling.
 

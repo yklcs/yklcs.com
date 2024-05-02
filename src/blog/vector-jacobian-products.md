@@ -1,13 +1,8 @@
-export const meta = {
-	title: "Vector-Jacobian products and automatic differentiation",
-	date: new Date("2023-11-06"),
-	// style: "serif",
-}
+---
+date: 2023-11-06
+---
 
-import { mdxLayout } from "../_mdx.tsx"
-export default mdxLayout(meta)
-
-# {meta.title}
+# Vector-Jacobian products and automatic differentiation
 
 Consider $f: \R^n \to \R^m$. The Jacobian of $f$, denoted $\mathbf{J}_f$, is an $m \times n$ matrix of all the partial derivatives. Pretty basic:
 
