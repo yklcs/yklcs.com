@@ -1,7 +1,7 @@
 interface Metadata {
 	title?: string
 	type?: "article" | "website"
-	url: string
+	path: string
 	image?: string
 	generator?: string
 }
@@ -12,7 +12,7 @@ const stripTrailingSlash = (str: string) =>
 	str.endsWith("/") ? str.slice(0, -1) : str
 
 const Meta = (props: Metadata) => {
-	const url: URL = new URL(props.url, hostname)
+	const url: URL = new URL(props.path, hostname)
 	const urlstr = stripTrailingSlash(url.href)
 
 	return (

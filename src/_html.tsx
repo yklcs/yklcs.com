@@ -14,7 +14,9 @@ interface HtmlProps {
 const Html = ({ children, metadata }: HtmlProps) => (
 	<html lang="en">
 		<head>
-			<base href={`${metadata.url}${metadata.url.endsWith("/") ? "" : "/"}`} />
+			<base
+				href={`${metadata.path}${metadata.path.endsWith("/") ? "" : "/"}`}
+			/>
 			<Meta {...metadata} />
 			<meta charset="UTF-8" />
 			<meta name="viewport" content="width=device-width" />
@@ -27,7 +29,7 @@ const Html = ({ children, metadata }: HtmlProps) => (
 				<div {...style.border} />
 			</Wrapper>
 			<Wrapper style="margin: 2rem 0;">
-				<Header url={metadata.url} />
+				<Header url={metadata.path} />
 			</Wrapper>
 			<div {...style.fill}>{children}</div>
 			<Wrapper style="margin: 6rem 0 0 0;">

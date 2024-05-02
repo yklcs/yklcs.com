@@ -2,7 +2,7 @@ import type { JSX } from "soar/jsx-runtime"
 import Html from "../_html.tsx"
 import Wrapper from "../_wrapper.tsx"
 import { format } from "date-fns"
-import { css, glob, type File } from "soar"
+import { css, type File, type PageProps } from "soar"
 
 const style = {
 	group: css`
@@ -52,14 +52,16 @@ interface PostData {
 	date?: Date
 }
 
-const posts: File<PostData>[] = glob(["/blog/**", "!/blog/index.html"])
-	.map((file) => {
-		file.data.date = new Date(file.data.date ?? new Date())
-		return file
-	})
-	.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+const getPosts = (glob: (pattern: string[]) => File[]) =>
+	glob(["/blog/**", "!/blog/index.html"])
+		.map((file) => {
+			file.data.date = new Date(file.data.date ?? new Date())
+			return file
+		})
+		.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
-const Page = async ({ url, generator }: JSX.PageProps) => {
+const Page = async ({ path, context: { generator, glob } }: PageProps) => {
+	const posts = getPosts(glob)
 	const grouped = group(posts, (post) => {
 		if (post.data.date === undefined) {
 			return ""
@@ -68,7 +70,7 @@ const Page = async ({ url, generator }: JSX.PageProps) => {
 	})
 
 	return (
-		<Html metadata={{ url, generator, title: "Blog" }}>
+		<Html metadata={{ path, generator, title: "Blog" }}>
 			<Wrapper>
 				{Object.entries(grouped)
 					.sort(([a], [b]) => b.localeCompare(a))
@@ -99,4 +101,4 @@ const group = <T,>(
 	)
 
 export default Page
-export { posts }
+export { getPosts }

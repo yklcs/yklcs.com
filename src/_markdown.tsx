@@ -1,4 +1,4 @@
-import { css } from "soar"
+import { css, type PageProps } from "soar"
 import Html, { breakpoint } from "./_html.tsx"
 import Wrapper from "./_wrapper.tsx"
 import type { JSX } from "soar/jsx-runtime"
@@ -6,11 +6,6 @@ import type { JSX } from "soar/jsx-runtime"
 interface MarkdownData {
 	title: string
 	date?: Date
-}
-
-interface MarkdownProps extends JSX.PageProps {
-	children: JSX.Children
-	data: MarkdownData
 }
 
 const markdownStyles = css.global`
@@ -129,17 +124,20 @@ const markdownStyles = css.global`
 	}
 `
 
-const Markdown = ({ children, generator, url, data }: MarkdownProps) => {
-	return (
-		<Html metadata={{ url, generator, title: data.title }}>
-			<Wrapper class="md-wrapper" {...markdownStyles}>
-				{children}
-			</Wrapper>
-		</Html>
-	)
-}
+const Markdown = ({
+	children,
+	data,
+	path,
+	context,
+}: PageProps & { children?: JSX.Children }) => (
+	<Html metadata={{ path, generator: context.generator, title: data.title }}>
+		<Wrapper class="md-wrapper" {...markdownStyles}>
+			{children}
+		</Wrapper>
+	</Html>
+)
 
-const mdx = (data: MarkdownData) => (props: Omit<MarkdownProps, "data">) => (
+const mdx = (data: MarkdownData) => (props: Omit<PageProps, "data">) => (
 	<Markdown {...props} data={data} />
 )
 

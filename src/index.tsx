@@ -1,7 +1,7 @@
-import type { JSX } from "soar/jsx-runtime"
-import { css } from "soar"
+import { css, File, type PageProps } from "soar"
 import Html from "./_html.tsx"
 import Wrapper from "./_wrapper.tsx"
+import { getPosts } from "./blog/index.tsx"
 
 const style = {
 	name: css`
@@ -40,10 +40,10 @@ const style = {
 	`,
 }
 
-const Page = ({ url, generator }: JSX.PageProps) => (
+const Page = ({ path, context: { generator, glob } }: PageProps) => (
 	<Html
 		metadata={{
-			url,
+			path,
 			generator,
 			title: "Lucas Yunkyu Lee",
 		}}
@@ -87,7 +87,7 @@ const Page = ({ url, generator }: JSX.PageProps) => (
 						Posts
 					</a>
 				</h2>
-				<Posts />
+				<Posts glob={glob} />
 			</Wrapper>
 		</div>
 	</Html>
@@ -153,8 +153,8 @@ const Projects = () => {
 	)
 }
 
-const Posts = async () => {
-	const { posts } = await import("./blog/index.tsx")
+const Posts = async ({ glob }: { glob: (patterns: string[]) => File[] }) => {
+	const posts = getPosts(glob)
 
 	return (
 		<div {...style.list}>
