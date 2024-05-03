@@ -11,22 +11,15 @@ interface MarkdownData {
 const markdownStyles = css.global`
 	.md-wrapper {
 		position: relative;
+
 		.side-label {
 			all: unset;
+			color: var(--accent);
 			font-size: 0.8em;
 			vertical-align: super;
 			line-height: 0;
 			margin: -0.1rem 0.1rem;
 			font-variant-numeric: tabular-nums;
-
-			@media screen and (max-width: ${breakpoint}) {
-				line-height: inherit;
-				margin: -0.2rem 0.1rem -0.1rem;
-				vertical-align: baseline;
-				background: var(--subsub);
-				padding: 0.2rem 0.5rem;
-				border-radius: 0.2rem;
-			}
 		}
 
 		.side.show {
@@ -36,11 +29,12 @@ const markdownStyles = css.global`
 		}
 
 		.side {
-			position: absolute;
 			left: 0;
 			grid-column: l-side;
 			margin: 0 0 1rem 1em;
-			font-size: 0.9em;
+			font-size: 0.85em;
+			display: inline-block;
+			position: absolute;
 
 			@media screen and (max-width: ${breakpoint}) {
 				display: none;
@@ -54,12 +48,12 @@ const markdownStyles = css.global`
 			}
 
 			.katex {
-				font-size: ${1.25 * 0.9}rem;
+				font-size: ${1.25 * 0.8}rem;
 			}
 
 			.side-index {
 				color: var(--sub);
-				margin: 0 0 0 -1.5ch;
+				margin: 0 0.75ch 0 0;
 
 				@media screen and (max-width: ${breakpoint}) {
 					display: none;
@@ -100,8 +94,8 @@ const markdownStyles = css.global`
 		}
 
 		pre {
-			grid-column: wide;
 			overflow: auto hidden;
+			margin: 0;
 
 			code {
 				background: inherit;

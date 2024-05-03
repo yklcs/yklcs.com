@@ -16,15 +16,22 @@ const overlap = (a: HTMLElement, b: HTMLElement) => {
 	const rectA = a.getBoundingClientRect()
 	const rectB = b.getBoundingClientRect()
 
-	return !(rectA.bottom < rectB.top || rectA.top > rectB.bottom)
+	return !(
+		rectA.bottom < rectB.top ||
+		rectA.top > rectB.bottom ||
+		rectA.right < rectB.left ||
+		rectA.left > rectB.right
+	)
 }
 
 const reflow = () => {
+	let adjust = 0
+
 	for (let i = 1; i < sides.length; i++) {
 		const a = sides[i - 1] as HTMLElement
 		const b = sides[i] as HTMLElement
 
-		for (let adjust = 0; overlap(a, b) && adjust < 20; adjust++) {
+		for (; overlap(a, b) && adjust < 20; adjust++) {
 			b.style.marginTop = `${adjust}rem`
 		}
 	}

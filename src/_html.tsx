@@ -149,6 +149,10 @@ const globalStyle = css.global`
 		font-family: var(--mono);
 	}
 
+	pre {
+		font-size: 0.85em;
+	}
+
 	p {
 		hyphens: auto;
 	}

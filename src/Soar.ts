@@ -1,50 +1,54 @@
 import rehypeKatex from "rehype-katex"
 import remarkFrontmatter from "remark-frontmatter"
 import remarkMath from "remark-math"
-import remarkDirective from "remark-directive"
 import type { SoarConfig } from "soar"
-import type { TextDirective } from "mdast-util-directive"
 import type { Root as MDRoot } from "mdast"
 import yaml from "yaml"
 import { visit, SKIP } from "unist-util-visit"
 import { select, selectAll } from "unist-util-select"
 import Markdown from "./_markdown.tsx"
+import { gfmFootnoteFromMarkdown } from "mdast-util-gfm-footnote"
+import { gfmFootnote } from "micromark-extension-gfm-footnote"
 
-const remarkSidenotes = () => (tree: MDRoot) => {
-	visit(tree, (node) => {
-		const sides: TextDirective[] = []
-		visit(node, "textDirective", (child, i, parent) => {
-			if (child.name === "side" && i) {
-				parent?.children.splice(i, 0, {
-					type: "text",
-					value: `${sides.length + 1}`,
-					data: {
-						hName: "button",
-						hProperties: {
-							id: `side-label-${sides.length}`,
-							class: "side-label",
-						},
-					},
-				})
-				sides.push(child)
-				return [SKIP, i + 2]
-			}
-		})
-
-		for (const [idx, side] of sides.entries()) {
-			side.name = "__side"
-			side.children.splice(0, 0, {
-				type: "text",
-				value: `${idx + 1} `,
+const remarkSidenotes = () => (tree: any) => {
+	let idx = 0
+	visit(tree, (ref, i, refParent) => {
+		if (ref.type === "footnoteReference" && i) {
+			ref.index = ++idx
+			refParent?.children.splice(i, 1, {
 				data: {
-					hName: "span",
-					hProperties: { class: "side-index" },
+					hName: "label",
+					hProperties: {
+						id: `side-label-${ref.label}`,
+						class: "side-label",
+						"aria-describedby": `side-${ref.label}`,
+					},
+					hChildren: [{ type: "text", value: `${ref.index}` }],
 				},
 			})
-			side.data = {
-				hName: "small",
-				hProperties: { class: "side", id: `side-${idx}` },
-			}
+
+			visit(tree, "footnoteDefinition", (def, j) => {
+				if (def.identifier === ref.identifier && i && j) {
+					refParent?.children.splice(i + 1, 0, {
+						children: [
+							{
+								data: {
+									hName: "span",
+									hProperties: { class: "side-index" },
+									hChildren: [{ type: "text", value: `${ref.index}` }],
+								},
+							},
+							...def.children[0].children,
+						],
+						data: {
+							hName: "small",
+							hProperties: { class: "side", id: `side-${ref.label}` },
+						},
+					})
+				}
+			})
+
+			return SKIP
 		}
 	})
 }
@@ -66,7 +70,13 @@ const config: SoarConfig = {
 			file.data.title = h1
 		},
 		remarkMath,
-		remarkDirective,
+		function () {
+			const data = this.data()
+			data.micromarkExtensions = data.micromarkExtensions ?? []
+			data.fromMarkdownExtensions = data.fromMarkdownExtensions ?? []
+			data.micromarkExtensions.push(gfmFootnote())
+			data.fromMarkdownExtensions.push(gfmFootnoteFromMarkdown())
+		},
 		remarkSidenotes,
 	],
 	rehypePlugins: [
