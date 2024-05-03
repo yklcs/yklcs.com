@@ -22,7 +22,7 @@ const Header = ({ url }: { url: string }) => (
 	<header {...style.header}>
 		{url !== "/" && (
 			<a href="/" {...style.home}>
-				~
+				~yklcs
 			</a>
 		)}
 		{url
