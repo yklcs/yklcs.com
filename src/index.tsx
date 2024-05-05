@@ -1,7 +1,7 @@
 import { css, File, type PageProps } from "soar"
 import Html from "./_html.tsx"
 import Wrapper from "./_wrapper.tsx"
-import { getPosts } from "./blog/index.tsx"
+import { getPosts } from "./log.tsx"
 
 const style = {
 	name: css`
@@ -67,8 +67,8 @@ const Page = ({ path, context: { generator, glob } }: PageProps) => (
 						lucas@yklcs.com
 					</a>
 					, read my blog at{" "}
-					<a {...style.link} href="/blog">
-						yklcs.com/blog
+					<a {...style.link} href="/log">
+						yklcs.com/log
 					</a>
 					, and nitpick my code at{" "}
 					<a {...style.link} href="https:/github.com/yklcs">
@@ -83,8 +83,8 @@ const Page = ({ path, context: { generator, glob } }: PageProps) => (
 			</Wrapper>
 			<Wrapper>
 				<h2 {...style.sectionTitle}>
-					<a {...style.sub} href="/blog">
-						Posts
+					<a {...style.sub} href="/log">
+						Log
 					</a>
 				</h2>
 				<Posts glob={glob} />

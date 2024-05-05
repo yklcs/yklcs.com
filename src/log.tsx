@@ -1,6 +1,5 @@
-import type { JSX } from "soar/jsx-runtime"
-import Html from "../_html.tsx"
-import Wrapper from "../_wrapper.tsx"
+import Html from "./_html.tsx"
+import Wrapper from "./_wrapper.tsx"
 import { format } from "date-fns"
 import { css, type File, type PageProps } from "soar"
 
@@ -53,7 +52,7 @@ interface PostData {
 }
 
 const getPosts = (glob: (pattern: string[]) => File[]) =>
-	glob(["/blog/**", "!/blog/index.html"])
+	glob(["/log/**", "!/log/index.html"])
 		.map((file) => {
 			file.data.date = new Date(file.data.date ?? new Date())
 			return file
@@ -70,7 +69,7 @@ const Page = async ({ path, context: { generator, glob } }: PageProps) => {
 	})
 
 	return (
-		<Html metadata={{ path, generator, title: "Blog" }}>
+		<Html metadata={{ path, generator, title: "Log" }}>
 			<Wrapper>
 				{Object.entries(grouped)
 					.sort(([a], [b]) => b.localeCompare(a))
