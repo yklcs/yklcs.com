@@ -1,6 +1,6 @@
-function handler(event) {
-	var response = event.response
-	var headers = response.headers
+async function handler(event) {
+	const response = event.response
+	const headers = response.headers
 
 	headers["strict-transport-security"] = {
 		value: "max-age=63072000; includeSubdomains; preload",

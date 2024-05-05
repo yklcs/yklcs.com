@@ -1,6 +1,6 @@
-function handler(event) {
-	var request = event.request
-	var uri = request.uri
+async function handler(event) {
+	const request = event.request
+	let uri = request.uri
 
 	// Handle index.html
 	if (uri.endsWith("/")) {

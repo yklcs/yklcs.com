@@ -82,6 +82,7 @@ export class StaticSiteStack extends Stack {
 				code: cloudfront.FunctionCode.fromFile({
 					filePath: path.join(dir, "viewer-request-handler.js"),
 				}),
+				runtime: cloudfront.FunctionRuntime.JS_2_0,
 			},
 		)
 
@@ -92,6 +93,7 @@ export class StaticSiteStack extends Stack {
 				code: cloudfront.FunctionCode.fromFile({
 					filePath: path.join(dir, "viewer-response-handler.js"),
 				}),
+				runtime: cloudfront.FunctionRuntime.JS_2_0,
 			},
 		)
 

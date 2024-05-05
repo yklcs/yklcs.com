@@ -2,7 +2,8 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"compilerOptions": {
 		"noEmit": false,
-		"declaration": false
+		"declaration": false,
+		"allowImportingTsExtensions": false
 	},
 	"extends": "../tsconfig.json"
 }
