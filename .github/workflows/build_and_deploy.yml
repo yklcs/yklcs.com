@@ -23,6 +23,10 @@ jobs:
           submodules: true
           fetch-depth: 0
 
+      - name: Update submodules
+        run: |
+          git submodule update --remote --recursive
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
