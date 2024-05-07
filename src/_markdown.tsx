@@ -113,7 +113,17 @@ const markdownStyles = css.global`
 
 		img {
 			border-radius: 0.2rem;
-			width: 100%;
+			border: 1px solid;
+			border-color: var(--subsub);
+			max-width: 100%;
+			justify-self: center;
+			padding: 0.5rem;
+			margin: 0 -0.5rem;
+
+			@media (prefers-color-scheme: dark) {
+				filter: invert(1);
+				border-color: var(--fg);
+			}
 		}
 	}
 `
