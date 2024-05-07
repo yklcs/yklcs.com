@@ -52,7 +52,7 @@ interface PostData {
 }
 
 const getPosts = (glob: (pattern: string[]) => File[]) =>
-	glob(["/log/**", "!/log/index.html"])
+	glob(["/log/**/*.html", "!/log/index.html"])
 		.map((file) => {
 			file.data.date = new Date(file.data.date ?? new Date())
 			return file
