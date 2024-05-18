@@ -14,7 +14,7 @@ const markdownStyles = css.global`
 
 		.side-label {
 			all: unset;
-			color: var(--accent);
+			color: var(--sub);
 			font-size: 0.8em;
 			vertical-align: super;
 			line-height: 0;
@@ -67,7 +67,6 @@ const markdownStyles = css.global`
 
 		h1 {
 			margin: 0 0 1rem 0;
-			font-weight: 400;
 		}
 
 		h2,
@@ -75,8 +74,22 @@ const markdownStyles = css.global`
 		h4,
 		h5,
 		h6 {
-			margin: 1.5rem 0 -0.25rem 0;
-			font-weight: 400;
+			font-style: italic;
+		}
+
+		h2 {
+			margin: 3rem 0 0.5rem 0;
+		}
+
+		h3,
+		h4,
+		h5,
+		h6 {
+			margin: 2rem 0 0 0;
+		}
+
+		:is(h1, h2, h3, h4, h5, h6) + :is(h1, h2, h3, h4, h5, h6) {
+			margin-top: 0;
 		}
 
 		h1,
@@ -85,6 +98,7 @@ const markdownStyles = css.global`
 		h4,
 		h5,
 		h6 {
+			font-weight: 400;
 			text-wrap: balance;
 			line-height: 1.2;
 		}
@@ -111,7 +125,8 @@ const markdownStyles = css.global`
 			margin: 0;
 		}
 
-		img {
+		img,
+		video {
 			border-radius: 0.2rem;
 			border: 1px solid;
 			border-color: var(--subsub);
@@ -119,10 +134,10 @@ const markdownStyles = css.global`
 			justify-self: center;
 			padding: 0.5rem;
 			margin: 0 -0.5rem;
+			background: var(--bg);
 
-			@media (prefers-color-scheme: dark) {
-				filter: invert(1);
-				border-color: var(--fg);
+			@media screen and (prefers-color-scheme: dark) {
+				background: var(--subsub);
 			}
 		}
 	}

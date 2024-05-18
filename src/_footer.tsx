@@ -16,6 +16,10 @@ const style = {
 		flex-direction: row;
 		justify-content: space-between;
 		gap: 1ch;
+
+		@media print {
+			display: none;
+		}
 	`,
 	link: css`
 		color: var(--sub);

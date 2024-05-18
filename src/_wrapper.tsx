@@ -23,10 +23,13 @@ const styles = {
 		@media screen and (max-width: 40rem) {
 			gap: 1rem;
 			grid-template-columns:
-				[full-start] 0.25rem
-				[wide-start r-main-start l-main-start r-side-start l-side-start l-side-wide-start] 1fr
+				[full-start] minmax(0.25rem, 1fr)
+				[wide-start r-main-start l-main-start r-side-start l-side-start l-side-wide-start] minmax(
+					auto,
+					45ch
+				)
 				[r-main-end l-main-end r-side-end l-side-end l-side-wide-end wide-end]
-				0.25rem [full-end];
+				minmax(0.25rem, 1fr) [full-end];
 		}
 
 		:where(&) > * {

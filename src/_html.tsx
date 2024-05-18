@@ -53,6 +53,10 @@ const style = {
 		color: var(--fg);
 		background: var(--bg);
 		margin: 0;
+
+		@media print {
+			font-size: 0.8em;
+		}
 	`,
 	fill: css`
 		min-height: 90vh;
@@ -64,6 +68,10 @@ const style = {
 		margin: 0 -2rem;
 		grid-column: wide;
 		box-sizing: content-box;
+
+		@media print {
+			display: none;
+		}
 	`,
 }
 
@@ -105,7 +113,7 @@ const globalStyle = css.global`
 			"Segoe UI", Helvetica, sans-serif;
 		--mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;
 
-		@media (prefers-color-scheme: dark) {
+		@media screen and (prefers-color-scheme: dark) {
 			--fg: ${colors.dark.fg};
 			--bg: ${colors.dark.bg};
 			--sub: ${colors.dark.sub};
