@@ -128,6 +128,11 @@ const Projects = () => {
 
 	const projects = [
 		[
+			"jaxsplat",
+			"https://github.com/yklcs/jaxsplat",
+			"CUDA accelerated 3D Gaussian Splatting differentiable renderer for JAX",
+		],
+		[
 			"Soar",
 			"https://github.com/yklcs/soar",
 			"JSX based static site generator",
