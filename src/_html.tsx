@@ -56,6 +56,7 @@ const style = {
 
 		@media print {
 			font-size: 0.8em;
+			-webkit-print-color-adjust: exact;
 		}
 	`,
 	fill: css`
@@ -119,6 +120,11 @@ const globalStyle = css.global`
 			--sub: ${colors.dark.sub};
 			--subsub: ${colors.dark.subsub};
 			--accent: ${colors.dark.accent};
+		}
+
+		@media print {
+			--fg: #000000;
+			--bg: #ffffff;
 		}
 	}
 
