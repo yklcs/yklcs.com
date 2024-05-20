@@ -42,8 +42,8 @@ const Footer = async () => (
 			<a href="/" {...style.link}>
 				Home
 			</a>
-			<a href="/blog" {...style.link}>
-				Blog
+			<a href="/log" {...style.link}>
+				Log
 			</a>
 			<a href="/colophon" {...style.link}>
 				Colophon
