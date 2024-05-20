@@ -53,8 +53,10 @@ interface PostData {
 
 const getPosts = (glob: (pattern: string[]) => File[]) =>
 	glob(["/log/**/*.html", "!/log/index.html"])
-		.map((file) => {
+		.map((file_) => {
+			const file = { ...file_ }
 			file.data.date = new Date(file.data.date ?? new Date())
+			file.path = file.path.replace(/\/index\.html$/, "")
 			return file
 		})
 		.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
