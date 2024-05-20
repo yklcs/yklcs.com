@@ -232,10 +232,10 @@ export class Hsluv {
 
 export const colors = {
 	dark: {
-		fg: new Hsluv(0, 0, 92).hex(),
+		fg: new Hsluv(0, 0, 87).hex(),
 		sub: new Hsluv(0, 0, 50).hex(),
 		subsub: new Hsluv(0, 0, 10).hex(),
-		bg: new Hsluv(0, 0, 7).hex(),
+		bg: new Hsluv(0, 0, 5).hex(),
 		accent: new Hsluv(255, 100, 57).hex(),
 	},
 	light: {
