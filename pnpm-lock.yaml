@@ -71,8 +71,8 @@ devDependencies:
     specifier: ^15.0.1
     version: 15.0.1
   soar:
-    specifier: ^0.12.1
-    version: 0.12.1
+    specifier: ^0.13.0
+    version: 0.13.0
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -2468,8 +2468,8 @@ packages:
     resolution: {integrity: sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==}
     engines: {node: '>=14.16'}
 
-  /soar@0.12.1:
-    resolution: {integrity: sha512-hyoUnJn+dvzlZFuiduXbS1VPNJvtJaAM8zHm04Irxqj0Pm0yTawimbYTIY9VJZ1SGZrMNuihOAyk/7T79eLdpg==}
+  /soar@0.13.0:
+    resolution: {integrity: sha512-1vDcEHSeWBfS1/68qLMRdjjUgWHje9TIWfCRRC3wQ38FxOQ6SQUmr1DgAIDnjSVUxuxzs8UG/InAq1d8qn+llA==}
     hasBin: true
     dependencies:
       '@mdx-js/mdx': 3.0.1

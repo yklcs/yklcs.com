@@ -13,6 +13,7 @@
 		"skipLibCheck": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "soar",
-		"allowImportingTsExtensions": true
+		"allowImportingTsExtensions": true,
+		"types": ["soar"]
 	}
 }
