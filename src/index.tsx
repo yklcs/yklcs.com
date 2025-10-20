@@ -24,6 +24,9 @@ const style = {
 		margin: 0;
 		hyphens: none;
 	`,
+	italic: css`
+		font-style: italic;
+	`,
 	wrapper: css`
 		display: flex;
 		flex-direction: column;
@@ -56,10 +59,10 @@ const Page = ({ path, context: { generator, glob } }: PageProps) => (
 					the intersection between research, development, and design.
 				</p>
 				<p {...css(style.p, style.sub)}>
-					My interests include machine learning, computer vision, programming
-					languages, and compilers. I'm currently undergoing a research
-					internship on scene representation at the SNU Visual & Geometric
-					Intelligence Lab.
+					My interests include 3D computer vision, machine learning, and
+					programming languages. I'm currently undergoing a research internship
+					on scene representation at the SNU Visual & Geometric Intelligence
+					Lab.
 				</p>
 				<p {...css(style.p, style.sub)}>
 					Reach out to me at{" "}
@@ -76,6 +79,10 @@ const Page = ({ path, context: { generator, glob } }: PageProps) => (
 					</a>
 					.
 				</p>
+			</Wrapper>
+			<Wrapper>
+				<h2 {...style.sectionTitle}>Publications</h2>
+				<Publications />
 			</Wrapper>
 			<Wrapper>
 				<h2 {...style.sectionTitle}>Projects</h2>
@@ -107,6 +114,50 @@ const Link = ({
 		<a href={href}>{display}</a>
 	</div>
 )
+
+const Publications = () => {
+	const Publication = ({
+		title,
+		href,
+		authors,
+		appeared,
+	}: {
+		title: string
+		href: string
+		authors: string
+		appeared: string
+	}) => (
+		<div>
+			<a {...style.link} href={href}>
+				{title}
+			</a>
+			<p {...css(style.p, style.italic)}>{appeared}</p>
+			<p {...css(style.p, style.sub)}>{authors}</p>
+		</div>
+	)
+
+	const publications = [
+		[
+			"Optimized Minimal 4D Gaussian Splatting",
+			"https://minshirley.github.io/OMG4/",
+			"Minseo Lee*, Byeonghyeon Lee*, Lucas Yunkyu Lee, Eunsoo Lee, Sangmin Kim, Seunghyeon Song, Joo Chan Lee, Jong Hwan Ko, Jaesik Park, Eunbyung Park",
+			"arXiv Preprint (2025)",
+		],
+	]
+
+	return (
+		<div {...style.list}>
+			{publications.map((project) => (
+				<Publication
+					title={project[0]}
+					href={project[1]}
+					authors={project[2]}
+					appeared={project[3]}
+				/>
+			))}
+		</div>
+	)
+}
 
 const Projects = () => {
 	const Project = ({
