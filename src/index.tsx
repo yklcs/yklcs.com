@@ -59,10 +59,13 @@ const Page = ({ path, context: { generator, glob } }: PageProps) => (
 					the intersection between research, development, and design.
 				</p>
 				<p {...css(style.p, style.sub)}>
-					My interests include 3D computer vision, machine learning, and
-					programming languages. I'm currently undergoing a research internship
-					on scene representation at the SNU Visual & Geometric Intelligence
-					Lab.
+					My interests include programming languages and 3D computer vision. I'm
+					currently undergoing a research internship on floating-point
+					computations at the{" "}
+					<a {...style.link} href="https://sites.google.com/view/fpc-lab/home">
+						POSTECH Foundations of Programming & Computing Lab
+					</a>
+					.
 				</p>
 				<p {...css(style.p, style.sub)}>
 					Reach out to me at{" "}
