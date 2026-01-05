@@ -77,7 +77,7 @@ const Page = ({ path, context: { generator, glob } }: PageProps) => (
 						yklcs.com/log
 					</a>
 					, and nitpick my code at{" "}
-					<a {...style.link} href="https:/github.com/yklcs">
+					<a {...style.link} href="https://github.com/yklcs">
 						github.com/yklcs
 					</a>
 					.
