@@ -39,7 +39,10 @@ const style = {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 0.5rem;
+		gap: 1.125rem;
+	`,
+	small: css`
+		font-size: 0.875em;
 	`,
 }
 
@@ -129,17 +132,51 @@ const Publications = () => {
 		href: string
 		authors: string
 		appeared: string
-	}) => (
-		<div>
-			<a {...style.link} href={href}>
-				{title}
-			</a>
-			<p {...css(style.p, style.italic)}>{appeared}</p>
-			<p {...css(style.p, style.sub)}>{authors}</p>
-		</div>
-	)
+	}) => {
+		const [before, after] = authors.split("Lucas Yunkyu Lee")
+
+		return (
+			<div
+				{...css`
+					text-wrap: pretty;
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 0.1 25rem;
+				`}
+			>
+				<a {...style.link} href={href}>
+					{title}
+				</a>
+				<p {...css(style.p, style.sub, style.small)}>
+					{before}
+					<span
+						{...css`
+							text-decoration: underline;
+						`}
+					>
+						Lucas Yunkyu Lee
+					</span>
+					{after}
+				</p>
+				<p {...css(style.p, style.italic, style.small)}>{appeared}</p>
+			</div>
+		)
+	}
 
 	const publications = [
+		[
+			"FreeTimeGS++: Secrets of Dynamic Gaussian Splatting and Their Principles",
+			"https://arxiv.org/abs/2605.03337",
+			"Lucas Yunkyu Lee*, Soonho Kim*, Youngwook Kim, Sangmin Kim, Jaesik Park",
+			"arXiv Preprint (2026)",
+		],
+		[
+			"TRiGS: Temporal Rigid-body Motion for Scalable 4D Gaussian Splatting",
+			"https://wwwjjn.github.io/TRiGS-project_page/",
+			"Suwoong Yeom*, Joonsik Nam*, Seunggyu Choi*, Lucas Yunkyu Lee, Sangmin Kim, Jaesik Park, Joonsoo Kim, Kugjin Yun, Kyeongbo Kong, Sukju Kang",
+			"arXiv Preprint (2026)",
+		],
 		[
 			"Optimized Minimal 4D Gaussian Splatting",
 			"https://minshirley.github.io/OMG4/",
