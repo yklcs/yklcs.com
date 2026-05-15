@@ -142,13 +142,13 @@ const Publications = () => {
 					display: flex;
 					flex-direction: column;
 					align-items: flex-start;
-					gap: 0.1 25rem;
+					gap: 0.1rem;
 				`}
 			>
 				<a {...style.link} href={href}>
 					{title}
 				</a>
-				<p {...css(style.p, style.sub, style.small)}>
+				<p {...css(style.p, style.sub)}>
 					{before}
 					<span
 						{...css`
@@ -159,7 +159,7 @@ const Publications = () => {
 					</span>
 					{after}
 				</p>
-				<p {...css(style.p, style.italic, style.small)}>{appeared}</p>
+				<p {...css(style.p, style.italic)}>{appeared}</p>
 			</div>
 		)
 	}
