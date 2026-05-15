@@ -20,6 +20,11 @@ const Html = ({ children, metadata }: HtmlProps) => (
 			<Meta {...metadata} />
 			<meta charset="UTF-8" />
 			<meta name="viewport" content="width=device-width" />
+			<script
+				data-goatcounter="https://yklcs.goatcounter.com/count"
+				async
+				src="/goatcounter.js"
+			></script>
 			<link href="/favicon.ico" rel="icon" sizes="48x48" />
 			<link href="/favicon.svg" rel="icon" sizes="any" type="image/svg+xml" />
 			<link href="/_katex.css" rel="stylesheet" />
@@ -110,8 +115,9 @@ const globalStyle = css.global`
 		--subsub: ${colors.light.subsub};
 		--accent: ${colors.light.accent};
 
-		--sans: GTAmerica, SourceHanSansKRVariable, system-ui, -apple-system,
-			"Segoe UI", Helvetica, sans-serif;
+		--sans:
+			GTAmerica, SourceHanSansKRVariable, system-ui, -apple-system, "Segoe UI",
+			Helvetica, sans-serif;
 		--mono: IBMPlexMono, Menlo, "Cascadia Mono", monospace;
 
 		@media screen and (prefers-color-scheme: dark) {
