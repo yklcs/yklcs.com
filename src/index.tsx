@@ -167,7 +167,7 @@ const Publications = () => {
 	const publications = [
 		[
 			"FreeTimeGS++: Secrets of Dynamic Gaussian Splatting and Their Principles",
-			"https://arxiv.org/abs/2605.03337",
+			"https://yklcs.com/ftgspp",
 			"Lucas Yunkyu Lee*, Soonho Kim*, Youngwook Kim, Sangmin Kim, Jaesik Park",
 			"arXiv Preprint (2026)",
 		],
