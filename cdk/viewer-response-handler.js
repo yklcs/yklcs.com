@@ -7,7 +7,7 @@ async function handler(event) {
 	}
 	headers["content-security-policy"] = {
 		value:
-			"default-src 'self'; img-src https: data:; media-src https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src https://yklcs.goatcounter.com/count",
+			"default-src 'self'; img-src https: data:; media-src https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' data:; connect-src 'self' https://yklcs.goatcounter.com/count",
 	}
 	headers["x-content-type-options"] = { value: "nosniff" }
 	headers["x-frame-options"] = { value: "DENY" }
